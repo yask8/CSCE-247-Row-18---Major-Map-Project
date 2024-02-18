@@ -10,15 +10,15 @@
         "major": "CIS",
         "creditHours": "19",
         "completedCourses": {
-            "ENGL101": "A",
+            "ENGL101": "C",
             "MATH141": "A",
             "CHEM111": "B",
-            "CHEM111L": "A",
-            "CSCE190": "A",
-            "ENGL102": "A",
+            "CHEM111L": "C",
+            "CSCE190": "C",
+            "ENGL102": "C",
             "CSCE146": "C"
         },
-        "gpa": "3.53",
+        "gpa": "2.47",
         "coursePlanner": "coursePlanner",
         "degreeProgress": "degreeProgress",
         "advisorNotes": {
