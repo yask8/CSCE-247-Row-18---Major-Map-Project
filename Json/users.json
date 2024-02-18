@@ -6,27 +6,21 @@
         "email": "avacastrophee@gmail.com",
         "password": "C3ssn4islove!",
         "userType": "STUDENT",
-        "year": "May 2026",
-        "major": "Aerospace Engineering",
-        "creditHours": "35",
+        "class": "Freshman",
+        "major": "CIS",
+        "creditHours": "19",
         "completedCourses": {
             "ENGL101": "A",
             "MATH141": "A",
-            "CHEM111": "A-",
-            "CHEM111L": "A-",
-            "MATH142": "A",
-            "AESP101": "A",
-            "MART201": "A",
+            "CHEM111": "B",
+            "CHEM111L": "A",
+            "CSCE190": "A",
             "ENGL102": "A",
-            "CHEM112": "B",
-            "CHEM112L": "B",
-            "PHYS211": "B",
-            "PHYS211L": "B",
-            "EMCH111": "A"
+            "CSCE146": "C"
         },
-        "gpa": "3.95",
-        "coursePlanner": "coursePlanner1",
-        "degreeProgress": "degreeProgress1",
+        "gpa": "3.53",
+        "coursePlanner": "coursePlanner",
+        "degreeProgress": "degreeProgress",
         "advisorNotes": {
             "go based off of major map, take either MART201 or MUSC101": "07/24/22",
             "go based off of major map": "10/02/22"
@@ -39,8 +33,8 @@
         "email": "rio.farrah2004@gmail.com",
         "password": "Real?dejaneir0",
         "userType": "STUDENT",
-        "year": "May 2026",
-        "major": "Computer Science",
+        "class": "Sophmore",
+        "major": "CS",
         "creditHours": "47",
         "completedCourses": {
             "ENGL101": "A",
@@ -61,8 +55,8 @@
             "SPCH140": "A"
         },
         "gpa": "4.00",
-        "coursePlanner": "coursePlanner2",
-        "degreeProgress": "degreeProgress2",
+        "coursePlanner": "coursePlanner",
+        "degreeProgress": "degreeProgress",
         "advisorNotes": {
             "go based off of major map, take either MART201 or MUSC101": "07/22/22",
             "go based off of major map": "10/05/22"
@@ -75,8 +69,7 @@
         "email": "FlanaganMichael@gmail.com",
         "password": "philly$Gr33n",
         "userType": "ADVISOR",
-        "listOfAdvisees": ["acfb166f-a0f5-4276-9301-fd71e8dcfcf8", "c4dd8e20-4b51-4663-ae59-be7df5371bee", "faa91c60-3201-4870-84c8-9473df2b6a1e"],
-        "note": ""
+        "listOfAdvisees": ["acfb166f-a0f5-4276-9301-fd71e8dcfcf8", "c4dd8e20-4b51-4663-ae59-be7df5371bee", "faa91c60-3201-4870-84c8-9473df2b6a1e"]
     },
     {
         "uscID": "92a449d4-6d47-4925-b477-97134c835cdf",
