@@ -7,7 +7,7 @@
     "subject": "CSCE",
     "passGrade": "C",
     "elective": false,
-    "carolinaCore": false,
+    "carolinaCore": true,
     "preReqs": ["MATH112", "MATH115", "MATH116"],
     "semester": "Fall, Spring, Summer",
     "year": "2024-2025"
