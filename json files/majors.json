@@ -2,7 +2,7 @@
     {
         "majorID": "0bc9301f-9b48-47f0-b47a-a555c3b30c5d",
         "major": "Computer Science",
-        "majorCourses": ["CSCE145", "CSCE146", "CSCE215", "CSCE211", "CSCE240", "CSCE240", "MATH374", 
+        "majorCourses": ["474f43aa-81bf-43f6-ad17-40445167d16d", "CSCE146", "CSCE215", "CSCE211", "CSCE240", "CSCE240", "MATH374", 
         "CSCE212", "CSCE247", "MATH241","CSCE311", "CSCE330", "CSCE350", "CSCE390", "CSCE416",
         "STAT509", "CSCE490", "CSCE355", "MATH344", "MATH344L", "CSCE492",
         "ANTH161", "ASTR101", "BIOL101", "BIO101L", "BIO110", "CHEM111", "CHEM111L", "CHEM141",
@@ -10,7 +10,7 @@
         "GEOL215", "GEOL215L", "GEOL302", "MSCI101", "MSCI102", "MSCI210", "MSC210L", "MSCI215",
         "215L", "PHYS211", "PHYS211L"],
         "majorElective": ["CSCE317", "CSCE500"],
-        "coreEdu": ["ENGL101", "MATH141", "ENGL102", "MATH142", "CHEM111", "CHEM111L", "PHYS211",
+        "coreEdu": ["20ee808f-31a8-4435-b790-3875b1a45b1d", "MATH141", "ENGL102", "MATH142", "CHEM111", "CHEM111L", "PHYS211",
         "PHYS211L", "CHEM112", "CHEM112L", "PHYS212", "PHYS212L", "SPCH140", "SPCH145", "SPCH230",
         "FREN109", "FREN110", "GERM109", "GERM110", "LATN109", "LATN110", "SPAN109", "SPAN110" ],
         "appArea": ["AERO401", "AERO402", "AFAM201", "AFAM580", "ANTH101", "ANTH499", "ARMY401",
