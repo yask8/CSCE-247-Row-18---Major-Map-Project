@@ -3,7 +3,7 @@ package AdvisingSoftware;
 import java.util.ArrayList;
 
 /**
- * @author Lia Zhao
+ * @author Lia Zhao (zhaolia9)
  * - courseList: ArrayList <Course>
  * - course: Course
  * - userList: ArrayList <User>

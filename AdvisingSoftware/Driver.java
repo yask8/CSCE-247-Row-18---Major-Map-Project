@@ -3,7 +3,7 @@ package AdvisingSoftware;
 import java.util.Scanner;
 
 /**
- * @author Lia Zhao
+ * @author Lia Zhao (zhaolia9)
  * - facade: Facade
  * + run(): void
  * - displayMainMenu(): void

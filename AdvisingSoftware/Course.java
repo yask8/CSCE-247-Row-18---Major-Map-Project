@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- * @author Lia Zhao
+ * @author Lia Zhao (zhaolia9)
  * - id: UUID()
  * - name: String
  * - code: String
@@ -22,7 +22,7 @@ import java.util.UUID;
  * + editCourse(String name, String code, String description, int creditHours, string subject, char passGrade, Boolean elective, Boolean carolinaCore, ArrayList <Course> prereqs): Course
  * + deleteCourse(String code)
  */
-public class Course {
+public class Course extends User {
 
   private UUID id;
   private String name;
@@ -37,6 +37,19 @@ public class Course {
   private String semester;
   private String year;
 
+  /**
+   *
+   * @param id UUID
+   * @param name String
+   * @param code String
+   * @param description String
+   * @param creditHours int
+   * @param subject String
+   * @param passGrade char
+   * @param elective boolean
+   * @param carolinaCore boolean
+   * @param preReqs ArrayList<Course>
+   */
   public Course(
     UUID id,
     String name,
@@ -61,6 +74,18 @@ public class Course {
     this.preReqs = preReqs;
   }
 
+  /**
+   *
+   * @param name String
+   * @param code String
+   * @param description String
+   * @param creditHours int
+   * @param subject String
+   * @param passGrade char
+   * @param elective boolean
+   * @param carolinaCore boolean
+   * @param preReqs ArrayList<Course>
+   */
   public Course(
     String name,
     String code,
@@ -84,6 +109,10 @@ public class Course {
     this.preReqs = preReqs;
   }
 
+  /**
+   *
+   * @return Course
+   */
   public Course editCourse() {
     Course course = new Course(
       name,
