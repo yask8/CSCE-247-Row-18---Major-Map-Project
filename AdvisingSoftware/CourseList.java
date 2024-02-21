@@ -1,11 +1,14 @@
+package AdvisingSoftware;
+
 import java.util.ArrayList;
+
 
 /**
  * Represents a list of courses in the system.
  * @author Stephon Johnson
  */
 public class CourseList {
-    private static CourseList courseListInstance;
+    private static CourseList courseList;
     private ArrayList<Course> courses;
 
     /**
@@ -13,7 +16,7 @@ public class CourseList {
      * Initializes the list of courses
      */
     private CourseList() {
-        courses = new ArrayList<>();
+        courses = new ArrayList<Course>();
     }
 
     /**
