@@ -19,9 +19,9 @@ public class Driver {
   public void run() {
     scenario1();
     scenario2();
-    //scenario3();
-    //scenario4();
-    //scenario5();
+    scenario3();
+    scenario4();
+    scenario5();
   }
 
   public void scenario1() {
@@ -29,6 +29,18 @@ public class Driver {
   }
 
   public void scenario2() {
+    System.out.println();
+  }
+
+  public void scenario3() {
+    System.out.println();
+  }
+
+  public void scenario4() {
+    System.out.println();
+  }
+
+  public void scenario5() {
     System.out.println();
   }
 
