@@ -9,7 +9,7 @@ public class CourseList {
     private ArrayList<Course> courses;
 
     /**
-     * Private constructor to prevent instantiation from outside the class.
+     * Private constructor
      * Initializes the list of courses.
      */
     private CourseList() {
