@@ -10,7 +10,7 @@ public class CourseList {
 
     /**
      * Private constructor
-     * Initializes the list of courses.
+     * Initializes the list of courses
      */
     private CourseList() {
         courses = new ArrayList<>();
