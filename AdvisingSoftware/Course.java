@@ -22,7 +22,7 @@ import java.util.UUID;
  * + editCourse(String name, String code, String description, int creditHours, string subject, char passGrade, Boolean elective, Boolean carolinaCore, ArrayList <Course> prereqs): Course
  * + deleteCourse(String code)
  */
-public class Course extends User {
+public class Course {
 
   private UUID id;
   private String name;
