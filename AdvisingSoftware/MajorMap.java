@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- * Represents a mapping of courses for a specific major.
+ * MajorMap Code
  * @author Stephon Johnson
  */
 public class MajorMap {
