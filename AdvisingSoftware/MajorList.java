@@ -15,7 +15,6 @@ public class MajorList {
         majorList = new MajorList();
         majors = new ArrayList<MajorMap>;
     }
-
     static public MajorList getInstance(){
         return majorList;
     }
