@@ -1,6 +1,6 @@
 /**
  * Will display the Graduation Requirements for the Major
- * @author yask8(ykennedy)
+ * @author yask8(Yasmine Kennedy)
  */
 package AdvisingSoftware;
 
