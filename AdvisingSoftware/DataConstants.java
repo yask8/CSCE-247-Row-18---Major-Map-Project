@@ -11,8 +11,9 @@ package AdvisingSoftware;
 public abstract class DataConstants {
 
     // User Constants
-    protected static final String USER_FILE_NAME = "/Json/users.json";
+    protected static final String USER_FILE_NAME = "Json/users.json";
     protected static final String USER = "userList";
+    protected static final String USER_UUID = "id";
     protected static final String USER_FIRST_NAME = "firstName";
     protected static final String USER_LAST_NAME = "lastName";
     protected static final String USER_EMAIL = "email";
@@ -37,8 +38,7 @@ public abstract class DataConstants {
     protected static final String ADMIN_CHANGES_MADE = "changesMade";
 
     // Course Constants
-    protected static final String COURSE_FILE_NAME = "/Json/courses.json";
-    protected static final String COURSE_ID = "id";
+    protected static final String COURSE_FILE_NAME = "Json/courses.json";
     protected static final String COURSE_NAME = "name";
     protected static final String COURSE_CODE = "code";
     protected static final String COURSE_DESCRIPTION = "description";
@@ -52,7 +52,7 @@ public abstract class DataConstants {
     protected static final String COURSE_YEAR = "year";
 
     // Major Constants
-    protected static final String MAJOR_FILE_NAME = "/Json/majors.json";
+    protected static final String MAJOR_FILE_NAME = "Json/majors.json";
     protected static final String MAJOR_UUID = "id";
     protected static final String MAJOR_NAME = "major";
     protected static final String MAJOR_COURSES = "majorCourses";
