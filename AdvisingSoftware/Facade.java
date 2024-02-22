@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class Facade {
 
-  private CourseList courseList;
+  private ArrayList<Course> courseList;
   private Course course;
   private ArrayList<User> userList;
   private User user;
@@ -43,7 +43,7 @@ public class Facade {
    * # modifyStudentList(): ArrayList<Student>
    * # modifyStudentGrades(User user, DegreeProgress degreeProgress): void
    */
-  public Facade() {}
+  //public Facade() {}
 
   public Facade(
     CourseList courseList,
