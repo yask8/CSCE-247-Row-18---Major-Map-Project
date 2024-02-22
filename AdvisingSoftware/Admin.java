@@ -21,13 +21,17 @@ public class Admin extends User {
    * Allows admin to add a course
    * @return the Course instance
    */
-  public Course addCourse() {}
+  public Course addCourse() {
+    return null;
+  }
 
   /**
    * Allows admin to edit a course
    * @return the Course instance
    */
-  public Course editCourse() {}
+  public Course editCourse() {
+    return null;
+  }
 
   /**
    * Allows admin to delete a course
@@ -38,11 +42,15 @@ public class Admin extends User {
    * Allows admin to search for a student
    * @return the Student instance
    */
-  public Student studentLookUp() {}
+  public Student studentLookUp() {
+    return null;
+  }
 
   /**
    * Allows an admin to view the details of a student
    * @return ArrayList of student details
    */
-  public ArrayList<Student> viewStudentProfile() {}
+  public ArrayList<Student> viewStudentProfile() {
+    return null;
+  }
 }
