@@ -129,4 +129,24 @@ public class Course {
   }
 
   public void deleteCourse() {}
+
+  /**
+   * To string to view user details
+   * Added by @Spillmag for tesing purposes
+   */
+  public String toString() {
+    return 
+            "id: " + id + '\n' +
+            "name: " + name + '\n' +
+            "code: " + code + '\n' +
+            "description: " + description + '\n' +
+            "creditHours: " + creditHours + '\n' +
+            "subject: " + subject + '\n' +
+            "passGrade: " + passGrade + '\n' +
+            "elective: " + elective + '\n' +
+            "carolinaCore: " + carolinaCore + '\n' +
+            "preReqs: " + preReqs + '\n' +
+            "semester: " + semester + '\n' +
+            "year: " + year + '\n';
+  }
 }
