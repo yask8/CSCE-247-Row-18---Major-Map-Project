@@ -1,5 +1,4 @@
 package AdvisingSoftware;
-
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -58,6 +57,14 @@ public class MajorMap {
      * @param major The name of the major to delete.
      */
     public void deleteMajor(String major) {
+        if (this.major.equals(major)) {
+            this.major = null;
+            this.majorCourses = null;
+            this.majorElective = null;
+            this.coreEdu = null;
+            this.appArea = null;
+            this.id = null;
+        }
     }
 
     /**
@@ -70,6 +77,11 @@ public class MajorMap {
      * @param appArea      The courses for the major's application area.
      */
     public void editMajor(String major, ArrayList<Course> majorCourses, ArrayList<Course> majorElective, ArrayList<Course> coreEdu, ArrayList<Course> appArea) {
+        this.major = major;
+        this.majorCourses = majorCourses;
+        this.majorElective = majorElective;
+        this.coreEdu = coreEdu;
+        this.appArea = appArea;
     }
 
     /**
@@ -78,5 +90,15 @@ public class MajorMap {
      * @param major The name of the major to display.
      */
     public void displayMajorMap(String major) {
+        if (this.major.equals(major)) {
+            System.out.println("Major: " + this.major);
+            System.out.println("Class: " + this.id);
+            System.out.println("Major Courses: " + this.majorCourses);
+            System.out.println("Major Elective: " + this.majorElective);
+            System.out.println("Carolina Core: " + this.coreEdu);
+            System.out.println("Application Area: " + this.appArea);
+        } else {
+            System.out.println("No matching major found.");
+        }
     }
 }
