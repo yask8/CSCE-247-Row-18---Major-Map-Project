@@ -91,6 +91,7 @@ public class MajorMap {
      */
     public void displayMajorMap(String major) {
         if (this.major.equals(major)) {
+            System.out.println("\n************ Major Map *************");
             System.out.println("Major: " + this.major);
             System.out.println("Class: " + this.id);
             System.out.println("Major Courses: " + this.majorCourses);
