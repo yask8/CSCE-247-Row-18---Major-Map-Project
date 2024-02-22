@@ -29,7 +29,7 @@ public class Facade {
   /* + Facade(CourseList courseList, Course course, UserList userList, User user, degreeProgress degreeProgress, MajorMap majorMap, GraduationRequirements gradReq)
    * + login(String email, String password): User
    * + signOut(): void
-   * + checkDegreeProgress(String uscID): DegreePlanner
+   * + checkDegreeProgress(String uscID): DegreeProgress
    * + checkCoursePlanner(String uscID): CoursePlanner
    * + checkMajorMap(String major): MajorMap
    * + checkProfile(String uscID): User
@@ -50,43 +50,66 @@ public class Facade {
     Course course,
     UserList userList,
     User user,
-    degreeProgress degreeProgress,
+    DegreeProgress degreeProgress,
     MajorMap majorMap,
     GraduationRequirements gradReq
   ) {
     this.courseList = courseList.getCourses();
     this.course = course;
     this.user = user;
+    this.userList = userList.getUsers();
     this.degreeProgress = degreeProgress;
     this.majorMap = majorMap;
     this.gradReq = gradReq;
   }
 
-  public User login() {}
+  public User login(String email, String password) {
+    return user;
+  }
 
   public void signOut() {}
 
-  public DegreePlanner checkDegreeProgress(String uscID) {}
+  public DegreeProgress checkDegreeProgress(String uscID) {
+    return degreeProgress;
+  }
 
-  public CoursePlanner checkCoursePlanner(String uscID) {}
+  public CoursePlanner checkCoursePlanner(String uscID) {
+    return coursePlan;
+  }
 
-  public MajorMap checkMajorMap(String major) {}
+  public MajorMap checkMajorMap(String major) {
+    return majorMap;
+  }
 
-  public User checkProfile(String uscID) {}
+  public User checkProfile(String uscID) {
+    return user;
+  }
 
-  public Course chooseCourse(String UUID) {}
+  public Course chooseCourse(String UUID) {
+    return course;
+  }
 
-  public boolean switchMajor(String uscID, String major) {}
+  public boolean switchMajor(String uscID, String major) {
+    return true;
+  }
 
-  public String viewCourse(ArrayList<Course> courseList, String UUID) {}
+  public String viewCourse(ArrayList<Course> courseList, String UUID) {
+    return "";
+  }
 
-  protected boolean removeProfile(String uscID) {}
+  protected boolean removeProfile(String uscID) {
+    return true;
+  }
 
-  protected Student searchStudentList(String uscID) {}
+  protected Student searchStudentList(String uscID) {
+    return null;
+  }
 
   protected void moveStudentToAnotherList(String uscID, String advisorID) {}
 
-  protected ArrayList<Student> modifyStudentList() {}
+  protected ArrayList<Student> modifyStudentList() {
+    return new ArrayList<Student>();
+  }
 
   protected void modifyStudentGrades(
     User user,
