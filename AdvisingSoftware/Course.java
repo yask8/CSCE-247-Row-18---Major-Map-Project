@@ -60,7 +60,9 @@ public class Course {
     char passGrade,
     boolean elective,
     boolean carolinaCore,
-    ArrayList<Course> preReqs
+    ArrayList<Course> preReqs,
+    String year,
+    String semester
   ) {
     this.id = id;
     this.name = name;
@@ -72,6 +74,8 @@ public class Course {
     this.elective = elective;
     this.carolinaCore = carolinaCore;
     this.preReqs = preReqs;
+    this.year = year;
+    this.semester = semester;
   }
 
   /**
@@ -95,7 +99,9 @@ public class Course {
     char passGrade,
     boolean elective,
     boolean carolinaCore,
-    ArrayList<Course> preReqs
+    ArrayList<Course> preReqs,
+    String year,
+    String semester
   ) {
     this.id = UUID.randomUUID();
     this.name = name;
@@ -107,6 +113,8 @@ public class Course {
     this.elective = elective;
     this.carolinaCore = carolinaCore;
     this.preReqs = preReqs;
+    this.year = year;
+    this.semester = semester;
   }
 
   /**
@@ -123,7 +131,9 @@ public class Course {
       passGrade,
       elective,
       carolinaCore,
-      preReqs
+      preReqs,
+      year,
+      semester
     );
     return course;
   }
