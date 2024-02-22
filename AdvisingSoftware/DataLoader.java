@@ -2,6 +2,8 @@ package AdvisingSoftware;
 
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.UUID;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
@@ -11,7 +13,7 @@ public class DataLoader extends DataConstants {
     public static void main(String[] args) {
         // Load users from the file path provided
         ArrayList<User> users = loadUsers();
-    
+
         // Print the list of users
         if (users != null) {
             System.out.println("List of Users:");
@@ -21,10 +23,10 @@ public class DataLoader extends DataConstants {
         } else {
             System.out.println("Failed to load users.");
         }
-    
+
         // Load courses from the file path provided
         ArrayList<Course> courses = loadCourses();
-    
+
         // Print the list of courses
         if (courses != null) {
             System.out.println("\nList of Courses:");
@@ -33,6 +35,19 @@ public class DataLoader extends DataConstants {
             }
         } else {
             System.out.println("Failed to load courses.");
+        }
+
+        // Load majors from the file path provided
+        ArrayList<MajorMap> majors = loadMajors();
+
+        // Print the list of majors
+        if (majors != null) {
+            System.out.println("\nList of Majors:");
+            for (MajorMap major : majors) {
+                System.out.println(major.toString());
+            }
+        } else {
+            System.out.println("Failed to load majors.");
         }
     }
 
@@ -46,7 +61,6 @@ public class DataLoader extends DataConstants {
 
             for (int i = 0; i < userJSON.size(); i++) {
                 JSONObject personJSON = (JSONObject) userJSON.get(i);
-                String id = (String) personJSON.get(USER_UUID);
                 String firstName = (String) personJSON.get(USER_FIRST_NAME);
                 String lastName = (String) personJSON.get(USER_LAST_NAME);
                 String email = (String) personJSON.get(USER_EMAIL);
@@ -88,7 +102,8 @@ public class DataLoader extends DataConstants {
                 String semester = (String) courseObj.get(COURSE_SEMESTER);
                 String year = (String) courseObj.get(COURSE_YEAR);
 
-                Course course = new Course(name, code, description, creditHours, subject, passGrade, elective,carolinaCore,prerequisites);
+                Course course = new Course(name, code, description, creditHours, subject, passGrade, elective,
+                        carolinaCore, prerequisites, semester, year);
                 courses.add(course);
             }
 
@@ -98,6 +113,63 @@ public class DataLoader extends DataConstants {
             e.printStackTrace();
         }
 
+        return null;
+    }
+
+    public static ArrayList<MajorMap> loadMajors() {
+        ArrayList<MajorMap> majors = new ArrayList<>();
+
+        try {
+            FileReader reader = new FileReader(MAJOR_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray majorJSON = (JSONArray) parser.parse(reader);
+
+            for (int i = 0; i < majorJSON.size(); i++) {
+                JSONObject majorObj = (JSONObject) majorJSON.get(i);
+                String name = (String) majorObj.get(MAJOR_NAME);
+
+                // Load courses for each category separately
+                ArrayList<Course> courses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_COURSES));
+                ArrayList<Course> electives = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_ELECTIVE));
+                ArrayList<Course> coreCourses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_CORE_EDU));
+                ArrayList<Course> appAreaCourses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_APP_AREA));
+
+                MajorMap major = new MajorMap(name, courses, electives, coreCourses, appAreaCourses);
+                majors.add(major);
+            }
+            return majors;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static ArrayList<Course> loadCoursesFromJSONArray(JSONArray courseArray) {
+        ArrayList<Course> courses = new ArrayList<>();
+        if (courseArray != null) {
+            for (Object courseObj : courseArray) {
+                String courseId = (String) courseObj;
+                Course course = findCourseByCode(courseId);
+                if (course != null) {
+                    courses.add(course);
+                } else {
+                    System.out.println("Course not found for code: " + courseId);
+                }
+            }
+        }
+        return courses;
+    }
+
+    private static Course findCourseByCode(String id) {
+        ArrayList<Course> allCourses = loadCourses();
+        if (allCourses != null) {
+            for (Course course : allCourses) {
+                if (course.getID().equals(id)) {
+                    return course;
+                }
+            }
+        }
         return null;
     }
 }

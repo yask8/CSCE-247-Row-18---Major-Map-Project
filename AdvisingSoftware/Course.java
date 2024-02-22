@@ -159,4 +159,12 @@ public class Course {
             "semester: " + semester + '\n' +
             "year: " + year + '\n';
   }
+
+    /**
+     * Getter method for retrieving the UUID of the course.
+     * @return The UUID of the course.
+     */
+    public UUID getID() {
+      return id;
+  }
 }

@@ -1,9 +1,11 @@
 package AdvisingSoftware;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
 /**
  * MajorMap Code
+ * 
  * @author Stephon Johnson
  */
 public class MajorMap {
@@ -17,14 +19,15 @@ public class MajorMap {
     /**
      * Constructor with an ID for the MajorMap.
      *
-     * @param id           The UUID of the MajorMap.
-     * @param major        The name of the major.
-     * @param majorCourses The courses needed for the major.
+     * @param id            The UUID of the MajorMap.
+     * @param major         The name of the major.
+     * @param majorCourses  The courses needed for the major.
      * @param majorElective The elective for the major.
-     * @param coreEdu      The core courses for the major.
-     * @param appArea      The courses for the major's application area.
+     * @param coreEdu       The core courses for the major.
+     * @param appArea       The courses for the major's application area.
      */
-    public MajorMap(UUID id, String major, ArrayList<Course> majorCourses, ArrayList<Course> majorElective, ArrayList<Course> coreEdu, ArrayList<Course> appArea) {
+    public MajorMap(UUID id, String major, ArrayList<Course> majorCourses, ArrayList<Course> majorElective,
+            ArrayList<Course> coreEdu, ArrayList<Course> appArea) {
         this.id = id;
         this.major = major;
         this.majorCourses = majorCourses;
@@ -36,19 +39,24 @@ public class MajorMap {
     /**
      * Constructor without an ID for the MajorMap.
      *
-     * @param major        The name of the major.
-     * @param majorCourses The courses needed for the major.
+     * @param major         The name of the major.
+     * @param majorCourses  The courses needed for the major.
      * @param majorElective The elective courses for the major.
-     * @param coreEdu      The core courses for the major.
-     * @param appArea      The courses for the major's application area.
+     * @param coreEdu       The core courses for the major.
+     * @param appArea       The courses for the major's application area.
      */
-    public MajorMap(String major, ArrayList<Course> majorCourses, ArrayList<Course> majorElective, ArrayList<Course> coreEdu, ArrayList<Course> appArea) {
+    public MajorMap(String major, ArrayList<Course> majorCourses, ArrayList<Course> majorElective,
+            ArrayList<Course> coreEdu, ArrayList<Course> appArea) {
         this.id = UUID.randomUUID();
         this.major = major;
         this.majorCourses = majorCourses;
         this.majorElective = majorElective;
         this.coreEdu = coreEdu;
         this.appArea = appArea;
+    }
+
+    public MajorMap(String majorID, String majorName, Course course) {
+        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -70,13 +78,14 @@ public class MajorMap {
     /**
      * Edits the major's details.
      *
-     * @param major        The name of the major.
-     * @param majorCourses The courses required for the major.
+     * @param major         The name of the major.
+     * @param majorCourses  The courses required for the major.
      * @param majorElective The elective courses for the major.
-     * @param coreEdu      The core education courses for the major.
-     * @param appArea      The courses for the major's application area.
+     * @param coreEdu       The core education courses for the major.
+     * @param appArea       The courses for the major's application area.
      */
-    public void editMajor(String major, ArrayList<Course> majorCourses, ArrayList<Course> majorElective, ArrayList<Course> coreEdu, ArrayList<Course> appArea) {
+    public void editMajor(String major, ArrayList<Course> majorCourses, ArrayList<Course> majorElective,
+            ArrayList<Course> coreEdu, ArrayList<Course> appArea) {
         this.major = major;
         this.majorCourses = majorCourses;
         this.majorElective = majorElective;
@@ -101,5 +110,22 @@ public class MajorMap {
         } else {
             System.out.println("No matching major found.");
         }
+    }
+
+    /**
+     * Returns String of the details of the major map.
+     */
+    public String toString() {
+        return "\n************ Major Map *************\n" +
+                "Major: " + this.major + "\n" +
+                "Class: " + this.id + "\n" + 
+                "\n************ Major Courses *************\n" +
+                "Major Courses: " + this.majorCourses + "\n" +
+                "\n************ Major Electives *************\n" +
+                "Major Elective: " + this.majorElective + "\n" +
+                "\n************ Carolina Core  *************\n" +
+                "Carolina Core: " + this.coreEdu + "\n" +
+                "\n************ Application Area *************\n" +
+                "Application Area: " + this.appArea + "\n";
     }
 }
