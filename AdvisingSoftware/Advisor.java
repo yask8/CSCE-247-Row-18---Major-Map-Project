@@ -1,5 +1,7 @@
 package AdvisingSoftware;
 
+import java.util.ArrayList;
+
 public class Advisor extends User{
 
     private ArrayList<Student> listOfAdvisees;
