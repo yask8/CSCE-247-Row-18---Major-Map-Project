@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class Facade {
 
-  private ArrayList<Course> courseList;
+  private CourseList courseList;
   private Course course;
   private ArrayList<User> userList;
   private User user;
