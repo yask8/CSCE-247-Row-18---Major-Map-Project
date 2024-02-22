@@ -1,6 +1,6 @@
 /**
  * MajorList class for managing majors
- * @author yask8(ykennedy)
+ * @author yask8(Yasmine Kennedy)
  */
 package AdvisingSoftware;
 
