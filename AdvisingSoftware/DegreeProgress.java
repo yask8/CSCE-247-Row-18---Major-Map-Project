@@ -24,11 +24,6 @@ public class DegreeProgress {
         this.incompleteCourses = incompleteCourses;
     }
 
-    public void degreeProgress(String major, ArrayList<Course> majorCourses, ArrayList<Course> electiveCourses,
-                               ArrayList<Course> minorCourses, ArrayList<Course> carolinaCoreCourses,
-                               ArrayList<Course> completeCourses, ArrayList<Course> incompleteCourses) {
-    }
-
     public String displayProgress(MajorMap majorMap, HashMap<String, ArrayList<Course>> completedCourses) {
         return ""; 
     }
