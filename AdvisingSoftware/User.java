@@ -47,13 +47,15 @@ public class User {
    * @param email User's email
    * @param uscID User's uscID
    * @param password User's password
+   * @param userType User's Role
    */
   public User(
     String firstName,
     String lastName,
     String email,
     String uscID,
-    String password
+    String password,
+    String userType
   ) {
     this.id = UUID.randomUUID();
     this.firstName = firstName;
@@ -61,6 +63,7 @@ public class User {
     this.email = email;
     this.uscID = uscID;
     this.password = password;
+    this.userType = userType;
   }
 
   /**

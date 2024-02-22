@@ -1,30 +1,39 @@
 package AdvisingSoftware;
-// TO DO ADD FILE NAME TO COURSE AND MAJOR and make major and course PROTECTCTED STATIC
-public class DataConstants {
+
+/**
+ * This abstract class contains constants used throughout the advising software
+ * for various data entities
+ * Constants related to file names, field names, and other data attributes are
+ * defined here.
+ * 
+ * @author @Spillmag
+ */
+public abstract class DataConstants {
+
     // User Constants
     protected static final String USER_FILE_NAME = "/Json/users.json";
-	protected static final String USER = "userList";
-	protected static final String USER_FIRST_NAME = "firstName";
-	protected static final String USER_LAST_NAME = "lastName";
-	protected static final String USER_PHONE_EMAIL = "email";
+    protected static final String USER = "userList";
+    protected static final String USER_FIRST_NAME = "firstName";
+    protected static final String USER_LAST_NAME = "lastName";
+    protected static final String USER_EMAIL = "email";
     protected static final String USER_USCID = "uscID";
     protected static final String USER_PASSWORD = "password";
     protected static final String USER_TYPE = "userType";
 
     // Student Constants
-	protected static final String STUDENT_CLASS = "class";
-	protected static final String STUDENT_MAJOR = "major";
-	protected static final String STUDENT_CREDITHOURS = "creditHours";
+    protected static final String STUDENT_CLASS = "class";
+    protected static final String STUDENT_MAJOR = "major";
+    protected static final String STUDENT_CREDITHOURS = "creditHours";
     protected static final String STUDENT_COMPLETED_COURSES = "completedCourses";
     protected static final String STUDENT_COURSE_PLANNER = "coursePlanner";
     protected static final String STUDENT_DEGREE_PROGRESS = "degreeProgess";
     protected static final String STUDENT_ADVISOR_NOTES = "advisorNotes";
 
-    //Advisor Constants
+    // Advisor Constants
     protected static final String ADVISOR_LIST_OF_ADVISEES = "listOfAdivsees";
-	protected static final String ADVISOR_LIST_OF_FAILING_STUDENTS = "listOfFailingStudents";
+    protected static final String ADVISOR_LIST_OF_FAILING_STUDENTS = "listOfFailingStudents";
 
-    //Admin Constants
+    // Admin Constants
     protected static final String ADMIN_CHANGES_MADE = "changesMade";
 
     // Course Constants
@@ -50,4 +59,5 @@ public class DataConstants {
     protected static final String MAJOR_ELECTIVE = "majorElective";
     protected static final String MAJOR_CORE_EDU = "coreEdu";
     protected static final String MAJOR_APP_AREA = "appArea";
+
 }
