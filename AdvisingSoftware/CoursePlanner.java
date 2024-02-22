@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Helps the student stay organize by allowing to create their own ideal 8-semester plan
- * @author yask8(ykennedy)
+ * @author yask8(Yasmine Kennedy)
  */
 public class CoursePlanner {
     /**
