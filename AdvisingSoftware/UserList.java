@@ -46,7 +46,7 @@ public class UserList {
    * @return The user with the specified email and password, or null if not found.
    */
   public User getUser(String email, String password) {
-    User user = new User(null, email, password, password, password, password);
+    User user = new User(password, password, password, password, password, password);
     return user;
   }
 

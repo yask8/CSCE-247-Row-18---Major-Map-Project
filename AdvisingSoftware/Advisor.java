@@ -20,10 +20,11 @@ public class Advisor extends User {
     String email,
     String uscID,
     String password,
+    String userType,
     ArrayList<Student> listOfAdvisees,
     ArrayList<Student> listOfFailingStudents
   ) {
-    super(firstName, lastName, email, uscID, password);
+    super(firstName, lastName, email, uscID, password,userType);
     this.listOfAdvisees = listOfAdvisees;
     this.listOfFailingStudents = listOfFailingStudents;
   }

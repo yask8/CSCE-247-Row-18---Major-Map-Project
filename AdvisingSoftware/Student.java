@@ -31,6 +31,7 @@ public class Student extends User {
     String email,
     String uscID,
     String password,
+    String userType,
     String year,
     String major,
     int creditHours,
@@ -39,7 +40,7 @@ public class Student extends User {
     CoursePlanner coursePlanner,
     DegreeProgress degreeProgress
   ) {
-    super(firstName, lastName, email, uscID, password);
+    super(firstName, lastName, email, uscID, password,userType);
     this.year = year;
     this.major = major;
     this.creditHours = creditHours;

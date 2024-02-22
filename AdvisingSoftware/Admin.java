@@ -12,9 +12,10 @@ public class Admin extends User {
     String lastName,
     String email,
     String uscID,
-    String password
+    String password,
+    String userType
   ) {
-    super(firstName, lastName, email, uscID, password);
+    super(firstName, lastName, email, uscID, password, userType);
   }
 
   /**
