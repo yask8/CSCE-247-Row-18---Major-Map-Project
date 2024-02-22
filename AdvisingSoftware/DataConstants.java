@@ -28,6 +28,7 @@ public class DataConstants {
     protected static final String ADMIN_CHANGES_MADE = "changesMade";
 
     // Course Constants
+    protected static final String COURSE_FILE_NAME = "/Json/courses.json";
     protected static final String COURSE_ID = "id";
     protected static final String COURSE_NAME = "name";
     protected static final String COURSE_CODE = "code";
@@ -42,6 +43,7 @@ public class DataConstants {
     protected static final String COURSE_YEAR = "year";
 
     // Major Constants
+    protected static final String MAJOR_FILE_NAME = "/Json/majors.json";
     protected static final String MAJOR_UUID = "id";
     protected static final String MAJOR_NAME = "major";
     protected static final String MAJOR_COURSES = "majorCourses";
