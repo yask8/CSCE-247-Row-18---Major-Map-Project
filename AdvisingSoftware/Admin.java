@@ -1,51 +1,48 @@
 package AdvisingSoftware;
 
-public class Admin extends User{
+import java.util.ArrayList;
 
-    /**
-     * Private constructor
-     */
-    private Admin(){
-        
-    }
+public class Admin extends User {
 
-    /**
-     * Allows admin to add a course
-     * @return the Course instance
-     */
-    Course addCourse(){
+  /**
+   * Private constructor
+   */
+  private Admin(
+    String firstName,
+    String lastName,
+    String email,
+    String uscID,
+    String password
+  ) {
+    super(firstName, lastName, email, uscID, password);
+  }
 
-    }
+  /**
+   * Allows admin to add a course
+   * @return the Course instance
+   */
+  public Course addCourse() {}
 
-    /**
-     * Allows admin to edit a course
-     * @return the Course instance
-     */
-    Course editCourse(){
+  /**
+   * Allows admin to edit a course
+   * @return the Course instance
+   */
+  public Course editCourse() {}
 
-    }
+  /**
+   * Allows admin to delete a course
+   */
+  public void deleteCourse() {}
 
-    /**
-     * Allows admin to delete a course
-     */
-    void deleteCourse(){
+  /**
+   * Allows admin to search for a student
+   * @return the Student instance
+   */
+  public Student studentLookUp() {}
 
-    }
-
-    /**
-     * Allows admin to search for a student
-     * @return the Student instance
-     */
-    Student studentLookUp(){
-        
-    }
-
-    /**
-     * Allows an admin to view the details of a student
-     * @return ArrayList of student details
-     */
-    ArrayList<Student> viewStudentProfile(){
-
-    }
-
+  /**
+   * Allows an admin to view the details of a student
+   * @return ArrayList of student details
+   */
+  public ArrayList<Student> viewStudentProfile() {}
 }

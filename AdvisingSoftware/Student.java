@@ -12,7 +12,8 @@ public class Student extends User {
   private double gpa;
   private CoursePlanner coursePlanner;
   private DegreeProgress degreeProgress;
-  private HashMap<String, Date> advisorNotes;
+  // HashMap<String notes, String date>
+  private HashMap<String, String> advisorNotes;
 
   /**
    * Student Constructor
@@ -25,6 +26,11 @@ public class Student extends User {
    * @param degreeProgress Student's degree progress
    */
   public Student(
+    String firstName,
+    String lastName,
+    String email,
+    String uscID,
+    String password,
     String year,
     String major,
     int creditHours,
@@ -33,6 +39,7 @@ public class Student extends User {
     CoursePlanner coursePlanner,
     DegreeProgress degreeProgress
   ) {
+    super(firstName, lastName, email, uscID, password);
     this.year = year;
     this.major = major;
     this.creditHours = creditHours;
@@ -45,61 +52,75 @@ public class Student extends User {
   /**
    * Allows student to view the details of their profile
    */
-  void viewProfile() {}
+  public void viewProfile() {}
 
   /**
    * Allows student to edit their profile
    */
-  void editProfile() {}
+  public void editProfile() {}
 
   /**
    * Allows student to update their year/class
    * @param creditHours updated number of credit hours the student has taken
    * @return String of newly updated year/class
    */
-  String updateYear(int creditHours) {}
+  public String updateYear(int creditHours) {
+    return year;
+  }
 
   /**
    * Allows student to view their major map
    * @param major to identify which major map to view
    * @return the correct Major Map
    */
-  MajorMap viewMajorMap(String major) {}
+  public MajorMap viewMajorMap(String major) {
+    return viewMajorMap(major);
+  }
 
   /**
    * Allows student to view their completed courses
    * @param completedCourses HashMap of students completed courses with their respective grade
    */
-  void viewCompletedCourses(HashMap<Course, Character> completedCourses) {}
+  public void viewCompletedCourses(
+    HashMap<Course, Character> completedCourses
+  ) {}
 
   /**
    * Allows student to view their course planner
    * @return course planner
    */
-  String viewCoursePlanner() {}
+  public String viewCoursePlanner() {
+    return "";
+  }
 
   /**
    * Allows student to view their degree progress
    * @return degree progress
    */
-  String viewDegreeProgress() {}
+  public String viewDegreeProgress() {
+    return "";
+  }
 
   /**
    * Allows student to add a completed course
    * @param code Course-specific code
    * @param grade Course grade
    */
-  void addCompleteCourse(String code, char grade) {}
+  public void addCompleteCourse(String code, char grade) {}
 
   /**
    * Allows student to view advisor notes
    * @return ArrayList of advisor notes
    */
-  ArrayList<String> viewNotes() {}
+  public ArrayList<String> viewNotes() {
+    return new ArrayList<String>();
+  }
 
   /**
    * Allows student to update their GPA
    * @return returns updated gpa
    */
-  double updateGPA() {}
+  public double updateGPA() {
+    return 0;
+  }
 }
