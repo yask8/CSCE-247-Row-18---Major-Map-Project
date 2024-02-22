@@ -1,28 +1,34 @@
-[{
-    "UUID": "474f43aa-81bf-43f6-ad17-40445167d16d",
-    "name": "CSCE145 Algorithmic Design I",
-    "code": "PR",
-    "description": "Problem-solving, algorithmic design, and programming. Two lecture hours and four laboratory hours per week. Open to all majors. Carolina Core ARP.",
-    "creditHours": 4,
-    "subject": "CSCE",
-    "passGrade": "C",
-    "elective": false,
-    "carolinaCore": true,
-    "preReqs": ["MATH112", "MATH115", "MATH116"],
-    "semester": "Fall, Spring, Summer",
-    "year": "2024-2025"
-},
-{
-    "UUID": "20ee808f-31a8-4435-b790-3875b1a45b1d",
-    "name": "ENGL101 Critical Reading and Composition",
-    "code": "CC-CMW",
-    "description": "English 101 is designed to offer you structured, sustained practice in critical reading, textual analysis and composing. During the semester, you'll read challenging texts in a variety of genres and then write expository and analytical essays in response to them. Through these reading and writing assignments, you explore the interconnectedness of reading and writing and learn how to use both reading and writing as venues for inquiry, learning, interpretation, and communication.",
-    "creditHours": 3,
-    "subject": "ENGL",
-    "passGrade": "C",
-    "elective": false,
-    "carolinaCore": true,
-    "preReqs": [],
-    "semester": "Fall, Spring",
-    "year": "2024-2025"
-}]
+[
+    {
+        "id": "CSCE145",
+        "name": "CSCE145 Algorithmic Design I",
+        "code": "PR",
+        "description": "Problem-solving, algorithmic design, and programming. Two lecture hours and four laboratory hours per week. Open to all majors. Carolina Core ARP.",
+        "creditHours": 4,
+        "subject": "CSCE",
+        "passGrade": "C",
+        "elective": false,
+        "carolinaCore": true,
+        "preReqs": [
+            "MATH112",
+            "MATH115",
+            "MATH116"
+        ],
+        "semester": "Fall, Spring, Summer",
+        "year": "2024-2025"
+    },
+    {
+        "id": "ENGL101",
+        "name": "ENGL101 Critical Reading and Composition",
+        "code": "CC-CMW",
+        "description": "English 101 is designed to offer you structured, sustained practice in critical reading, textual analysis and composing. During the semester, you'll read challenging texts in a variety of genres and then write expository and analytical essays in response to them. Through these reading and writing assignments, you explore the interconnectedness of reading and writing and learn how to use both reading and writing as venues for inquiry, learning, interpretation, and communication.",
+        "creditHours": 3,
+        "subject": "ENGL",
+        "passGrade": "C",
+        "elective": false,
+        "carolinaCore": true,
+        "preReqs": [],
+        "semester": "Fall, Spring",
+        "year": "2024-2025"
+    }
+]

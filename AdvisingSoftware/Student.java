@@ -1,114 +1,105 @@
 package AdvisingSoftware;
 
-public class Student extends User{
+import java.util.ArrayList;
+import java.util.HashMap;
 
-    private String year;
-    private String major;
-    private int creditHours;
-    private HashMap<Course, Character> completedCourses;
-    private double gpa;
-    private CoursePlanner coursePlanner;
-    private DegreeProgress degreeProgress;
-    private HashMap<String, Date> advisorNotes;
+public class Student extends User {
 
-    /**
-     * Student Constructor
-     * @param year Student's year/class
-     * @param major Student's major
-     * @param creditHours Student's number of credit hours taken
-     * @param completedCourses Courses the student has completed
-     * @param gpa Student's GPA
-     * @param coursePlanner Student's courses planned for the future
-     * @param degreeProgress Student's degree progress
-     */
-    public Student(String year, String major, int creditHours, HashMap<Course, Character> completedCourses, double gpa, CoursePlanner coursePlanner, DegreeProgress degreeProgress){
-        this.year = year;
-        this.major = major;
-        this.creditHours = creditHours;
-        this.completedCourses = completedCourses;
-        this.gpa = gpa;
-        this.coursePlanner = coursePlanner;
-        this.degreeProgress = degreeProgress;
-    }
+  private String year;
+  private String major;
+  private int creditHours;
+  private HashMap<Course, Character> completedCourses;
+  private double gpa;
+  private CoursePlanner coursePlanner;
+  private DegreeProgress degreeProgress;
+  private HashMap<String, Date> advisorNotes;
 
-    /**
-     * Allows student to view the details of their profile
-     */
-    void viewProfile(){
+  /**
+   * Student Constructor
+   * @param year Student's year/class
+   * @param major Student's major
+   * @param creditHours Student's number of credit hours taken
+   * @param completedCourses Courses the student has completed
+   * @param gpa Student's GPA
+   * @param coursePlanner Student's courses planned for the future
+   * @param degreeProgress Student's degree progress
+   */
+  public Student(
+    String year,
+    String major,
+    int creditHours,
+    HashMap<Course, Character> completedCourses,
+    double gpa,
+    CoursePlanner coursePlanner,
+    DegreeProgress degreeProgress
+  ) {
+    this.year = year;
+    this.major = major;
+    this.creditHours = creditHours;
+    this.completedCourses = completedCourses;
+    this.gpa = gpa;
+    this.coursePlanner = coursePlanner;
+    this.degreeProgress = degreeProgress;
+  }
 
-    }
+  /**
+   * Allows student to view the details of their profile
+   */
+  void viewProfile() {}
 
-    /**
-     * Allows student to edit their profile
-     */
-    void editProfile(){
+  /**
+   * Allows student to edit their profile
+   */
+  void editProfile() {}
 
-    }
+  /**
+   * Allows student to update their year/class
+   * @param creditHours updated number of credit hours the student has taken
+   * @return String of newly updated year/class
+   */
+  String updateYear(int creditHours) {}
 
-    /**
-     * Allows student to update their year/class
-     * @param creditHours updated number of credit hours the student has taken
-     * @return String of newly updated year/class
-     */
-    String updateYear(int creditHours){
-        
-    }
+  /**
+   * Allows student to view their major map
+   * @param major to identify which major map to view
+   * @return the correct Major Map
+   */
+  MajorMap viewMajorMap(String major) {}
 
-    /**
-     * Allows student to view their major map
-     * @param major to identify which major map to view
-     * @return the correct Major Map
-     */
-    MajorMap viewMajorMap(String major){
+  /**
+   * Allows student to view their completed courses
+   * @param completedCourses HashMap of students completed courses with their respective grade
+   */
+  void viewCompletedCourses(HashMap<Course, Character> completedCourses) {}
 
-    }
+  /**
+   * Allows student to view their course planner
+   * @return course planner
+   */
+  String viewCoursePlanner() {}
 
-    /**
-     * Allows student to view their completed courses
-     * @param completedCourses HashMap of students completed courses with their respective grade
-     */
-    void viewCompletedCourses(HashMap<Course, Character> completedCourses){
+  /**
+   * Allows student to view their degree progress
+   * @return degree progress
+   */
+  String viewDegreeProgress() {}
 
-    }
+  /**
+   * Allows student to add a completed course
+   * @param code Course-specific code
+   * @param grade Course grade
+   */
+  void addCompleteCourse(String code, char grade) {}
 
-    /**
-     * Allows student to view their course planner
-     * @return course planner
-     */
-    String viewCoursePlanner(){
+  /**
+   * Allows student to view advisor notes
+   * @return ArrayList of advisor notes
+   */
+  ArrayList<String> viewNotes() {}
 
-    }
-
-    /**
-     * Allows student to view their degree progress
-     * @return degree progress
-     */
-    String viewDegreeProgress(){
-
-    }
-
-    /**
-     * Allows student to add a completed course
-     * @param code Course-specific code
-     * @param grade Course grade
-     */
-    void addCompleteCourse(String code, char grade){
-
-    }
-
-    /**
-     * Allows student to view advisor notes
-     * @return ArrayList of advisor notes
-     */
-    ArrayList<String> viewNotes(){
-
-    }
-    /**
-     * Allows student to update their GPA
-     * @return returns updated gpa
-     */
-    double updateGPA(){}
-
-
-
+  /**
+   * Allows student to update their GPA
+   * @return returns updated gpa
+   */
+  double updateGPA() {}
 }
