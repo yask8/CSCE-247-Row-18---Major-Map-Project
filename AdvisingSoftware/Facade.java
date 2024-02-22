@@ -54,7 +54,7 @@ public class Facade {
     MajorMap majorMap,
     GraduationRequirements gradReq
   ) {
-    this.courseList = courseList;
+    this.courseList = courseList.getCourses();
     this.course = course;
     this.user = user;
     this.degreeProgress = degreeProgress;
