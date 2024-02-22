@@ -27,30 +27,25 @@ public class DataConstants {
     //Admin Constants
     protected static final String ADMIN_CHANGES_MADE = "changesMade";
 
-    //Course Constants 
-    public static final String COURSE_ID = "id";
-    public static final String COURSE_NAME = "name";
-    public static final String COURSE_CODE = "code";
-    public static final String COURSE_DESCRIPTION = "description";
-    public static final String COURSE_CREDIT_HOURS = "creditHours";
-    public static final String COURSE_SUBJECT = "subject";
-    public static final String COURSE_PASS_GRADE = "passGrade";
-    public static final String COURSE_ELECTIVE = "elective";
-    public static final String COURSE_CAROLINA_CORE = "carolinaCore";
-    public static final String COURSE_PREREQUISITES = "preReqs";
-    public static final String COURSE_SEMESTER = "semester";
-    public static final String COURSE_YEAR = "year";
+    // Course Constants
+    protected static final String COURSE_ID = "id";
+    protected static final String COURSE_NAME = "name";
+    protected static final String COURSE_CODE = "code";
+    protected static final String COURSE_DESCRIPTION = "description";
+    protected static final String COURSE_CREDIT_HOURS = "creditHours";
+    protected static final String COURSE_SUBJECT = "subject";
+    protected static final String COURSE_PASS_GRADE = "passGrade";
+    protected static final String COURSE_ELECTIVE = "elective";
+    protected static final String COURSE_CAROLINA_CORE = "carolinaCore";
+    protected static final String COURSE_PREREQUISITES = "preReqs";
+    protected static final String COURSE_SEMESTER = "semester";
+    protected static final String COURSE_YEAR = "year";
 
-    //Major Constants 
-    public static final String MAJOR_UUID = "id";
-    public static final String MAJOR_NAME = "major";
-    public static final String MAJOR_COURSES = "majorCourses";
-    public static final String MAJOR_ELECTIVE = "majorElective";
-    public static final String MAJOR_CORE_EDU = "coreEdu";
-    public static final String MAJOR_APP_AREA = "appArea";
-
-
-
-
-
+    // Major Constants
+    protected static final String MAJOR_UUID = "id";
+    protected static final String MAJOR_NAME = "major";
+    protected static final String MAJOR_COURSES = "majorCourses";
+    protected static final String MAJOR_ELECTIVE = "majorElective";
+    protected static final String MAJOR_CORE_EDU = "coreEdu";
+    protected static final String MAJOR_APP_AREA = "appArea";
 }
