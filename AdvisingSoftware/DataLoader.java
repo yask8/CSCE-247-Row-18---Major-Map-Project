@@ -2,9 +2,7 @@ package AdvisingSoftware;
 
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.UUID;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,43 +21,17 @@ public class DataLoader extends DataConstants {
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
-        // load users
-        ArrayList<User> users = DataLoader.loadUsers();
-        if (users != null) {
-            for (User user : users) {
-                System.out.println(user.toString());
-            }
-        } else {
-            System.out.println("Failed to load users from the file.");
-        }
-        //load admin
-        ArrayList<Admin> admins = DataLoader.loadAdmin();
-        if (admins != null) {
-            for (Admin admin : admins) {
-                System.out.println(admin.toString());
-            }
-        } else {
-            System.out.println("Failed to load admins from the file.");
-        }
-        // Load major maps
-        // ArrayList<MajorMap> majorMaps = DataLoader.loadMajors();
-        // if (majorMaps != null) {
-        //     for (MajorMap majorMap : majorMaps) {
-        //         System.out.println(majorMap.toString());
-        //     }
-        // } else {
-        //     System.out.println("Failed to load major maps from the file.");
-        // }
+        testLoadingAdmins();
 
-        // // Load courses
-        // ArrayList<Course> courses = DataLoader.loadCourses();
-        // if (courses != null) {
-        //     for (Course course : courses) {
-        //         System.out.println(course.toString());
-        //     }
-        // } else {
-        //     System.out.println("Failed to load courses from the file.");
-        //}
+        testLoadingStudents();
+      
+        testLoadingAdvisors();
+
+        testLoadingCourses();
+
+        testLoadingMajorMaps();
+
+        //testLoadingUsers():
     }
 
     /**
@@ -103,8 +75,50 @@ public class DataLoader extends DataConstants {
      * @return An ArrayList of Student objects loaded from the JSON file, or null if
      *         an error occurs.
      */
-    
-     // TODO Add student loader
+    /**
+     * Loads students from a JSON file.
+     * 
+     * @return An ArrayList of Student objects loaded from the JSON file, or null if
+     *         an error occurs.
+     */
+    public static ArrayList<Student> loadStudents() {
+        ArrayList<Student> students = new ArrayList<>();
+
+        try {
+            FileReader reader = new FileReader(STUDENT_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray studentArray = (JSONArray) parser.parse(reader);
+
+            for (int i = 0; i < studentArray.size(); i++) {
+                JSONObject studentObj = (JSONObject) studentArray.get(i);
+                String firstName = (String) studentObj.get(USER_FIRST_NAME);
+                String lastName = (String) studentObj.get(USER_LAST_NAME);
+                String email = (String) studentObj.get(USER_EMAIL);
+                String uscIDString = (String) studentObj.get(USER_USCID);
+                UUID uscID = UUID.fromString(uscIDString);
+                String password = (String) studentObj.get(USER_PASSWORD);
+                String userType = (String) studentObj.get(USER_TYPE);
+                String year = (String) studentObj.get(STUDENT_CLASS);
+                String major = (String) studentObj.get(STUDENT_MAJOR);
+                int creditHours = ((Long) studentObj.get(STUDENT_CREDITHOURS)).intValue();
+                @SuppressWarnings("unchecked")
+                ArrayList<Course> completedCourses = (ArrayList<Course>) studentObj.get(STUDENT_COMPLETED_COURSES);
+                double gpa = (double) studentObj.get(STUDENT_GPA);
+                CoursePlanner coursePlanner = (CoursePlanner) studentObj.get(STUDENT_COURSE_PLANNER);
+                DegreeProgress degreeProgress = (DegreeProgress) studentObj.get(STUDENT_DEGREE_PROGRESS);
+                ArrayList<Note> advisorNotes = (ArrayList<Note>) studentObj.get(STUDENT_ADVISOR_NOTES);
+
+                Student student = new Student(firstName, lastName, email, uscID, password, userType, year,
+                        major, creditHours, completedCourses, gpa, coursePlanner, degreeProgress,
+                        advisorNotes);
+                students.add(student);
+            }
+            return students;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
      * Loads admins from a JSON file.
@@ -112,36 +126,36 @@ public class DataLoader extends DataConstants {
      * @return An ArrayList of Admin objects loaded from the JSON file, or null if
      *         an error occurs.
      */
-public static ArrayList<Admin> loadAdmin() {
-    ArrayList<Admin> admin = new ArrayList<>();
+    public static ArrayList<Admin> loadAdmin() {
+        ArrayList<Admin> admin = new ArrayList<>();
 
-    try {
-        FileReader reader = new FileReader(ADMIN_FILE_NAME);
-        JSONParser parser = new JSONParser();
-        JSONArray adminJSON = (JSONArray) parser.parse(reader);
+        try {
+            FileReader reader = new FileReader(ADMIN_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray adminJSON = (JSONArray) parser.parse(reader);
 
-        for (int i = 0; i < adminJSON.size(); i++) {
-            JSONObject adminOBJ = (JSONObject) adminJSON.get(i);
-            String firstName = (String) adminOBJ.get(USER_FIRST_NAME);
-            String lastName = (String) adminOBJ.get(USER_LAST_NAME);
-            String email = (String) adminOBJ.get(USER_EMAIL);
-            String uscIDString = (String) adminOBJ.get(USER_USCID);
-            UUID uscID = UUID.fromString(uscIDString); 
-            String password = (String) adminOBJ.get(USER_PASSWORD);
-            String userType = (String) adminOBJ.get(USER_TYPE);
-            ArrayList<String> changesMade = (ArrayList<String>) adminOBJ.get(ADMIN_CHANGES_MADE);
+            for (int i = 0; i < adminJSON.size(); i++) {
+                JSONObject adminOBJ = (JSONObject) adminJSON.get(i);
+                String firstName = (String) adminOBJ.get(USER_FIRST_NAME);
+                String lastName = (String) adminOBJ.get(USER_LAST_NAME);
+                String email = (String) adminOBJ.get(USER_EMAIL);
+                String uscIDString = (String) adminOBJ.get(USER_USCID);
+                UUID uscID = UUID.fromString(uscIDString);
+                String password = (String) adminOBJ.get(USER_PASSWORD);
+                String userType = (String) adminOBJ.get(USER_TYPE);
+                ArrayList<String> changesMade = (ArrayList<String>) adminOBJ.get(ADMIN_CHANGES_MADE);
 
-            admin.add(new Admin(firstName, lastName, email, uscID, password, userType, changesMade));
+                admin.add(new Admin(firstName, lastName, email, uscID, password, userType, changesMade));
+            }
+
+            return admin;
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        return admin;
-
-    } catch (Exception e) {
-        e.printStackTrace();
+        return null;
     }
-
-    return null;
-}
 
     /**
      * Loads advisors from a JSON file.
@@ -167,17 +181,33 @@ public static ArrayList<Admin> loadAdmin() {
                 String password = (String) advisorOBJ.get(USER_PASSWORD);
                 String userType = (String) advisorOBJ.get(USER_TYPE);
                 @SuppressWarnings("unchecked")
-                ArrayList<Student> listOfAdvisees = (ArrayList<Student>) advisorOBJ.get(ADVISOR_LIST_OF_ADVISEES);
+                ArrayList<String> listOfAdviseeIDs = (ArrayList<String>) advisorOBJ.get(ADVISOR_LIST_OF_ADVISEES);
                 @SuppressWarnings("unchecked")
-                ArrayList<Student> listOfFailingStudents = (ArrayList<Student>) advisorOBJ
-                        .get(ADVISOR_LIST_OF_FAILING_STUDENTS);
+                ArrayList<String> listofFailingAdviseeIDs = (ArrayList<String>) advisorOBJ.get(ADVISOR_LIST_OF_FAILING_STUDENTS);
+                @SuppressWarnings("unchecked")
+                ArrayList<Note> listOfNotes = (ArrayList<Note>) advisorOBJ.get(ADVISOR_LIST_OF_NOTES);
 
-                advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType, listOfAdvisees,
-                        listOfFailingStudents));
+
+                ArrayList<Student> listOfAdvisees = new ArrayList<>();
+
+                if (listOfAdviseeIDs != null) {
+                    for (String studentID : listOfAdviseeIDs) {
+                        UUID studentUUID = UUID.fromString(studentID);
+                        Student student = findStudentById(studentUUID);
+                        if (student != null) {
+                            listOfAdvisees.add(student);
+                        } else {
+                            System.err.println("Student with ID " + studentID + " not found.");
+                        }
+                    }
+                } else {
+                    System.err.println("List of advisee IDs is null for advisor " + uscID);
+                }
+                advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType, listOfAdvisees, listOfAdvisees,listOfNotes));
             }
 
-            return advisors;
-
+        return advisors;
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -211,19 +241,6 @@ public static ArrayList<Admin> loadAdmin() {
                 boolean elective = (Boolean) courseObj.get(COURSE_ELECTIVE);
                 boolean carolinaCore = (Boolean) courseObj.get(COURSE_CAROLINA_CORE);
                 @SuppressWarnings("unchecked")
-                /*
-                 * Start out with an ArrayList of Strings for Course Prerequistes
-                 * Now imagine, after courses have been loaded up, they will have to be
-                 * converted to actual course objects
-                 * So, basically an attribute is going to be needed to keep track of courses
-                 * Suggestion: put null in for difficult stuff and test everything, tests are
-                 * not extensive enough because line below
-                 * should have broke
-                 * Make sure all of constructors of done and then make a toString in each class
-                 * and then loop through those to print to
-                 * the console
-                 * Doing great so far
-                 */
                 ArrayList<Course> prerequisites = (ArrayList<Course>) courseObj.get(COURSE_PREREQUISITES);
                 String semester = (String) courseObj.get(COURSE_SEMESTER);
                 String year = (String) courseObj.get(COURSE_YEAR);
@@ -314,5 +331,81 @@ public static ArrayList<Admin> loadAdmin() {
             }
         }
         return null;
+    }
+
+    private static Student findStudentById(UUID uscID) {
+        ArrayList<Student> students = UserList.getInstance().getAllStudents();
+        for (Student student : students) {
+            if (student.getStudentsID().toString().equals(uscID)) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    public static void testLoadingUsers() {
+        ArrayList<User> users = DataLoader.loadUsers();
+        if (users != null) {
+            for (User user : users) {
+                System.out.println(user.toString());
+            }
+        } else {
+            System.out.println("Failed to load users from the file.");
+        }
+    }
+
+    public static void testLoadingAdmins() {
+        ArrayList<Admin> admins = DataLoader.loadAdmin();
+        if (admins != null) {
+            for (Admin admin : admins) {
+                System.out.println(admin.toString());
+            }
+        } else {
+            System.out.println("Failed to load admins from the file.");
+        }
+    }
+
+    public static void testLoadingMajorMaps() {
+        ArrayList<MajorMap> majorMaps = DataLoader.loadMajors();
+        if (majorMaps != null) {
+            for (MajorMap majorMap : majorMaps) {
+                System.out.println(majorMap.toString());
+            }
+        } else {
+            System.out.println("Failed to load major maps from the file.");
+        }
+    }
+
+    public static void testLoadingCourses() {
+        ArrayList<Course> courses = DataLoader.loadCourses();
+        if (courses != null) {
+            for (Course course : courses) {
+                System.out.println(course.toString());
+            }
+        } else {
+            System.out.println("Failed to load courses from the file.");
+        }
+    }
+
+    public static void testLoadingAdvisors() {
+        ArrayList<Advisor> advisors = DataLoader.loadAdvisors();
+        if (advisors != null) {
+            for (Advisor advisor : advisors) {
+                System.out.println(advisor.toString());
+            }
+        } else {
+            System.out.println("Failed to load advisors from the file.");
+        }
+    }
+
+    public static void testLoadingStudents() {
+        ArrayList<Student> students = DataLoader.loadStudents();
+        if (students != null) {
+            for (Student student : students) {
+                System.out.println(student.toString());
+            }
+        } else {
+            System.out.println("Failed to load students from the file.");
+        }
     }
 }

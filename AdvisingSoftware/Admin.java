@@ -75,8 +75,9 @@ public class Admin extends User {
       changesMadeString = "None";
     }
     return (
+      "\n********* ADMIN PROFILE *********\n" +
       super.toString() +
-      "\n********* Change log:*********\n" +
+      "\n********* Change log *********\n" +
       "Changes Made:" +
       changesMadeString
     );

@@ -96,13 +96,24 @@ public class User {
    */
   public void lookUpCourse(String code) {}
 
+  public UUID getID() {
+    return uscID;
+}
+public String getEmail() {
+  return email;
+}
+
+public String getPassword() {
+  return password;
+}
   /**
    * To string to view user details
    * Added by @Spillmag for tesing purposes
    */
   public String toString() {
     return (
-      "firstName: " +
+      "\n********* BASIC USER INFO *********\n" +
+      "firstName: "+
       firstName +
       '\n' +
       "lastName: " +

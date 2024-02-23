@@ -149,7 +149,9 @@ public class Course {
    * Added by @Spillmag for tesing purposes
    */
   public String toString() {
-    return "id: " + id + '\n' +
+    return
+    "\n********* COURSE INFO *********\n" +
+        "id: " + id + '\n' +
         "name: " + name + '\n' +
         "code: " + code + '\n' +
         "description: " + description + '\n' +

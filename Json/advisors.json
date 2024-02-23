@@ -6,10 +6,8 @@
         "email": "FlanaganMichael@gmail.com",
         "password": "philly$Gr33n",
         "userType": "ADVISOR",
-        "listOfAdvisees": [
-            "acfb166f-a0f5-4276-9301-fd71e8dcfcf8",
-            "c4dd8e20-4b51-4663-ae59-be7df5371bee",
-            "faa91c60-3201-4870-84c8-9473df2b6a1e"
-        ]
+        "listOfAdvisees": [],
+        "listOfFailingStudents": [],
+        "listOfAdvisorNotes": []
     }
 ]

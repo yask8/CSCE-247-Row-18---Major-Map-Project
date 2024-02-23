@@ -24,13 +24,13 @@ public class Advisor extends User {
     String password,
     String userType,
     ArrayList<Student> listOfAdvisees,
-    ArrayList<Student> listOfFailingStudents/*,
-    ArrayList<Note> listOfAdvisorNotes*/
+    ArrayList<Student> listOfFailingStudents,
+    ArrayList<Note> listOfAdvisorNotes
   ) {
     super(firstName, lastName, email, uscID, password, userType);
     this.listOfAdvisees = listOfAdvisees;
     this.listOfFailingStudents = listOfFailingStudents;
-    // this.listOfAdvisorNotes = listOfAdvisorNotes;
+    this.listOfAdvisorNotes = listOfAdvisorNotes;
   }
 
   /**
@@ -131,22 +131,12 @@ public class Advisor extends User {
   public ArrayList<Student> addStudentRiskOfFailure() {
     return null;
   }
-
   public String toString() {
-    String result = super.toString();
-    /*
-    result += "********** List of Advisees* *********\n";
-    for (Student student : listOfAdvisees) {
-      result += student.toString() + "\n";
-    }
-    result += "********** List of Failing Students **********\n";
-    for (Student student : listOfFailingStudents) {
-      result += student.toString() + "\n";
-    }
-    result += "********** List of Advisor Notes **********\n";
-    for (Note note : listOfAdvisorNotes) {
-      result += note.toString() + "\n";
-    }*/
-    return result;
+    return
+    "\n********* ADVISOR PROFILE *********\n" +
+    super.toString() +
+    "\nList of Advisees: " + listOfAdvisees +
+    "\nList of Failing Students: " + listOfFailingStudents +
+    "\nList of Advisor Notes: " + listOfAdvisorNotes;
   }
 }
