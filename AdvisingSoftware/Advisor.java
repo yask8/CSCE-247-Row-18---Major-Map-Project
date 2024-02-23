@@ -1,6 +1,7 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Advisor extends User {
 
@@ -9,37 +10,38 @@ public class Advisor extends User {
 
   /**
    * Advisor Constructor
-   * @param listOfAdvisees List of advisors advisees
+   * 
+   * @param listOfAdvisees        List of advisors advisees
    * @param listOfFailingStudents List of advisors advisees at risk of failing
    */
   public Advisor(
-    String firstName,
-    String lastName,
-    String email,
-    String uscID,
-    String password,
-    String userType,
-    ArrayList<Student> listOfAdvisees,
-    ArrayList<Student> listOfFailingStudents
-  ) {
-    super(firstName, lastName, email, uscID, password,userType);
+      String firstName,
+      String lastName,
+      String email,
+      String uscID,
+      String password,
+      String userType,
+      ArrayList<Student> listOfAdvisees,
+      ArrayList<Student> listOfFailingStudents) {
+    super(firstName, lastName, email, uscID, password, userType);
     this.listOfAdvisees = listOfAdvisees;
     this.listOfFailingStudents = listOfFailingStudents;
   }
 
   /**
    * Students under the advisor at risk of failing
+   * 
    * @param listOfFailingStudents List of the students
    * @return ArrayList of the students at risk of failure
    */
   public ArrayList<Student> riskOfFailure(
-    ArrayList<Student> listOfFailingStudents
-  ) {
+      ArrayList<Student> listOfFailingStudents) {
     return null;
   }
 
   /**
    * Allows the advisor to view a student's profile
+   * 
    * @return The student profile
    */
   public String viewStudentProfile() {
@@ -48,6 +50,7 @@ public class Advisor extends User {
 
   /**
    * Shows the course planner
+   * 
    * @return returns Course instance
    */
   public Course coursePlanner() {
@@ -56,6 +59,7 @@ public class Advisor extends User {
 
   /**
    * Allows advisor to remove a student from their list of advisees
+   * 
    * @return Updated ArrayList of the advisors advisees
    */
   public ArrayList<Student> removeStudent() {
@@ -64,6 +68,7 @@ public class Advisor extends User {
 
   /**
    * Allows advisor to search for a student
+   * 
    * @param uscID uscID for the specific student
    * @return returns Student instance
    */
@@ -73,13 +78,16 @@ public class Advisor extends User {
 
   /**
    * Allows the advisor to add a note to an advisee
+   * 
    * @param student specific student to add a note to
-   * @param note note given
+   * @param note    note given
    */
-  public void addNote(Student student, String note) {}
+  public void addNote(Student student, String note) {
+  }
 
   /**
    * Allows the advisor to view their list of advisees
+   * 
    * @param listOfAdvisees list of advisees for the advisor
    * @return List of students
    */
@@ -89,18 +97,19 @@ public class Advisor extends User {
 
   /**
    * Allows the advisor to view their list of failing advisees
+   * 
    * @param listOfFailingStudents Advisors list of failing students
    * @return list of failing students
    */
   public String viewFailingStudentList(
-    ArrayList<Student> listOfFailingStudents
-  ) {
+      ArrayList<Student> listOfFailingStudents) {
     return "";
   }
 
   /**
    * Allows advisor to see if a student is failing
-   * @param gpa GPA of the student
+   * 
+   * @param gpa    GPA of the student
    * @param minGPA minumum GPA requirement for passing
    * @return boolean of to recognize pass/fail
    */
@@ -110,9 +119,22 @@ public class Advisor extends User {
 
   /**
    * Allows advisor to add a student to their list of advisees at risk of failure
+   * 
    * @return Updated arraylist of advisees at risk of failure
    */
   public ArrayList<Student> addStudentRiskOfFailure() {
     return null;
+  }
+  public String toString() {
+    String result = super.toString();
+    result += "********** List of Advisees* *********\n";
+    for (Student student : listOfAdvisees) {
+      result += student.toString() + "\n";
+    }
+    result += "********** List of Failing Students **********\n";
+    for (Student student : listOfFailingStudents) {
+      result += student.toString() + "\n";
+    }
+    return result;
   }
 }

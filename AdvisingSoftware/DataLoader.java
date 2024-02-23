@@ -30,20 +30,16 @@ public class DataLoader extends DataConstants {
         } else {
             System.out.println("Failed to load users from the file.");
         }
-     
-        
-         ArrayList<Admin> admins = DataLoader.loadAdmin();
-            if (admins != null) {
+
+        ArrayList<Admin> admins = DataLoader.loadAdmin();
+        if (admins != null) {
             for (Admin admin : admins) {
                 System.out.println(admin.toString());
-                }
-            } else {
-            System.out.println("Failed to load admins from the file.");
             }
-  }
-    
-
-
+        } else {
+            System.out.println("Failed to load admins from the file.");
+        }
+    }
 
     /**
      * Loads users from a JSON file.
@@ -105,20 +101,22 @@ public class DataLoader extends DataConstants {
                 String year = (String) studentOBJ.get(STUDENT_CLASS);
                 String major = (String) studentOBJ.get(STUDENT_MAJOR);
                 int creditHours = ((Long) studentOBJ.get(STUDENT_CREDITHOURS)).intValue();
-                //HashMap<Course, Character> completedCourses = (HashMap<Course, Character>) studentOBJ.get(STUDENT_COMPLETED_COURSES);
+                // HashMap<Course, Character> completedCourses = (HashMap<Course, Character>)
+                // studentOBJ.get(STUDENT_COMPLETED_COURSES);
                 double gpa = (double) studentOBJ.get(STUDENT_GPA);
-                //CoursePlanner coursePlanner = (CoursePlanner) studentOBJ.get(STUDENT_COURSE_PLANNER);
-                //DegreeProgress degreeProgress = (DegreeProgress) studentOBJ.get(STUDENT_DEGREE_PROGRESS);
+                // CoursePlanner coursePlanner = (CoursePlanner)
+                // studentOBJ.get(STUDENT_COURSE_PLANNER);
+                // DegreeProgress degreeProgress = (DegreeProgress)
+                // studentOBJ.get(STUDENT_DEGREE_PROGRESS);
                 // Later make arraylist
                 JSONArray advisorJSON = (JSONArray) studentOBJ.get(STUDENT_ADVISOR_NOTES);
                 ArrayList<Note> notes = new ArrayList<>();
                 for (int j = 0; j < advisorJSON.size(); j++) {
                     JSONObject noteOBJ = (JSONObject) advisorJSON.get(j);
-                    String note = (String)noteOBJ.get("note"); // make a data constant for it
-                    String date = (String)noteOBJ.get("date"); // ^^^ same thing
+                    String note = (String) noteOBJ.get("note"); // make a data constant for it
+                    String date = (String) noteOBJ.get("date"); // ^^^ same thing
                     notes.add(new Note(note, null));
                 }
-        
 
                 students.add(new Student(firstName, lastName, email, uscID, password, userType, year, major,
                         creditHours, null, gpa, null, null, notes));
@@ -192,9 +190,10 @@ public class DataLoader extends DataConstants {
                 String password = (String) advisorOBJ.get(USER_PASSWORD);
                 String userType = (String) advisorOBJ.get(USER_TYPE);
                 @SuppressWarnings("unchecked")
-                ArrayList<Student> listOfAdvisees = (ArrayList<Student> )advisorOBJ.get(ADVISOR_LIST_OF_ADVISEES);
+                ArrayList<Student> listOfAdvisees = (ArrayList<Student>) advisorOBJ.get(ADVISOR_LIST_OF_ADVISEES);
                 @SuppressWarnings("unchecked")
-                ArrayList<Student>  listOfFailingStudents = (ArrayList<Student>) advisorOBJ.get(ADVISOR_LIST_OF_FAILING_STUDENTS);
+                ArrayList<Student> listOfFailingStudents = (ArrayList<Student>) advisorOBJ
+                        .get(ADVISOR_LIST_OF_FAILING_STUDENTS);
 
                 advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType, listOfAdvisees,
                         listOfFailingStudents));
@@ -237,11 +236,14 @@ public class DataLoader extends DataConstants {
                 @SuppressWarnings("unchecked")
                 /*
                  * Start out with an ArrayList of Strings for Course Prerequistes
-                 * Now imagine, after courses have been loaded up, they will have to be converted to actual course objects
-                 * So, basically an attribute is going to be needed to keep track of courses 
-                 * Suggestion: put null in for difficult stuff and test everything, tests are not extensive enough because line below
+                 * Now imagine, after courses have been loaded up, they will have to be
+                 * converted to actual course objects
+                 * So, basically an attribute is going to be needed to keep track of courses
+                 * Suggestion: put null in for difficult stuff and test everything, tests are
+                 * not extensive enough because line below
                  * should have broke
-                 * Make sure all of constructors of done and then make a toString in each class and then loop through those to print to 
+                 * Make sure all of constructors of done and then make a toString in each class
+                 * and then loop through those to print to
                  * the console
                  * Doing great so far
                  */

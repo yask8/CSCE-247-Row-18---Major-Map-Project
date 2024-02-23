@@ -22,7 +22,7 @@ public abstract class DataConstants {
     protected static final String USER_TYPE = "userType";
 
     // Student Constants
-    protected static final String STUDENT_FILE_NAME = "Json/studentTest.json";
+    protected static final String STUDENT_FILE_NAME = "Json/students.json";
     protected static final String STUDENT_CLASS = "class";
     protected static final String STUDENT_MAJOR = "major";
     protected static final String STUDENT_CREDITHOURS = "creditHours";

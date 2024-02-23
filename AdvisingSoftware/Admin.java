@@ -72,6 +72,6 @@ public class Admin extends User {
     } else {
         changesMadeString = "None";
     }
-    return super.toString() + "\n********* Change log: *********\n" + "Changes Made:" + changesMadeString;
+    return super.toString() + "\n********* Change log:*********\n" + "Changes Made:" + changesMadeString;
   }
 }
