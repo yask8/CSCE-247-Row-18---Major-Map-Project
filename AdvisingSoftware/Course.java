@@ -122,6 +122,7 @@ public class Course {
    */
   public Course editCourse(String id) {
     Course course = new Course(
+      this.id=id,
       name,
       code,
       description,

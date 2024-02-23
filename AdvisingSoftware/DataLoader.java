@@ -115,6 +115,7 @@ public class DataLoader extends DataConstants {
                 char passGrade = ((String) courseObj.get(COURSE_PASS_GRADE)).charAt(0);
                 boolean elective = (Boolean) courseObj.get(COURSE_ELECTIVE);
                 boolean carolinaCore = (Boolean) courseObj.get(COURSE_CAROLINA_CORE);
+                @SuppressWarnings("unchecked")
                 ArrayList<Course> prerequisites = (ArrayList<Course>) courseObj.get(COURSE_PREREQUISITES);
                 String semester = (String) courseObj.get(COURSE_SEMESTER);
                 String year = (String) courseObj.get(COURSE_YEAR);
