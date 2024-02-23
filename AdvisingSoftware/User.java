@@ -8,65 +8,49 @@ import java.util.UUID;
  */
 public class User {
 
-  private UUID id;
   private String firstName;
   private String lastName;
   private String email;
-  private String uscID;
+  private UUID uscID;
   private String password;
   private String userType;
 
-  /**
-   * User contructor
-   *
-   * @param id        UUID of the user
-   * @param firstName User's first name
-   * @param lastName  User's last name
-   * @param email     User's email
-   * @param uscID     User's uscID
-   * @param password  User's password
-   */
-  public User(
-    UUID id,
-    String firstName,
-    String lastName,
-    String email,
-    String uscID,
-    String password
-  ) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.uscID = uscID;
-    this.password = password;
+
+    /**
+     * Constructor for creating a new user with a specified USC ID.
+     *
+     * @param firstName First name of the user
+     * @param lastName  Last name of the user
+     * @param email     User's email
+     * @param uscID     User's USC ID
+     * @param password  User's password
+     * @param userType  User's role
+     */
+    public User(String firstName, String lastName, String email, UUID uscID, String password, String userType) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+      this.uscID = uscID;
+      this.password = password;
+      this.userType = userType;
   }
 
   /**
-   * User constructor
+   * Constructor for creating a new user with a randomly generated USC ID.
    *
    * @param firstName First name of the user
    * @param lastName  Last name of the user
    * @param email     User's email
-   * @param uscID     User's uscID
    * @param password  User's password
-   * @param userType  User's Role
+   * @param userType  User's role
    */
-  public User(
-    String firstName,
-    String lastName,
-    String email,
-    String uscID,
-    String password,
-    String userType
-  ) {
-    this.id = UUID.randomUUID();
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.uscID = uscID;
-    this.password = password;
-    this.userType = userType;
+  public User(String firstName, String lastName, String email, String password, String userType) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+      this.uscID = UUID.randomUUID();
+      this.password = password;
+      this.userType = userType;
   }
 
   /**
@@ -118,9 +102,6 @@ public class User {
    */
   public String toString() {
     return (
-      "id:" +
-      id +
-      '\n' +
       "firstName: " +
       firstName +
       '\n' +

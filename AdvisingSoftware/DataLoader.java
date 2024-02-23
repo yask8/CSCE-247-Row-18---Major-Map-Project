@@ -3,6 +3,7 @@ package AdvisingSoftware;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -22,6 +23,7 @@ public class DataLoader extends DataConstants {
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
+        // load users
         ArrayList<User> users = DataLoader.loadUsers();
         if (users != null) {
             for (User user : users) {
@@ -30,7 +32,7 @@ public class DataLoader extends DataConstants {
         } else {
             System.out.println("Failed to load users from the file.");
         }
-
+        //load admin
         ArrayList<Admin> admins = DataLoader.loadAdmin();
         if (admins != null) {
             for (Admin admin : admins) {
@@ -39,6 +41,25 @@ public class DataLoader extends DataConstants {
         } else {
             System.out.println("Failed to load admins from the file.");
         }
+        // Load major maps
+        // ArrayList<MajorMap> majorMaps = DataLoader.loadMajors();
+        // if (majorMaps != null) {
+        //     for (MajorMap majorMap : majorMaps) {
+        //         System.out.println(majorMap.toString());
+        //     }
+        // } else {
+        //     System.out.println("Failed to load major maps from the file.");
+        // }
+
+        // // Load courses
+        // ArrayList<Course> courses = DataLoader.loadCourses();
+        // if (courses != null) {
+        //     for (Course course : courses) {
+        //         System.out.println(course.toString());
+        //     }
+        // } else {
+        //     System.out.println("Failed to load courses from the file.");
+        //}
     }
 
     /**
@@ -60,7 +81,7 @@ public class DataLoader extends DataConstants {
                 String firstName = (String) personJSON.get(USER_FIRST_NAME);
                 String lastName = (String) personJSON.get(USER_LAST_NAME);
                 String email = (String) personJSON.get(USER_EMAIL);
-                String uscID = (String) personJSON.get(USER_USCID);
+                UUID uscID = UUID.fromString((String) personJSON.get(USER_USCID));
                 String password = (String) personJSON.get(USER_PASSWORD);
                 String userType = (String) personJSON.get(USER_TYPE);
 
@@ -82,54 +103,8 @@ public class DataLoader extends DataConstants {
      * @return An ArrayList of Student objects loaded from the JSON file, or null if
      *         an error occurs.
      */
-    public static ArrayList<Student> loadStudents() {
-        ArrayList<Student> students = new ArrayList<>();
-
-        try {
-            FileReader reader = new FileReader(STUDENT_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray studentJSON = (JSONArray) parser.parse(reader);
-
-            for (int i = 0; i < studentJSON.size(); i++) {
-                JSONObject studentOBJ = (JSONObject) studentJSON.get(i);
-                String firstName = (String) studentOBJ.get(USER_FIRST_NAME);
-                String lastName = (String) studentOBJ.get(USER_LAST_NAME);
-                String email = (String) studentOBJ.get(USER_EMAIL);
-                String uscID = (String) studentOBJ.get(USER_USCID);
-                String password = (String) studentOBJ.get(USER_PASSWORD);
-                String userType = (String) studentOBJ.get(USER_TYPE);
-                String year = (String) studentOBJ.get(STUDENT_CLASS);
-                String major = (String) studentOBJ.get(STUDENT_MAJOR);
-                int creditHours = ((Long) studentOBJ.get(STUDENT_CREDITHOURS)).intValue();
-                // HashMap<Course, Character> completedCourses = (HashMap<Course, Character>)
-                // studentOBJ.get(STUDENT_COMPLETED_COURSES);
-                double gpa = (double) studentOBJ.get(STUDENT_GPA);
-                // CoursePlanner coursePlanner = (CoursePlanner)
-                // studentOBJ.get(STUDENT_COURSE_PLANNER);
-                // DegreeProgress degreeProgress = (DegreeProgress)
-                // studentOBJ.get(STUDENT_DEGREE_PROGRESS);
-                // Later make arraylist
-                JSONArray advisorJSON = (JSONArray) studentOBJ.get(STUDENT_ADVISOR_NOTES);
-                ArrayList<Note> notes = new ArrayList<>();
-                for (int j = 0; j < advisorJSON.size(); j++) {
-                    JSONObject noteOBJ = (JSONObject) advisorJSON.get(j);
-                    String note = (String) noteOBJ.get("note"); // make a data constant for it
-                    String date = (String) noteOBJ.get("date"); // ^^^ same thing
-                    notes.add(new Note(note, null));
-                }
-
-                students.add(new Student(firstName, lastName, email, uscID, password, userType, year, major,
-                        creditHours, null, gpa, null, null, notes));
-            }
-
-            return students;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
+    
+     // TODO Add student loader
 
     /**
      * Loads admins from a JSON file.
@@ -137,35 +112,36 @@ public class DataLoader extends DataConstants {
      * @return An ArrayList of Admin objects loaded from the JSON file, or null if
      *         an error occurs.
      */
-    public static ArrayList<Admin> loadAdmin() {
-        ArrayList<Admin> admin = new ArrayList<>();
+public static ArrayList<Admin> loadAdmin() {
+    ArrayList<Admin> admin = new ArrayList<>();
 
-        try {
-            FileReader reader = new FileReader(ADMIN_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray adminJSON = (JSONArray) parser.parse(reader);
+    try {
+        FileReader reader = new FileReader(ADMIN_FILE_NAME);
+        JSONParser parser = new JSONParser();
+        JSONArray adminJSON = (JSONArray) parser.parse(reader);
 
-            for (int i = 0; i < adminJSON.size(); i++) {
-                JSONObject AdminOBJ = (JSONObject) adminJSON.get(i);
-                String firstName = (String) AdminOBJ.get(USER_FIRST_NAME);
-                String lastName = (String) AdminOBJ.get(USER_LAST_NAME);
-                String email = (String) AdminOBJ.get(USER_EMAIL);
-                String uscID = (String) AdminOBJ.get(USER_USCID);
-                String password = (String) AdminOBJ.get(USER_PASSWORD);
-                String userType = (String) AdminOBJ.get(USER_TYPE);
-                ArrayList<String> changesMade = (ArrayList<String>) AdminOBJ.get(ADMIN_CHANGES_MADE);
+        for (int i = 0; i < adminJSON.size(); i++) {
+            JSONObject adminOBJ = (JSONObject) adminJSON.get(i);
+            String firstName = (String) adminOBJ.get(USER_FIRST_NAME);
+            String lastName = (String) adminOBJ.get(USER_LAST_NAME);
+            String email = (String) adminOBJ.get(USER_EMAIL);
+            String uscIDString = (String) adminOBJ.get(USER_USCID);
+            UUID uscID = UUID.fromString(uscIDString); 
+            String password = (String) adminOBJ.get(USER_PASSWORD);
+            String userType = (String) adminOBJ.get(USER_TYPE);
+            ArrayList<String> changesMade = (ArrayList<String>) adminOBJ.get(ADMIN_CHANGES_MADE);
 
-                admin.add(new Admin(firstName, lastName, email, uscID, password, userType, changesMade));
-            }
-
-            return admin;
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            admin.add(new Admin(firstName, lastName, email, uscID, password, userType, changesMade));
         }
 
-        return null;
+        return admin;
+
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+
+    return null;
+}
 
     /**
      * Loads advisors from a JSON file.
@@ -186,7 +162,8 @@ public class DataLoader extends DataConstants {
                 String firstName = (String) advisorOBJ.get(USER_FIRST_NAME);
                 String lastName = (String) advisorOBJ.get(USER_LAST_NAME);
                 String email = (String) advisorOBJ.get(USER_EMAIL);
-                String uscID = (String) advisorOBJ.get(USER_USCID);
+                String uscIDString = (String) advisorOBJ.get(USER_USCID);
+                UUID uscID = UUID.fromString(uscIDString);
                 String password = (String) advisorOBJ.get(USER_PASSWORD);
                 String userType = (String) advisorOBJ.get(USER_TYPE);
                 @SuppressWarnings("unchecked")

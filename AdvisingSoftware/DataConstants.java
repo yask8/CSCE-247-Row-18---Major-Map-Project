@@ -13,7 +13,6 @@ public abstract class DataConstants {
     // User Constants
     protected static final String USER_FILE_NAME = "Json/users.json";
     protected static final String USER = "userList";
-    protected static final String USER_UUID = "id";
     protected static final String USER_FIRST_NAME = "firstName";
     protected static final String USER_LAST_NAME = "lastName";
     protected static final String USER_EMAIL = "email";

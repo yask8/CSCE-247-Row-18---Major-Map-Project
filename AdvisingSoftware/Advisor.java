@@ -2,6 +2,7 @@ package AdvisingSoftware;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.UUID;
 
 public class Advisor extends User {
 
@@ -18,7 +19,7 @@ public class Advisor extends User {
       String firstName,
       String lastName,
       String email,
-      String uscID,
+      UUID uscID,
       String password,
       String userType,
       ArrayList<Student> listOfAdvisees,
