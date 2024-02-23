@@ -24,7 +24,7 @@ import java.util.UUID;
  */
 public class Course {
 
-  private UUID id;
+  private String id;
   private String name;
   private String code;
   private String description;
@@ -51,7 +51,7 @@ public class Course {
    * @param preReqs ArrayList<Course>
    */
   public Course(
-    UUID id,
+    String id,
     String name,
     String code,
     String description,
@@ -103,7 +103,6 @@ public class Course {
     String year,
     String semester
   ) {
-    this.id = UUID.randomUUID();
     this.name = name;
     this.code = code;
     this.description = description;
@@ -121,7 +120,7 @@ public class Course {
    *
    * @return Course
    */
-  public Course editCourse() {
+  public Course editCourse(String id) {
     Course course = new Course(
       name,
       code,
@@ -164,7 +163,7 @@ public class Course {
      * Getter method for retrieving the UUID of the course.
      * @return The UUID of the course.
      */
-    public UUID getID() {
+    public String getID() {
       return id;
   }
 }

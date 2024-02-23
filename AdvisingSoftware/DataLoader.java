@@ -2,12 +2,16 @@ package AdvisingSoftware;
 
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.UUID;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 
+/**
+ * The DataLoader class provides methods to load data from JSON files into Java
+ * objects.
+ * 
+ * @author @Spillmag
+ */
 public class DataLoader extends DataConstants {
 
     public static void main(String[] args) {
@@ -51,13 +55,19 @@ public class DataLoader extends DataConstants {
         }
     }
 
+    /**
+     * Loads users from a JSON file.
+     * 
+     * @return An ArrayList of User objects loaded from the JSON file, or null if an
+     *         error occurs.
+     */
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<User>();
 
         try {
             FileReader reader = new FileReader(USER_FILE_NAME);
             JSONParser parser = new JSONParser();
-            JSONArray userJSON = (JSONArray) new JSONParser().parse(reader);
+            JSONArray userJSON = (JSONArray) parser.parse(reader);
 
             for (int i = 0; i < userJSON.size(); i++) {
                 JSONObject personJSON = (JSONObject) userJSON.get(i);
@@ -80,6 +90,12 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    /**
+     * Loads courses from a JSON file.
+     * 
+     * @return An ArrayList of Course objects loaded from the JSON file, or null if
+     *         an error occurs.
+     */
     public static ArrayList<Course> loadCourses() {
         ArrayList<Course> courses = new ArrayList<>();
 
@@ -90,6 +106,7 @@ public class DataLoader extends DataConstants {
 
             for (int i = 0; i < courseJSON.size(); i++) {
                 JSONObject courseObj = (JSONObject) courseJSON.get(i);
+                String id = (String) courseObj.get(COURSE_ID);
                 String name = (String) courseObj.get(COURSE_NAME);
                 String code = (String) courseObj.get(COURSE_CODE);
                 String description = (String) courseObj.get(COURSE_DESCRIPTION);
@@ -102,7 +119,7 @@ public class DataLoader extends DataConstants {
                 String semester = (String) courseObj.get(COURSE_SEMESTER);
                 String year = (String) courseObj.get(COURSE_YEAR);
 
-                Course course = new Course(name, code, description, creditHours, subject, passGrade, elective,
+                Course course = new Course(id,name, code, description, creditHours, subject, passGrade, elective,
                         carolinaCore, prerequisites, semester, year);
                 courses.add(course);
             }
@@ -116,6 +133,12 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    /**
+     * Loads majors from a JSON file.
+     * 
+     * @return An ArrayList of MajorMap objects loaded from the JSON file, or null
+     *         if an error occurs.
+     */
     public static ArrayList<MajorMap> loadMajors() {
         ArrayList<MajorMap> majors = new ArrayList<>();
 
@@ -128,7 +151,6 @@ public class DataLoader extends DataConstants {
                 JSONObject majorObj = (JSONObject) majorJSON.get(i);
                 String name = (String) majorObj.get(MAJOR_NAME);
 
-                // Load courses for each category separately
                 ArrayList<Course> courses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_COURSES));
                 ArrayList<Course> electives = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_ELECTIVE));
                 ArrayList<Course> coreCourses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_CORE_EDU));
@@ -145,6 +167,12 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    /**
+     * Helper method to load courses from a JSONArray.
+     * 
+     * @param courseArray The JSONArray containing course data.
+     * @return An ArrayList of Course objects loaded from the JSONArray.
+     */
     private static ArrayList<Course> loadCoursesFromJSONArray(JSONArray courseArray) {
         ArrayList<Course> courses = new ArrayList<>();
         if (courseArray != null) {
@@ -161,11 +189,12 @@ public class DataLoader extends DataConstants {
         return courses;
     }
 
+
     private static Course findCourseByCode(String id) {
         ArrayList<Course> allCourses = loadCourses();
         if (allCourses != null) {
             for (Course course : allCourses) {
-                if (course.getID().equals(id)) {
+                if (course.getID().toString().equals(id)) { 
                     return course;
                 }
             }
