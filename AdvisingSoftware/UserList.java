@@ -47,7 +47,7 @@ public class UserList {
    */
   public User getUser(String email, String password) {
     // need a user to return
-    return user;
+    return null;
   }
 
   /**
