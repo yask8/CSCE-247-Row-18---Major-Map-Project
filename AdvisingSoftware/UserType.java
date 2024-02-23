@@ -4,5 +4,7 @@ package AdvisingSoftware;
  * @author yask8(Yasmine Kennedy) and oshumate(Owen Shumate)
  */
 public enum UserType {
-    STUDENT, ADVISOR, ADMIN
+    STUDENT, 
+    ADVISOR, 
+    ADMIN
 }

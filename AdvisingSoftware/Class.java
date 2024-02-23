@@ -4,5 +4,8 @@ package AdvisingSoftware;
  * @author yask8(Yasmine Kennedy) and oshumate(Owen Shumate)
  */
 public enum Class {
-    FRESHMAN, SOPHMORE, JUNIOR, SENIOR
+    FRESHMAN, 
+    SOPHMORE, 
+    JUNIOR, 
+    SENIOR
 }

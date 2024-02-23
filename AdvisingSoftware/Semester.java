@@ -4,5 +4,7 @@ package AdvisingSoftware;
  * @author yask8(Yasmine Kennedy)
  */
 public enum Semester {
-    FALL, SPRING, SUMMER
+    FALL, 
+    SPRING, 
+    SUMMER
 }
