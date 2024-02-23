@@ -53,9 +53,12 @@
             { "courseId": "MATH142", "courseName": "Calculus II" }
           ]
         },
-        "advisorNotes": {
-          "go based off of major map, take either MART201 or MUSC101": "07/22/22",
-          "go based off of major map": "10/05/22"
+        "advisorNotes": [ {
+          "note": "go based off of major map, take either MART201 or MUSC101", "date": "07/22/22"
+        },
+        {
+          "note": "go based off of major map", "date":"10/05/22"
         }
+      ]
       }
 ]

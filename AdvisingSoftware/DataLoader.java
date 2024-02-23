@@ -102,15 +102,24 @@ public class DataLoader extends DataConstants {
                 String major = (String) studentOBJ.get(STUDENT_MAJOR);
                 int creditHours = ((Long) studentOBJ.get(STUDENT_CREDITHOURS)).intValue();
                 @SuppressWarnings("unchecked")
-                HashMap<Course, Character> completedCourses = (HashMap<Course, Character>) studentOBJ.get(STUDENT_COMPLETED_COURSES);
+                //HashMap<Course, Character> completedCourses = (HashMap<Course, Character>) studentOBJ.get(STUDENT_COMPLETED_COURSES);
                 double gpa = (double) studentOBJ.get(STUDENT_GPA);
-                CoursePlanner coursePlanner = (CoursePlanner) studentOBJ.get(STUDENT_COURSE_PLANNER);
-                DegreeProgress degreeProgress = (DegreeProgress) studentOBJ.get(STUDENT_DEGREE_PROGRESS);
+                //CoursePlanner coursePlanner = (CoursePlanner) studentOBJ.get(STUDENT_COURSE_PLANNER);
+                //DegreeProgress degreeProgress = (DegreeProgress) studentOBJ.get(STUDENT_DEGREE_PROGRESS);
                 @SuppressWarnings("unchecked")
-                ArrayList<String> advisorNotes = (ArrayList<String>) studentOBJ.get(STUDENT_ADVISOR_NOTES);
+                // Later make arraylist
+                JSONArray advisorJSON = (JSONArray) studentOBJ.get(STUDENT_ADVISOR_NOTES);
+                ArrayList<Note> notes = new ArrayList<>();
+                for (int j = 0; j < advisorJSON.size(); j++) {
+                    JSONObject noteOBJ = (JSONObject) advisorJSON.get(j);
+                    String note = (String)noteOBJ.get("note"); // make a data constant for it
+                    String date = (String)noteOBJ.get("date"); // ^^^ same thing
+                    notes.add(new Note(note, null));
+                }
+        
 
                 students.add(new Student(firstName, lastName, email, uscID, password, userType, year, major,
-                        creditHours, completedCourses, gpa, coursePlanner, degreeProgress, advisorNotes));
+                        creditHours, null, gpa, null, null, notes));
             }
 
             return students;
@@ -225,6 +234,16 @@ public class DataLoader extends DataConstants {
                 boolean elective = (Boolean) courseObj.get(COURSE_ELECTIVE);
                 boolean carolinaCore = (Boolean) courseObj.get(COURSE_CAROLINA_CORE);
                 @SuppressWarnings("unchecked")
+                /*
+                 * Start out with an ArrayList of Strings for Course Prerequistes
+                 * Now imagine, after courses have been loaded up, they will have to be converted to actual course objects
+                 * So, basically an attribute is going to be needed to keep track of courses 
+                 * Suggestion: put null in for difficult stuff and test everything, tests are not extensive enough because line below
+                 * should have broke
+                 * Make sure all of constructors of done and then make a toString in each class and then loop through those to print to 
+                 * the console
+                 * Doing great so far
+                 */
                 ArrayList<Course> prerequisites = (ArrayList<Course>) courseObj.get(COURSE_PREREQUISITES);
                 String semester = (String) courseObj.get(COURSE_SEMESTER);
                 String year = (String) courseObj.get(COURSE_YEAR);

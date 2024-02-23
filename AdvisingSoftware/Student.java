@@ -40,7 +40,7 @@ public class Student extends User {
     double gpa,
     CoursePlanner coursePlanner,
     DegreeProgress degreeProgress,
-    ArrayList<String> advisorNotes
+    ArrayList<Note> advisorNotes
   ) {
     super(firstName, lastName, email, uscID, password, userType);
     this.year = year;
