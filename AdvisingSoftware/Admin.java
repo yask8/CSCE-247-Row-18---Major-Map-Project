@@ -4,18 +4,22 @@ import java.util.ArrayList;
 
 public class Admin extends User {
 
+  private ArrayList<String> changesMade;
+
   /**
    * Private constructor
    */
-  private Admin(
+  public Admin(
     String firstName,
     String lastName,
     String email,
     String uscID,
     String password,
-    String userType
+    String userType,
+    ArrayList<String> changesMade
   ) {
     super(firstName, lastName, email, uscID, password, userType);
+    this.changesMade = changesMade;
   }
 
   /**

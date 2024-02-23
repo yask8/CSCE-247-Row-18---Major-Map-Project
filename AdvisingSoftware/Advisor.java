@@ -1,7 +1,6 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class Advisor extends User {
 
@@ -14,7 +13,6 @@ public class Advisor extends User {
    * @param listOfFailingStudents List of advisors advisees at risk of failing
    */
   public Advisor(
-    UUID id,
     String firstName,
     String lastName,
     String email,

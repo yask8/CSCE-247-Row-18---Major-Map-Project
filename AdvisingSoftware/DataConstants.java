@@ -22,19 +22,23 @@ public abstract class DataConstants {
     protected static final String USER_TYPE = "userType";
 
     // Student Constants
+    protected static final String STUDENT_FILE_NAME = "Json/studentsTest.json";
     protected static final String STUDENT_CLASS = "class";
     protected static final String STUDENT_MAJOR = "major";
     protected static final String STUDENT_CREDITHOURS = "creditHours";
     protected static final String STUDENT_COMPLETED_COURSES = "completedCourses";
+    protected static final String STUDENT_GPA = "gpa";
     protected static final String STUDENT_COURSE_PLANNER = "coursePlanner";
     protected static final String STUDENT_DEGREE_PROGRESS = "degreeProgess";
     protected static final String STUDENT_ADVISOR_NOTES = "advisorNotes";
 
     // Advisor Constants
+    protected static final String ADVISOR_FILE_NAME = "Json/advisors.json";
     protected static final String ADVISOR_LIST_OF_ADVISEES = "listOfAdivsees";
     protected static final String ADVISOR_LIST_OF_FAILING_STUDENTS = "listOfFailingStudents";
 
     // Admin Constants
+    protected static final String ADMIN_FILE_NAME = "Json/admins.json";
     protected static final String ADMIN_CHANGES_MADE = "changesMade";
 
     // Course Constants

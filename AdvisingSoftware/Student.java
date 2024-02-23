@@ -13,7 +13,7 @@ public class Student extends User {
   private CoursePlanner coursePlanner;
   private DegreeProgress degreeProgress;
   // HashMap<String notes, String date>
-  private HashMap<String, String> advisorNotes;
+  private ArrayList<String> advisorNotes;
 
   /**
    * Student Constructor
@@ -24,6 +24,7 @@ public class Student extends User {
    * @param gpa Student's GPA
    * @param coursePlanner Student's courses planned for the future
    * @param degreeProgress Student's degree progress
+   * @param advisorNotes Student's notes left by advisor
    */
   public Student(
     String firstName,
@@ -38,7 +39,8 @@ public class Student extends User {
     HashMap<Course, Character> completedCourses,
     double gpa,
     CoursePlanner coursePlanner,
-    DegreeProgress degreeProgress
+    DegreeProgress degreeProgress,
+    ArrayList<String> advisorNotes
   ) {
     super(firstName, lastName, email, uscID, password, userType);
     this.year = year;
@@ -48,6 +50,7 @@ public class Student extends User {
     this.gpa = gpa;
     this.coursePlanner = coursePlanner;
     this.degreeProgress = degreeProgress;
+    this.advisorNotes = advisorNotes;
   }
 
   /**
