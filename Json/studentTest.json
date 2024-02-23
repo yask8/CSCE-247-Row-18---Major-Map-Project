@@ -44,7 +44,6 @@
       "electiveCourses": [
         { "courseId": "CSCE201", "courseName": "Algorithms" }
       ],
-      "minorCourses": [],
       "carolinaCoreCourses": [],
       "completeCourses": [
         { "courseId": "MATH141", "courseName": "Calculus I" }
