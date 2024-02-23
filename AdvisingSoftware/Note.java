@@ -1,7 +1,10 @@
 package AdvisingSoftware;
 
 import java.util.Date;
-
+/**
+ * Holds the notes from the advisor
+ * @author yask8(Yasmine Kennedy) and Spillmag(Garrett Spillman)
+ */
 public class Note {
 
   private String note;
