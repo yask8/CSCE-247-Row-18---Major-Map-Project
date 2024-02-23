@@ -2,6 +2,7 @@ package AdvisingSoftware;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class Student extends User {
 
@@ -30,7 +31,7 @@ public class Student extends User {
     String firstName,
     String lastName,
     String email,
-    String uscID,
+    UUID uscID,
     String password,
     String userType,
     String year,
@@ -127,4 +128,5 @@ public class Student extends User {
   public double updateGPA() {
     return 0;
   }
+
 }
