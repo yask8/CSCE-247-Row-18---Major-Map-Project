@@ -40,7 +40,7 @@ public class Student extends User {
     CoursePlanner coursePlanner,
     DegreeProgress degreeProgress
   ) {
-    super(firstName, lastName, email, uscID, password,userType);
+    super(firstName, lastName, email, uscID, password, userType);
     this.year = year;
     this.major = major;
     this.creditHours = creditHours;
