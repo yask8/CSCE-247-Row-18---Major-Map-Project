@@ -22,24 +22,28 @@ public class DataLoader extends DataConstants {
      * @param args Command-line arguments.
      */
     public static void main(String[] args) {
-        // Test loading users
-        testLoadUsers();
+        ArrayList<User> users = DataLoader.loadUsers();
+        if (users != null) {
+            for (User user : users) {
+                System.out.println(user.toString());
+            }
+        } else {
+            System.out.println("Failed to load users from the file.");
+        }
+     
+        
+         ArrayList<Admin> admins = DataLoader.loadAdmin();
+            if (admins != null) {
+            for (Admin admin : admins) {
+                System.out.println(admin.toString());
+                }
+            } else {
+            System.out.println("Failed to load admins from the file.");
+            }
+  }
+    
 
-        // Test loading students
-        testLoadStudents();
 
-        // Test loading admins
-        //testLoadAdmin();
-
-        // Test loading advisors
-        //testLoadAdvisors();
-
-        // Test loading courses
-        //testLoadCourses();
-
-        // Test loading majors
-        //testLoadMajors();
-    }
 
     /**
      * Loads users from a JSON file.
@@ -101,12 +105,10 @@ public class DataLoader extends DataConstants {
                 String year = (String) studentOBJ.get(STUDENT_CLASS);
                 String major = (String) studentOBJ.get(STUDENT_MAJOR);
                 int creditHours = ((Long) studentOBJ.get(STUDENT_CREDITHOURS)).intValue();
-                @SuppressWarnings("unchecked")
                 //HashMap<Course, Character> completedCourses = (HashMap<Course, Character>) studentOBJ.get(STUDENT_COMPLETED_COURSES);
                 double gpa = (double) studentOBJ.get(STUDENT_GPA);
                 //CoursePlanner coursePlanner = (CoursePlanner) studentOBJ.get(STUDENT_COURSE_PLANNER);
                 //DegreeProgress degreeProgress = (DegreeProgress) studentOBJ.get(STUDENT_DEGREE_PROGRESS);
-                @SuppressWarnings("unchecked")
                 // Later make arraylist
                 JSONArray advisorJSON = (JSONArray) studentOBJ.get(STUDENT_ADVISOR_NOTES);
                 ArrayList<Note> notes = new ArrayList<>();
@@ -153,7 +155,6 @@ public class DataLoader extends DataConstants {
                 String uscID = (String) AdminOBJ.get(USER_USCID);
                 String password = (String) AdminOBJ.get(USER_PASSWORD);
                 String userType = (String) AdminOBJ.get(USER_TYPE);
-                @SuppressWarnings("unchecked")
                 ArrayList<String> changesMade = (ArrayList<String>) AdminOBJ.get(ADMIN_CHANGES_MADE);
 
                 admin.add(new Admin(firstName, lastName, email, uscID, password, userType, changesMade));
@@ -334,101 +335,5 @@ public class DataLoader extends DataConstants {
             }
         }
         return null;
-    }
-
-    /**
-     * Helper method to test loading of users.
-     */
-    private static void testLoadUsers() {
-        ArrayList<User> users = loadUsers();
-
-        if (users != null) {
-            System.out.println("Loaded " + users.size() + " users:");
-            for (User user : users) {
-                System.out.println(user);
-            }
-        } else {
-            System.out.println("Failed to load users.");
-        }
-    }
-
-    /**
-     * Helper method to test loading of students.
-     */
-    private static void testLoadStudents() {
-        ArrayList<Student> students = loadStudents();
-
-        if (students != null) {
-            System.out.println("Loaded " + students.size() + " students:");
-            for (Student student : students) {
-                System.out.println(student);
-            }
-        } else {
-            System.out.println("Failed to load students.");
-        }
-    }
-
-    /**
-     * Helper method to test loading of admins.
-     */
-    private static void testLoadAdmin() {
-        ArrayList<Admin> admins = loadAdmin();
-
-        if (admins != null) {
-            System.out.println("Loaded " + admins.size() + " admins:");
-            for (Admin admin : admins) {
-                System.out.println(admin);
-            }
-        } else {
-            System.out.println("Failed to load admins.");
-        }
-    }
-
-    /**
-     * Helper method to test loading of advisors.
-     */
-    private static void testLoadAdvisors() {
-        ArrayList<Advisor> advisors = loadAdvisors();
-
-        if (advisors != null) {
-            System.out.println("Loaded " + advisors.size() + " advisors:");
-            for (Advisor advisor : advisors) {
-                System.out.println(advisor);
-            }
-        } else {
-            System.out.println("Failed to load advisors.");
-        }
-    }
-
-    /**
-     * Helper method to test loading of courses.
-     */
-    private static void testLoadCourses() {
-        ArrayList<Course> courses = loadCourses();
-
-        if (courses != null) {
-            System.out.println("Loaded " + courses.size() + " courses:");
-            for (Course course : courses) {
-                System.out.println(course);
-            }
-        } else {
-            System.out.println("Failed to load courses.");
-        }
-    }
-
-    /**
-     * Helper method to test loading of majors.
-     */
-    private static void testLoadMajors() {
-        ArrayList<MajorMap> majors = loadMajors();
-
-        if (majors != null) {
-            System.out.println("Loaded " + majors.size() + " majors:");
-            for (MajorMap major : majors) {
-                System.out.println(major);
-            }
-        } else {
-            System.out.println("Failed to load majors.");
-        }
     }
 }
