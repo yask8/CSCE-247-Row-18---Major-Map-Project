@@ -87,42 +87,6 @@ public class MajorMap {
     }
   }
 
-<<<<<<< HEAD
-    /**
-     * Displays the details of the major map.
-     *
-     * @param major The name of the major to display.
-     */
-    public void displayMajorMap(String major) {
-        if (this.major.equals(major)) {
-            System.out.println("\n************ Major Map *************");
-            System.out.println("Major: " + this.major);
-            System.out.println("MajorMap ID: " + this.id);
-            System.out.println("Major Courses: " + this.majorCourses);
-            System.out.println("Major Elective: " + this.majorElective);
-            System.out.println("Carolina Core: " + this.coreEdu);
-            System.out.println("Application Area: " + this.appArea);
-        } else {
-            System.out.println("No matching major found.");
-        }
-    }
-
-    /**
-     * Returns String of the details of the major map.
-     */
-    public String toString() {
-        return "\n************ Major Map *************\n" +
-                "Major: " + this.major + "\n" +
-                "MajorMap ID: " + this.id + "\n" + 
-                "\n************ Major Courses *************\n" +
-                "Major Courses: " + this.majorCourses + "\n" +
-                "\n************ Major Electives *************\n" +
-                "Major Elective: " + this.majorElective + "\n" +
-                "\n************ Carolina Core  *************\n" +
-                "Carolina Core: " + this.coreEdu + "\n" +
-                "\n************ Application Area *************\n" +
-                "Application Area: " + this.appArea + "\n";
-=======
   /**
    * Edits the major's details.
    *
@@ -162,7 +126,6 @@ public class MajorMap {
       System.out.println("Application Area: " + this.appArea);
     } else {
       System.out.println("No matching major found.");
->>>>>>> dc326a6e72c449f62193edf3b915d20d571885f7
     }
   }
 
