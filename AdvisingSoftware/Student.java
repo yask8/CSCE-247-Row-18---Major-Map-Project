@@ -129,4 +129,28 @@ public class Student extends User {
     return 0;
   }
 
+  public String toString() {
+    return (
+      super.toString() +
+      "\nYear: " +
+      year +
+      "\nMajor: " +
+      major +
+      "\nCredit Hours: " +
+      creditHours +
+      "\nCompleted Courses: " +
+      "\nGPA: " +
+      gpa +
+      "\nAdvisor Notes:"
+    );
+    /* 
+    return "String year,\r\n" + //
+            "    String major,\r\n" + //
+            "    int creditHours,\r\n" + //
+            "    HashMap<Course, Character> completedCourses,\r\n" + //
+            "    double gpa,\r\n" + //
+            "    CoursePlanner coursePlanner,\r\n" + //
+            "    DegreeProgress degreeProgress,\r\n" + //
+            "    ArrayList<Note> advisorNotes";*/
+  }
 }

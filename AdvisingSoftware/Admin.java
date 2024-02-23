@@ -11,29 +11,31 @@ public class Admin extends User {
    * Private constructor
    */
   public Admin(
-      String firstName,
-      String lastName,
-      String email,
-      UUID uscID,
-      String password,
-      String userType,
-      ArrayList<String> changesMade) {
+    String firstName,
+    String lastName,
+    String email,
+    UUID uscID,
+    String password,
+    String userType,
+    ArrayList<String> changesMade
+  ) {
     super(firstName, lastName, email, uscID, password, userType);
     this.changesMade = changesMade;
   }
 
   /**
    * Allows admin to add a course
-   * 
+   *
    * @return the Course instance
    */
   public Course addCourse() {
+    // admin adds a course to courselist? courses.json
     return null;
   }
 
   /**
    * Allows admin to edit a course
-   * 
+   *
    * @return the Course instance
    */
   public Course editCourse() {
@@ -43,12 +45,11 @@ public class Admin extends User {
   /**
    * Allows admin to delete a course
    */
-  public void deleteCourse() {
-  }
+  public void deleteCourse() {}
 
   /**
    * Allows admin to search for a student
-   * 
+   *
    * @return the Student instance
    */
   public Student studentLookUp() {
@@ -57,7 +58,7 @@ public class Admin extends User {
 
   /**
    * Allows an admin to view the details of a student
-   * 
+   *
    * @return ArrayList of student details
    */
   public ArrayList<Student> viewStudentProfile() {
@@ -67,12 +68,17 @@ public class Admin extends User {
   public String toString() {
     String changesMadeString = "";
     if (changesMade != null && !changesMade.isEmpty()) {
-        for (String change : changesMade) {
-            changesMadeString += "\n- " + change;
-        }
+      for (String change : changesMade) {
+        changesMadeString += "\n- " + change;
+      }
     } else {
-        changesMadeString = "None";
+      changesMadeString = "None";
     }
-    return super.toString() + "\n********* Change log:*********\n" + "Changes Made:" + changesMadeString;
+    return (
+      super.toString() +
+      "\n********* Change log:*********\n" +
+      "Changes Made:" +
+      changesMadeString
+    );
   }
 }
