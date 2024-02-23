@@ -1,6 +1,6 @@
 [
     {
-        "id": "CSCE145",
+        "courseID": "CSCE145",
         "name": "CSCE145 Algorithmic Design I",
         "code": "PR",
         "description": "Problem-solving, algorithmic design, and programming. Two lecture hours and four laboratory hours per week. Open to all majors. Carolina Core ARP.",
@@ -18,7 +18,7 @@
         "year": "2024-2025"
     },
     {
-        "id": "ENGL101",
+        "courseID": "ENGL101",
         "name": "ENGL101 Critical Reading and Composition",
         "code": "CC-CMW",
         "description": "English 101 is designed to offer you structured, sustained practice in critical reading, textual analysis and composing. During the semester, you'll read challenging texts in a variety of genres and then write expository and analytical essays in response to them. Through these reading and writing assignments, you explore the interconnectedness of reading and writing and learn how to use both reading and writing as venues for inquiry, learning, interpretation, and communication.",
