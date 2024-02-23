@@ -23,16 +23,16 @@ public class DataLoader extends DataConstants {
      */
     public static void main(String[] args) {
         // Test loading users
-        // testLoadUsers();
+        testLoadUsers();
 
         // Test loading students
         testLoadStudents();
 
         // Test loading admins
-        testLoadAdmin();
+        //testLoadAdmin();
 
         // Test loading advisors
-        testLoadAdvisors();
+        //testLoadAdvisors();
 
         // Test loading courses
         //testLoadCourses();
