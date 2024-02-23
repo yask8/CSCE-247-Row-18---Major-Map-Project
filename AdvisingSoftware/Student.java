@@ -13,7 +13,7 @@ public class Student extends User {
   private CoursePlanner coursePlanner;
   private DegreeProgress degreeProgress;
   // HashMap<String notes, String date>
-  private ArrayList<String> advisorNotes;
+  private ArrayList<Note> advisorNotes;
 
   /**
    * Student Constructor
