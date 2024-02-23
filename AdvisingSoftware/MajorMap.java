@@ -65,10 +65,6 @@ public class MajorMap {
     this.appArea = appArea;
   }
 
-  public MajorMap(String majorID, String majorName, Course course) {
-    // TODO Auto-generated constructor stub
-  }
-
   /**
    * Deletes the major from the system.
    *
@@ -120,4 +116,28 @@ public class MajorMap {
         "\n************ Application Area *************\n" +
         "Application Area: " + this.appArea + "\n";
   }
+
+  public boolean containsCourse(Course course) {
+    for (Course c : majorCourses) {
+        if (c.equals(course)) {
+            return true;
+        }
+    }
+    for (Course c : majorElective) {
+        if (c.equals(course)) {
+            return true;
+        }
+    }
+    for (Course c : coreEdu) {
+        if (c.equals(course)) {
+            return true;
+        }
+    }
+    for (Course c : appArea) {
+        if (c.equals(course)) {
+            return true;
+        }
+    }
+    return false;
+}
 }
