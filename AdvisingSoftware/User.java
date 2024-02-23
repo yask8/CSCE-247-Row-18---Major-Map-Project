@@ -112,7 +112,6 @@ public String getPassword() {
    */
   public String toString() {
     return (
-      "\n********* BASIC USER INFO *********\n" +
       "firstName: "+
       firstName +
       '\n' +
