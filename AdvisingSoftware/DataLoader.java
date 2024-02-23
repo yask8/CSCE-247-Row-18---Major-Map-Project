@@ -103,7 +103,7 @@ public class DataLoader extends DataConstants {
                 int creditHours = ((Long) studentOBJ.get(STUDENT_CREDITHOURS)).intValue();
                 @SuppressWarnings("unchecked")
                 HashMap<Course, Character> completedCourses = (HashMap<Course, Character>) studentOBJ.get(STUDENT_COMPLETED_COURSES);
-                double gpa = Double.parseDouble((String) studentOBJ.get(STUDENT_GPA));
+                double gpa = (double) studentOBJ.get(STUDENT_GPA);
                 CoursePlanner coursePlanner = (CoursePlanner) studentOBJ.get(STUDENT_COURSE_PLANNER);
                 DegreeProgress degreeProgress = (DegreeProgress) studentOBJ.get(STUDENT_DEGREE_PROGRESS);
                 @SuppressWarnings("unchecked")
