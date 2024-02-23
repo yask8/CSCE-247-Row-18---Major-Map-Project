@@ -1,32 +1,5 @@
 [
     {
-        "uscID": "c4dd8e20-4b51-4663-ae59-be7df5371bee",
-        "firstName": "Ava",
-        "lastName": "Castro",
-        "email": "avacastrophee@gmail.com",
-        "password": "C3ssn4islove!",
-        "userType": "STUDENT",
-        "class": "Freshman",
-        "major": "4f2a019f-8cc4-401f-ad7a-4db5abbb9a25",
-        "creditHours": "19",
-        "completedCourses": {
-            "ENGL101": "C",
-            "MATH141": "A",
-            "CHEM111": "B",
-            "CHEM111L": "C",
-            "CSCE190": "C",
-            "ENGL102": "C",
-            "CSCE146": "C"
-        },
-        "gpa": "2.47",
-        "coursePlanner": "coursePlanner",
-        "degreeProgress": "degreeProgress",
-        "advisorNotes": {
-            "go based off of major map, take either MART201 or MUSC101": "07/24/22",
-            "go based off of major map": "10/02/22"
-        }
-    },
-    {
         "uscID": "faa91c60-3201-4870-84c8-9473df2b6a1e",
         "firstName": "Farrah",
         "lastName": "Rio",
@@ -35,31 +8,54 @@
         "userType": "STUDENT",
         "class": "Sophomore",
         "major": "0bc9301f-9b48-47f0-b47a-a555c3b30c5d",
-        "creditHours": "47",
+        "creditHours": 47,
         "completedCourses": {
-            "ENGL101": "A",
-            "MATH141": "A",
-            "CSCE145": "A",
-            "CSCE190": "A",
-            "MATH142": "A",
-            "MART201": "A",
-            "ENGL102": "A",
-            "PHYS211": "A",
-            "PHYS211L": "A",
-            "CSCE215": "A",
-            "CSCE211": "A",
-            "CSCE240": "A",
-            "MATH374": "A",
-            "PHYS212": "A",
-            "PHYS212L": "A",
-            "SPCH140": "A"
+          "ENGL101": "A",
+          "MATH141": "A",
+          "CSCE145": "A",
+          "CSCE190": "A",
+          "MATH142": "A",
+          "MART201": "A",
+          "ENGL102": "A",
+          "PHYS211": "A",
+          "PHYS211L": "A",
+          "CSCE215": "A",
+          "CSCE211": "A",
+          "CSCE240": "A",
+          "MATH374": "A",
+          "PHYS212": "A",
+          "PHYS212L": "A",
+          "SPCH140": "A"
         },
-        "gpa": "4.00",
-        "coursePlanner": "coursePlanner",
-        "degreeProgress": "degreeProgress",
+        "gpa": 4.00,
+        "coursePlanner": {
+          "courseList": [
+            { "courseId": "CSCE101", "courseName": "Introduction to Computer Science" },
+            { "courseId": "CSCE102", "courseName": "Data Structures" },
+            { "courseId": "CSCE201", "courseName": "Algorithms" }
+          ]
+        },
+        "degreeProgress": {
+          "major": "Computer Science",
+          "majorCourses": [
+            { "courseId": "CSCE101", "courseName": "Introduction to Computer Science" },
+            { "courseId": "CSCE102", "courseName": "Data Structures" }
+          ],
+          "electiveCourses": [
+            { "courseId": "CSCE201", "courseName": "Algorithms" }
+          ],
+          "minorCourses": [],
+          "carolinaCoreCourses": [],
+          "completeCourses": [
+            { "courseId": "MATH141", "courseName": "Calculus I" }
+          ],
+          "incompleteCourses": [
+            { "courseId": "MATH142", "courseName": "Calculus II" }
+          ]
+        },
         "advisorNotes": {
-            "go based off of major map, take either MART201 or MUSC101": "07/22/22",
-            "go based off of major map": "10/05/22"
+          "go based off of major map, take either MART201 or MUSC101": "07/22/22",
+          "go based off of major map": "10/05/22"
         }
-    }
+      }
 ]
