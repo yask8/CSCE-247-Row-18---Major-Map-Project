@@ -102,7 +102,7 @@ public class MajorMap {
         if (this.major.equals(major)) {
             System.out.println("\n************ Major Map *************");
             System.out.println("Major: " + this.major);
-            System.out.println("Class: " + this.id);
+            System.out.println("MajorMap ID: " + this.id);
             System.out.println("Major Courses: " + this.majorCourses);
             System.out.println("Major Elective: " + this.majorElective);
             System.out.println("Carolina Core: " + this.coreEdu);
@@ -118,7 +118,7 @@ public class MajorMap {
     public String toString() {
         return "\n************ Major Map *************\n" +
                 "Major: " + this.major + "\n" +
-                "Class: " + this.id + "\n" + 
+                "MajorMap ID: " + this.id + "\n" + 
                 "\n************ Major Courses *************\n" +
                 "Major Courses: " + this.majorCourses + "\n" +
                 "\n************ Major Electives *************\n" +
