@@ -1,6 +1,7 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Admin extends User {
 
@@ -13,7 +14,7 @@ public class Admin extends User {
       String firstName,
       String lastName,
       String email,
-      String uscID,
+      UUID uscID,
       String password,
       String userType,
       ArrayList<String> changesMade) {
@@ -72,6 +73,6 @@ public class Admin extends User {
     } else {
         changesMadeString = "None";
     }
-    return super.toString() + "\n********* Change log: *********\n" + "Changes Made:" + changesMadeString;
+    return super.toString() + "\n********* Change log:*********\n" + "Changes Made:" + changesMadeString;
   }
 }
