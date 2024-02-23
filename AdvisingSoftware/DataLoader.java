@@ -106,6 +106,7 @@ public class DataLoader extends DataConstants {
                 double gpa = (double) studentObj.get(STUDENT_GPA);
                 CoursePlanner coursePlanner = (CoursePlanner) studentObj.get(STUDENT_COURSE_PLANNER);
                 DegreeProgress degreeProgress = (DegreeProgress) studentObj.get(STUDENT_DEGREE_PROGRESS);
+                @SuppressWarnings("unchecked")
                 ArrayList<Note> advisorNotes = (ArrayList<Note>) studentObj.get(STUDENT_ADVISOR_NOTES);
 
                 Student student = new Student(firstName, lastName, email, uscID, password, userType, year,
@@ -143,6 +144,7 @@ public class DataLoader extends DataConstants {
                 UUID uscID = UUID.fromString(uscIDString);
                 String password = (String) adminOBJ.get(USER_PASSWORD);
                 String userType = (String) adminOBJ.get(USER_TYPE);
+                @SuppressWarnings("unchecked")
                 ArrayList<String> changesMade = (ArrayList<String>) adminOBJ.get(ADMIN_CHANGES_MADE);
 
                 admin.add(new Admin(firstName, lastName, email, uscID, password, userType, changesMade));
@@ -203,7 +205,8 @@ public class DataLoader extends DataConstants {
                 } else {
                     System.err.println("List of advisee IDs is null for advisor " + uscID);
                 }
-                advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType, listOfAdvisees, listOfAdvisees,listOfNotes));
+                // Need to be changed but at least it works
+                advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType, listOfAdvisees,listOfAdvisees,listOfNotes));
             }
 
         return advisors;
