@@ -240,7 +240,7 @@ public class DataLoader extends DataConstants {
                  * So, basically an attribute is going to be needed to keep track of courses 
                  * Suggestion: put null in for difficult stuff and test everything, tests are not extensive enough because line below
                  * should have broke
-                 * Make sure all of constructors of done and then make a toString in each class and then loop through those to print to 
+                 * Make sure all of constructors are done and then make a toString in each class and then loop through those to print to 
                  * the console
                  * Doing great so far
                  */

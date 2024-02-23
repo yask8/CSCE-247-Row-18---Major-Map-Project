@@ -8,6 +8,6 @@ public class Note {
 
     public Note(String note, Date date){
         this.note = note;
-        date = date;
+        this.date = date;
     }
 }
