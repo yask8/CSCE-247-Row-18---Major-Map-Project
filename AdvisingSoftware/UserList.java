@@ -114,11 +114,21 @@ public class UserList {
         return students;
     }
 
-    public void setLoaded(boolean loaded) {
-        this.loaded = loaded;
-    }
+  /**
+   * Sets the flag indicating whether userList is loaded with data.
+   *
+   * @param loaded Boolean indicating if userList is loaded
+   */
+  public void setLoaded(boolean loaded) {
+    this.loaded = loaded;
+  }
 
-    public boolean isLoaded() {
-        return loaded;
-    }
+  /**
+   * Checks if userList is loaded.
+   *
+   * @return True if userList is loaded, false otherwise
+   */
+  public boolean isLoaded() {
+    return loaded;
+  }
 }

@@ -68,7 +68,7 @@ public class Facade {
         ArrayList<User> loadedUsers = DataLoader.loadUsers();
         if (loadedUsers != null) {
             for (User user : loadedUsers) {
-                userList.addUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getUSCID(), user.getPassword(), user.getUserType());
+                userList.addUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getID(), user.getPassword(), user.getUserType());
             }
             userList.setLoaded(true);
         } else {

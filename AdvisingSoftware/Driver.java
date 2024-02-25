@@ -29,12 +29,12 @@ public class Driver {
       String email = "thebillybob@gmail.com";
       String password = "Guiy#ghawe";
   
-      facade.user = facade.login(email, password); // Logging in and storing the user in the 'user' attribute
+      facade.user = facade.login(email, password); 
   
-      if (facade.user != null) { // Checking if a user is logged in
+      if (facade.user != null) { 
         System.out.println("Login successful!");
         System.out.println("Current user:");
-        System.out.println(facade.user.toString()); // Printing the details of the logged-in user
+        System.out.println(facade.user.toString()); 
       } else {
         System.out.println("Login failed. Incorrect email or password.");
       }
