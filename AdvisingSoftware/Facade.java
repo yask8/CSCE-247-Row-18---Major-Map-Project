@@ -19,7 +19,7 @@ public class Facade {
   private ArrayList<Course> courseList;
   private Course course;
   private ArrayList<User> userList;
-  private User user;
+  protected User user;
   private ArrayList<MajorMap> majorList;
   private DegreeProgress degreeProgress;
   private CoursePlanner coursePlan;
@@ -62,10 +62,23 @@ public class Facade {
     this.majorMap = majorMap;
     this.gradReq = gradReq;
   }
-
   public User login(String email, String password) {
+    UserList userList = UserList.getInstance();
+    if (!userList.isLoaded()) {
+        ArrayList<User> loadedUsers = DataLoader.loadUsers();
+        if (loadedUsers != null) {
+            for (User user : loadedUsers) {
+                userList.addUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getUSCID(), user.getPassword(), user.getUserType());
+            }
+            userList.setLoaded(true);
+        } else {
+            return null;
+        }
+    }
+    user = userList.getUser(email, password);
     return user;
-  }
+}
+  
 
   public void signOut() {}
 

@@ -15,24 +15,23 @@ public class User {
   private String password;
   private String userType;
 
-
-    /**
-     * Constructor for creating a new user with a specified USC ID.
-     *
-     * @param firstName First name of the user
-     * @param lastName  Last name of the user
-     * @param email     User's email
-     * @param uscID     User's USC ID
-     * @param password  User's password
-     * @param userType  User's role
-     */
-    public User(String firstName, String lastName, String email, UUID uscID, String password, String userType) {
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.email = email;
-      this.uscID = uscID;
-      this.password = password;
-      this.userType = userType;
+  /**
+   * Constructor for creating a new user with a specified USC ID.
+   *
+   * @param firstName First name of the user
+   * @param lastName  Last name of the user
+   * @param email     User's email
+   * @param uscID     User's USC ID
+   * @param password  User's password
+   * @param userType  User's role
+   */
+  public User(String firstName, String lastName, String email, UUID uscID, String password, String userType) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.uscID = uscID;
+    this.password = password;
+    this.userType = userType;
   }
 
   /**
@@ -45,12 +44,12 @@ public class User {
    * @param userType  User's role
    */
   public User(String firstName, String lastName, String email, String password, String userType) {
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.email = email;
-      this.uscID = UUID.randomUUID();
-      this.password = password;
-      this.userType = userType;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.uscID = UUID.randomUUID();
+    this.password = password;
+    this.userType = userType;
   }
 
   /**
@@ -94,42 +93,77 @@ public class User {
    *
    * @param code course specific code to identify
    */
-  public void lookUpCourse(String code) {}
-
-  public UUID getID() {
-    return uscID;
-}
-public String getEmail() {
-  return email;
-}
-
-public String getPassword() {
-  return password;
-}
+  public void lookUpCourse(String code) {
+  }
   /**
    * To string to view user details
    * Added by @Spillmag for tesing purposes
    */
   public String toString() {
-    return (
-      "firstName: "+
-      firstName +
-      '\n' +
-      "lastName: " +
-      lastName +
-      '\n' +
-      "email: " +
-      email +
-      '\n' +
-      "uscID: " +
-      uscID +
-      '\n' +
-      "password: " +
-      password +
-      '\n' +
-      "userType: " +
-      userType +
-      '\n'
-    );
+    return ("firstName: " +
+        firstName +
+        '\n' +
+        "lastName: " +
+        lastName +
+        '\n' +
+        "email: " +
+        email +
+        '\n' +
+        "uscID: " +
+        uscID +
+        '\n' +
+        "password: " +
+        password +
+        '\n' +
+        "userType: " +
+        userType +
+        '\n');
+  }
+
+  /**
+   * Get the first name of the user.
+   *
+   * @return The first name of the user.
+   */
+  public String getFirstName() {
+    return firstName;
+  }
+
+  /**
+   * Get the last name of the user.
+   *
+   * @return The last name of the user.
+   */
+  public String getLastName() {
+    return lastName;
+  }
+
+  /**
+   * Get the USC ID of the user.
+   *
+   * @return The USC ID of the user.
+   */
+  public UUID getUSCID() {
+    return uscID;
+  }
+
+  /**
+   * Get the user type.
+   *
+   * @return The user type.
+   */
+  public String getUserType() {
+    return userType;
+  }
+  public UUID getID() {
+    return uscID;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public String getPassword() {
+    return password;
   }
 }

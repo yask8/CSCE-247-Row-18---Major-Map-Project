@@ -11,6 +11,7 @@ public class UserList {
 
     private static UserList userList;
     private ArrayList<User> users;
+    private boolean loaded;
 
     /**
      * Private constructor for UserList.
@@ -18,6 +19,7 @@ public class UserList {
      */
     private UserList() {
         users = new ArrayList<>();
+        loaded = false;
     }
 
     /**
@@ -103,12 +105,20 @@ public class UserList {
     }
 
     public ArrayList<Student> getAllStudents() {
-      ArrayList<Student> students = new ArrayList<>();
-      for (User user : users) {
-          if (user instanceof Student) {
-              students.add((Student) user);
-          }
-      }
-      return students;
-  }
+        ArrayList<Student> students = new ArrayList<>();
+        for (User user : users) {
+            if (user instanceof Student) {
+                students.add((Student) user);
+            }
+        }
+        return students;
+    }
+
+    public void setLoaded(boolean loaded) {
+        this.loaded = loaded;
+    }
+
+    public boolean isLoaded() {
+        return loaded;
+    }
 }

@@ -1,12 +1,10 @@
 package AdvisingSoftware;
 
-import java.util.Scanner;
-
 /**
  * @author Lia Zhao (zhaolia9)
- * - facade: Facade
- * + run(): void
- * - displayMainMenu(): void
+ *         - facade: Facade
+ *         + run(): void
+ *         - displayMainMenu(): void
  */
 public class Driver {
 
@@ -24,8 +22,22 @@ public class Driver {
     scenario5();
   }
 
-  public void scenario1() {
-    System.out.println();
+    public void scenario1() {
+      System.out.println("Scenario 1: Login");
+  
+      // Hardcoded email and password
+      String email = "thebillybob@gmail.com";
+      String password = "Guiy#ghawe";
+  
+      facade.user = facade.login(email, password); // Logging in and storing the user in the 'user' attribute
+  
+      if (facade.user != null) { // Checking if a user is logged in
+        System.out.println("Login successful!");
+        System.out.println("Current user:");
+        System.out.println(facade.user.toString()); // Printing the details of the logged-in user
+      } else {
+        System.out.println("Login failed. Incorrect email or password.");
+      }
   }
 
   public void scenario2() {
