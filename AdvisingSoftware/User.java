@@ -3,13 +3,11 @@ package AdvisingSoftware;
 import java.util.UUID;
 
 /**
- * Represents a User 
  * @author Owen Shumate
- * 
+ *         Represents the User
  */
 public class User {
 
-  // Fields representing user information
   private String firstName;
   private String lastName;
   private String email;
@@ -55,48 +53,71 @@ public class User {
   }
 
   /**
-   * Allows the user to edit the first name.
+   * Allows user to edit given first name
    *
-   * @param firstName Edited first name
+   * @param firstName edited first name
    */
   public void editFirstName(String firstName) {
     this.firstName = firstName;
   }
 
   /**
-   * Allows the user to edit the last name.
+   * Allows user to edit given last name
    *
-   * @param lastName Edited last name
+   * @param lastName edited last name
    */
   public void editLastName(String lastName) {
     this.lastName = lastName;
   }
 
   /**
-   * Allows the user to edit the email address.
+   * Allows user to edit given email
    *
-   * @param email Edited email address
+   * @param email edited email
    */
   public void editEmail(String email) {
     this.email = email;
   }
 
   /**
-   * Allows the user to edit the password.
+   * Allows user to edit given password
    *
-   * @param password Edited password
+   * @param password edited password
    */
   public void editPassword(String password) {
     this.password = password;
   }
 
   /**
-   * Allows the user to search for a specific course.
+   * Allows user to search for a specific course
    *
-   * @param code Course code to identify the course
+   * @param code course specific code to identify
    */
   public void lookUpCourse(String code) {
-    // Implementation to search for a course
+  }
+  /**
+   * To string to view user details
+   * Added by @Spillmag for tesing purposes
+   */
+  public String toString() {
+    return ("firstName: " +
+        firstName +
+        '\n' +
+        "lastName: " +
+        lastName +
+        '\n' +
+        "email: " +
+        email +
+        '\n' +
+        "uscID: " +
+        uscID +
+        '\n' +
+        "password: " +
+        password +
+        '\n' +
+        "userType: " +
+        userType +
+        '\n');
   }
 
   /**
@@ -116,16 +137,6 @@ public class User {
   public String getLastName() {
     return lastName;
   }
-
-  /**
-   * Get the USC ID of the user.
-   *
-   * @return The USC ID of the user.
-   */
-  public UUID getID() {
-    return uscID;
-  }
-
   /**
    * Get the user type.
    *
@@ -151,5 +162,14 @@ public class User {
    */
   public String getPassword() {
     return password;
+  }
+
+  /**
+   * Get the unique identifier of the user.
+   *
+   * @return The unique identifier of the user.
+   */
+  public UUID getID() {
+    return uscID;
   }
 }
