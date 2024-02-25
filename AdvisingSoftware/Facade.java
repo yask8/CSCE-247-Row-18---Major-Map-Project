@@ -65,9 +65,9 @@ public class Facade {
   public User login(String email, String password) {
     UserList userList = UserList.getInstance();
     if (!userList.isLoaded()) {
-        ArrayList<User> loadedUsers = DataLoader.loadUsers();
-        if (loadedUsers != null) {
-            for (User user : loadedUsers) {
+        ArrayList<User> users = DataLoader.loadUsers();
+        if (users != null) {
+            for (User user : users) {
                 userList.addUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getID(), user.getPassword(), user.getUserType());
             }
             userList.setLoaded(true);
