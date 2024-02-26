@@ -6,6 +6,11 @@ package AdvisingSoftware;
  * Constants related to file names, field names, and other data attributes are
  * defined here.
  * 
+ * TODO List
+ * Add DegreeProgress Constants
+ * Add CoursePlanner Constants
+ * Add Notes Constants
+ * 
  * @author @Spillmag
  */
 public abstract class DataConstants {

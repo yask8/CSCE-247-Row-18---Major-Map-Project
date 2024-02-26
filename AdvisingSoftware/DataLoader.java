@@ -11,6 +11,10 @@ import org.json.simple.parser.JSONParser;
  * The DataLoader class provides methods to load data from JSON files into Java
  * objects.
  * 
+ * TODO List
+ * Add LoadDegreeProgress method and implememnt into LoadStudents
+ * Add LoadCoursePlanner method and implememnt into LoadStudents
+ * Add LoadNotes method and implement into loadStudents + LoadAdvisor
  * @author @Spillmag
  */
 public class DataLoader extends DataConstants {
