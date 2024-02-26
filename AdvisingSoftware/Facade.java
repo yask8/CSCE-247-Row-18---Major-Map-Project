@@ -19,7 +19,7 @@ public class Facade {
   private ArrayList<Course> courseList;
   private Course course;
   private ArrayList<User> userList;
-  protected User user;
+  private User user;
   private ArrayList<MajorMap> majorList;
   private DegreeProgress degreeProgress;
   private CoursePlanner coursePlan;
@@ -46,24 +46,24 @@ public class Facade {
    * # modifyStudentList(): ArrayList<Student>
    * # modifyStudentGrades(User user, DegreeProgress degreeProgress): void
    */
-  public Facade() {
-  }
-
   public Facade(
       CourseList courseList,
       Course course,
-      UserList userList,
       User user,
       DegreeProgress degreeProgress,
       MajorMap majorMap,
       GraduationRequirements gradReq) {
     this.courseList = courseList.getCourses();
     this.course = course;
-    this.user = user;
-    this.userList = userList.getUsers();
+    UserList userListInstance = UserList.getInstance();
+    this.userList = userListInstance.getUsers();
     this.degreeProgress = degreeProgress;
     this.majorMap = majorMap;
     this.gradReq = gradReq;
+  }
+
+  public Facade() {
+    //TODO Auto-generated constructor stub
   }
 
   /**
@@ -78,20 +78,8 @@ public class Facade {
    */
   public User login(String email, String password) {
     UserList userList = UserList.getInstance();
-    if (!userList.isLoaded()) {
-      ArrayList<User> users = DataLoader.loadUsers();
-      if (users != null) {
-        for (User user : users) {
-          userList.addUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getID(), user.getPassword(),
-              user.getUserType());
-        }
-        userList.setLoaded(true);
-      } else {
-        return null;
-      }
-    }
     return userList.getUser(email, password);
-  }
+}
 
   public void signOut() {
   }
@@ -143,4 +131,42 @@ public class Facade {
       User user,
       DegreeProgress degreeProgress) {
   }
+
+  // Getters
+  public ArrayList<Course> getCourseList() {
+    return courseList;
+  }
+
+  public Course getCourse() {
+    return course;
+  }
+
+  public ArrayList<User> getUserList() {
+    return userList;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public ArrayList<MajorMap> getMajorList() {
+    return majorList;
+  }
+
+  public DegreeProgress getDegreeProgress() {
+    return degreeProgress;
+  }
+
+  public CoursePlanner getCoursePlan() {
+    return coursePlan;
+  }
+
+  public MajorMap getMajorMap() {
+    return majorMap;
+  }
+
+  public GraduationRequirements getGradReq() {
+    return gradReq;
+  }
+
 }

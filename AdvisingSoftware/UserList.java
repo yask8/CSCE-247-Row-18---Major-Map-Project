@@ -18,7 +18,7 @@ public class UserList {
      * Initializes the list of users.
      */
     private UserList() {
-        users = new ArrayList<>();
+        this.users = new ArrayList<>();
         loaded = false;
     }
 

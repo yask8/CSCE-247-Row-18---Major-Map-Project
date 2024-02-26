@@ -1,5 +1,7 @@
 package AdvisingSoftware;
 
+import java.util.ArrayList;
+
 /**
  * @author Lia Zhao (zhaolia9)
  *         - facade: Facade
@@ -30,19 +32,19 @@ public class Driver {
     System.out.println("Scenario 1: Login");
 
     // Hardcoded email and password
-    String email = "thebillybob@gmail.com";
-    String password = "Guiy#ghawe";
+    String email = "rio.farrah2004@gmail.com";
+    String password = "Real?dejaneir0";
 
-    facade.user = facade.login(email, password);
+    User loggedInUser = facade.login(email, password);
 
-    if (facade.user != null) {
-      System.out.println("Login successful!");
-      System.out.println("Current user:");
-      System.out.println(facade.user.toString());
+    if (loggedInUser != null) {
+        System.out.println("Login successful!");
+        System.out.println("Current user:");
+        System.out.println(loggedInUser.toString());
     } else {
-      System.out.println("Login failed. Incorrect email or password.");
+        System.out.println("Login failed. Incorrect email or password.");
     }
-  }
+}
 
   public void scenario2() {
     System.out.println();
