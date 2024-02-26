@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 /**
  * @author Lia Zhao (zhaolia9)
- * - courseList: ArrayList <Course>
- * - course: Course
- * - userList: ArrayList <User>
- * - majorList ArrayList <MajorMap>
- * - degreeProgress: DegreeProgress
- * - coursePlan: CoursePlanner
- * - majorMap: MajorMap
- * - gradReq: GraduationRequirements
+ *         - courseList: ArrayList <Course>
+ *         - course: Course
+ *         - userList: ArrayList <User>
+ *         - majorList ArrayList <MajorMap>
+ *         - degreeProgress: DegreeProgress
+ *         - coursePlan: CoursePlanner
+ *         - majorMap: MajorMap
+ *         - gradReq: GraduationRequirements
  */
 
 public class Facade {
@@ -26,7 +26,10 @@ public class Facade {
   private MajorMap majorMap;
   private GraduationRequirements gradReq;
 
-  /* + Facade(CourseList courseList, Course course, UserList userList, User user, degreeProgress degreeProgress, MajorMap majorMap, GraduationRequirements gradReq)
+  /*
+   * + Facade(CourseList courseList, Course course, UserList userList, User user,
+   * degreeProgress degreeProgress, MajorMap majorMap, GraduationRequirements
+   * gradReq)
    * + login(String email, String password): User
    * + signOut(): void
    * + checkDegreeProgress(String uscID): DegreeProgress
@@ -43,17 +46,17 @@ public class Facade {
    * # modifyStudentList(): ArrayList<Student>
    * # modifyStudentGrades(User user, DegreeProgress degreeProgress): void
    */
-  public Facade() {}
+  public Facade() {
+  }
 
   public Facade(
-    CourseList courseList,
-    Course course,
-    UserList userList,
-    User user,
-    DegreeProgress degreeProgress,
-    MajorMap majorMap,
-    GraduationRequirements gradReq
-  ) {
+      CourseList courseList,
+      Course course,
+      UserList userList,
+      User user,
+      DegreeProgress degreeProgress,
+      MajorMap majorMap,
+      GraduationRequirements gradReq) {
     this.courseList = courseList.getCourses();
     this.course = course;
     this.user = user;
@@ -62,25 +65,26 @@ public class Facade {
     this.majorMap = majorMap;
     this.gradReq = gradReq;
   }
+
   public User login(String email, String password) {
     UserList userList = UserList.getInstance();
     if (!userList.isLoaded()) {
         ArrayList<User> users = DataLoader.loadUsers();
         if (users != null) {
             for (User user : users) {
-                userList.addUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getID(), user.getPassword(), user.getUserType());
+                userList.addUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getID(), user.getPassword(),
+                        user.getUserType());
             }
             userList.setLoaded(true);
         } else {
             return null;
         }
     }
-    user = userList.getUser(email, password);
-    return user;
+    return userList.getUser(email, password);
 }
-  
 
-  public void signOut() {}
+  public void signOut() {
+  }
 
   public DegreeProgress checkDegreeProgress(String uscID) {
     return degreeProgress;
@@ -118,14 +122,15 @@ public class Facade {
     return null;
   }
 
-  protected void moveStudentToAnotherList(String uscID, String advisorID) {}
+  protected void moveStudentToAnotherList(String uscID, String advisorID) {
+  }
 
   protected ArrayList<Student> modifyStudentList() {
     return new ArrayList<Student>();
   }
 
   protected void modifyStudentGrades(
-    User user,
-    DegreeProgress degreeProgress
-  ) {}
+      User user,
+      DegreeProgress degreeProgress) {
+  }
 }

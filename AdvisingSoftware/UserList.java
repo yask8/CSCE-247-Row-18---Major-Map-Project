@@ -30,6 +30,13 @@ public class UserList {
     public static UserList getInstance() {
         if (userList == null) {
             userList = new UserList();
+            if (!userList.isLoaded()) {
+                ArrayList<User> userData = DataLoader.loadUsers();
+                for (User user : userData) {
+                    userList.addUser(user);
+                }
+                userList.setLoaded(true);
+            }
         }
         return userList;
     }
@@ -38,7 +45,7 @@ public class UserList {
      * Get a user by their USC ID.
      *
      * @param uscID The USC ID of the user.
-     * @return The user with the specified USC ID, or null if not found.
+     * @return The user with the specified USC ID
      */
     public User getUser(UUID uscID) {
         for (User user : users) {
@@ -46,7 +53,7 @@ public class UserList {
                 return user;
             }
         }
-        return null; // Return null if user not found
+        return null;
     }
 
     /**
@@ -54,7 +61,7 @@ public class UserList {
      *
      * @param email    The email of the user.
      * @param password The password of the user.
-     * @return The user with the specified email and password, or null if not found.
+     * @return The user with the specified email and password.
      */
     public User getUser(String email, String password) {
         for (User user : users) {
@@ -62,7 +69,7 @@ public class UserList {
                 return user;
             }
         }
-        return null; // Return null if user not found
+        return null;
     }
 
     /**
@@ -77,6 +84,15 @@ public class UserList {
      */
     public void addUser(String firstName, String lastName, String email, UUID uscID, String password, String userType) {
         User user = new User(firstName, lastName, email, uscID, password, userType);
+        users.add(user);
+    }
+
+    /**
+     * Add a new user to the list.
+     *
+     * @param user The user object to add.
+     */
+    public void addUser(User user) {
         users.add(user);
     }
 
@@ -104,31 +120,21 @@ public class UserList {
         return users;
     }
 
-    public ArrayList<Student> getAllStudents() {
-        ArrayList<Student> students = new ArrayList<>();
-        for (User user : users) {
-            if (user instanceof Student) {
-                students.add((Student) user);
-            }
-        }
-        return students;
+    /**
+     * Sets the flag indicating whether userList is loaded with data.
+     *
+     * @param loaded Boolean indicating if userList is loaded
+     */
+    public void setLoaded(boolean loaded) {
+        this.loaded = loaded;
     }
 
-  /**
-   * Sets the flag indicating whether userList is loaded with data.
-   *
-   * @param loaded Boolean indicating if userList is loaded
-   */
-  public void setLoaded(boolean loaded) {
-    this.loaded = loaded;
-  }
-
-  /**
-   * Checks if userList is loaded.
-   *
-   * @return True if userList is loaded, false otherwise
-   */
-  public boolean isLoaded() {
-    return loaded;
-  }
+    /**
+     * Checks if userList is loaded.
+     *
+     * @return True if userList is loaded, false otherwise
+     */
+    public boolean isLoaded() {
+        return loaded;
+    }
 }

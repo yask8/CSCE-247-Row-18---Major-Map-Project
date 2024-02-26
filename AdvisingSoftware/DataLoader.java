@@ -17,69 +17,55 @@ public class DataLoader extends DataConstants {
 
     /**
      * Main method to test DataLoader methods.
-     * 
-     * @param args Command-line arguments.
      */
     public static void main(String[] args) {
-        testLoadingAdmins();
+        // testLoadingAdmins();
 
-        testLoadingStudents();
-      
-        testLoadingAdvisors();
+        // testLoadingStudents();
 
-        testLoadingCourses();
+        // testLoadingAdvisors();
 
-        testLoadingMajorMaps();
+        // testLoadingCourses();
 
-        //testLoadingUsers():
+        // testLoadingMajorMaps();
+
+        LoadUsers();
     }
 
     /**
-     * Loads users from a JSON file.
-     * 
-     * @return An ArrayList of User objects loaded from the JSON file, or null if an
-     *         error occurs.
+     * Loads users (students, admins, advisors) and puts them into a single
+     * list.
+     *
+     * @return An ArrayList of User objects containing instances of user types.
      */
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<>();
 
-        try {
-            FileReader reader = new FileReader(USER_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray userJSON = (JSONArray) parser.parse(reader);
-
-            for (int i = 0; i < userJSON.size(); i++) {
-                JSONObject personJSON = (JSONObject) userJSON.get(i);
-                String firstName = (String) personJSON.get(USER_FIRST_NAME);
-                String lastName = (String) personJSON.get(USER_LAST_NAME);
-                String email = (String) personJSON.get(USER_EMAIL);
-                UUID uscID = UUID.fromString((String) personJSON.get(USER_USCID));
-                String password = (String) personJSON.get(USER_PASSWORD);
-                String userType = (String) personJSON.get(USER_TYPE);
-
-                users.add(new User(firstName, lastName, email, uscID, password, userType));
-            }
-
-            return users;
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        // Load students
+        ArrayList<Student> students = loadStudents();
+        if (students != null) {
+            users.addAll(students);
         }
 
-        return null;
+        // Load admins
+        ArrayList<Admin> admins = loadAdmin();
+        if (admins != null) {
+            users.addAll(admins);
+        }
+
+        // Load advisors
+        ArrayList<Advisor> advisors = loadAdvisors();
+        if (advisors != null) {
+            users.addAll(advisors);
+        }
+
+        return users;
     }
 
     /**
      * Loads students from a JSON file.
      * 
-     * @return An ArrayList of Student objects loaded from the JSON file, or null if
-     *         an error occurs.
-     */
-    /**
-     * Loads students from a JSON file.
-     * 
-     * @return An ArrayList of Student objects loaded from the JSON file, or null if
-     *         an error occurs.
+     * @return An ArrayList of Student objects loaded from the JSON file.
      */
     public static ArrayList<Student> loadStudents() {
         ArrayList<Student> students = new ArrayList<>();
@@ -124,8 +110,7 @@ public class DataLoader extends DataConstants {
     /**
      * Loads admins from a JSON file.
      * 
-     * @return An ArrayList of Admin objects loaded from the JSON file, or null if
-     *         an error occurs.
+     * @return An ArrayList of Admin objects loaded from the JSON file.
      */
     public static ArrayList<Admin> loadAdmin() {
         ArrayList<Admin> admin = new ArrayList<>();
@@ -162,8 +147,7 @@ public class DataLoader extends DataConstants {
     /**
      * Loads advisors from a JSON file.
      * 
-     * @return An ArrayList of Advisor objects loaded from the JSON file, or null if
-     *         an error occurs.
+     * @return An ArrayList of Advisor objects loaded from the JSON file.
      */
     public static ArrayList<Advisor> loadAdvisors() {
         ArrayList<Advisor> advisors = new ArrayList<>();
@@ -185,32 +169,39 @@ public class DataLoader extends DataConstants {
                 @SuppressWarnings("unchecked")
                 ArrayList<String> listOfAdviseeIDs = (ArrayList<String>) advisorOBJ.get(ADVISOR_LIST_OF_ADVISEES);
                 @SuppressWarnings("unchecked")
-                ArrayList<String> listofFailingAdviseeIDs = (ArrayList<String>) advisorOBJ.get(ADVISOR_LIST_OF_FAILING_STUDENTS);
+                ArrayList<String> listOfFailingAdviseeIDs = (ArrayList<String>) advisorOBJ
+                        .get(ADVISOR_LIST_OF_FAILING_STUDENTS);
                 @SuppressWarnings("unchecked")
                 ArrayList<Note> listOfNotes = (ArrayList<Note>) advisorOBJ.get(ADVISOR_LIST_OF_NOTES);
 
-
-                ArrayList<Student> listOfAdvisees = new ArrayList<>();
+                ArrayList<User> listOfAdvisees = new ArrayList<>();
+                ArrayList<User> listOfFailingAdvisees = new ArrayList<>(); // Change here
 
                 if (listOfAdviseeIDs != null) {
                     for (String studentID : listOfAdviseeIDs) {
                         UUID studentUUID = UUID.fromString(studentID);
-                        Student student = findStudentById(studentUUID);
-                        if (student != null) {
-                            listOfAdvisees.add(student);
-                        } else {
-                            System.err.println("Student with ID " + studentID + " not found.");
+                        User user = findUserById(studentUUID);
+                        if (user != null) {
+                            listOfAdvisees.add(user);
                         }
                     }
-                } else {
-                    System.err.println("List of advisee IDs is null for advisor " + uscID);
                 }
-                // Need to be changed but at least it works
-                advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType, listOfAdvisees,listOfAdvisees,listOfNotes));
+                if (listOfFailingAdviseeIDs != null) {
+                    for (String studentID : listOfFailingAdviseeIDs) {
+                        UUID studentUUID = UUID.fromString(studentID);
+                        User user = findUserById(studentUUID);
+                        if (user != null) {
+                            listOfFailingAdvisees.add(user);
+                        }
+                    }
+                }
+
+                advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType, listOfAdvisees,
+                        listOfFailingAdvisees, listOfNotes));
             }
 
-        return advisors;
-            
+            return advisors;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -221,8 +212,7 @@ public class DataLoader extends DataConstants {
     /**
      * Loads courses from a JSON file.
      * 
-     * @return An ArrayList of Course objects loaded from the JSON file, or null if
-     *         an error occurs.
+     * @return An ArrayList of Course objects loaded from the JSON file\
      */
     public static ArrayList<Course> loadCourses() {
         ArrayList<Course> courses = new ArrayList<>();
@@ -265,8 +255,8 @@ public class DataLoader extends DataConstants {
     /**
      * Loads majors from a JSON file.
      * 
-     * @return An ArrayList of MajorMap objects loaded from the JSON file, or null
-     *         if an error occurs.
+     * @return An ArrayList of MajorMap objects loaded from the JSON file
+     * 
      */
     public static ArrayList<MajorMap> loadMajors() {
         ArrayList<MajorMap> majors = new ArrayList<>();
@@ -322,7 +312,7 @@ public class DataLoader extends DataConstants {
      * Helper method to find a course by its code.
      * 
      * @param id The course code.
-     * @return The Course object if found, or null if not found.
+     * @return The Course object if found.
      */
     private static Course findCourseByCode(String id) {
         ArrayList<Course> allCourses = loadCourses();
@@ -336,24 +326,35 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
-    private static Student findStudentById(UUID uscID) {
-        ArrayList<Student> students = UserList.getInstance().getAllStudents();
-        for (Student student : students) {
-            if (student.getStudentsID().toString().equals(uscID)) {
-                return student;
+    /**
+     * Finds a user in the user list by their USC ID.
+     *
+     * @param uscID The USC ID of the user to find.
+     * @return The user with the specified USC ID
+     */
+    private static User findUserById(UUID uscID) {
+        ArrayList<User> users = UserList.getInstance().getUsers();
+        for (User user : users) {
+            if (user.getID().equals(uscID)) {
+                return user;
             }
         }
         return null;
     }
 
-    public static void testLoadingUsers() {
-        ArrayList<User> users = DataLoader.loadUsers();
-        if (users != null) {
+    /*
+     * TESTING METHODS
+     */
+    public static void LoadUsers() {
+        ArrayList<User> users = loadUsers();
+
+        if (users != null && !users.isEmpty()) {
+            System.out.println("Users loaded successfully:");
             for (User user : users) {
                 System.out.println(user.toString());
             }
         } else {
-            System.out.println("Failed to load users from the file.");
+            System.out.println("No users loaded or an error occurred.");
         }
     }
 
