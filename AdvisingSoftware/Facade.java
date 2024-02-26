@@ -66,22 +66,32 @@ public class Facade {
     this.gradReq = gradReq;
   }
 
+  /**
+   * Logs in a user with the specified email and password.
+   * If the user list is not already loaded, it loads the users using data loader
+   * 
+   * @author @Spillmag
+   *
+   * @param email    The email of the user.
+   * @param password The password of the user.
+   * @return The logged-in user if successful.
+   */
   public User login(String email, String password) {
     UserList userList = UserList.getInstance();
     if (!userList.isLoaded()) {
-        ArrayList<User> users = DataLoader.loadUsers();
-        if (users != null) {
-            for (User user : users) {
-                userList.addUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getID(), user.getPassword(),
-                        user.getUserType());
-            }
-            userList.setLoaded(true);
-        } else {
-            return null;
+      ArrayList<User> users = DataLoader.loadUsers();
+      if (users != null) {
+        for (User user : users) {
+          userList.addUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getID(), user.getPassword(),
+              user.getUserType());
         }
+        userList.setLoaded(true);
+      } else {
+        return null;
+      }
     }
     return userList.getUser(email, password);
-}
+  }
 
   public void signOut() {
   }

@@ -11,14 +11,13 @@ public class Admin extends User {
    * Private constructor
    */
   public Admin(
-    String firstName,
-    String lastName,
-    String email,
-    UUID uscID,
-    String password,
-    String userType,
-    ArrayList<String> changesMade
-  ) {
+      String firstName,
+      String lastName,
+      String email,
+      UUID uscID,
+      String password,
+      String userType,
+      ArrayList<String> changesMade) {
     super(firstName, lastName, email, uscID, password, userType);
     this.changesMade = changesMade;
   }
@@ -45,7 +44,8 @@ public class Admin extends User {
   /**
    * Allows admin to delete a course
    */
-  public void deleteCourse() {}
+  public void deleteCourse() {
+  }
 
   /**
    * Allows admin to search for a student
@@ -65,6 +65,11 @@ public class Admin extends User {
     return null;
   }
 
+  /**
+   * To string to view user details
+   * 
+   * @author @Spillmag
+   */
   public String toString() {
     String changesMadeString = "";
     if (changesMade != null && !changesMade.isEmpty()) {
@@ -74,12 +79,10 @@ public class Admin extends User {
     } else {
       changesMadeString = "None";
     }
-    return (
-      "\n********* ADMIN PROFILE *********\n" +
-      super.toString() +
-      "\n********* Change log *********\n" +
-      "Changes Made:" +
-      changesMadeString
-    );
+    return ("\n********* ADMIN PROFILE *********\n" +
+        super.toString() +
+        "\n********* Change log *********\n" +
+        "Changes Made:" +
+        changesMadeString);
   }
 }

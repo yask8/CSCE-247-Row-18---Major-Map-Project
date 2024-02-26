@@ -5,44 +5,43 @@ import java.util.UUID;
 
 public class Advisor extends User {
 
-    private ArrayList<User> listOfAdvisees;
-    private ArrayList<User> listOfFailingStudents;
-    private ArrayList<Note> listOfAdvisorNotes;
+  private ArrayList<User> listOfAdvisees;
+  private ArrayList<User> listOfFailingStudents;
+  private ArrayList<Note> listOfAdvisorNotes;
 
-    /**
-     * Advisor Constructor
-     *
-     * @param listOfAdvisees        List of advisors advisees
-     * @param listOfFailingStudents List of advisors advisees at risk of failing
-     */
-    public Advisor(
-            String firstName,
-            String lastName,
-            String email,
-            UUID uscID,
-            String password,
-            String userType,
-            ArrayList<User> listOfAdvisees,
-            ArrayList<User> listOfFailingStudents,
-            ArrayList<Note> listOfAdvisorNotes
-    ) {
-        super(firstName, lastName, email, uscID, password, userType);
-        this.listOfAdvisees = listOfAdvisees;
-        this.listOfFailingStudents = listOfFailingStudents;
-        this.listOfAdvisorNotes = listOfAdvisorNotes;
-    }
+  /**
+   * Advisor Constructor
+   *
+   * @param listOfAdvisees        List of advisors advisees
+   * @param listOfFailingStudents List of advisors advisees at risk of failing
+   */
+  public Advisor(
+      String firstName,
+      String lastName,
+      String email,
+      UUID uscID,
+      String password,
+      String userType,
+      ArrayList<User> listOfAdvisees,
+      ArrayList<User> listOfFailingStudents,
+      ArrayList<Note> listOfAdvisorNotes) {
+    super(firstName, lastName, email, uscID, password, userType);
+    this.listOfAdvisees = listOfAdvisees;
+    this.listOfFailingStudents = listOfFailingStudents;
+    this.listOfAdvisorNotes = listOfAdvisorNotes;
+  }
 
-    /**
-     * Students under the advisor at risk of failing
-     *
-     * @param listOfFailingStudents List of the students
-     * @return ArrayList of the students at risk of failure
-     */
-    public ArrayList<User> riskOfFailure(
-            ArrayList<User> listOfFailingStudents
-    ) {
-        return null;
-    }
+  /**
+   * Students under the advisor at risk of failing
+   *
+   * @param listOfFailingStudents List of the students
+   * @return ArrayList of the students at risk of failure
+   */
+  public ArrayList<User> riskOfFailure(
+      ArrayList<User> listOfFailingStudents) {
+    return null;
+  }
+
   /**
    * Allows the advisor to view a student's profile
    *
@@ -86,7 +85,8 @@ public class Advisor extends User {
    * @param student specific student to add a note to
    * @param note    note given
    */
-  public void addNote(Student student, String note) {}
+  public void addNote(Student student, String note) {
+  }
 
   /**
    * Allows the advisor to view their list of advisees
@@ -105,8 +105,7 @@ public class Advisor extends User {
    * @return list of failing students
    */
   public String viewFailingStudentList(
-    ArrayList<Student> listOfFailingStudents
-  ) {
+      ArrayList<Student> listOfFailingStudents) {
     return "";
   }
 
@@ -129,12 +128,17 @@ public class Advisor extends User {
   public ArrayList<Student> addStudentRiskOfFailure() {
     return null;
   }
+
+  /**
+   * To string to view user details
+   * 
+   * @author @Spillmag
+   */
   public String toString() {
-    return
-    "\n********* ADVISOR PROFILE *********\n" +
-    super.toString() +
-    "\nList of Advisees: " + listOfAdvisees +
-    "\nList of Failing Students: " + listOfFailingStudents +
-    "\nList of Advisor Notes: " + listOfAdvisorNotes;
+    return "\n********* ADVISOR PROFILE *********\n" +
+        super.toString() +
+        "\nList of Advisees: " + listOfAdvisees +
+        "\nList of Failing Students: " + listOfFailingStudents +
+        "\nList of Advisor Notes: " + listOfAdvisorNotes;
   }
 }

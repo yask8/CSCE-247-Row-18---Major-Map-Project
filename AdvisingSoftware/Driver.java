@@ -22,6 +22,10 @@ public class Driver {
     scenario5();
   }
 
+  /*
+   * @author @Spillmag
+   * Tests login method
+   */
   public void scenario1() {
     System.out.println("Scenario 1: Login");
 

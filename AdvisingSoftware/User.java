@@ -3,8 +3,7 @@ package AdvisingSoftware;
 import java.util.UUID;
 
 /**
- * @author Owen Shumate
- *         Represents the User
+ * @author Owen Shumate Represents the User
  */
 public class User {
 
@@ -95,9 +94,11 @@ public class User {
    */
   public void lookUpCourse(String code) {
   }
+
   /**
    * To string to view user details
-   * Added by @Spillmag for tesing purposes
+   * 
+   * @author @Spillmag
    */
   public String toString() {
     return ("firstName: " +
@@ -137,6 +138,7 @@ public class User {
   public String getLastName() {
     return lastName;
   }
+
   /**
    * Get the user type.
    *
