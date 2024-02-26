@@ -63,7 +63,7 @@ public class Facade {
   }
 
   public Facade() {
-    //TODO Auto-generated constructor stub
+    
   }
 
   /**
@@ -82,7 +82,9 @@ public class Facade {
 }
 
   public void signOut() {
+    user = null;
   }
+  
 
   public DegreeProgress checkDegreeProgress(String uscID) {
     return degreeProgress;
