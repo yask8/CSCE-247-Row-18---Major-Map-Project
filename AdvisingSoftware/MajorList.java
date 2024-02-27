@@ -51,16 +51,15 @@ public class MajorList {
      * @param coreEdu The Carolina Core Classes
      * @param appArea The Application Area Classes
      */
-    public void addMajor(String majorName,
+    public void addMajor(
+     String majorName,
      ArrayList<Course> majorCourses, 
-     ArrayList<Course> majorElectives, 
-     ArrayList<Course> minorElectives, 
+     ArrayList<Course> majorElectives,
      ArrayList<Course> coreEdu, 
      ArrayList<Course> appArea){
         MajorMap newMajor = new MajorMap(majorName, 
         majorCourses, 
-        majorElectives, 
-        minorElectives,
+        majorElectives,
         coreEdu, 
         appArea);
         majors.add(newMajor);
