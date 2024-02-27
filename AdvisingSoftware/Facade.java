@@ -83,7 +83,8 @@ public class Facade {
   }
 
   /**
-   * Signs out the currently logged-in user and saves any changes made during the session.
+   * Signs out the currently logged-in user and saves any changes made during the
+   * session.
    * 
    * @author @Spillmag
    */
@@ -93,7 +94,7 @@ public class Facade {
     DataWriter.saveUsers(userList);
   }
 
-  /**NEED TO MOVE THIS LOGIC INTO THE USERLIST CLASS
+  /**
    * 
    * Signs up a new user
    * Checks if the email already exists
@@ -109,34 +110,8 @@ public class Facade {
    */
   public void signUp(String firstName, String lastName, String email, String password, String userType) {
     UserList userList = UserList.getInstance();
-
-    if (userList.emailExists(email)) {
-      System.out.println("Email already exists. Please choose a different email.");
-      return;
-    }
-
-    UUID uscID = UUID.randomUUID();
-
-    if (userType.equals("STUDENT")) {
-      userList.addStudent(firstName, lastName, email, uscID, password, userType, null, null);
-    } else if (userType.equals("ADMIN")) {
-      userList.addAdmin(firstName, lastName, email, uscID, password, userType);
-    } else if (userType.equals("ADVISOR")) {
-      userList.addAdvisor(firstName, lastName, email, uscID, password, userType);
-    } else {
-      System.out.println("Invalid user type. Please specify either 'STUDENT', 'ADMIN', or 'ADVISOR'.");
-      return;
-    }
-
-    User loggedInUser = userList.getUser(email, password);
-
-    if (loggedInUser != null) {
-      System.out.println("Sign up successful! Logged in as:\n\n" + loggedInUser.toString());
-    } else {
-      System.out.println("Sign up failed. Unable to log in.");
-    }
+    userList.signUp(firstName, lastName, email, password, userType);
   }
-
 
   public DegreeProgress checkDegreeProgress(String uscID) {
     return degreeProgress;

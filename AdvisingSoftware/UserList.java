@@ -190,5 +190,32 @@ public class UserList {
         }
         return false;
     }
+    public void signUp(String firstName, String lastName, String email, String password, String userType) {
+        if (emailExists(email)) {
+            System.out.println("Email already exists. Please choose a different email.");
+            return;
+        }
+
+        UUID uscID = UUID.randomUUID();
+
+        if (userType.equals("STUDENT")) {
+            addStudent(firstName, lastName, email, uscID, password, userType, null, null);
+        } else if (userType.equals("ADMIN")) {
+            addAdmin(firstName, lastName, email, uscID, password, userType);
+        } else if (userType.equals("ADVISOR")) {
+            addAdvisor(firstName, lastName, email, uscID, password, userType);
+        } else {
+            System.out.println("Invalid user type. Please specify either 'STUDENT', 'ADMIN', or 'ADVISOR'.");
+            return;
+        }
+
+        User loggedInUser = getUser(email, password);
+
+        if (loggedInUser != null) {
+            System.out.println("Sign up successful! Logged in as:\n\n" + loggedInUser.toString());
+        } else {
+            System.out.println("Sign up failed. Unable to log in.");
+        }
+    }
 
 }

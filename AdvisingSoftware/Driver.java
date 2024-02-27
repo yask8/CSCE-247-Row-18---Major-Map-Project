@@ -127,8 +127,6 @@ public class Driver {
       signupPassword,
       signupUserType
     );
-
-    System.out.println("\nNew student will be signed out now\n");
     facade.signOut();
   }
 
