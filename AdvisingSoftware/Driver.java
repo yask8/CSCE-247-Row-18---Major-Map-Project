@@ -153,6 +153,7 @@ public class Driver {
     System.out.println(loggedInUser.getFirstName() + " Current Info:");
     System.out.println(loggedInUser.toString());
 
+    //LOGIC 
     // Assuming the user is a student and wants to load courses
     if (loggedInUser.getUserType().equals("STUDENT")) {
         CourseList courseList = CourseList.getInstance();
@@ -180,9 +181,10 @@ public class Driver {
             courseList.setLoaded(true); // Setting loaded status
             System.out.println("Courses loaded successfully.");
         }
-
+        
         // Assuming the user wants to print course details
         System.out.println("Printing Course Details:");
+        // LOGIC 
         ArrayList<Course> allCourses = courseList.getCourses();
         for (Course course : allCourses) {
             System.out.println(course.toString());

@@ -207,7 +207,7 @@ public class DataLoader extends DataConstants {
     /**
      * Loads courses from a JSON file.
      * 
-     * @return An ArrayList of Course objects loaded from the JSON file\
+     * @return An ArrayList of Course objects loaded from the JSON file
      */
     public static ArrayList<Course> loadCourses() {
         ArrayList<Course> courses = new ArrayList<>();
