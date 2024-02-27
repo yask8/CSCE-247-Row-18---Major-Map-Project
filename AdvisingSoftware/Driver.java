@@ -142,8 +142,8 @@ public class Driver {
     System.out.println("Scenario 5: Loading Majors and Printing Respective Major Map");
     System.out.println("--------------------------------------------");
     // Hardcoding the email and password
-    String email = "";
-    String password = "";
+    String email = "rio.farrah2004@gmail.com";
+    String password = "Real?dejaneir0";
     // Creating a user object that operates the facade login method
     User loggingIn = facade.login(email, password);
     // Checking if the user is logged in
