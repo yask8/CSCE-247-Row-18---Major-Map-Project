@@ -1,7 +1,6 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 /**
  * @author Lia Zhao (zhaolia9)
@@ -67,7 +66,6 @@ public class Facade {
   public Facade() {
 
   }
-
   /**
    * Logs in a user with the specified email and password.
    * If the user list is not already loaded, it loads the users using data loader
@@ -80,7 +78,7 @@ public class Facade {
    */
   public User login(String email, String password) {
     UserList userList = UserList.getInstance();
-    return userList.getUser(email, password);
+    return userList.getUserByLoginInfo(email, password);
   }
 
   /**

@@ -144,6 +144,41 @@ public class CourseList {
     return loaded;
   }
 
+  public void loadCourses(User user) {
+    if (user != null && user.getUserType().equals("STUDENT")) {
+        if (!loaded) {
+            ArrayList<Course> courses = DataLoader.loadCourses();
+            for (Course course : courses) {
+                addCourse(
+                    course.getName(),
+                    course.getCode(),
+                    course.getDescription(),
+                    course.getCreditHours(),
+                    course.getSubject(),
+                    course.getPassGrade(),
+                    course.isElective(),
+                    course.isCarolinaCore(),
+                    course.getPreReqs()
+                );
+            }
+            loaded = true;
+            System.out.println("Courses loaded successfully.");
+        } else {
+            System.out.println("Courses are already loaded.");
+        }
+    } else {
+        System.out.println("Only students can load courses.");
+    }
+}
+
+public void displayAllCourses() {
+  System.out.println("Printing Course Details:");
+  ArrayList<Course> allCourses = getCourses();
+  for (Course course : allCourses) {
+      System.out.println(course.toString());
+  }
+}
+
   /**
    * Gets the list of courses.
    *

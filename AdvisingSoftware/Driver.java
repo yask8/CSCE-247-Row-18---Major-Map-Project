@@ -131,7 +131,7 @@ public class Driver {
   }
 
   public void scenario4() {
-    System.out.println("\n Scenario 4: Loading Courses and Printing Respective Course Details");
+    System.out.println("\nScenario 4: Loading Courses and Printing Respective Course Details");
     System.out.println("--------------------------------------------");
 
     // Hardcoding the email and password
@@ -153,46 +153,12 @@ public class Driver {
     System.out.println(loggedInUser.getFirstName() + " Current Info:");
     System.out.println(loggedInUser.toString());
 
-    //LOGIC 
-    // Assuming the user is a student and wants to load courses
-    if (loggedInUser.getUserType().equals("STUDENT")) {
-        CourseList courseList = CourseList.getInstance();
-        
-        // Check if CourseList is already loaded
-        if (courseList.isLoaded()) {
-            System.out.println("Courses are loaded.");
-        } else {
-            // Loading courses
-            ArrayList<Course> courses = DataLoader.loadCourses();
-            for (Course course : courses) {
-                // Adding courses to the CourseList
-                courseList.addCourse(
-                    course.getName(),
-                    course.getCode(),
-                    course.getDescription(),
-                    course.getCreditHours(),
-                    course.getSubject(),
-                    course.getPassGrade(),
-                    course.isElective(),
-                    course.isCarolinaCore(),
-                    course.getPreReqs()
-                );
-            }
-            courseList.setLoaded(true); // Setting loaded status
-            System.out.println("Courses loaded successfully.");
-        }
-        
-        // Assuming the user wants to print course details
-        System.out.println("Printing Course Details:");
-        // LOGIC 
-        ArrayList<Course> allCourses = courseList.getCourses();
-        for (Course course : allCourses) {
-            System.out.println(course.toString());
-        }
-    } else {
-        System.out.println("Only students can load and view courses.");
+        // Load courses
+        CourseList.getInstance().getCourses();
+
+        // Print Course Details
+        CourseList.getInstance().displayAllCourses();
     }
-}
 
   /**
    * Scenario to test the MajorList
@@ -216,18 +182,14 @@ public class Driver {
     System.out.println(loggingIn.getFirstName() + " Current Info:");
     System.out.println(loggingIn.toString());
     // User Loads Majors
-    if(facade.loadedMajors()){
-      System.out.println("Majors loaded successfully.");
-    } else {
-      System.out.println("Majors failed to load.");
+    // LOGIC that should go in majorList should be using get instance here i think to load data
+    if(loggingIn.getUserType().equals("STUDENT")){
+        ArrayList<MajorMap> major =  DataLoader.loadMajors();
+        if(MajorList.getInstance().isLoaded()){
+          
+        }
     }
-    System.out.println();
-    // User Prints Respective Major Map
-    if(facade.isStudent(loggingIn)) {
-      
-    }
-    System.out.println("-----Displaying " + loggingIn.getFirstName() + "'s Major Map ------");
-    //facade.displayMajorMap();
+    //Major map isnt being printed and all user shoulder be able to print major maps not just students
   }
 
   public static void main(String[] args) {
