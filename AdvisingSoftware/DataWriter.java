@@ -1,13 +1,18 @@
 package AdvisingSoftware;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+/**
+ * TODO
+ * This thing writes but does not put tje brackets around the json files which fucks it all up
+ * It doesnt pull all the users before writer or maybe over writes 
+ */
+
 public class DataWriter extends DataConstants {
-    // TODO it writes but doesn't append need go through the logic
+    
     public static void saveUsers(ArrayList<User> users) {
         for (User user : users) {
             if (user instanceof Student) {
@@ -19,22 +24,21 @@ public class DataWriter extends DataConstants {
             }
         }
     }
-
+    
     public static void saveStudent(Student student) {
         JSONObject studentJSON = getStudentJSON(student);
         writeJSONToFile(studentJSON, STUDENT_FILE_NAME);
     }
-
+    
     public static void saveAdmin(Admin admin) {
         JSONObject adminJSON = getAdminJSON(admin);
         writeJSONToFile(adminJSON, ADMIN_FILE_NAME);
     }
-
+    
     public static void saveAdvisor(Advisor advisor) {
         JSONObject advisorJSON = getAdvisorJSON(advisor);
         writeJSONToFile(advisorJSON, ADVISOR_FILE_NAME);
-    }
-
+    }    
     public static JSONObject getStudentJSON(Student student) {
         JSONObject studentDetails = new JSONObject();
         studentDetails.put(USER_FIRST_NAME, student.getFirstName());
@@ -53,7 +57,7 @@ public class DataWriter extends DataConstants {
         studentDetails.put(STUDENT_ADVISOR_NOTES, student.getAdvisorNotes());
         return studentDetails;
     }
-
+    
     public static JSONObject getAdminJSON(Admin admin) {
         JSONObject adminDetails = new JSONObject();
         adminDetails.put(USER_FIRST_NAME, admin.getFirstName());
@@ -65,7 +69,7 @@ public class DataWriter extends DataConstants {
         adminDetails.put(ADMIN_CHANGES_MADE, admin.getChangesMade());
         return adminDetails;
     }
-
+    
     public static JSONObject getAdvisorJSON(Advisor advisor) {
         JSONObject advisorDetails = new JSONObject();
         advisorDetails.put(USER_FIRST_NAME, advisor.getFirstName());
@@ -79,7 +83,6 @@ public class DataWriter extends DataConstants {
         advisorDetails.put(ADVISOR_LIST_OF_NOTES, advisor.getListOfAdvisees());
         return advisorDetails;
     }
-
     public static void saveCourses(ArrayList<Course> courses) {
         JSONArray coursesArray = new JSONArray();
         for (Course course : courses) {
@@ -143,7 +146,7 @@ public class DataWriter extends DataConstants {
             e.printStackTrace();
         }
     }
-
+    
     private static void writeJSONToFile(JSONArray jsonArray, String fileName) {
         try (FileWriter file = new FileWriter(fileName)) {
             file.write(jsonArray.toJSONString());

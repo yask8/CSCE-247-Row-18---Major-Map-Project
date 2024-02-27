@@ -82,10 +82,11 @@ public class Facade {
     return userList.getUser(email, password);
   }
 
+  // Works for now might need to rework it becuase of overwriting
   public void signOut() {
     user = null;
-    ArrayList<User> userList = UserList.getInstance().getUsers();
-    DataWriter.saveUsers(userList);
+    //ArrayList<User> userList = UserList.getInstance().getUsers();
+    //DataWriter.saveUsers(userList);
   }
 
   public void signUp(String firstName, String lastName, String email, String password, String userType) {

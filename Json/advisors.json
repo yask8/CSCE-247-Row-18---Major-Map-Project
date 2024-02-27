@@ -1,11 +1,11 @@
-{
+[{
   "firstName": "Michael",
   "lastName": "Flanagan",
   "password": "philly$Gr33n",
   "uscID": "af593075-ea9e-4ed7-be74-4604863b702b",
-  "listOfFailingStudents": null,
-  "listOfAdvisorNotes": null,
+  "listOfFailingStudents": [],
+  "listOfAdvisorNotes": [],
   "userType": "ADVISOR",
-  "listOfAdivsees": null,
+  "listOfAdivsees": [],
   "email": "FlanaganMichael@gmail.com"
-}
+}]

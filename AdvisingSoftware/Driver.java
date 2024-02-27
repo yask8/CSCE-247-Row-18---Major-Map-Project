@@ -64,11 +64,11 @@ public class Driver {
     facade.signOut();
 
     // Hardcoded email and password for signup
-    String signupEmail = "newstudent@example.com";
-    String signupPassword = "newPassword";
-    String signupFirstName = "John";
-    String signupLastName = "Doe";
-    String signupUserType = "STUDENT";
+    // String signupEmail = "newstudent@example.com";
+    // String signupPassword = "newPassword";
+    // String signupFirstName = "John";
+    // String signupLastName = "Doe";
+    // String signupUserType = "STUDENT";
 
     // System.out.println("\nSigning up a new student\n");
     // facade.signUp(signupFirstName, signupLastName, signupEmail, signupPassword,

@@ -118,34 +118,42 @@ public class DataLoader extends DataConstants {
      * @return An ArrayList of Admin objects loaded from the JSON file.
      */
     public static ArrayList<Admin> loadAdmin() {
-        ArrayList<Admin> admin = new ArrayList<>();
-
+        ArrayList<Admin> admins = new ArrayList<>();
+    
         try {
             FileReader reader = new FileReader(ADMIN_FILE_NAME);
             JSONParser parser = new JSONParser();
             JSONArray adminJSON = (JSONArray) parser.parse(reader);
-
+    
             for (int i = 0; i < adminJSON.size(); i++) {
                 JSONObject adminOBJ = (JSONObject) adminJSON.get(i);
-                String firstName = (String) adminOBJ.get(USER_FIRST_NAME);
-                String lastName = (String) adminOBJ.get(USER_LAST_NAME);
-                String email = (String) adminOBJ.get(USER_EMAIL);
-                String uscIDString = (String) adminOBJ.get(USER_USCID);
+                String firstName = (String) adminOBJ.get("firstName");
+                String lastName = (String) adminOBJ.get("lastName");
+                String email = (String) adminOBJ.get("email");
+                String uscIDString = (String) adminOBJ.get("uscID");
                 UUID uscID = UUID.fromString(uscIDString);
-                String password = (String) adminOBJ.get(USER_PASSWORD);
-                String userType = (String) adminOBJ.get(USER_TYPE);
-                @SuppressWarnings("unchecked")
-                ArrayList<String> changesMade = (ArrayList<String>) adminOBJ.get(ADMIN_CHANGES_MADE);
-
-                admin.add(new Admin(firstName, lastName, email, uscID, password, userType, changesMade));
+                String password = (String) adminOBJ.get("password");
+                String userType = (String) adminOBJ.get("userType");
+    
+                // Handle null or empty arrays for changesMade
+                JSONArray changesMadeJSON = (JSONArray) adminOBJ.get("changesMade");
+                ArrayList<String> changesMade = new ArrayList<>();
+                if (changesMadeJSON != null) {
+                    for (Object changeObj : changesMadeJSON) {
+                        String change = (String) changeObj;
+                        changesMade.add(change);
+                    }
+                }
+    
+                admins.add(new Admin(firstName, lastName, email, uscID, password, userType, changesMade));
             }
-
-            return admin;
-
+    
+            return admins;
+    
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+    
         return null;
     }
 
@@ -156,64 +164,46 @@ public class DataLoader extends DataConstants {
      */
     public static ArrayList<Advisor> loadAdvisors() {
         ArrayList<Advisor> advisors = new ArrayList<>();
-
+    
         try {
             FileReader reader = new FileReader(ADVISOR_FILE_NAME);
             JSONParser parser = new JSONParser();
             JSONArray advisorJSON = (JSONArray) parser.parse(reader);
-
+    
             for (int i = 0; i < advisorJSON.size(); i++) {
                 JSONObject advisorOBJ = (JSONObject) advisorJSON.get(i);
-                String firstName = (String) advisorOBJ.get(USER_FIRST_NAME);
-                String lastName = (String) advisorOBJ.get(USER_LAST_NAME);
-                String email = (String) advisorOBJ.get(USER_EMAIL);
-                String uscIDString = (String) advisorOBJ.get(USER_USCID);
+                String firstName = (String) advisorOBJ.get("firstName");
+                String lastName = (String) advisorOBJ.get("lastName");
+                String email = (String) advisorOBJ.get("email");
+                String uscIDString = (String) advisorOBJ.get("uscID");
                 UUID uscID = UUID.fromString(uscIDString);
-                String password = (String) advisorOBJ.get(USER_PASSWORD);
-                String userType = (String) advisorOBJ.get(USER_TYPE);
-                @SuppressWarnings("unchecked")
-                ArrayList<String> listOfAdviseeIDs = (ArrayList<String>) advisorOBJ.get(ADVISOR_LIST_OF_ADVISEES);
-                @SuppressWarnings("unchecked")
-                ArrayList<String> listOfFailingAdviseeIDs = (ArrayList<String>) advisorOBJ
-                        .get(ADVISOR_LIST_OF_FAILING_STUDENTS);
-                @SuppressWarnings("unchecked")
-                ArrayList<Note> listOfNotes = (ArrayList<Note>) advisorOBJ.get(ADVISOR_LIST_OF_NOTES);
-
+                String password = (String) advisorOBJ.get("password");
+                String userType = (String) advisorOBJ.get("userType");
+    
+                JSONArray listOfAdviseesJSON = (JSONArray) advisorOBJ.get("listOfAdvisees");
                 ArrayList<User> listOfAdvisees = new ArrayList<>();
-                ArrayList<User> listOfFailingAdvisees = new ArrayList<>(); // Change here
-
-                if (listOfAdviseeIDs != null) {
-                    for (String studentID : listOfAdviseeIDs) {
-                        UUID studentUUID = UUID.fromString(studentID);
-                        User user = findUserById(studentUUID);
-                        if (user != null) {
-                            listOfAdvisees.add(user);
-                        }
+                if (listOfAdviseesJSON != null) {
+                    for (Object adviseeObj : listOfAdviseesJSON) {
                     }
                 }
-                if (listOfFailingAdviseeIDs != null) {
-                    for (String studentID : listOfFailingAdviseeIDs) {
-                        UUID studentUUID = UUID.fromString(studentID);
-                        User user = findUserById(studentUUID);
-                        if (user != null) {
-                            listOfFailingAdvisees.add(user);
-                        }
-                    }
-                }
-
-                advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType, listOfAdvisees,
-                        listOfFailingAdvisees, listOfNotes));
+    
+                JSONArray listOfFailingStudentsJSON = (JSONArray) advisorOBJ.get("listOfFailingStudents");
+                ArrayList<User> listOfFailingStudents = new ArrayList<>();    
+                JSONArray listOfAdvisorNotesJSON = (JSONArray) advisorOBJ.get("listOfAdvisorNotes");
+                ArrayList<Note> listOfAdvisorNotes = new ArrayList<>();
+    
+                advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType,
+                        listOfAdvisees, listOfFailingStudents, listOfAdvisorNotes));
             }
-
+    
             return advisors;
-
+    
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+    
         return null;
     }
-
     /**
      * Loads courses from a JSON file.
      * 
