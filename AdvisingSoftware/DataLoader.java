@@ -265,12 +265,14 @@ public class DataLoader extends DataConstants {
                 JSONObject majorObj = (JSONObject) majorJSON.get(i);
                 String name = (String) majorObj.get(MAJOR_NAME);
 
+
+                UUID id = (UUID) majorObj.get(MAJOR_UUID);
                 ArrayList<Course> courses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_COURSES));
                 ArrayList<Course> electives = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_ELECTIVE));
                 ArrayList<Course> coreCourses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_CORE_EDU));
                 ArrayList<Course> appAreaCourses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_APP_AREA));
 
-                MajorMap major = new MajorMap(name, courses, electives, coreCourses, appAreaCourses);
+                MajorMap major = new MajorMap(id,name, courses, electives, coreCourses, appAreaCourses);
                 majors.add(major);
             }
             return majors;
