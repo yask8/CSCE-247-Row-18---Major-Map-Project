@@ -62,25 +62,6 @@ public class Driver {
     }
     System.out.println("\nAdmin will be signed out now\n");
     facade.signOut();
-
-    // Hardcoded email and password for signup
-    String signupEmail = "newstudent@example.com";
-    String signupPassword = "newPassword";
-    String signupFirstName = "John";
-    String signupLastName = "Doe";
-    String signupUserType = "STUDENT";
-
-    System.out.println("\nSigning up a new student\n");
-    facade.signUp(
-      signupFirstName,
-      signupLastName,
-      signupEmail,
-      signupPassword,
-      signupUserType
-    );
-
-    System.out.println("\nNew student will be signed out now\n");
-    facade.signOut();
   }
 
   public void scenario2() {
@@ -130,7 +111,25 @@ public class Driver {
   }
 
   public void scenario3() {
-    System.out.println();
+    System.out.println("Scenario 3: Sign Up");
+    // Hardcoded email and password for signup
+    String signupEmail = "newstudent@example.com";
+    String signupPassword = "newPassword";
+    String signupFirstName = "John";
+    String signupLastName = "Doe";
+    String signupUserType = "STUDENT";
+
+    System.out.println("\nSigning up a new student\n");
+    facade.signUp(
+      signupFirstName,
+      signupLastName,
+      signupEmail,
+      signupPassword,
+      signupUserType
+    );
+
+    System.out.println("\nNew student will be signed out now\n");
+    facade.signOut();
   }
 
   public void scenario4() {
