@@ -44,6 +44,7 @@ public class Driver {
      } else {
        System.out.println("Login failed. Incorrect email or password.");
      }
+     
      System.out.println("\nStudent will be signed out now\n");
      facade.signOut();
 
