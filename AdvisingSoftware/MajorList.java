@@ -10,7 +10,7 @@ public class MajorList {
     /**
      * Attributes
      */
-    static private MajorList majorList;
+    private static MajorList majorList;
     private ArrayList<MajorMap> majors;
     /**
      * Private constructor for MajorList
@@ -23,7 +23,10 @@ public class MajorList {
      * Get the singleton instance of MajorList
      * @return the singleton instance of MajorList
      */
-    static public MajorList getInstance(){
+    public static MajorList getInstance(){
+        if(majorList == null){
+            majorList = new MajorList();
+        }
         return majorList;
     }
     /**
@@ -32,6 +35,11 @@ public class MajorList {
      * @return The major or null if not found
      */
     public MajorMap getMajor(String major){
+        for(MajorMap existingMajor : majors){
+            if(existingMajor.getMajor().equals(major)){
+                return major;
+            }
+        }
         return null;
     }
     /**
@@ -43,12 +51,32 @@ public class MajorList {
      * @param coreEdu The Carolina Core Classes
      * @param appArea The Application Area Classes
      */
-    public void addMajor(String majorName, ArrayList<Course> majorCourses, ArrayList<Course> majorElectives, ArrayList<Course> minorElectives, ArrayList<Course> coreEdu, ArrayList<Course> appArea){
+    public void addMajor(String majorName,
+     ArrayList<Course> majorCourses, 
+     ArrayList<Course> majorElectives, 
+     ArrayList<Course> minorElectives, 
+     ArrayList<Course> coreEdu, 
+     ArrayList<Course> appArea){
+        MajorMap newMajor = new MajorMap(majorName, 
+        majorCourses, 
+        majorElectives, 
+        minorElectives,
+        coreEdu, 
+        appArea);
+        majors.add(newMajor);
+
     }
     /**
      * Removes a major from the list of majors by their name
      * @param major The name of the major
      */
     public void removeMajor(String major){
+        for(MajorMap existingMajors :  majors){
+            if(existingMajors.getMajor().equals(major)){
+                majors.remove(major);
+            } else if (major == null){
+                System.out.println(major + " does not exist.");
+            }
+        }
     }
 }
