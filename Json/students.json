@@ -1,35 +1,35 @@
 [
-  {
-    "uscID": "faa91c60-3201-4870-84c8-9473df2b6a1e",
-    "firstName": "Farrah",
-    "lastName": "Rio",
-    "email": "rio.farrah2004@gmail.com",
-    "password": "Real?dejaneir0",
-    "userType": "STUDENT",
-    "class": "Sophomore",
-    "major": "0bc9301f-9b48-47f0-b47a-a555c3b30c5d",
-    "creditHours": 47,
-    "completedCourses": [
-      "ENGL101",
-      "MATH141",
-      "CSCE145",
-      "CSCE190",
-      "MATH142",
-      "MART201",
-      "ENGL102",
-      "PHYS211",
-      "PHYS211L",
-      "CSCE215",
-      "CSCE211",
-      "CSCE240",
-      "MATH374",
-      "PHYS212",
-      "PHYS212L",
-      "SPCH140"
-    ],
-    "gpa": 4.0,
-    "coursePlanner": null,
-    "degreeProgress": null,
-    "advisorNotes": null
-  }
+    {
+        "uscID": "faa91c60-3201-4870-84c8-9473df2b6a1e",
+        "firstName": "Farrah",
+        "lastName": "Rio",
+        "email": "rio.farrah2004@gmail.com",
+        "password": "Real?dejaneir0",
+        "userType": "STUDENT",
+        "class": "Sophomore",
+        "major": "0bc9301f-9b48-47f0-b47a-a555c3b30c5d",
+        "creditHours": 47,
+        "completedCourses": {
+            "ENGL101": "A",
+            "MATH141": "A",
+            "CSCE145": "A",
+            "CSCE190": "A",
+            "MATH142": "A",
+            "MART201": "A",
+            "ENGL102": "A",
+            "PHYS211": "A",
+            "PHYS211L": "A",
+            "CSCE215": "A",
+            "CSCE211": "A",
+            "CSCE240": "A",
+            "MATH374": "A",
+            "PHYS212": "A",
+            "PHYS212L": "A",
+            "SPCH140": "A"
+        },
+        "gpa": 4.00,
+        "coursePlanner": null,
+        "degreeProgress": null,
+        "advisorNotes": null
+    }
 ]

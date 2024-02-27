@@ -104,8 +104,7 @@ public class MajorMap {
    * Returns String of the details of the major map.
    */
   public String toString() {
-    return 
-        "\n********* MAJOR MAP *********\n" + 
+    return "\n********* MAJOR MAP *********\n" +
         "Major: " + this.major + "\n" +
         "MajorMap ID: " + this.id + "\n" +
         "\n********* Major Courses *********\n" +
@@ -118,27 +117,81 @@ public class MajorMap {
         "Application Area: " + this.appArea + "\n";
   }
 
+  /**
+   * Get the UUID of the MajorMap.
+   *
+   * @return The UUID of the MajorMap.
+   */
+  public UUID getId() {
+    return id;
+  }
+
+  /**
+   * Get the name of the major.
+   *
+   * @return The name of the major.
+   */
+  public String getMajor() {
+    return major;
+  }
+
+  /**
+   * Get the list of major courses.
+   *
+   * @return The list of major courses.
+   */
+  public ArrayList<Course> getMajorCourses() {
+    return majorCourses;
+  }
+
+  /**
+   * Get the list of major elective courses.
+   *
+   * @return The list of major elective courses.
+   */
+  public ArrayList<Course> getElectives() {
+    return majorElective;
+  }
+
+  /**
+   * Get the list of core courses for the major.
+   *
+   * @return The list of core courses for the major.
+   */
+  public ArrayList<Course> getCoreEdu() {
+    return coreEdu;
+  }
+
+  /**
+   * Get the list of courses for the major's application area.
+   *
+   * @return The list of courses for the major's application area.
+   */
+  public ArrayList<Course> getAppArea() {
+    return appArea;
+  }
+
   public boolean containsCourse(Course course) {
     for (Course c : majorCourses) {
-        if (c.equals(course)) {
-            return true;
-        }
+      if (c.equals(course)) {
+        return true;
+      }
     }
     for (Course c : majorElective) {
-        if (c.equals(course)) {
-            return true;
-        }
+      if (c.equals(course)) {
+        return true;
+      }
     }
     for (Course c : coreEdu) {
-        if (c.equals(course)) {
-            return true;
-        }
+      if (c.equals(course)) {
+        return true;
+      }
     }
     for (Course c : appArea) {
-        if (c.equals(course)) {
-            return true;
-        }
+      if (c.equals(course)) {
+        return true;
+      }
     }
     return false;
-}
+  }
 }

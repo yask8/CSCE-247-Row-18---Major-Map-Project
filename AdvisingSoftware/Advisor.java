@@ -128,6 +128,32 @@ public class Advisor extends User {
   public ArrayList<Student> addStudentRiskOfFailure() {
     return null;
   }
+   /**
+   * Getter for listOfAdvisees
+   *
+   * @return ArrayList of advisees under the advisor
+   */
+  public ArrayList<User> getListOfAdvisees() {
+    return listOfAdvisees;
+  }
+
+  /**
+   * Getter for listOfFailingStudents
+   *
+   * @return ArrayList of failing students under the advisor
+   */
+  public ArrayList<User> getListOfFailingStudents() {
+    return listOfFailingStudents;
+  }
+
+  /**
+   * Getter for listOfAdvisorNotes
+   *
+   * @return ArrayList of advisor notes
+   */
+  public ArrayList<Note> getListOfAdvisorNotes() {
+    return listOfAdvisorNotes;
+  }
 
   /**
    * To string to view user details

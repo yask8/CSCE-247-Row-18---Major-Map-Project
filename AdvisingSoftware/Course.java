@@ -165,31 +165,113 @@ public class Course {
         "year: " + year + '\n';
   }
 
-  /**
-   * Getter method for retrieving the UUID of the course.
-   * 
-   * @return The UUID of the course.
-   */
-  public String getID() {
-    return id;
+
+    /**
+     * Get the UUID of the course.
+     * 
+     * @return The UUID of the course.
+     */
+    public String getID() {
+      return id;
   }
 
   /**
-   * Checks if the course is an elective.
+   * Get the name of the course.
    * 
-   * @return {@code true} if the course is an elective, {@code false} otherwise.
+   * @return The name of the course.
+   */
+  public String getName() {
+      return name;
+  }
+
+  /**
+   * Get the code of the course.
+   * 
+   * @return The code of the course.
+   */
+  public String getCode() {
+      return code;
+  }
+
+  /**
+   * Get the description of the course.
+   * 
+   * @return The description of the course.
+   */
+  public String getDescription() {
+      return description;
+  }
+
+  /**
+   * Get the credit hours of the course.
+   * 
+   * @return The credit hours of the course.
+   */
+  public int getCreditHours() {
+      return creditHours;
+  }
+
+  /**
+   * Get the subject of the course.
+   * 
+   * @return The subject of the course.
+   */
+  public String getSubject() {
+      return subject;
+  }
+
+  /**
+   * Get the pass grade of the course.
+   * 
+   * @return The pass grade of the course.
+   */
+  public char getPassGrade() {
+      return passGrade;
+  }
+
+  /**
+   * Check if the course is elective.
+   * 
+   * @return {@code true} if the course is elective, {@code false} otherwise.
    */
   public boolean isElective() {
-    return elective;
+      return elective;
   }
 
   /**
-   * Checks if the course is a Carolina Core course.
+   * Check if the course is a Carolina Core course.
    * 
    * @return {@code true} if the course is a Carolina Core course, {@code false}
    *         otherwise.
    */
   public boolean isCarolinaCore() {
-    return carolinaCore;
+      return carolinaCore;
+  }
+
+  /**
+   * Get the list of prerequisites for the course.
+   * 
+   * @return The list of prerequisites for the course.
+   */
+  public ArrayList<Course> getPreReqs() {
+      return preReqs;
+  }
+
+  /**
+   * Get the semester of the course.
+   * 
+   * @return The semester of the course.
+   */
+  public String getSemester() {
+      return semester;
+  }
+
+  /**
+   * Get the year of the course.
+   * 
+   * @return The year of the course.
+   */
+  public String getYear() {
+      return year;
   }
 }

@@ -1,6 +1,7 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * @author Lia Zhao (zhaolia9)
@@ -63,7 +64,7 @@ public class Facade {
   }
 
   public Facade() {
-    
+
   }
 
   /**
@@ -79,12 +80,38 @@ public class Facade {
   public User login(String email, String password) {
     UserList userList = UserList.getInstance();
     return userList.getUser(email, password);
-}
+  }
 
   public void signOut() {
     user = null;
+    ArrayList<User> userList = UserList.getInstance().getUsers();
+    DataWriter.saveUsers(userList);
   }
-  
+
+  public void signUp(String firstName, String lastName, String email, String password, String userType) {
+    UserList userList = UserList.getInstance();
+    UUID uscID = UUID.randomUUID();
+
+    if (userType.equals("STUDENT")) {
+      userList.addStudent(firstName, lastName, email, uscID, password, userType, null, null);
+    } else if (userType.equals("ADMIN")) {
+      userList.addAdmin(firstName, lastName, email, uscID, password, userType);
+    } else if (userType.equals("ADVISOR")) {
+      userList.addAdvisor(firstName, lastName, email, uscID, password, userType);
+    } else {
+      System.out.println("Invalid user type. Please specify either 'STUDENT', 'ADMIN', or 'ADVISOR'.");
+      return;
+    }
+
+    User loggedInUser = userList.getUser(email, password);
+
+    if (loggedInUser != null) {
+      System.out.println("Sign up successful! Logged in as:");
+      System.out.println(loggedInUser.toString());
+    } else {
+      System.out.println("Sign up failed. Unable to log in.");
+    }
+  }
 
   public DegreeProgress checkDegreeProgress(String uscID) {
     return degreeProgress;

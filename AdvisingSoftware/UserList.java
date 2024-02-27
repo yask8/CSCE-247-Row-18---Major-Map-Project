@@ -73,18 +73,63 @@ public class UserList {
     }
 
     /**
-     * Add a new user to the list.
+     * Add a new student to the list.
      *
-     * @param firstName The first name of the user.
-     * @param lastName  The last name of the user.
-     * @param email     The email of the user.
-     * @param uscID     The USC ID of the user.
-     * @param password  The password of the user.
-     * @param userType  The type of the user.
+     * @param firstName The first name of the student.
+     * @param lastName  The last name of the student.
+     * @param email     The email of the student.
+     * @param uscID     The USC ID of the student.
+     * @param password  The password of the student.
      */
-    public void addUser(String firstName, String lastName, String email, UUID uscID, String password, String userType) {
-        User user = new User(firstName, lastName, email, uscID, password, userType);
-        users.add(user);
+    /**
+     * Add a new student to the list.
+     *
+     * @param firstName The first name of the student.
+     * @param lastName  The last name of the student.
+     * @param email     The email of the student.
+     * @param uscID     The USC ID of the student.
+     * @param password  The password of the student.
+     * @param userType  The type of the user (e.g., "STUDENT").
+     * @param year      The student's academic year.
+     * @param major     The student's major.
+     */
+    public void addStudent(String firstName, String lastName, String email, UUID uscID, String password,
+            String userType, String year, String major) {
+        Student student = new Student(firstName, lastName, email, uscID, password, userType, year, major, 0, null, 0,
+                null, null, null);
+        users.add(student);
+    }
+
+    /**
+     * Add a new admin to the list.
+     *
+     * @param firstName The first name of the admin.
+     * @param lastName  The last name of the admin.
+     * @param email     The email of the admin.
+     * @param uscID     The USC ID of the admin.
+     * @param password  The password of the admin.
+     * @param userType  The type of the user (e.g., "ADMIN").
+     */
+    public void addAdmin(String firstName, String lastName, String email, UUID uscID, String password,
+            String userType) {
+        Admin admin = new Admin(firstName, lastName, email, uscID, password, userType, null);
+        users.add(admin);
+    }
+
+    /**
+     * Add a new advisor to the list.
+     *
+     * @param firstName The first name of the advisor.
+     * @param lastName  The last name of the advisor.
+     * @param email     The email of the advisor.
+     * @param uscID     The USC ID of the advisor.
+     * @param password  The password of the advisor.
+     * @param userType  The type of the user (e.g., "ADVISOR").
+     */
+    public void addAdvisor(String firstName, String lastName, String email, UUID uscID, String password,
+            String userType) {
+        Advisor advisor = new Advisor(firstName, lastName, email, uscID, password, userType, null, null, null);
+        users.add(advisor);
     }
 
     /**

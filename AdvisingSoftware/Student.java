@@ -144,6 +144,78 @@ public class Student extends User {
     return getID();
   }
 
+  /**
+   * Getter for year
+   * 
+   * @return the student's year/class
+   */
+  public String getYear() {
+    return year;
+  }
+
+  /**
+   * Getter for major
+   * 
+   * @return the student's major
+   */
+  public String getMajor() {
+    return major;
+  }
+
+  /**
+   * Getter for creditHours
+   * 
+   * @return the number of credit hours the student has taken
+   */
+  public int getCreditHours() {
+    return creditHours;
+  }
+
+  /**
+   * Getter for completedCourses
+   * 
+   * @return the courses the student has completed
+   */
+  public ArrayList<Course> getCompletedCourses() {
+    return completedCourses;
+  }
+
+  /**
+   * Getter for gpa
+   * 
+   * @return the student's GPA
+   */
+  public double getGpa() {
+    return gpa;
+  }
+
+  /**
+   * Getter for coursePlanner
+   * 
+   * @return the student's course planner
+   */
+  public CoursePlanner getCoursePlanner() {
+    return coursePlanner;
+  }
+
+  /**
+   * Getter for degreeProgress
+   * 
+   * @return the student's degree progress
+   */
+  public DegreeProgress getDegreeProgress() {
+    return degreeProgress;
+  }
+
+  /**
+   * Getter for advisorNotes
+   * 
+   * @return the student's advisor notes
+   */
+  public ArrayList<Note> getAdvisorNotes() {
+    return advisorNotes;
+  }
+
   public String toString() {
     return "************** Student Profile **************\n" +
         super.toString() +
