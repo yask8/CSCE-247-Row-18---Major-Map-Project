@@ -6,6 +6,8 @@ import java.util.UUID;
 /**
  * UserList class for managing users.
  * This class implements the Singleton design pattern.
+ * 
+ * @author @Spillmag
  */
 public class UserList {
 
@@ -80,16 +82,7 @@ public class UserList {
      * @param email     The email of the student.
      * @param uscID     The USC ID of the student.
      * @param password  The password of the student.
-     */
-    /**
-     * Add a new student to the list.
-     *
-     * @param firstName The first name of the student.
-     * @param lastName  The last name of the student.
-     * @param email     The email of the student.
-     * @param uscID     The USC ID of the student.
-     * @param password  The password of the student.
-     * @param userType  The type of the user (e.g., "STUDENT").
+     * @param userType  The type of the user "STUDENT"
      * @param year      The student's academic year.
      * @param major     The student's major.
      */
@@ -108,7 +101,7 @@ public class UserList {
      * @param email     The email of the admin.
      * @param uscID     The USC ID of the admin.
      * @param password  The password of the admin.
-     * @param userType  The type of the user (e.g., "ADMIN").
+     * @param userType  The type of the user "ADMIN"
      */
     public void addAdmin(String firstName, String lastName, String email, UUID uscID, String password,
             String userType) {
@@ -124,7 +117,7 @@ public class UserList {
      * @param email     The email of the advisor.
      * @param uscID     The USC ID of the advisor.
      * @param password  The password of the advisor.
-     * @param userType  The type of the user (e.g., "ADVISOR").
+     * @param userType  The type of the user "ADVISOR"
      */
     public void addAdvisor(String firstName, String lastName, String email, UUID uscID, String password,
             String userType) {
@@ -182,12 +175,20 @@ public class UserList {
     public boolean isLoaded() {
         return loaded;
     }
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("UserList:\n");
+
+    /**
+     * Checks if the email already exists in the user databse.
+     *
+     * @param email The email address to check for.
+     * @return true if the email exists in the database, false otherwise.
+     */
+    public boolean emailExists(String email) {
         for (User user : users) {
-            sb.append(user.toString()).append("\n");
+            if (user.getEmail().equals(email)) {
+                return true;
+            }
         }
-        return sb.toString();
+        return false;
     }
+
 }

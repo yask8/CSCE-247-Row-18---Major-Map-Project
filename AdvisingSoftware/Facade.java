@@ -82,15 +82,38 @@ public class Facade {
     return userList.getUser(email, password);
   }
 
-  // Works for now might need to rework it becuase of overwriting
+  /**
+   * Signs out the currently logged-in user and saves any changes made during the session.
+   * 
+   * @author @Spillmag
+   */
   public void signOut() {
     user = null;
-    //ArrayList<User> userList = UserList.getInstance().getUsers();
-    //DataWriter.saveUsers(userList);
+    ArrayList<User> userList = UserList.getInstance().getUsers();
+    DataWriter.saveUsers(userList);
   }
 
+  /**
+   * Signs up a new user
+   * Checks if the email already exists
+   * If the email already exists the sign-up fails
+   * 
+   * @author @Spillmag
+   * 
+   * @param firstName The first name of the user.
+   * @param lastName  The last name of the user.
+   * @param email     The email of the user.
+   * @param password  The password of the user.
+   * @param userType  The type of user ('STUDENT', 'ADMIN', or 'ADVISOR').
+   */
   public void signUp(String firstName, String lastName, String email, String password, String userType) {
     UserList userList = UserList.getInstance();
+
+    if (userList.emailExists(email)) {
+      System.out.println("Email already exists. Please choose a different email.");
+      return;
+    }
+
     UUID uscID = UUID.randomUUID();
 
     if (userType.equals("STUDENT")) {
@@ -107,8 +130,7 @@ public class Facade {
     User loggedInUser = userList.getUser(email, password);
 
     if (loggedInUser != null) {
-      System.out.println("Sign up successful! Logged in as:");
-      System.out.println(loggedInUser.toString());
+      System.out.println("Sign up successful! Logged in as:\n\n" + loggedInUser.toString());
     } else {
       System.out.println("Sign up failed. Unable to log in.");
     }
