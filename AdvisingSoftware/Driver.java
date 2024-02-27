@@ -131,8 +131,66 @@ public class Driver {
   }
 
   public void scenario4() {
-    System.out.println();
-  }
+    System.out.println("\n Scenario 4: Loading Courses and Printing Respective Course Details");
+    System.out.println("--------------------------------------------");
+
+    // Hardcoding the email and password
+    String email = "rio.farrah2004@gmail.com";
+    String password = "Real?dejaneir0";
+
+    // Creating a user object that operates the facade login method
+    User loggedInUser = facade.login(email, password);
+
+    // Checking if the user is logged in
+    if (loggedInUser != null) {
+        System.out.println("Hello " + loggedInUser.getFirstName() + "!");
+    } else {
+        System.out.println("Incorrect email or password. Please try again.");
+        return; // End the scenario if login fails
+    }
+
+    // Displays the User Info
+    System.out.println(loggedInUser.getFirstName() + " Current Info:");
+    System.out.println(loggedInUser.toString());
+
+    // Assuming the user is a student and wants to load courses
+    if (loggedInUser.getUserType().equals("STUDENT")) {
+        CourseList courseList = CourseList.getInstance();
+        
+        // Check if CourseList is already loaded
+        if (courseList.isLoaded()) {
+            System.out.println("Courses are loaded.");
+        } else {
+            // Loading courses
+            ArrayList<Course> courses = DataLoader.loadCourses();
+            for (Course course : courses) {
+                // Adding courses to the CourseList
+                courseList.addCourse(
+                    course.getName(),
+                    course.getCode(),
+                    course.getDescription(),
+                    course.getCreditHours(),
+                    course.getSubject(),
+                    course.getPassGrade(),
+                    course.isElective(),
+                    course.isCarolinaCore(),
+                    course.getPreReqs()
+                );
+            }
+            courseList.setLoaded(true); // Setting loaded status
+            System.out.println("Courses loaded successfully.");
+        }
+
+        // Assuming the user wants to print course details
+        System.out.println("Printing Course Details:");
+        ArrayList<Course> allCourses = courseList.getCourses();
+        for (Course course : allCourses) {
+            System.out.println(course.toString());
+        }
+    } else {
+        System.out.println("Only students can load and view courses.");
+    }
+}
 
   /**
    * Scenario to test the MajorList
