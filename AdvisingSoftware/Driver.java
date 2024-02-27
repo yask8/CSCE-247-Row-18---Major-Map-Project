@@ -29,7 +29,7 @@ public class Driver {
    * Tests login method
    */
   public void scenario1() {
-    System.out.println("Scenario 1: Login and Signout");
+    System.out.println("\nScenario 1: Login and Signout");
 
     // Hardcoded email and password
     String email = "rio.farrah2004@gmail.com";
@@ -38,11 +38,11 @@ public class Driver {
     User loggedInStudent = facade.login(email, password);
 
     if (loggedInStudent != null) {
-        System.out.println("Login successful!");
-        System.out.println("Current user:");
-        System.out.println(loggedInStudent.toString());
+      System.out.println("Login successful!");
+      System.out.println("Current user:");
+      System.out.println(loggedInStudent.toString());
     } else {
-        System.out.println("Login failed. Incorrect email or password.");
+      System.out.println("Login failed. Incorrect email or password.");
     }
     System.out.println("\nStudent will be signed out now\n");
     facade.signOut();
@@ -54,18 +54,18 @@ public class Driver {
     User loggedInAdmin = facade.login(email2, password2);
 
     if (loggedInAdmin != null) {
-        System.out.println("Login successful!");
-        System.out.println("Current user:");
-        System.out.println(loggedInAdmin.toString());
+      System.out.println("Login successful!");
+      System.out.println("Current user:");
+      System.out.println(loggedInAdmin.toString());
     } else {
-        System.out.println("Login failed. Incorrect email or password.");
+      System.out.println("Login failed. Incorrect email or password.");
     }
     System.out.println("\nAdmin will be signed out now\n");
     facade.signOut();
-}
+  }
 
   public void scenario2() {
-    System.out.println("Scenario 2: Login Fail");
+    System.out.println("\nScenario 2: Login Fail");
 
     // Hardcoded email and password (has a typo)
     String email = "rio.farrah204@gmail.com";
@@ -111,7 +111,7 @@ public class Driver {
   }
 
   public void scenario3() {
-    System.out.println("Scenario 3: Sign Up");
+    System.out.println("\n Scenario 3: Sign Up");
     // Hardcoded email and password for signup
     String signupEmail = "newstudent@example.com";
     String signupPassword = "newPassword";
