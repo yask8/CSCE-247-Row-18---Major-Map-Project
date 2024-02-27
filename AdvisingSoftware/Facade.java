@@ -93,7 +93,8 @@ public class Facade {
     DataWriter.saveUsers(userList);
   }
 
-  /**
+  /**NEED TO MOVE THIS LOGIC INTO THE USERLIST CLASS
+   * 
    * Signs up a new user
    * Checks if the email already exists
    * If the email already exists the sign-up fails
