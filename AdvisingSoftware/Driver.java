@@ -153,7 +153,7 @@ public class Driver {
     System.out.println(loggedInUser.getFirstName() + " Current Info:");
     System.out.println(loggedInUser.toString());
 
-    //LOGIC 
+    //LOGIC Should go in courselist you have reduant code here and should ise the getinstance not load it from here
     // Assuming the user is a student and wants to load courses
     if (loggedInUser.getUserType().equals("STUDENT")) {
         CourseList courseList = CourseList.getInstance();
@@ -184,7 +184,7 @@ public class Driver {
         
         // Assuming the user wants to print course details
         System.out.println("Printing Course Details:");
-        // LOGIC 
+        // LOGIC thay should go in courselist like a displayAllCourses methods also all users should be able to load courses not just students
         ArrayList<Course> allCourses = courseList.getCourses();
         for (Course course : allCourses) {
             System.out.println(course.toString());
@@ -216,13 +216,14 @@ public class Driver {
     System.out.println(loggingIn.getFirstName() + " Current Info:");
     System.out.println(loggingIn.toString());
     // User Loads Majors
+    // LOGIC that should go in majorList should be using get instance here i think to load data
     if(loggingIn.getUserType().equals("STUDENT")){
         ArrayList<MajorMap> major =  DataLoader.loadMajors();
         if(MajorList.getInstance().isLoaded()){
           
         }
     }
-    // User Prints Respective Major Map
+    //Major map isnt being printed and all user shoulder be able to print major maps not just students
   }
 
   public static void main(String[] args) {
