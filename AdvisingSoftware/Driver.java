@@ -136,8 +136,35 @@ public class Driver {
     System.out.println();
   }
 
+  /**
+   * Scenario to test the MajorList
+   * @author yask8(Yasmine Kennedy)
+   */
   public void scenario5() {
-    System.out.println();
+    System.out.println("Scenario 5: Loading Majors and Printing Respective Major Map");
+    System.out.println("--------------------------------------------");
+    // Hardcoding the email and password
+    String email = "";
+    String password = "";
+    // Creating a user object that operates the facade login method
+    User loggingIn = facade.login(email, password);
+    // Checking if the user is logged in
+    if(loggingIn != null){
+      System.out.println("Hello " + loggingIn.getFirstName() + "!");
+    } else {
+      System.out.println("Incorrect email or password. Please try again.");
+    }
+    // Displays the User Info
+    System.out.println(loggingIn.getFirstName() + " Current Info:");
+    System.out.println(loggingIn.toString());
+    // User Loads Majors
+    if(loggingIn.getUserType().equals("STUDENT")){
+        ArrayList<MajorMap> major =  DataLoader.loadMajors();
+        if(MajorList.getInstance().isLoaded()){
+          
+        }
+    }
+    // User Prints Respective Major Map
   }
 
   public static void main(String[] args) {
