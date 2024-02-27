@@ -31,21 +31,5 @@
     "class": "Sophomore",
     "email": "rio.farrah2004@gmail.com",
     "coursePlanner": null
-  },
-  {
-    "lastName": "Doe",
-    "degreeProgess": null,
-    "completedCourses": null,
-    "uscID": "6ee4c574-a3c3-4dde-8e5c-f4e86076d96a",
-    "creditHours": 0,
-    "firstName": "John",
-    "password": "newPassword",
-    "advisorNotes": null,
-    "major": null,
-    "gpa": 0.0,
-    "userType": "STUDENT",
-    "class": null,
-    "email": "newstudent@example.com",
-    "coursePlanner": null
   }
 ]
