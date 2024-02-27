@@ -112,4 +112,14 @@ public class MajorList {
     public boolean isLoaded(){
         return loaded;
     }
+    /**
+     * Testing purposes
+     * @param args
+     */
+    public static void main(String[] args) {
+        ArrayList<MajorMap> majors = DataLoader.loadMajors();
+        for(MajorMap map : majors){
+            System.out.println(map);
+        }
+    }
 }
