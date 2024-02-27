@@ -55,6 +55,7 @@ public class MajorMap {
       String major,
       ArrayList<Course> majorCourses,
       ArrayList<Course> majorElective,
+      ArrayList<Course> minorElectives,
       ArrayList<Course> coreEdu,
       ArrayList<Course> appArea) {
     this.id = UUID.randomUUID();

@@ -51,7 +51,8 @@ public class MajorList {
      * @param coreEdu The Carolina Core Classes
      * @param appArea The Application Area Classes
      */
-    public void addMajor(String majorName,
+    public void addMajor(
+     String majorName,
      ArrayList<Course> majorCourses, 
      ArrayList<Course> majorElectives, 
      ArrayList<Course> minorElectives, 
