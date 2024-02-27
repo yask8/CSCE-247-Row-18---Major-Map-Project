@@ -182,4 +182,12 @@ public class UserList {
     public boolean isLoaded() {
         return loaded;
     }
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("UserList:\n");
+        for (User user : users) {
+            sb.append(user.toString()).append("\n");
+        }
+        return sb.toString();
+    }
 }

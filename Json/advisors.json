@@ -3,9 +3,9 @@
   "lastName": "Flanagan",
   "password": "philly$Gr33n",
   "uscID": "af593075-ea9e-4ed7-be74-4604863b702b",
-  "listOfFailingStudents": [],
-  "listOfAdvisorNotes": [],
+  "listOfFailingStudents": null,
+  "listOfAdvisorNotes": null,
   "userType": "ADVISOR",
-  "listOfAdivsees": [],
+  "listOfAdivsees": null,
   "email": "FlanaganMichael@gmail.com"
 }

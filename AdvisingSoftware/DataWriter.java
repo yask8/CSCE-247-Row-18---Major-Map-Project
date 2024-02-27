@@ -1,4 +1,5 @@
 package AdvisingSoftware;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,33 +7,34 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants {
-    
+    // TODO it writes but doesn't append need go through the logic
     public static void saveUsers(ArrayList<User> users) {
         for (User user : users) {
             if (user instanceof Student) {
-                appendJSONToFile(getStudentJSON((Student) user), STUDENT_FILE_NAME);
+                saveStudent((Student) user);
             } else if (user instanceof Admin) {
-                appendJSONToFile(getAdminJSON((Admin) user), ADMIN_FILE_NAME);
+                saveAdmin((Admin) user);
             } else if (user instanceof Advisor) {
-                appendJSONToFile(getAdvisorJSON((Advisor) user), ADVISOR_FILE_NAME);
+                saveAdvisor((Advisor) user);
             }
         }
     }
-    
+
     public static void saveStudent(Student student) {
         JSONObject studentJSON = getStudentJSON(student);
         writeJSONToFile(studentJSON, STUDENT_FILE_NAME);
     }
-    
+
     public static void saveAdmin(Admin admin) {
         JSONObject adminJSON = getAdminJSON(admin);
         writeJSONToFile(adminJSON, ADMIN_FILE_NAME);
     }
-    
+
     public static void saveAdvisor(Advisor advisor) {
         JSONObject advisorJSON = getAdvisorJSON(advisor);
         writeJSONToFile(advisorJSON, ADVISOR_FILE_NAME);
-    }    
+    }
+
     public static JSONObject getStudentJSON(Student student) {
         JSONObject studentDetails = new JSONObject();
         studentDetails.put(USER_FIRST_NAME, student.getFirstName());
@@ -51,7 +53,7 @@ public class DataWriter extends DataConstants {
         studentDetails.put(STUDENT_ADVISOR_NOTES, student.getAdvisorNotes());
         return studentDetails;
     }
-    
+
     public static JSONObject getAdminJSON(Admin admin) {
         JSONObject adminDetails = new JSONObject();
         adminDetails.put(USER_FIRST_NAME, admin.getFirstName());
@@ -63,7 +65,7 @@ public class DataWriter extends DataConstants {
         adminDetails.put(ADMIN_CHANGES_MADE, admin.getChangesMade());
         return adminDetails;
     }
-    
+
     public static JSONObject getAdvisorJSON(Advisor advisor) {
         JSONObject advisorDetails = new JSONObject();
         advisorDetails.put(USER_FIRST_NAME, advisor.getFirstName());
@@ -77,6 +79,7 @@ public class DataWriter extends DataConstants {
         advisorDetails.put(ADVISOR_LIST_OF_NOTES, advisor.getListOfAdvisees());
         return advisorDetails;
     }
+
     public static void saveCourses(ArrayList<Course> courses) {
         JSONArray coursesArray = new JSONArray();
         for (Course course : courses) {
@@ -131,15 +134,6 @@ public class DataWriter extends DataConstants {
         }
         writeJSONToFile(majorMapsArray, MAJOR_FILE_NAME);
     }
-    public static void appendJSONToFile(JSONObject jsonObject, String fileName) {
-
-        JSONArray existingData = (JSONArray) DataLoader.loadUsers();
-
-        existingData.add(jsonObject);
-
-        writeJSONToFile(existingData, fileName);
-    }
-
 
     private static void writeJSONToFile(JSONObject jsonObject, String fileName) {
         try (FileWriter file = new FileWriter(fileName)) {
@@ -149,7 +143,7 @@ public class DataWriter extends DataConstants {
             e.printStackTrace();
         }
     }
-    
+
     private static void writeJSONToFile(JSONArray jsonArray, String fileName) {
         try (FileWriter file = new FileWriter(fileName)) {
             file.write(jsonArray.toJSONString());
