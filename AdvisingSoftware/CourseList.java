@@ -11,22 +11,41 @@ public class CourseList {
 
   private static CourseList courseList;
   private ArrayList<Course> courses;
+  private boolean loaded;
 
   /**
    * Private constructor Initializes the list of courses
    */
   private CourseList() {
     courses = new ArrayList<Course>();
+    loaded = false;
   }
 
-  /**
-   * Returns an instance of the CourseList class.
+    /**
+   * Get the singleton instance of CourseList.
    *
-   * @return The CourseList instance.
+   * @return The singleton instance of CourseList.
    */
   public static CourseList getInstance() {
     if (courseList == null) {
       courseList = new CourseList();
+      if (!courseList.isLoaded()) {
+        ArrayList<Course> courseData = DataLoader.loadCourses();
+        for (Course course : courseData) {
+          courseList.addCourse(
+              course.getName(),
+              course.getCode(),
+              course.getDescription(),
+              course.getCreditHours(),
+              course.getSubject(),
+              course.getPassGrade(),
+              course.isElective(),
+              course.isCarolinaCore(),
+              course.getPreReqs()
+          );
+        }
+        courseList.setLoaded(true);
+      }
     }
     return courseList;
   }
@@ -107,6 +126,29 @@ public class CourseList {
     courses.add(newCourse);
   }
 
+  /**
+   * Sets the loaded status of the course list.
+   *
+   * @param loaded The loaded status to set.
+   */
+  public void setLoaded(boolean loaded) {
+    this.loaded = loaded;
+  }
+
+  /**
+   * Checks if the course list is loaded.
+   *
+   * @return true if the course list is loaded, false otherwise.
+   */
+  public boolean isLoaded() {
+    return loaded;
+  }
+
+  /**
+   * Gets the list of courses.
+   *
+   * @return The list of courses.
+   */
   public ArrayList<Course> getCourses() {
     return courses;
   }
