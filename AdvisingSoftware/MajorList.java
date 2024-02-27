@@ -37,7 +37,7 @@ public class MajorList {
     public MajorMap getMajor(String major){
         for(MajorMap existingMajor : majors){
             if(existingMajor.getMajor().equals(major)){
-                return major;
+                return existingMajor;
             }
         }
         return null;
@@ -71,7 +71,7 @@ public class MajorList {
     public void removeMajor(String major){
         for(MajorMap existingMajors :  majors){
             if(existingMajors.getMajor().equals(major)){
-                majors.remove(major);
+                majors.remove(existingMajors);
             } else if (major == null){
                 System.out.println(major + " does not exist.");
             }
