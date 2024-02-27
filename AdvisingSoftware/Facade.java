@@ -48,12 +48,13 @@ public class Facade {
    * # modifyStudentGrades(User user, DegreeProgress degreeProgress): void
    */
   public Facade(
-      CourseList courseList,
-      Course course,
-      User user,
-      DegreeProgress degreeProgress,
-      MajorMap majorMap,
-      GraduationRequirements gradReq) {
+    CourseList courseList,
+    Course course,
+    User user,
+    DegreeProgress degreeProgress,
+    MajorMap majorMap,
+    GraduationRequirements gradReq
+  ) {
     this.courseList = courseList.getCourses();
     this.course = course;
     UserList userListInstance = UserList.getInstance();
@@ -63,14 +64,12 @@ public class Facade {
     this.gradReq = gradReq;
   }
 
-  public Facade() {
-
-  }
+  public Facade() {}
 
   /**
    * Logs in a user with the specified email and password.
    * If the user list is not already loaded, it loads the users using data loader
-   * 
+   *
    * @author @Spillmag
    *
    * @param email    The email of the user.
@@ -79,13 +78,13 @@ public class Facade {
    */
   public User login(String email, String password) {
     UserList userList = UserList.getInstance();
-    return userList.getUser(email, password);
+    return userList.getUserByLoginInfo(email, password);
   }
 
   /**
    * Signs out the currently logged-in user and saves any changes made during the
    * session.
-   * 
+   *
    * @author @Spillmag
    */
   public void signOut() {
@@ -95,20 +94,26 @@ public class Facade {
   }
 
   /**
-   * 
+   *
    * Signs up a new user
    * Checks if the email already exists
    * If the email already exists the sign-up fails
-   * 
+   *
    * @author @Spillmag
-   * 
+   *
    * @param firstName The first name of the user.
    * @param lastName  The last name of the user.
    * @param email     The email of the user.
    * @param password  The password of the user.
    * @param userType  The type of user ('STUDENT', 'ADMIN', or 'ADVISOR').
    */
-  public void signUp(String firstName, String lastName, String email, String password, String userType) {
+  public void signUp(
+    String firstName,
+    String lastName,
+    String email,
+    String password,
+    String userType
+  ) {
     UserList userList = UserList.getInstance();
     userList.signUp(firstName, lastName, email, password, userType);
   }
@@ -145,17 +150,16 @@ public class Facade {
     return null;
   }
 
-  protected void moveStudentToAnotherList(String uscID, String advisorID) {
-  }
+  protected void moveStudentToAnotherList(String uscID, String advisorID) {}
 
   protected ArrayList<Student> modifyStudentList() {
     return new ArrayList<Student>();
   }
 
   protected void modifyStudentGrades(
-      User user,
-      DegreeProgress degreeProgress) {
-  }
+    User user,
+    DegreeProgress degreeProgress
+  ) {}
 
   // Getters
   public ArrayList<Course> getCourseList() {
@@ -193,5 +197,4 @@ public class Facade {
   public GraduationRequirements getGradReq() {
     return gradReq;
   }
-
 }
