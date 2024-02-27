@@ -12,20 +12,41 @@ public class MajorList {
      */
     private static MajorList majorList;
     private ArrayList<MajorMap> majors;
+    private boolean loaded;
     /**
      * Private constructor for MajorList
      * Initializes the list of majors
      */
     private MajorList() {
         majors = new ArrayList<MajorMap>();
+        loaded = false;
     }
     /**
-     * Get the singleton instance of MajorList
+     * Get all of the majors in the list
+     * @return The list of majors
+     */
+    public ArrayList<MajorMap> getMajors() {
+        return majors;
+    }
+    /**
+     * Get the singleton instance of MajorList and ensures the list is loaded
+     * into the dataloader.
      * @return the singleton instance of MajorList
      */
     public static MajorList getInstance(){
         if(majorList == null){
             majorList = new MajorList();
+            if(!majorList.isLoaded()) {
+                ArrayList<MajorMap> majorData = DataLoader.loadMajors();
+                for(MajorMap majorInData : majorData){
+                    majorList.addMajor( majorInData.getMajor(),
+                                        majorInData.getMajorCourses(),
+                                        majorInData.getElectives(),
+                                        majorInData.getCoreEdu(),
+                                        majorInData.getAppArea());
+                }
+                majorList.setLoaded(true);
+            }
         }
         return majorList;
     }
@@ -34,7 +55,7 @@ public class MajorList {
      * @param major the major from the Major Map
      * @return The major or null if not found
      */
-    public MajorMap getMajor(String major){
+    public MajorMap getMajorByName(String major){
         for(MajorMap existingMajor : majors){
             if(existingMajor.getMajor().equals(major)){
                 return existingMajor;
@@ -76,5 +97,19 @@ public class MajorList {
                 System.out.println(major + " does not exist.");
             }
         }
+    }
+    /**
+     * Sets the value to indicate if the list is loaded
+     * @param loaded Boolean that indicates if the list is loaded
+     */
+    public void setLoaded(boolean loaded){
+        this.loaded = loaded;
+    }
+    /**
+     * Checks if the majorList is loaded
+     * @return True(if list is loaded) or False(if list is not loaded)
+     */
+    public boolean isLoaded(){
+        return loaded;
     }
 }
