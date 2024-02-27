@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Represents a list of courses in the system.
+ * 
  * @author Stephon Johnson
  */
 public class CourseList {
@@ -12,8 +13,7 @@ public class CourseList {
   private ArrayList<Course> courses;
 
   /**
-   * Private constructor
-   * Initializes the list of courses
+   * Private constructor Initializes the list of courses
    */
   private CourseList() {
     courses = new ArrayList<Course>();
@@ -25,22 +25,47 @@ public class CourseList {
    * @return The CourseList instance.
    */
   public static CourseList getInstance() {
-    return null;
+    if (courseList == null) {
+      courseList = new CourseList();
+    }
+    return courseList;
   }
 
   /**
    * Gets a course based on the given course code.
    *
    * @param code The course code to search for.
+   * @return The course with the matching code, or null if not found.
    */
-  public void getCourse(String code) {}
+  public Course getCourse(String code) {
+    for (Course course : courses) {
+      if (course.getCode().equals(code)) {
+        return course;
+      }
+    }
+    return null; // Course not found
+  }
 
   /**
-   * Removes a course from the course list based on the given course code.
+   * Removes a course from the course list based on the course code.
    *
    * @param code The course code to remove.
+   * @return true if the course was found and removed, false otherwise.
    */
-  public void removeCourse(String code) {}
+  public boolean removeCourse(String code) {
+    Course courseToRemove = null;
+    for (Course course : courses) {
+      if (course.getCode().equals(code)) {
+        courseToRemove = course;
+        break;
+      }
+    }
+    if (courseToRemove != null) {
+      courses.remove(courseToRemove);
+      return true; // Course removed successfully
+    }
+    return false; // Course not found
+  }
 
   /**
    * Adds a new course to the course list.
@@ -56,16 +81,31 @@ public class CourseList {
    * @param prereqs      The prerequisites of the course.
    */
   public void addCourse(
-    String name,
-    String code,
-    String description,
-    int creditHours,
-    String subject,
-    char passGrade,
-    Boolean elective,
-    Boolean carolinaCore,
-    ArrayList<Course> prereqs
-  ) {}
+      String name,
+      String code,
+      String description,
+      int creditHours,
+      String subject,
+      char passGrade,
+      boolean elective,
+      boolean carolinaCore,
+      ArrayList<Course> prereqs
+  ) {
+    Course newCourse = new Course(
+        name,
+        code,
+        description,
+        creditHours,
+        subject,
+        passGrade,
+        elective,
+        carolinaCore,
+        prereqs,
+        null, // Default year, can be modified later
+        null  // Default semester, can be modified later
+    );
+    courses.add(newCourse);
+  }
 
   public ArrayList<Course> getCourses() {
     return courses;
