@@ -131,7 +131,7 @@ public class Driver {
   }
 
   public void scenario4() {
-    System.out.println("\n Scenario 4: Loading Courses and Printing Respective Course Details");
+    System.out.println("\nScenario 4: Loading Courses and Printing Respective Course Details");
     System.out.println("--------------------------------------------");
 
     // Hardcoding the email and password
@@ -153,46 +153,12 @@ public class Driver {
     System.out.println(loggedInUser.getFirstName() + " Current Info:");
     System.out.println(loggedInUser.toString());
 
-    //LOGIC Should go in courselist you have reduant code here and should ise the getinstance not load it from here
-    // Assuming the user is a student and wants to load courses
-    if (loggedInUser.getUserType().equals("STUDENT")) {
-        CourseList courseList = CourseList.getInstance();
-        
-        // Check if CourseList is already loaded
-        if (courseList.isLoaded()) {
-            System.out.println("Courses are loaded.");
-        } else {
-            // Loading courses
-            ArrayList<Course> courses = DataLoader.loadCourses();
-            for (Course course : courses) {
-                // Adding courses to the CourseList
-                courseList.addCourse(
-                    course.getName(),
-                    course.getCode(),
-                    course.getDescription(),
-                    course.getCreditHours(),
-                    course.getSubject(),
-                    course.getPassGrade(),
-                    course.isElective(),
-                    course.isCarolinaCore(),
-                    course.getPreReqs()
-                );
-            }
-            courseList.setLoaded(true); // Setting loaded status
-            System.out.println("Courses loaded successfully.");
-        }
-        
-        // Assuming the user wants to print course details
-        System.out.println("Printing Course Details:");
-        // LOGIC thay should go in courselist like a displayAllCourses methods also all users should be able to load courses not just students
-        ArrayList<Course> allCourses = courseList.getCourses();
-        for (Course course : allCourses) {
-            System.out.println(course.toString());
-        }
-    } else {
-        System.out.println("Only students can load and view courses.");
+        // Load courses
+        CourseList.getInstance().getCourses();
+
+        // Print Course Details
+        CourseList.getInstance().displayAllCourses();
     }
-}
 
   /**
    * Scenario to test the MajorList
