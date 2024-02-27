@@ -216,13 +216,18 @@ public class Driver {
     System.out.println(loggingIn.getFirstName() + " Current Info:");
     System.out.println(loggingIn.toString());
     // User Loads Majors
-    if(loggingIn.getUserType().equals("STUDENT")){
-        ArrayList<MajorMap> major =  DataLoader.loadMajors();
-        if(MajorList.getInstance().isLoaded()){
-          
-        }
+    if(facade.loadedMajors()){
+      System.out.println("Majors loaded successfully.");
+    } else {
+      System.out.println("Majors failed to load.");
     }
+    System.out.println();
     // User Prints Respective Major Map
+    if(facade.isStudent(loggingIn)) {
+      
+    }
+    System.out.println("-----Displaying " + loggingIn.getFirstName() + "'s Major Map ------");
+    //facade.displayMajorMap();
   }
 
   public static void main(String[] args) {
