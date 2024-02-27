@@ -47,21 +47,18 @@ public class MajorList {
      * @param majorName The name of the major
      * @param majorCourses The courses offered by the major
      * @param majorElectives The electives offered by the major
-     * @param minorElectives The electives offered by the minor
      * @param coreEdu The Carolina Core Classes
      * @param appArea The Application Area Classes
      */
     public void addMajor(
      String majorName,
      ArrayList<Course> majorCourses, 
-     ArrayList<Course> majorElectives, 
-     ArrayList<Course> minorElectives, 
+     ArrayList<Course> majorElectives,
      ArrayList<Course> coreEdu, 
      ArrayList<Course> appArea){
         MajorMap newMajor = new MajorMap(majorName, 
         majorCourses, 
-        majorElectives, 
-        minorElectives,
+        majorElectives,
         coreEdu, 
         appArea);
         majors.add(newMajor);
