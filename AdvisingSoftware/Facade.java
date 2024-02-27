@@ -136,6 +136,7 @@ public class Facade {
     }
   }
 
+
   public DegreeProgress checkDegreeProgress(String uscID) {
     return degreeProgress;
   }
@@ -158,10 +159,6 @@ public class Facade {
 
   public boolean switchMajor(String uscID, String major) {
     return true;
-  }
-
-  public String viewCourse(ArrayList<Course> courseList, String UUID) {
-    return "";
   }
 
   protected boolean removeProfile(String uscID) {
