@@ -38,40 +38,31 @@ public class Driver {
     User loggedInStudent = facade.login(email, password);
 
     if (loggedInStudent != null) {
-      System.out.println("Login successful!");
-      System.out.println("Current user:");
-      System.out.println(loggedInStudent.toString());
+        System.out.println("Login successful!");
+        System.out.println("Current user:");
+        System.out.println(loggedInStudent.toString());
     } else {
-      System.out.println("Login failed. Incorrect email or password.");
+        System.out.println("Login failed. Incorrect email or password.");
     }
     System.out.println("\nStudent will be signed out now\n");
     facade.signOut();
-       System.out.println("Login successful!");
-       System.out.println("Current user:");
-       System.out.println(loggedInStudent.toString());
-     } else {
-       System.out.println("Login failed. Incorrect email or password.");
-     }
-     
-     System.out.println("\nStudent will be signed out now\n");
-     facade.signOut();
 
     // Hardcoded email and password
     String email2 = "thebillybob@gmail.com";
     String password2 = "Guiy#ghawe";
 
-    User LoggedInAdmin = facade.login(email2, password2);
+    User loggedInAdmin = facade.login(email2, password2);
 
-    if (loggedInStudent != null) {
-      System.out.println("Login successful!");
-      System.out.println("Current user:");
-      System.out.println(LoggedInAdmin.toString());
+    if (loggedInAdmin != null) {
+        System.out.println("Login successful!");
+        System.out.println("Current user:");
+        System.out.println(loggedInAdmin.toString());
     } else {
-      System.out.println("Login failed. Incorrect email or password.");
+        System.out.println("Login failed. Incorrect email or password.");
     }
     System.out.println("\nAdmin will be signed out now\n");
     facade.signOut();
-  }
+}
 
   public void scenario2() {
     System.out.println("Scenario 2: Login Fail");
