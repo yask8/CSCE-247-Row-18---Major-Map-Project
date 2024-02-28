@@ -25,7 +25,6 @@ public class Facade {
   private CoursePlanner coursePlan;
   private MajorMap majorMap;
   private GraduationRequirements gradReq;
-  private Student student;
 
   /*
    * + Facade(CourseList courseList, Course course, UserList userList, User user,
@@ -150,24 +149,17 @@ public class Facade {
   protected ArrayList<Student> modifyStudentList() {
     return new ArrayList<Student>();
   }
-  public void displayMajorMap(String major){
-      majorMap.displayMajorMap(major);
+  public void displayMap(String major){
+    if(majorMap == null){
+      majorMap = new MajorMap(major, courseList, courseList, courseList, courseList);
+    }
+    majorMap.displayMajorMap(major);
   }
 
   protected void modifyStudentGrades( 
   User user,
   DegreeProgress degreeProgress) {
 
-  }
-  public boolean loadedMajors(){
-    UserList loadMajor = UserList.getInstance();
-    return loadMajor.isLoaded();
-  }
-  public boolean isStudent(User user){
-      if(user.getUserType() == "STUDENT"){
-          return true;
-      }
-      return false;
   }
 
   // Getters

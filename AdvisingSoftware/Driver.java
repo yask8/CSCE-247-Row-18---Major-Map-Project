@@ -182,14 +182,14 @@ public class Driver {
     System.out.println(loggingIn.getFirstName() + " Current Info:");
     System.out.println(loggingIn.toString());
     // User Loads Majors
-    // LOGIC that should go in majorList should be using get instance here i think to load data
-    if(loggingIn.getUserType().equals("STUDENT")){
-        ArrayList<MajorMap> major =  DataLoader.loadMajors();
-        if(MajorList.getInstance().isLoaded()){
-          
-        }
+    if(MajorList.getInstance().isLoaded()){
+        System.out.println("Majors loaded Successfully");
+    } else {
+        System.out.println("Majors did not load sucessfully");
     }
-    //Major map isnt being printed and all user shoulder be able to print major maps not just students
+    //Major map is displayed for specified major
+    String major = "Computer Science";
+    facade.displayMap(major);
   }
 
   public static void main(String[] args) {
