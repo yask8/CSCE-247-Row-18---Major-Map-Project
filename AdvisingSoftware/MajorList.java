@@ -77,12 +77,13 @@ public class MajorList {
      ArrayList<Course> majorElectives,
      ArrayList<Course> coreEdu, 
      ArrayList<Course> appArea){
-        MajorMap newMajor = new MajorMap(majorName, 
+        MajorMap newMajorMap = new MajorMap(
+        majorName, 
         majorCourses, 
         majorElectives,
         coreEdu, 
         appArea);
-        majors.add(newMajor);
+        majors.add(newMajorMap);
 
     }
     /**
