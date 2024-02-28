@@ -79,12 +79,11 @@ public class Driver {
       System.out.println(loggedInStudent.toString());
     } else {
       System.out.println(
-        "Login failed for email " +
-        email +
-        " and/or " +
-        password +
-        ". Incorrect email or password."
-      );
+          "Login failed for email " +
+              email +
+              " and/or " +
+              password +
+              ". Incorrect email or password.");
     }
     facade.signOut();
 
@@ -100,12 +99,11 @@ public class Driver {
       System.out.println(LoggedInAdmin.toString());
     } else {
       System.out.println(
-        "Login failed for email " +
-        email2 +
-        " and/or " +
-        password2 +
-        ". Incorrect email or password."
-      );
+          "Login failed for email " +
+              email2 +
+              " and/or " +
+              password2 +
+              ". Incorrect email or password.");
     }
     facade.signOut();
   }
@@ -121,12 +119,11 @@ public class Driver {
 
     System.out.println("\nSigning up a new student\n");
     facade.signUp(
-      signupFirstName,
-      signupLastName,
-      signupEmail,
-      signupPassword,
-      signupUserType
-    );
+        signupFirstName,
+        signupLastName,
+        signupEmail,
+        signupPassword,
+        signupUserType);
     facade.signOut();
   }
 
@@ -143,54 +140,61 @@ public class Driver {
 
     // Checking if the user is logged in
     if (loggedInUser != null) {
-        System.out.println("Hello " + loggedInUser.getFirstName() + "!");
+      System.out.println("Hello " + loggedInUser.getFirstName() + "!");
+      System.out.println(loggedInUser.getFirstName() + " Current Info:");
+      System.out.println(loggedInUser.toString());
+
+      // Accessing course list from Facade
+      ArrayList<Course> courseList = facade.getCourseList();
+
+      // This needs to be method in facade 
+      if (courseList != null && !courseList.isEmpty()) {
+        System.out.println("Courses Available:");
+        for (Course course : courseList) {
+          System.out.println(course.toString());
+        }
+      } else {
+        System.out.println("No courses available.");
+      }
     } else {
-        System.out.println("Incorrect email or password. Please try again.");
-        return; // End the scenario if login fails
+      System.out.println("Incorrect email or password. Please try again.");
     }
-
-    // Displays the User Info
-    System.out.println(loggedInUser.getFirstName() + " Current Info:");
-    System.out.println(loggedInUser.toString());
-
-        // Load courses
-        CourseList.getInstance().getCourses();
-
-        // Print Course Details
-        CourseList.getInstance().displayAllCourses();
-    }
+  }
 
   /**
    * Scenario to test the MajorList
+   * 
    * @author yask8(Yasmine Kennedy)
    */
   public void scenario5() {
     System.out.println("Scenario 5: Loading Majors and Printing Respective Major Map");
     System.out.println("--------------------------------------------");
+    
     // Hardcoding the email and password
     String email = "rio.farrah2004@gmail.com";
     String password = "Real?dejaneir0";
+    
     // Creating a user object that operates the facade login method
     User loggingIn = facade.login(email, password);
+    
     // Checking if the user is logged in
-    if(loggingIn != null){
-      System.out.println("Hello " + loggingIn.getFirstName() + "!");
-    } else {
-      System.out.println("Incorrect email or password. Please try again.");
-    }
-    // Displays the User Info
-    System.out.println(loggingIn.getFirstName() + " Current Info:");
-    System.out.println(loggingIn.toString());
-    // User Loads Majors
-    if(MajorList.getInstance().isLoaded()){
+    if (loggingIn != null) {
+        System.out.println("Hello " + loggingIn.getFirstName() + "!");
+        
+        // Displays the User Info
+        System.out.println(loggingIn.getFirstName() + " Current Info:");
+        System.out.println(loggingIn.toString());
+        
+        // User Loads Majors
         System.out.println("Majors loaded Successfully");
+        
+        // Major map is displayed for specified major
+        String major = "Computer Science";
+        facade.displayMap(major);
     } else {
-        System.out.println("Majors did not load sucessfully");
+        System.out.println("Incorrect email or password. Please try again.");
     }
-    //Major map is displayed for specified major
-    String major = "Computer Science";
-    facade.displayMap(major);
-  }
+}
 
   public static void main(String[] args) {
     Driver advisingInterface = new Driver();

@@ -68,7 +68,7 @@ public class Facade {
   /**
    * Logs in a user with the specified email and password.
    * If the user list is not already loaded, it loads the users using data loader
-   * Loads in other vital data as wekk
+   * Loads Course and Majors as well
    * 
    * @author @Spillmag
    *
