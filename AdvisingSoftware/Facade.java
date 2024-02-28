@@ -68,6 +68,7 @@ public class Facade {
   /**
    * Logs in a user with the specified email and password.
    * If the user list is not already loaded, it loads the users using data loader
+   * Loads in other vital data as wekk
    * 
    * @author @Spillmag
    *
@@ -76,9 +77,23 @@ public class Facade {
    * @return The logged-in user if successful.
    */
   public User login(String email, String password) {
+
+    loadCourseList();
+    loadMajorList();
+
     UserList userList = UserList.getInstance();
     return userList.getUserByLoginInfo(email, password);
-  }
+}
+
+private void loadCourseList() {
+    CourseList courseListInstance = CourseList.getInstance();
+    courseList = courseListInstance.getCourses();
+}
+
+private void loadMajorList() {
+    MajorList majorListInstance = MajorList.getInstance();
+    majorList = majorListInstance.getMajors();
+}
 
   /**
    * Signs out the currently logged-in user and saves any changes made during the
