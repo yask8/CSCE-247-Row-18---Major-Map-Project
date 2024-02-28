@@ -213,4 +213,16 @@ private void loadMajorList() {
   public GraduationRequirements getGradReq() {
     return gradReq;
   }
+
+  public void displayAllCourses(ArrayList<Course> courseList) {
+    if (courseList != null && !courseList.isEmpty()) {
+        System.out.println("Courses Available:");
+        for (Course course : courseList) {
+            System.out.println(course.toString());
+        }
+    } else {
+        System.out.println("No courses available.");
+    }
+}
+
 }

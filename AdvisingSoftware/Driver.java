@@ -129,37 +129,32 @@ public class Driver {
 
   public void scenario4() {
     System.out.println("\nScenario 4: Loading Courses and Printing Respective Course Details");
-    System.out.println("--------------------------------------------");
+System.out.println("--------------------------------------------");
 
-    // Hardcoding the email and password
-    String email = "rio.farrah2004@gmail.com";
-    String password = "Real?dejaneir0";
+// Hardcoding the email and password
+String email = "rio.farrah2004@gmail.com";
+String password = "Real?dejaneir0";
 
-    // Creating a user object that operates the facade login method
-    User loggedInUser = facade.login(email, password);
+// Creating a user object that operates the facade login method
+User loggedInUser = facade.login(email, password);
 
-    // Checking if the user is logged in
-    if (loggedInUser != null) {
-      System.out.println("Hello " + loggedInUser.getFirstName() + "!");
-      System.out.println(loggedInUser.getFirstName() + " Current Info:");
-      System.out.println(loggedInUser.toString());
+// Checking if the user is logged in
+if (loggedInUser != null) {
+    System.out.println("Hello " + loggedInUser.getFirstName() + "!");
+    System.out.println(loggedInUser.getFirstName() + " Current Info:");
+    System.out.println(loggedInUser.toString());
 
-      // Accessing course list from Facade
-      ArrayList<Course> courseList = facade.getCourseList();
+    // Getting the course list from Facade
+    ArrayList<Course> courseList = facade.getCourseList();
 
-      // This needs to be method in facade 
-      if (courseList != null && !courseList.isEmpty()) {
-        System.out.println("Courses Available:");
-        for (Course course : courseList) {
-          System.out.println(course.toString());
-        }
-      } else {
-        System.out.println("No courses available.");
-      }
-    } else {
-      System.out.println("Incorrect email or password. Please try again.");
-    }
+    // Calling the method to display available courses
+    facade.displayAllCourses(courseList);
+
+} else {
+    System.out.println("Incorrect email or password. Please try again.");
+}
   }
+
 
   /**
    * Scenario to test the MajorList
