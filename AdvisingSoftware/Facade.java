@@ -70,6 +70,8 @@ public class Facade {
    * If the user list is not already loaded, it loads the users using data loader
    * Loads Course and Majors as well
    * 
+   * Need to edit this method 
+   * 
    * @author @Spillmag
    *
    * @param email    The email of the user.
@@ -77,10 +79,9 @@ public class Facade {
    * @return The logged-in user if successful.
    */
   public User login(String email, String password) {
-
     loadCourseList();
     loadMajorList();
-
+    loadUserList();
     UserList userList = UserList.getInstance();
     return userList.getUserByLoginInfo(email, password);
 }
@@ -94,7 +95,10 @@ private void loadMajorList() {
     MajorList majorListInstance = MajorList.getInstance();
     majorList = majorListInstance.getMajors();
 }
-
+private void loadUserList() {
+  UserList courseListInstance = UserList.getInstance();
+  userList = courseListInstance.getUsers();
+}
   /**
    * Signs out the currently logged-in user and saves any changes made during the
    * session.
@@ -103,8 +107,7 @@ private void loadMajorList() {
    */
   public void signOut() {
     user = null;
-    ArrayList<User> userList = UserList.getInstance().getUsers();
-    DataWriter.saveUsers(userList);
+    DataWriter.saveUsers(getUserList());
   }
 
   /**
@@ -166,7 +169,7 @@ private void loadMajorList() {
   }
   public void displayMap(String major){
     if(majorMap == null){
-      majorMap = new MajorMap(major, courseList, courseList, courseList, courseList);
+    System.out.println("Major Map is null");
     }
     majorMap.displayMajorMap(major);
   }

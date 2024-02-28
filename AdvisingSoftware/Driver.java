@@ -35,12 +35,12 @@ public class Driver {
     String email = "rio.farrah2004@gmail.com";
     String password = "Real?dejaneir0";
 
-    User loggedInStudent = facade.login(email, password);
+    facade.login(email, password);
 
-    if (loggedInStudent != null) {
+    if (facade.getUser() != null) {
       System.out.println("Login successful!");
       System.out.println("Current user:");
-      System.out.println(loggedInStudent.toString());
+      System.out.println(facade.getUser().toString());
     } else {
       System.out.println("Login failed. Incorrect email or password.");
     }
@@ -51,12 +51,12 @@ public class Driver {
     String email2 = "thebillybob@gmail.com";
     String password2 = "Guiy#ghawe";
 
-    User loggedInAdmin = facade.login(email2, password2);
+    facade.login(email2, password2);
 
-    if (loggedInAdmin != null) {
+    if (facade.getUser() != null) {
       System.out.println("Login successful!");
       System.out.println("Current user:");
-      System.out.println(loggedInAdmin.toString());
+      System.out.println(facade.getUser().toString());
     } else {
       System.out.println("Login failed. Incorrect email or password.");
     }
@@ -71,12 +71,12 @@ public class Driver {
     String email = "rio.farrah204@gmail.com";
     String password = "Real?dejaneir0";
 
-    User loggedInStudent = facade.login(email, password);
+    facade.login(email, password);
 
-    if (loggedInStudent != null) {
+    if (facade.getUser() != null) {
       System.out.println("Login successful!");
       System.out.println("Current user:");
-      System.out.println(loggedInStudent.toString());
+      System.out.println(facade.getUser().toString());
     } else {
       System.out.println(
           "Login failed for email " +
@@ -91,12 +91,12 @@ public class Driver {
     String email2 = "thebillybob@gmail.com";
     String password2 = "guiy#ghawe";
 
-    User LoggedInAdmin = facade.login(email2, password2);
+    facade.login(email2, password2);
 
-    if (loggedInStudent != null) {
+    if (facade.getUser() != null) {
       System.out.println("Login successful!");
       System.out.println("Current user:");
-      System.out.println(LoggedInAdmin.toString());
+      System.out.println(facade.getUser().toString());
     } else {
       System.out.println(
           "Login failed for email " +
@@ -129,32 +129,24 @@ public class Driver {
 
   public void scenario4() {
     System.out.println("\nScenario 4: Loading Courses and Printing Respective Course Details");
-System.out.println("--------------------------------------------");
+    System.out.println("--------------------------------------------");
 
-// Hardcoding the email and password
-String email = "rio.farrah2004@gmail.com";
-String password = "Real?dejaneir0";
+    // Hardcoding the email and password
+    String email = "rio.farrah2004@gmail.com";
+    String password = "Real?dejaneir0";
+    
+    facade.login(email, password);
 
-// Creating a user object that operates the facade login method
-User loggedInUser = facade.login(email, password);
-
-// Checking if the user is logged in
-if (loggedInUser != null) {
-    System.out.println("Hello " + loggedInUser.getFirstName() + "!");
-    System.out.println(loggedInUser.getFirstName() + " Current Info:");
-    System.out.println(loggedInUser.toString());
-
-    // Getting the course list from Facade
-    ArrayList<Course> courseList = facade.getCourseList();
-
-    // Calling the method to display available courses
-    facade.displayAllCourses(courseList);
-
-} else {
-    System.out.println("Incorrect email or password. Please try again.");
-}
+    // Checking if the user is logged in
+    if (facade.getUser() != null) {
+      System.out.println("Hello " + facade.getUser().getFirstName() + "!");
+      System.out.println(facade.getUser().getFirstName() + " Current Info:");
+      System.out.println(facade.getUser().toString());
+      facade.displayAllCourses(facade.getCourseList());
+    } else {
+      System.out.println("Incorrect email or password. Please try again.");
+    }
   }
-
 
   /**
    * Scenario to test the MajorList
@@ -164,32 +156,29 @@ if (loggedInUser != null) {
   public void scenario5() {
     System.out.println("Scenario 5: Loading Majors and Printing Respective Major Map");
     System.out.println("--------------------------------------------");
-    
+
     // Hardcoding the email and password
     String email = "rio.farrah2004@gmail.com";
     String password = "Real?dejaneir0";
-    
+
     // Creating a user object that operates the facade login method
     User loggingIn = facade.login(email, password);
-    
+
     // Checking if the user is logged in
     if (loggingIn != null) {
-        System.out.println("Hello " + loggingIn.getFirstName() + "!");
-        
-        // Displays the User Info
-        System.out.println(loggingIn.getFirstName() + " Current Info:");
-        System.out.println(loggingIn.toString());
-        
-        // User Loads Majors
-        System.out.println("Majors loaded Successfully");
-        
-        // Major map is displayed for specified major
-        String major = "Computer Science";
-        facade.displayMap(major);
+      System.out.println("Hello " + loggingIn.getFirstName() + "!");
+
+      // Displays the User Info
+      System.out.println(loggingIn.getFirstName() + " Current Info:");
+      System.out.println(loggingIn.toString());
+
+      // Major map is displayed for specified major
+      String major = "Computer Science";
+      facade.displayMap(major);
     } else {
-        System.out.println("Incorrect email or password. Please try again.");
+      System.out.println("Incorrect email or password. Please try again.");
     }
-}
+  }
 
   public static void main(String[] args) {
     Driver advisingInterface = new Driver();
