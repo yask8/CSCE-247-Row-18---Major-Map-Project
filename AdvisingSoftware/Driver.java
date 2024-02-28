@@ -147,7 +147,7 @@ public class Driver {
       // Accessing course list from Facade
       ArrayList<Course> courseList = facade.getCourseList();
 
-      // This needs to be method in facade like Facade.displayAllCourses(ArrayList<Course> courses)
+      // This needs to be method in facade 
       if (courseList != null && !courseList.isEmpty()) {
         System.out.println("Courses Available:");
         for (Course course : courseList) {
@@ -185,7 +185,7 @@ public class Driver {
         System.out.println(loggingIn.getFirstName() + " Current Info:");
         System.out.println(loggingIn.toString());
         
-        // User Loads Majors (Already loaded upon login)
+        // User Loads Majors
         System.out.println("Majors loaded Successfully");
         
         // Major map is displayed for specified major

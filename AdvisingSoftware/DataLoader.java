@@ -32,9 +32,9 @@ public class DataLoader extends DataConstants {
 
         // testLoadingCourses();
 
-        // testLoadingMajorMaps();
+        testLoadingMajorMaps();
 
-        LoadUsers();
+        //LoadUsers();
     }
 
     /**
