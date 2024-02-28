@@ -17,10 +17,10 @@ public class Driver {
   }
 
   public void run() {
-    scenario1();
-    scenario2();
-    scenario3();
-    scenario4();
+   // scenario1();
+    //scenario2();
+    //scenario3();
+    //scenario4();
     scenario5();
   }
 
@@ -134,7 +134,7 @@ public class Driver {
     // Hardcoding the email and password
     String email = "rio.farrah2004@gmail.com";
     String password = "Real?dejaneir0";
-    
+
     facade.login(email, password);
 
     // Checking if the user is logged in
@@ -162,15 +162,15 @@ public class Driver {
     String password = "Real?dejaneir0";
 
     // Creating a user object that operates the facade login method
-    User loggingIn = facade.login(email, password);
+    facade.login(email, password);
 
     // Checking if the user is logged in
-    if (loggingIn != null) {
-      System.out.println("Hello " + loggingIn.getFirstName() + "!");
+    if (facade.getUser()!= null) {
+      System.out.println("Hello " + facade.getUser().getFirstName() + "!");
 
       // Displays the User Info
-      System.out.println(loggingIn.getFirstName() + " Current Info:");
-      System.out.println(loggingIn.toString());
+      System.out.println(facade.getUser().getFirstName() + " Current Info:");
+      System.out.println(facade.getUser().toString());
 
       // Major map is displayed for specified major
       String major = "Computer Science";
