@@ -88,7 +88,7 @@ public class Facade {
     User loggedInUser = userList.getUserByLoginInfo(email, password);
 
     this.user = loggedInUser;
-
+        
     return loggedInUser;
   }
 
@@ -178,6 +178,7 @@ public class Facade {
   }
 
   public void displayMap(String major) {
+    
     if (majorMap == null) {
       System.out.println("Major Map is null");
     }
@@ -238,9 +239,11 @@ public class Facade {
     }
   }
 
+
+  // GETTER FOR USER INSTANCES
   /**
    * Gets the year of the logged-in student.
-   * Assumes the logged-in user is a student.
+   *
    * Returns null if the logged-in user is not a student.
    * 
    * @return The year of the logged-in student.
@@ -255,7 +258,7 @@ public class Facade {
 
   /**
    * Gets the major of the logged-in student.
-   * Assumes the logged-in user is a student.
+   * 
    * Returns null if the logged-in user is not a student.
    * 
    * @return The major of the logged-in student.
@@ -270,7 +273,7 @@ public class Facade {
 
   /**
    * Gets the credit hours of the logged-in student.
-   * Assumes the logged-in user is a student.
+   * 
    * Returns -1 if the logged-in user is not a student.
    * 
    * @return The credit hours of the logged-in student.
@@ -285,7 +288,7 @@ public class Facade {
 
   /**
    * Gets the completed courses of the logged-in student.
-   * Assumes the logged-in user is a student.
+   * 
    * Returns null if the logged-in user is not a student.
    * 
    * @return The completed courses of the logged-in student.
@@ -300,7 +303,7 @@ public class Facade {
 
   /**
    * Gets the GPA of the logged-in student.
-   * Assumes the logged-in user is a student.
+   * 
    * Returns -1.0 if the logged-in user is not a student.
    * 
    * @return The GPA of the logged-in student.
@@ -315,7 +318,7 @@ public class Facade {
 
   /**
    * Gets the course planner of the logged-in student.
-   * Assumes the logged-in user is a student.
+   *
    * Returns null if the logged-in user is not a student.
    * 
    * @return The course planner of the logged-in student.
@@ -330,7 +333,7 @@ public class Facade {
 
   /**
    * Gets the degree progress of the logged-in student.
-   * Assumes the logged-in user is a student.
+   * 
    * Returns null if the logged-in user is not a student.
    * 
    * @return The degree progress of the logged-in student.
@@ -345,7 +348,7 @@ public class Facade {
 
   /**
    * Gets the advisor notes of the logged-in student.
-   * Assumes the logged-in user is a student.
+   * 
    * Returns null if the logged-in user is not a student.
    * 
    * @return The advisor notes of the logged-in student.
@@ -357,7 +360,13 @@ public class Facade {
       return null;
     }
   }
-
+  /**
+   * Gets the changes made list by a logged in Admin.
+   * 
+   * Returns null if the logged-in user is not a Admin.
+   * 
+   * @return the changes made list by a logged in Admin.
+   */
   public ArrayList<String> getAdminChangesMade() {
     if (user instanceof Admin) {
       return ((Admin) user).getChangesMade();
@@ -367,7 +376,7 @@ public class Facade {
   }
 
   /**
-   * Returns the list of advisees for the advisor.
+   * Gets the list of advisees for the advisor.
    * 
    * @return ArrayList of advisees.
    */
@@ -381,7 +390,7 @@ public class Facade {
   }
 
   /**
-   * Returns the list of failing students for the advisor.
+   * Gets the list of failing students for the advisor.
    * 
    * @return ArrayList of failing students.
    */
@@ -395,7 +404,7 @@ public class Facade {
   }
 
   /**
-   * Returns the list of advisor notes.
+   * Gets the list of advisor notes.
    * 
    * @return ArrayList of advisor notes.
    */
