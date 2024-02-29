@@ -25,14 +25,14 @@ public abstract class DataConstants {
     protected static final String USER_TYPE = "userType";
 
     // Student Constants
-    protected static final String STUDENT_FILE_NAME = "Json/students.json";
+    protected static final String STUDENT_FILE_NAME = "Json/studentTEST.json";
     protected static final String STUDENT_CLASS = "class";
     protected static final String STUDENT_MAJOR = "major";
     protected static final String STUDENT_CREDITHOURS = "creditHours";
     protected static final String STUDENT_COMPLETED_COURSES = "completedCourses";
     protected static final String STUDENT_GPA = "gpa";
     protected static final String STUDENT_COURSE_PLANNER = "coursePlanner";
-    protected static final String STUDENT_DEGREE_PROGRESS = "degreeProgess";
+    protected static final String STUDENT_DEGREE_PROGRESS = "degreeProgress";
     protected static final String STUDENT_ADVISOR_NOTES = "advisorNotes";
 
     // Advisor Constants
@@ -70,9 +70,16 @@ public abstract class DataConstants {
     protected static final String MAJOR_APP_AREA = "appArea";
 
     //Course Planner Constants
-
+    protected static final String COURSE_PLANNER_STUDENT = "student";
+    protected static final String COURSE_PLANNER_PLAN = "courselist";
     //Degree Progress Contants
-    
+    protected static final String DEGREE_PLANNER_STUDENT = "student";
+    protected static final String DEGREE_PLANNER_MAJOR = "major";
+    protected static final String DEGREE_PLANNER_MAJOR_COURSES ="majorCourses";
+    protected static final String DEGREE_PLANNER_ELECTIVES = "electiveCourses";
+    protected static final String DEGREE_PLANNER_CC = "carolinaCoreCourses";
+    protected static final String DEGREE_PLANNER_C_COURSES ="completeCourses";
+    protected static final String DEGREE_PLANNER_IC_COURSES ="incompleteCourses";
 
     //Notes Constants
 }

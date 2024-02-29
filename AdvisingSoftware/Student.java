@@ -224,8 +224,8 @@ public class Student extends User {
         "creditHours: " + creditHours + "\n" +
         "completedCourses: " + completedCourses + "\n" +
         "gpa: " + gpa + "\n" +
-        "coursePlanner: " + coursePlanner + "\n" +
-        "degreeProgress: " + degreeProgress + "\n" +
+        "coursePlanner: " + coursePlanner.toString()+ "\n" +
+        "degreeProgress: " + degreeProgress.toString()+ "\n" +
         "advisorNotes: " + advisorNotes + "\n";
   }
 }

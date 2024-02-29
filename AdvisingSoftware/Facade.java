@@ -252,7 +252,7 @@ public class Facade {
    * @return The year of the logged-in student.
    */
   public String getStudentYear() {
-    if (user instanceof Student) {
+    if(user.getUserType().equals("STUDENT")){
       return ((Student) user).getYear();
     } else {
       return null;
@@ -282,7 +282,7 @@ public class Facade {
    * @return The credit hours of the logged-in student.
    */
   public int getStudentCreditHours() {
-    if (user instanceof Student) {
+    if(user.getUserType().equals("STUDENT")){
       return ((Student) user).getCreditHours();
     } else {
       return -1;
@@ -297,7 +297,7 @@ public class Facade {
    * @return The completed courses of the logged-in student.
    */
   public ArrayList<Course> getStudentCompletedCourses() {
-    if (user instanceof Student) {
+    if(user.getUserType().equals("STUDENT")){
       return ((Student) user).getCompletedCourses();
     } else {
       return null;
@@ -312,7 +312,7 @@ public class Facade {
    * @return The GPA of the logged-in student.
    */
   public double getStudentGPA() {
-    if (user instanceof Student) {
+    if(user.getUserType().equals("STUDENT")){
       return ((Student) user).getGpa();
     } else {
       return -1.0;
@@ -327,7 +327,7 @@ public class Facade {
    * @return The course planner of the logged-in student.
    */
   public CoursePlanner getStudentCoursePlanner() {
-    if (user instanceof Student) {
+    if(user.getUserType().equals("STUDENT")){
       return ((Student) user).getCoursePlanner();
     } else {
       return null;
@@ -342,7 +342,7 @@ public class Facade {
    * @return The degree progress of the logged-in student.
    */
   public DegreeProgress getStudentDegreeProgress() {
-    if (user instanceof Student) {
+    if(user.getUserType().equals("STUDENT")){
       return ((Student) user).getDegreeProgress();
     } else {
       return null;
@@ -357,7 +357,7 @@ public class Facade {
    * @return The advisor notes of the logged-in student.
    */
   public ArrayList<Note> getStudentAdvisorNotes() {
-    if (user instanceof Student) {
+    if(user.getUserType().equals("STUDENT")){
       return ((Student) user).getAdvisorNotes();
     } else {
       return null;
@@ -371,7 +371,7 @@ public class Facade {
    * @return the changes made list by a logged in Admin.
    */
   public ArrayList<String> getAdminChangesMade() {
-    if (user instanceof Admin) {
+    if(user.getUserType().equals("ADMIN")){
       return ((Admin) user).getChangesMade();
     } else {
       return null;
@@ -384,7 +384,7 @@ public class Facade {
    * @return ArrayList of advisees.
    */
   public ArrayList<User> getListOfAdvisees() {
-    if (user instanceof Advisor) {
+    if(user.getUserType().equals("ADVISOR")){
       Advisor advisor = (Advisor) user;
       return advisor.getListOfAdvisees();
     } else {
@@ -398,7 +398,7 @@ public class Facade {
    * @return ArrayList of failing students.
    */
   public ArrayList<User> getListOfFailingStudents() {
-    if (user instanceof Advisor) {
+    if(user.getUserType().equals("ADVISOR")){
       Advisor advisor = (Advisor) user;
       return advisor.getListOfFailingStudents();
     } else {
@@ -412,7 +412,7 @@ public class Facade {
    * @return ArrayList of advisor notes.
    */
   public ArrayList<Note> getListOfAdvisorNotes() {
-    if (user instanceof Advisor) {
+    if(user.getUserType().equals("ADVISOR")){
       Advisor advisor = (Advisor) user;
       return advisor.getListOfAdvisorNotes();
     } else {
