@@ -30,6 +30,42 @@ public class DegreeProgress {
         return "-----Degree Progress-----"
                 + "Current Major: " + this.major;
     }
+    /**
+     * Searches for a course by its ID in all course lists.
+     * Returns the first occurrence of the course with the given ID,
+     * or null if not found.
+     * 
+     * @param courseId The ID of the course to search for.
+     * @return The Course object if found, null otherwise.
+     */
+    public Course findCourseById(String courseId) {
+        for (Course course : majorCourses) {
+            if (course.getID().equals(courseId)) {
+                return course;
+            }
+        }
+        for (Course course : electiveCourses) {
+            if (course.getID().equals(courseId)) {
+                return course;
+            }
+        }
+        for (Course course : carolinaCoreCourses) {
+            if (course.getID().equals(courseId)) {
+                return course;
+            }
+        }
+        for (Course course : completeCourses) {
+            if (course.getID().equals(courseId)) {
+                return course;
+            }
+        }
+        for (Course course : incompleteCourses) {
+            if (course.getID().equals(courseId)) {
+                return course;
+            }
+        }
+        return null; // Course not found
+    }
 
     public String toString() {
         String result = "\n";

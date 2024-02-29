@@ -16,10 +16,10 @@ public class Driver {
 
   public void run() {
     scenario1();
-    scenario2();
-    scenario3();
-    scenario4();
-    scenario5();
+    //scenario2();
+    //scenario3();
+    //scenario4();
+   // scenario5();
   }
 
   /*
@@ -42,24 +42,9 @@ public class Driver {
     } else {
       System.out.println("Login failed. Incorrect email or password.");
     }
-    System.out.println("\nStudent will be signed out now\n");
-    facade.signOut();
+    System.out.println("Student checks degree progress\n");
+    System.out.println(facade.getStudentDegreeProgress());
 
-    // Hardcoded email and password
-    String email2 = "thebillybob@gmail.com";
-    String password2 = "Guiy#ghawe";
-
-    facade.login(email2, password2);
-
-    if (facade.getUser() != null) {
-      System.out.println("Login successful!");
-      System.out.println("Current user:");
-      System.out.println(facade.getUser().toString());
-    } else {
-      System.out.println("Login failed. Incorrect email or password.");
-    }
-    System.out.println("\nAdmin will be signed out now\n");
-    facade.signOut();
   }
 
   public void scenario2() {

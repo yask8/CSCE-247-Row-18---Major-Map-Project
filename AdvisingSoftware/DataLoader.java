@@ -26,7 +26,7 @@ public class DataLoader extends DataConstants {
     public static void main(String[] args) {
         // testLoadingAdmins();
 
-        // testLoadingStudents();
+         testLoadingStudents();
 
         // testLoadingAdvisors();
 
@@ -34,7 +34,7 @@ public class DataLoader extends DataConstants {
 
         // testLoadingMajorMaps();
 
-        LoadUsers();
+        //LoadUsers();
     }
 
     /**

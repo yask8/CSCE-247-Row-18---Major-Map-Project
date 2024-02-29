@@ -21,8 +21,6 @@ public class Facade {
   private ArrayList<User> userList;
   private User user;
   private ArrayList<MajorMap> majorList;
-  private DegreeProgress degreeProgress;
-  private CoursePlanner coursePlan;
   private MajorMap majorMap;
   private GraduationRequirements gradReq;
 
@@ -50,14 +48,12 @@ public class Facade {
       CourseList courseList,
       Course course,
       User user,
-      DegreeProgress degreeProgress,
       MajorMap majorMap,
       GraduationRequirements gradReq) {
     this.courseList = courseList.getCourses();
     this.course = course;
     UserList userList = UserList.getInstance();
     this.userList = userList.getUsers();
-    this.degreeProgress = degreeProgress;
     this.majorMap = majorMap;
     this.gradReq = gradReq;
   }
@@ -137,15 +133,6 @@ public class Facade {
     UserList userList = UserList.getInstance();
     userList.signUp(firstName, lastName, email, password, userType);
   }
-
-  public DegreeProgress checkDegreeProgress(String uscID) {
-    return degreeProgress;
-  }
-
-  public CoursePlanner checkCoursePlanner(String uscID) {
-    return coursePlan;
-  }
-
   public MajorMap checkMajorMap(String major) {
     return majorMap;
   }
@@ -213,14 +200,6 @@ public class Facade {
 
   public ArrayList<MajorMap> getMajorList() {
     return majorList;
-  }
-
-  public DegreeProgress getDegreeProgress() {
-    return degreeProgress;
-  }
-
-  public CoursePlanner getCoursePlan() {
-    return coursePlan;
   }
 
   public MajorMap getMajorMap() {
