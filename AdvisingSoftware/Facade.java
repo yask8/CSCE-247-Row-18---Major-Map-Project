@@ -267,7 +267,7 @@ public class Facade {
    * @return The major of the logged-in student.
    */
   public String getStudentMajor() {
-    if (user instanceof Student) {
+    if(user.getUserType().equals("STUDENT")) {
       return ((Student) user).getMajor();
     } else {
       return null;

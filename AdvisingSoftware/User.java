@@ -50,7 +50,6 @@ public class User {
     this.password = password;
     this.userType = userType;
   }
-
   /**
    * Allows user to edit given first name
    *

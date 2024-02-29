@@ -69,4 +69,10 @@ public abstract class DataConstants {
     protected static final String MAJOR_CORE_EDU = "coreEdu";
     protected static final String MAJOR_APP_AREA = "appArea";
 
+    //Course Planner Constants
+
+    //Degree Progress Contants
+    
+
+    //Notes Constants
 }
