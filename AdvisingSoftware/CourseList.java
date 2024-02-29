@@ -187,4 +187,28 @@ public void displayAllCourses() {
   public ArrayList<Course> getCourses() {
     return courses;
   }
+
+  /**
+ * Show course details for a the course code given.
+ *
+ * @param code The course code to search for.
+ */
+public void showCourseByCode(String code) {
+  Course course = getCourse(code);
+  if (course != null) {
+      System.out.println("Course Details for Code: " + code);
+      System.out.println("Name: " + course.getName());
+      System.out.println("Code: " + course.getCode());
+      System.out.println("Description: " + course.getDescription());
+      System.out.println("Credit Hours: " + course.getCreditHours());
+      System.out.println("Subject: " + course.getSubject());
+      System.out.println("Passing Grade: " + course.getPassGrade());
+      System.out.println("Elective: " + (course.isElective() ? "Yes" : "No"));
+      System.out.println("Carolina Core: " + (course.isCarolinaCore() ? "Yes" : "No"));
+      System.out.println("Prerequisites: " + course.getPreReqs());
+  } else {
+      System.out.println("Course with code " + code + " not found.");
+  }
+}
+
 }

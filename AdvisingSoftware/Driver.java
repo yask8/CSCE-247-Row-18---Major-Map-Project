@@ -147,7 +147,12 @@ public class Driver {
       System.out.println(facade.getUser().getFirstName() + " Current Info:");
       System.out.println(facade.getUser().toString());
       facade.displayAllCourses(facade.getCourseList());
-    } else {
+
+      // Show course details by code
+      String courseCodeToSearch = "PR"; // Example course code to search
+      System.out.println("\nTrying to find course with code: " + courseCodeToSearch);
+      facade.showCourseByCode(courseCodeToSearch);
+  } else {
       System.out.println("Incorrect email or password. Please try again.");
     }
   }
