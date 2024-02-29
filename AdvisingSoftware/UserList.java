@@ -68,47 +68,7 @@ public class UserList {
   public User getUserByLoginInfo(String email, String password) {
     for (User user : users) {
       if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-        if (user instanceof Student) {
-          Student student = (Student) user;
-          return new Student(
-              student.getFirstName(),
-              student.getLastName(),
-              student.getEmail(),
-              student.getID(),
-              student.getPassword(),
-              student.getUserType(),
-              student.getYear(),
-              student.getMajor(),
-              student.getCreditHours(),
-              student.getCompletedCourses(),
-              student.getGpa(),
-              student.getCoursePlanner(),
-              student.getDegreeProgress(),
-              student.getAdvisorNotes());
-        } else if (user instanceof Admin) {
-          Admin admin = (Admin) user;
-          return new Admin(
-              admin.getFirstName(),
-              admin.getLastName(),
-              admin.getEmail(),
-              admin.getID(),
-              admin.getPassword(),
-              admin.getUserType(),
-              admin.getChangesMade());
-        } else if (user instanceof Advisor) {
-
-          Advisor advisor = (Advisor) user;
-          return new Advisor(
-              advisor.getFirstName(),
-              advisor.getLastName(),
-              advisor.getEmail(),
-              advisor.getID(),
-              advisor.getPassword(),
-              advisor.getUserType(),
-              advisor.getListOfAdvisees(),
-              advisor.getListOfFailingStudents(),
-              advisor.getListOfAdvisorNotes());
-        }
+        return user;
       }
     }
     return null;
