@@ -38,18 +38,83 @@
     "degreeProgress": {
       "major": "Computer Science",
       "majorCourses": [
-        { "courseId": "CSCE101", "courseName": "Introduction to Computer Science" },
-        { "courseId": "CSCE102", "courseName": "Data Structures" }
+        {
+          "id": "CSCE101",
+          "name": "CSCE101 Introduction to Computer Science",
+          "code": "CSCE",
+          "description": "Introduction to Computer Science is an introductory course that covers fundamental concepts in computer science, including problem-solving strategies, algorithm development, data types, control structures, and basic programming techniques. The course provides a foundation for further study in computer science.",
+          "creditHours": 3,
+          "subject": "CSCE",
+          "passGrade": "C",
+          "elective": false,
+          "carolinaCore": false,
+          "preReqs": [],
+          "semester": "Fall, Spring",
+          "year": "2024-2025"
+        }
       ],
       "electiveCourses": [
-        { "courseId": "CSCE201", "courseName": "Algorithms" }
+        {
+          "id": "CSCE201",
+          "name": "CSCE201 Algorithms",
+          "code": "CSCE",
+          "description": "Algorithms is a course that covers the design and analysis of algorithms. Topics include algorithmic techniques such as divide and conquer, dynamic programming, greedy algorithms, and graph algorithms. The course also explores the theoretical foundations of algorithm analysis.",
+          "creditHours": 3,
+          "subject": "CSCE",
+          "passGrade": "C",
+          "elective": false,
+          "carolinaCore": false,
+          "preReqs": ["CSCE101", "CSCE102"],
+          "semester": "Fall, Spring",
+          "year": "2024-2025"
+        }
       ],
       "carolinaCoreCourses": [],
       "completeCourses": [
-        { "courseId": "MATH141", "courseName": "Calculus I" }
+        {
+          "id": "BIOL101",
+          "name": "BIOL101 Introduction to Biology",
+          "code": "BIOL",
+          "description": "Introduction to Biology is a foundational course that explores the principles of biology, including cellular structure and function, genetics, evolution, and ecology. The course emphasizes critical thinking and scientific inquiry.",
+          "creditHours": 4,
+          "subject": "BIOL",
+          "passGrade": "C",
+          "elective": false,
+          "carolinaCore": true,
+          "preReqs": [],
+          "semester": "Fall, Spring",
+          "year": "2024-2025"
+        },
+        {
+          "id": "CHEM111",
+          "name": "CHEM111 General Chemistry I",
+          "code": "CHEM",
+          "description": "General Chemistry I is an introductory course that covers the fundamental principles of chemistry, including atomic structure, chemical bonding, stoichiometry, and thermodynamics. Laboratory experiments complement the lecture material.",
+          "creditHours": 4,
+          "subject": "CHEM",
+          "passGrade": "C",
+          "elective": false,
+          "carolinaCore": true,
+          "preReqs": [],
+          "semester": "Fall, Spring",
+          "year": "2024-2025"
+        }
       ],
       "incompleteCourses": [
-        { "courseId": "MATH142", "courseName": "Calculus II" }
+        {
+          "id": "HIST101",
+          "name": "HIST101 World History",
+          "code": "HIST",
+          "description": "World History is a survey course that explores the major events, movements, and civilizations in world history from prehistoric times to the present. Topics include ancient civilizations, the Middle Ages, the Renaissance, and modern global developments.",
+          "creditHours": 3,
+          "subject": "HIST",
+          "passGrade": "C",
+          "elective": true,
+          "carolinaCore": true,
+          "preReqs": [],
+          "semester": "Fall, Spring",
+          "year": "2024-2025"
+        }
       ]
     },
     "advisorNotes": null

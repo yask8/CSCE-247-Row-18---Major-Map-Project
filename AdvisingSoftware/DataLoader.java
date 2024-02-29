@@ -96,7 +96,7 @@ public class DataLoader extends DataConstants {
                 ArrayList<Course> completedCourses = (ArrayList<Course>) studentObj.get(STUDENT_COMPLETED_COURSES);
                 double gpa = (double) studentObj.get(STUDENT_GPA);
 
-                // Load CoursePlanner
+                // Load CoursePlanner STILL BROKEN
                 Object coursePlannerObj = studentObj.get(STUDENT_COURSE_PLANNER);
                 CoursePlanner coursePlanner = null;
                 if (coursePlannerObj instanceof JSONObject) {
