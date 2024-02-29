@@ -242,6 +242,30 @@ public class Facade {
     }
   }
 
+  /**
+     * Show course details for a course with the given code.
+     *
+     * @param courseCode The course code to search for.
+     */
+    public void showCourseByCode(String courseCode) {
+      CourseList courseListInstance = CourseList.getInstance();
+      Course course = courseListInstance.getCourse(courseCode);
+
+      if (course != null) {
+          System.out.println("Course Details for Code: " + courseCode);
+          System.out.println("Name: " + course.getName());
+          System.out.println("Code: " + course.getCode());
+          System.out.println("Description: " + course.getDescription());
+          System.out.println("Credit Hours: " + course.getCreditHours());
+          System.out.println("Subject: " + course.getSubject());
+          System.out.println("Passing Grade: " + course.getPassGrade());
+          System.out.println("Elective: " + (course.isElective() ? "Yes" : "No"));
+          System.out.println("Carolina Core: " + (course.isCarolinaCore() ? "Yes" : "No"));
+          System.out.println("Prerequisites: " + course.getPreReqs());
+      } else {
+          System.out.println("Course with code " + courseCode + " not found.");
+      }
+  }
 
   // GETTER FOR USER INSTANCES
   /**
