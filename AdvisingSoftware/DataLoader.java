@@ -297,8 +297,6 @@ public class DataLoader extends DataConstants {
                 Course course = findCourseByCode(courseId);
                 if (course != null) {
                     courses.add(course);
-                } else {
-                    System.out.println("Course not found for code: " + courseId);
                 }
             }
         }

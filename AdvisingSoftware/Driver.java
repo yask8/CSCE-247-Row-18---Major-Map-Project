@@ -1,7 +1,5 @@
 package AdvisingSoftware;
 
-import java.util.ArrayList;
-
 /**
  * @author Lia Zhao (zhaolia9)
  *         - facade: Facade
@@ -17,10 +15,10 @@ public class Driver {
   }
 
   public void run() {
-   // scenario1();
-    //scenario2();
-    //scenario3();
-    //scenario4();
+    // scenario1();
+    // scenario2();
+    // scenario3();
+    // scenario4();
     scenario5();
   }
 
@@ -109,7 +107,7 @@ public class Driver {
   }
 
   public void scenario3() {
-    System.out.println("\n Scenario 3: Sign Up");
+    System.out.println("\nScenario 3: Sign Up");
     // Hardcoded email and password for signup
     String signupEmail = "newstudent@example.com";
     String signupPassword = "newPassword";
@@ -124,6 +122,7 @@ public class Driver {
         signupEmail,
         signupPassword,
         signupUserType);
+
     facade.signOut();
   }
 
@@ -165,16 +164,20 @@ public class Driver {
     facade.login(email, password);
 
     // Checking if the user is logged in
-    if (facade.getUser()!= null) {
+    if (facade.getUser() != null) {
       System.out.println("Hello " + facade.getUser().getFirstName() + "!");
 
       // Displays the User Info
       System.out.println(facade.getUser().getFirstName() + " Current Info:");
       System.out.println(facade.getUser().toString());
 
-      // Major map is displayed for specified major
-      String major = "Computer Science";
-      facade.displayMap(major);
+      String major = facade.getStudentMajor();
+      if (major != null) {
+        facade.displayMap(major);
+      } else {
+        System.out.println("User's major not found.");
+      }
+
     } else {
       System.out.println("Incorrect email or password. Please try again.");
     }

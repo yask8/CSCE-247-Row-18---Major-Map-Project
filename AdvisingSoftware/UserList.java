@@ -67,10 +67,48 @@ public class UserList {
    */
   public User getUserByLoginInfo(String email, String password) {
     for (User user : users) {
-      if (
-        user.getEmail().equals(email) && user.getPassword().equals(password)
-      ) {
-        return user;
+      if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+        if (user instanceof Student) {
+          Student student = (Student) user;
+          return new Student(
+              student.getFirstName(),
+              student.getLastName(),
+              student.getEmail(),
+              student.getID(),
+              student.getPassword(),
+              student.getUserType(),
+              student.getYear(),
+              student.getMajor(),
+              student.getCreditHours(),
+              student.getCompletedCourses(),
+              student.getGpa(),
+              student.getCoursePlanner(),
+              student.getDegreeProgress(),
+              student.getAdvisorNotes());
+        } else if (user instanceof Admin) {
+          Admin admin = (Admin) user;
+          return new Admin(
+              admin.getFirstName(),
+              admin.getLastName(),
+              admin.getEmail(),
+              admin.getID(),
+              admin.getPassword(),
+              admin.getUserType(),
+              admin.getChangesMade());
+        } else if (user instanceof Advisor) {
+
+          Advisor advisor = (Advisor) user;
+          return new Advisor(
+              advisor.getFirstName(),
+              advisor.getLastName(),
+              advisor.getEmail(),
+              advisor.getID(),
+              advisor.getPassword(),
+              advisor.getUserType(),
+              advisor.getListOfAdvisees(),
+              advisor.getListOfFailingStudents(),
+              advisor.getListOfAdvisorNotes());
+        }
       }
     }
     return null;
@@ -89,31 +127,29 @@ public class UserList {
    * @param major     The student's major.
    */
   public void addStudent(
-    String firstName,
-    String lastName,
-    String email,
-    UUID uscID,
-    String password,
-    String userType,
-    String year,
-    String major
-  ) {
+      String firstName,
+      String lastName,
+      String email,
+      UUID uscID,
+      String password,
+      String userType,
+      String year,
+      String major) {
     Student student = new Student(
-      firstName,
-      lastName,
-      email,
-      uscID,
-      password,
-      userType,
-      year,
-      major,
-      0,
-      null,
-      0,
-      null,
-      null,
-      null
-    );
+        firstName,
+        lastName,
+        email,
+        uscID,
+        password,
+        userType,
+        year,
+        major,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null);
     users.add(student);
   }
 
@@ -128,22 +164,20 @@ public class UserList {
    * @param userType  The type of the user "ADMIN"
    */
   public void addAdmin(
-    String firstName,
-    String lastName,
-    String email,
-    UUID uscID,
-    String password,
-    String userType
-  ) {
+      String firstName,
+      String lastName,
+      String email,
+      UUID uscID,
+      String password,
+      String userType) {
     Admin admin = new Admin(
-      firstName,
-      lastName,
-      email,
-      uscID,
-      password,
-      userType,
-      null
-    );
+        firstName,
+        lastName,
+        email,
+        uscID,
+        password,
+        userType,
+        null);
     users.add(admin);
   }
 
@@ -158,24 +192,22 @@ public class UserList {
    * @param userType  The type of the user "ADVISOR"
    */
   public void addAdvisor(
-    String firstName,
-    String lastName,
-    String email,
-    UUID uscID,
-    String password,
-    String userType
-  ) {
+      String firstName,
+      String lastName,
+      String email,
+      UUID uscID,
+      String password,
+      String userType) {
     Advisor advisor = new Advisor(
-      firstName,
-      lastName,
-      email,
-      uscID,
-      password,
-      userType,
-      null,
-      null,
-      null
-    );
+        firstName,
+        lastName,
+        email,
+        uscID,
+        password,
+        userType,
+        null,
+        null,
+        null);
     users.add(advisor);
   }
 
@@ -245,52 +277,44 @@ public class UserList {
     return false;
   }
 
+  /**
+   * Signs up a new user.
+   *
+   * @param firstName The first name of the user.
+   * @param lastName  The last name of the user.
+   * @param email     The email of the user.
+   * @param password  The password of the user.
+   * @param userType  The type of user ('STUDENT', 'ADMIN', or 'ADVISOR').
+   */
   public void signUp(
-    String firstName,
-    String lastName,
-    String email,
-    String password,
-    String userType
-  ) {
+      String firstName,
+      String lastName,
+      String email,
+      String password,
+      String userType) {
+
     if (emailExists(email)) {
-      System.out.println(
-        "Email already exists. Please choose a different email."
-      );
+      System.out.println("Sign up failed. Email already exists. Please choose a different email.");
       return;
     }
 
     UUID uscID = UUID.randomUUID();
 
+    User newUser = null;
     if (userType.equals("STUDENT")) {
-      addStudent(
-        firstName,
-        lastName,
-        email,
-        uscID,
-        password,
-        userType,
-        null,
-        null
-      );
+      newUser = new Student(firstName, lastName, email, uscID, password, userType, "Freshman", null, 0, null, 0, null,
+          null, null);
     } else if (userType.equals("ADMIN")) {
-      addAdmin(firstName, lastName, email, uscID, password, userType);
+      newUser = new Admin(firstName, lastName, email, uscID, password, userType, null);
     } else if (userType.equals("ADVISOR")) {
-      addAdvisor(firstName, lastName, email, uscID, password, userType);
+      newUser = new Advisor(firstName, lastName, email, uscID, password, userType, null, null, null);
     } else {
-      System.out.println(
-        "Invalid user type. Please specify either 'STUDENT', 'ADMIN', or 'ADVISOR'."
-      );
+      System.out.println("Sign up failed. Invalid user type. Please specify either 'STUDENT', 'ADMIN', or 'ADVISOR'.");
       return;
     }
 
-    User loggedInUser = getUserByLoginInfo(email, password);
-
-    if (loggedInUser != null) {
-      System.out.println(
-        "Sign up successful! Logged in as:\n\n" + loggedInUser.toString()
-      );
-    } else {
-      System.out.println("Sign up failed. Unable to log in.");
-    }
+    addUser(newUser);
+    System.out.println("Sign up successful! New profile:");
+    System.out.println(newUser.toString());
   }
 }

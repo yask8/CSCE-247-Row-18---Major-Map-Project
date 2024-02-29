@@ -65,12 +65,13 @@ public class Facade {
   public Facade() {
 
   }
+
   /**
    * Logs in a user with the specified email and password.
    * If the user list is not already loaded, it loads the users using data loader
    * Loads Course and Majors as well
    * 
-   * Need to edit this method 
+   * Need to edit this method
    * 
    * @author @Spillmag
    *
@@ -79,26 +80,33 @@ public class Facade {
    * @return The logged-in user if successful.
    */
   public User login(String email, String password) {
+    loadUserList();
     loadCourseList();
     loadMajorList();
-    loadUserList();
     UserList userList = UserList.getInstance();
-    return userList.getUserByLoginInfo(email, password);
-}
 
-private void loadCourseList() {
+    User loggedInUser = userList.getUserByLoginInfo(email, password);
+
+    this.user = loggedInUser;
+
+    return loggedInUser;
+  }
+
+  private void loadCourseList() {
     CourseList courseListInstance = CourseList.getInstance();
     courseList = courseListInstance.getCourses();
-}
+  }
 
-private void loadMajorList() {
+  private void loadMajorList() {
     MajorList majorListInstance = MajorList.getInstance();
     majorList = majorListInstance.getMajors();
-}
-private void loadUserList() {
-  UserList courseListInstance = UserList.getInstance();
-  userList = courseListInstance.getUsers();
-}
+  }
+
+  private void loadUserList() {
+    UserList courseListInstance = UserList.getInstance();
+    userList = courseListInstance.getUsers();
+  }
+
   /**
    * Signs out the currently logged-in user and saves any changes made during the
    * session.
@@ -125,6 +133,7 @@ private void loadUserList() {
    * @param userType  The type of user ('STUDENT', 'ADMIN', or 'ADVISOR').
    */
   public void signUp(String firstName, String lastName, String email, String password, String userType) {
+    loadUserList();
     UserList userList = UserList.getInstance();
     userList.signUp(firstName, lastName, email, password, userType);
   }
@@ -167,16 +176,17 @@ private void loadUserList() {
   protected ArrayList<Student> modifyStudentList() {
     return new ArrayList<Student>();
   }
-  public void displayMap(String major){
-    if(majorMap == null){
-    System.out.println("Major Map is null");
+
+  public void displayMap(String major) {
+    if (majorMap == null) {
+      System.out.println("Major Map is null");
     }
     majorMap.displayMajorMap(major);
   }
 
-  protected void modifyStudentGrades( 
-  User user,
-  DegreeProgress degreeProgress) {
+  protected void modifyStudentGrades(
+      User user,
+      DegreeProgress degreeProgress) {
 
   }
 
@@ -219,13 +229,183 @@ private void loadUserList() {
 
   public void displayAllCourses(ArrayList<Course> courseList) {
     if (courseList != null && !courseList.isEmpty()) {
-        System.out.println("Courses Available:");
-        for (Course course : courseList) {
-            System.out.println(course.toString());
-        }
+      System.out.println("Courses Available:");
+      for (Course course : courseList) {
+        System.out.println(course.toString());
+      }
     } else {
-        System.out.println("No courses available.");
+      System.out.println("No courses available.");
     }
-}
+  }
+
+  /**
+   * Gets the year of the logged-in student.
+   * Assumes the logged-in user is a student.
+   * Returns null if the logged-in user is not a student.
+   * 
+   * @return The year of the logged-in student.
+   */
+  public String getStudentYear() {
+    if (user instanceof Student) {
+      return ((Student) user).getYear();
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Gets the major of the logged-in student.
+   * Assumes the logged-in user is a student.
+   * Returns null if the logged-in user is not a student.
+   * 
+   * @return The major of the logged-in student.
+   */
+  public String getStudentMajor() {
+    if (user instanceof Student) {
+      return ((Student) user).getMajor();
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Gets the credit hours of the logged-in student.
+   * Assumes the logged-in user is a student.
+   * Returns -1 if the logged-in user is not a student.
+   * 
+   * @return The credit hours of the logged-in student.
+   */
+  public int getStudentCreditHours() {
+    if (user instanceof Student) {
+      return ((Student) user).getCreditHours();
+    } else {
+      return -1;
+    }
+  }
+
+  /**
+   * Gets the completed courses of the logged-in student.
+   * Assumes the logged-in user is a student.
+   * Returns null if the logged-in user is not a student.
+   * 
+   * @return The completed courses of the logged-in student.
+   */
+  public ArrayList<Course> getStudentCompletedCourses() {
+    if (user instanceof Student) {
+      return ((Student) user).getCompletedCourses();
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Gets the GPA of the logged-in student.
+   * Assumes the logged-in user is a student.
+   * Returns -1.0 if the logged-in user is not a student.
+   * 
+   * @return The GPA of the logged-in student.
+   */
+  public double getStudentGPA() {
+    if (user instanceof Student) {
+      return ((Student) user).getGpa();
+    } else {
+      return -1.0;
+    }
+  }
+
+  /**
+   * Gets the course planner of the logged-in student.
+   * Assumes the logged-in user is a student.
+   * Returns null if the logged-in user is not a student.
+   * 
+   * @return The course planner of the logged-in student.
+   */
+  public CoursePlanner getStudentCoursePlanner() {
+    if (user instanceof Student) {
+      return ((Student) user).getCoursePlanner();
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Gets the degree progress of the logged-in student.
+   * Assumes the logged-in user is a student.
+   * Returns null if the logged-in user is not a student.
+   * 
+   * @return The degree progress of the logged-in student.
+   */
+  public DegreeProgress getStudentDegreeProgress() {
+    if (user instanceof Student) {
+      return ((Student) user).getDegreeProgress();
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Gets the advisor notes of the logged-in student.
+   * Assumes the logged-in user is a student.
+   * Returns null if the logged-in user is not a student.
+   * 
+   * @return The advisor notes of the logged-in student.
+   */
+  public ArrayList<Note> getStudentAdvisorNotes() {
+    if (user instanceof Student) {
+      return ((Student) user).getAdvisorNotes();
+    } else {
+      return null;
+    }
+  }
+
+  public ArrayList<String> getAdminChangesMade() {
+    if (user instanceof Admin) {
+      return ((Admin) user).getChangesMade();
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Returns the list of advisees for the advisor.
+   * 
+   * @return ArrayList of advisees.
+   */
+  public ArrayList<User> getListOfAdvisees() {
+    if (user instanceof Advisor) {
+      Advisor advisor = (Advisor) user;
+      return advisor.getListOfAdvisees();
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Returns the list of failing students for the advisor.
+   * 
+   * @return ArrayList of failing students.
+   */
+  public ArrayList<User> getListOfFailingStudents() {
+    if (user instanceof Advisor) {
+      Advisor advisor = (Advisor) user;
+      return advisor.getListOfFailingStudents();
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Returns the list of advisor notes.
+   * 
+   * @return ArrayList of advisor notes.
+   */
+  public ArrayList<Note> getListOfAdvisorNotes() {
+    if (user instanceof Advisor) {
+      Advisor advisor = (Advisor) user;
+      return advisor.getListOfAdvisorNotes();
+    } else {
+      return null;
+    }
+  }
 
 }
