@@ -22,6 +22,9 @@ public class DegreeProgress {
     }
 
     public String displayProgress(MajorMap majorMap, HashMap<String, ArrayList<Course>> completedCourses) {
-        return ""; 
+       //Check if courses are completed and print it in toString
+       //Check if courses are not completed and print it in toString
+       return "-----Degree Progress-----"
+       + "Current Major: " + this.major;
     }
 }
