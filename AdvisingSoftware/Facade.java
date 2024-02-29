@@ -242,11 +242,6 @@ public class Facade {
     }
   }
 
-  /**
-     * Show course details for a course with the given code.
-     *
-     * @param courseCode The course code to search for.
-     */
     public void showCourseByCode(String courseCode) {
       CourseList courseListInstance = CourseList.getInstance();
       Course course = courseListInstance.getCourse(courseCode);
