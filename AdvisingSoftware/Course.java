@@ -108,7 +108,7 @@ public class Course {
     String year,
     String semester
   ) {
-    this.id = name.split("\s")[0];
+    this.id = name.split(" ")[0];
     this.name = name;
     this.code = code;
     this.description = description;
