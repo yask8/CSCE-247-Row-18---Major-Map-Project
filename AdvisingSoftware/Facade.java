@@ -55,8 +55,8 @@ public class Facade {
       GraduationRequirements gradReq) {
     this.courseList = courseList.getCourses();
     this.course = course;
-    UserList userListInstance = UserList.getInstance();
-    this.userList = userListInstance.getUsers();
+    UserList userList = UserList.getInstance();
+    this.userList = userList.getUsers();
     this.degreeProgress = degreeProgress;
     this.majorMap = majorMap;
     this.gradReq = gradReq;
@@ -88,23 +88,23 @@ public class Facade {
     User loggedInUser = userList.getUserByLoginInfo(email, password);
 
     this.user = loggedInUser;
-        
+
     return loggedInUser;
   }
 
   private void loadCourseList() {
     CourseList courseListInstance = CourseList.getInstance();
-    courseList = courseListInstance.getCourses();
+    this.courseList = courseListInstance.getCourses();
   }
 
   private void loadMajorList() {
     MajorList majorListInstance = MajorList.getInstance();
-    majorList = majorListInstance.getMajors();
+    this.majorList = majorListInstance.getMajors();
   }
 
   private void loadUserList() {
     UserList courseListInstance = UserList.getInstance();
-    userList = courseListInstance.getUsers();
+    this.userList = courseListInstance.getUsers();
   }
 
   /**
@@ -178,12 +178,15 @@ public class Facade {
   }
 
   public void displayMap(String major) {
-    
     if (majorMap == null) {
-      System.out.println("Major Map is null");
-    }
-    majorMap.displayMajorMap(major);
+      majorMap = getMajorMap();
+      if (majorMap == null) {
+          System.out.println("User has not declared major.");
+          return;
+      }
   }
+  majorMap.displayMajorMap(major);
+}
 
   protected void modifyStudentGrades(
       User user,

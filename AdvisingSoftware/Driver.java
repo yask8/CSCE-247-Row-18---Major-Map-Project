@@ -172,11 +172,8 @@ public class Driver {
       System.out.println(facade.getUser().toString());
 
       String major = facade.getStudentMajor();
-      if (major != null) {
-        facade.displayMap(major);
-      } else {
-        System.out.println("User's major not found.");
-      }
+
+      facade.displayMap(major);
 
     } else {
       System.out.println("Incorrect email or password. Please try again.");
