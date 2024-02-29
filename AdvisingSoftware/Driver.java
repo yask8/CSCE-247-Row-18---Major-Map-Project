@@ -77,11 +77,12 @@ public class Driver {
       System.out.println(facade.getUser().toString());
     } else {
       System.out.println(
-          "Login failed for email " +
-              email +
-              " and/or " +
-              password +
-              ". Incorrect email or password.");
+        "Login failed for email " +
+        email +
+        " and/or " +
+        password +
+        ". Incorrect email or password."
+      );
     }
     facade.signOut();
 
@@ -97,11 +98,12 @@ public class Driver {
       System.out.println(facade.getUser().toString());
     } else {
       System.out.println(
-          "Login failed for email " +
-              email2 +
-              " and/or " +
-              password2 +
-              ". Incorrect email or password.");
+        "Login failed for email " +
+        email2 +
+        " and/or " +
+        password2 +
+        ". Incorrect email or password."
+      );
     }
     facade.signOut();
   }
@@ -117,17 +119,20 @@ public class Driver {
 
     System.out.println("\nSigning up a new student\n");
     facade.signUp(
-        signupFirstName,
-        signupLastName,
-        signupEmail,
-        signupPassword,
-        signupUserType);
+      signupFirstName,
+      signupLastName,
+      signupEmail,
+      signupPassword,
+      signupUserType
+    );
 
     facade.signOut();
   }
 
   public void scenario4() {
-    System.out.println("\nScenario 4: Loading Courses and Printing Respective Course Details");
+    System.out.println(
+      "\nScenario 4: Loading Courses and Printing Respective Course Details"
+    );
     System.out.println("--------------------------------------------");
 
     // Hardcoding the email and password
@@ -149,11 +154,13 @@ public class Driver {
 
   /**
    * Scenario to test the MajorList
-   * 
+   *
    * @author yask8(Yasmine Kennedy)
    */
   public void scenario5() {
-    System.out.println("Scenario 5: Loading Majors and Printing Respective Major Map");
+    System.out.println(
+      "Scenario 5: Loading Majors and Printing Respective Major Map"
+    );
     System.out.println("--------------------------------------------");
 
     // Hardcoding the email and password
@@ -174,7 +181,6 @@ public class Driver {
       String major = facade.getStudentMajor();
 
       facade.displayMap(major);
-
     } else {
       System.out.println("Incorrect email or password. Please try again.");
     }
