@@ -21,10 +21,20 @@ public class DegreeProgress {
         this.incompleteCourses = incompleteCourses;
     }
 
-    public String displayProgress(MajorMap majorMap, HashMap<String, ArrayList<Course>> completedCourses) {
+    public String displayProgress(MajorMap majorMap, ArrayList<Course> completedCourses) {
        //Check if courses are completed and print it in toString
-       //Check if courses are not completed and print it in toString
+       // MajorMap gets the courses
+       // completed course bring in a list of courses
+       String courseDone = "";
+       String notDone = "";
+       for(Course done : completedCourses){
+            courseDone = "Course Code: "+ done.getCode() 
+                        + "\nCourse Name: " + done.getName() + "\n";
+       }
+       // For loop to check aganist the courses they have done
        return "-----Degree Progress-----"
-       + "Current Major: " + this.major;
+       + "\nCurrent Major: " + this.major + "\nCompleted Courses: " +
+       courseDone;
     }
+    
 }
