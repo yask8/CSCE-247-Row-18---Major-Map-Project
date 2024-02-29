@@ -2,6 +2,10 @@
     {
         "majorID": "0bc9301f-9b48-47f0-b47a-a555c3b30c5d",
         "major": "Computer Science",
+        "minTotalHours": 0, 
+        "minGradHours": 0, 
+        "caroCoreHours": 0, 
+        "minGPA": 0.0,
         "majorCourses": [
             "CSCE145",
             "CSCE146",

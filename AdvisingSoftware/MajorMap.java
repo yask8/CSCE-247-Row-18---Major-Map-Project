@@ -133,23 +133,27 @@ public class MajorMap {
   /**
    * Returns String of the details of the major map.
    */
-  public String toString() {
-    return "\n********* MAJOR MAP *********\n" +
-        "Major: " + this.major + "\n" +
-        "MajorMap ID: " + this.id + "\n" +
-        "\n********* Major Courses *********\n" +
-        "Major Courses: " + this.majorCourses + "\n" +
-        "\n********* Elective Courses *********\n" +
-        "Major Elective: " + this.majorElective + "\n" +
-        "\n********* Carolina Core *********\n" +
-        "Carolina Core: " + this.coreEdu + "\n" +
-        "\n********* Application Area *********\n" +
-        "Application Area: " + this.appArea + "\n" +
-        "Minimum Total Hours: " + this.minTotalHours + "\n" +
-        "Minimum Grad Hours: " + this.minGradHours + "\n" +
-        "Carolina Core Hours: " + this.caroCoreHours + "\n" +
-        "Minimum GPA: " + this.minGPA + "\n";
-  }
+/**
+ * Returns String of the details of the major map.
+ */
+public String toString() {
+  return "\n********* MAJOR MAP *********\n" +
+          "Major: " + this.major + "\n" +
+          "MajorMap ID: " + this.id + "\n" +
+          "\n********* Minimum Requirements *********\n" +
+          "Minimum Total Hours: " + this.minTotalHours + "\n" +
+          "Minimum Grad Hours: " + this.minGradHours + "\n" +
+          "Carolina Core Hours: " + this.caroCoreHours + "\n" +
+          "Minimum GPA: " + this.minGPA + "\n" +
+          "\n********* Major Courses *********\n" +
+          "Major Courses: " + this.majorCourses + "\n" +
+          "\n********* Elective Courses *********\n" +
+          "Major Elective: " + this.majorElective + "\n" +
+          "\n********* Carolina Core *********\n" +
+          "Carolina Core: " + this.coreEdu + "\n" +
+          "\n********* Application Area *********\n" +
+          "Application Area: " + this.appArea + "\n";
+}
 
   /**
    * Get the UUID of the MajorMap.

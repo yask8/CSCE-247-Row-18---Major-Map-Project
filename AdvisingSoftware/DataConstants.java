@@ -68,6 +68,10 @@ public abstract class DataConstants {
     protected static final String MAJOR_ELECTIVE = "majorElective";
     protected static final String MAJOR_CORE_EDU = "coreEdu";
     protected static final String MAJOR_APP_AREA = "appArea";
+    protected static final String MAJOR_MIN_HOURS = "minTotalHours";
+    protected static final String MAJOR_MIN_GRAD_HOURS ="minGradHours";
+    protected static final String MAJOR_CC_HOURS ="caroCoreHours";
+    protected static final String MAJOR_MIN_GPA = "minGPA";
 
     //Course Planner Constants
     protected static final String COURSE_PLANNER_STUDENT = "student";

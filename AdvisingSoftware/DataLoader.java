@@ -26,13 +26,13 @@ public class DataLoader extends DataConstants {
     public static void main(String[] args) {
         // testLoadingAdmins();
 
-         testLoadingStudents();
+        // testLoadingStudents();
 
         // testLoadingAdvisors();
 
         // testLoadingCourses();
 
-        // testLoadingMajorMaps();
+         testLoadingMajorMaps();
 
         //LoadUsers();
     }
@@ -320,12 +320,15 @@ public class DataLoader extends DataConstants {
                 ArrayList<Course> electives = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_ELECTIVE));
                 ArrayList<Course> coreCourses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_CORE_EDU));
                 ArrayList<Course> appAreaCourses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_APP_AREA));
+                int minHours = ((Long) majorObj.get(MAJOR_MIN_HOURS)).intValue();
+                int minGradHours = ((Long) majorObj.get(MAJOR_MIN_GRAD_HOURS)).intValue();
+                int ccHours = ((Long) majorObj.get(MAJOR_CC_HOURS)).intValue();
+                double minGPA = ((Number) majorObj.get(MAJOR_MIN_GPA)).doubleValue();
 
-                MajorMap major = new MajorMap(id, name, courses, electives, coreCourses, appAreaCourses);
+                MajorMap major = new MajorMap(id, name, courses, electives, coreCourses, appAreaCourses, minHours, minGradHours, ccHours, minGPA);
                 majors.add(major);
             }
             return majors;
-
         } catch (Exception e) {
             e.printStackTrace();
         }
