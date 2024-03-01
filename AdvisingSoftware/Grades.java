@@ -4,6 +4,9 @@ package AdvisingSoftware;
  * @author yask8(Yasmine Kennedy)
  */
 public class Grades {
+    /**
+     * Attributes
+     */
     double grade;
     String courseName;
     /**
