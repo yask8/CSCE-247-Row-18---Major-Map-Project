@@ -8,8 +8,8 @@ public class Grades {
     String courseName;
     /**
      * Constructor for Grades
-     * @param course the course 
-     * @param grade the grade for that course
+     * @param course The course 
+     * @param grade The grade for that course
      */
     public Grades(String course, double grade){
         this.grade = grade;
@@ -17,7 +17,7 @@ public class Grades {
     }
     /**
      * Get the grade
-     * @return the grade received
+     * @return The grade received
      */
     public Double getGrade(){
         if(grade > 0){
@@ -27,15 +27,29 @@ public class Grades {
         }
     }
     /**
+     * Gets the name of the course
+     * @return The name of the course
+     */
+    public String getCourseName(){
+        return courseName;
+    }
+    /**
      * Sets the grade
-     * @param grade the grade recieved for a class
+     * @param grade The grade recieved for a class
      */
     public void setGrade(double grade){
         this.grade = grade;
     }
     /**
+     * Sets the course name
+     * @param course The name of the course
+     */
+    public void setCourseName(String course){
+        this.courseName = course;
+    }
+    /**
      * Displays the course and the grade with a comma
-     * @return the course and the grade
+     * @return The course and the grade
      */
     public String displayGrades(){
        return courseName + "," + grade;
