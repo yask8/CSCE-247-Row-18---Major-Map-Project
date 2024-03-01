@@ -209,34 +209,6 @@ public class DataWriter extends DataConstants {
             e.printStackTrace();
         }
     }
-
-    /**
-     * Checks if the provided user already exists in the JSON file.
-     *
-     * @param user The user to check for.
-     * @return true if the user exists in the JSON file, false otherwise.
-     */
-    private static boolean userExists(User user) {
-        String fileName = "";
-        if (user.getUserType().equals("STUDENT")) {
-            fileName = STUDENT_FILE_NAME;
-        } else if (user.getUserType().equals("ADMIN")) {
-            fileName = ADMIN_FILE_NAME;
-        } else if (user.getUserType().equals("ADVISOR")) {
-            fileName = ADVISOR_FILE_NAME;
-        }
-        JSONArray existingData = readExistingData(fileName);
-
-        for (Object obj : existingData) {
-            JSONObject jsonObject = (JSONObject) obj;
-            String userId = (String) jsonObject.get(USER_USCID);
-            if (userId.equals(user.getID().toString())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     /**
      * Reads the existing data from the JSON file with the given file name.
      *
