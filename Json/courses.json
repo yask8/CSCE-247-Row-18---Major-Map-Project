@@ -20,7 +20,7 @@
     {
         "id": "ENGL101",
         "name": "ENGL101 Critical Reading and Composition",
-        "code": "CC-CMW",
+        "code": "CMW",
         "description": "English 101 is designed to offer you structured, sustained practice in critical reading, textual analysis and composing. During the semester, you'll read challenging texts in a variety of genres and then write expository and analytical essays in response to them. Through these reading and writing assignments, you explore the interconnectedness of reading and writing and learn how to use both reading and writing as venues for inquiry, learning, interpretation, and communication.",
         "creditHours": 3,
         "subject": "ENGL",
@@ -30,5 +30,60 @@
         "preReqs": [],
         "semester": "Fall, Spring",
         "year": "2024-2025"
-    }
+    },
+    {
+        "id": "CSCE101",
+        "name": "CSCE101 Introduction to Computer Concepts",
+        "code": "PR",
+        "description": "History, application, and social impact of computers; problem-solving, algorithm development, applications software, and programming in a procedural language.",
+        "creditHours": 3,
+        "subject": "CSCE",
+        "passGrade": "C",
+        "elective": false,
+        "carolinaCore": false,
+        "preReqs": [],
+        "semester": "Fall, Spring",
+        "year": "2024-2025"
+      }, {
+        "id": "BIOL101",
+        "name": "BIOL101 Biological Principles I ",
+        "code": "SCI",
+        "description": "Introductory survey of macromolecules, cell structure and function, genetics, and molecular biology.",
+        "creditHours": 3,
+        "subject": "BIOL",
+        "passGrade": "C",
+        "elective": false,
+        "carolinaCore": true,
+        "preReqs": [],
+        "semester": "Fall, Spring",
+        "year": "2024-2025"
+      },
+      {
+        "id": "CHEM111",
+        "name": "CHEM111 Fundamental Chemistry I ",
+        "code": "GHS",
+        "description": "A science elective surveying inorganic and solution chemistry. First of a terminal two-semester sequence. Three lecture, one recitation, and two laboratory hours per week.",
+        "creditHours": 4,
+        "subject": "CHEM",
+        "passGrade": "C",
+        "elective": false,
+        "carolinaCore": true,
+        "preReqs": [],
+        "semester": "Fall, Spring",
+        "year": "2024-2025"
+      },
+      {
+        "id": "HIST101",
+        "name": "HIST101 European Civilization from Ancient Times to the Mid-17th Century",
+        "code": "HIST",
+        "description": "The rise and development of European civilization from its Mediterranean origins through the Renaissance and Reformation.",
+        "creditHours": 3,
+        "subject": "GHS",
+        "passGrade": "C",
+        "elective": false,
+        "carolinaCore": true,
+        "preReqs": [],
+        "semester": "Fall, Spring",
+        "year": "2024-2025"
+      }
 ]

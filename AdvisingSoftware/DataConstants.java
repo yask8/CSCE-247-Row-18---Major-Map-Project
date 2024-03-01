@@ -74,8 +74,7 @@ public abstract class DataConstants {
     protected static final String MAJOR_MIN_GPA = "minGPA";
 
     //Course Planner Constants
-    protected static final String COURSE_PLANNER_STUDENT = "student";
-    protected static final String COURSE_PLANNER_PLAN = "courselist";
+    protected static final String COURSE_PLANNER_SEMESTERS = "semesters";
     //Degree Progress Contants
     protected static final String DEGREE_PLANNER_STUDENT = "student";
     protected static final String DEGREE_PLANNER_MAJOR = "major";

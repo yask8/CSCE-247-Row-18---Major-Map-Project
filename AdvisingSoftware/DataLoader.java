@@ -26,15 +26,15 @@ public class DataLoader extends DataConstants {
     public static void main(String[] args) {
         // testLoadingAdmins();
 
-        // testLoadingStudents();
+        testLoadingStudents();
 
         // testLoadingAdvisors();
 
         // testLoadingCourses();
 
-         testLoadingMajorMaps();
+        // testLoadingMajorMaps();
 
-        //LoadUsers();
+        // LoadUsers();
     }
 
     /**
@@ -96,11 +96,10 @@ public class DataLoader extends DataConstants {
                 ArrayList<Course> completedCourses = (ArrayList<Course>) studentObj.get(STUDENT_COMPLETED_COURSES);
                 double gpa = (double) studentObj.get(STUDENT_GPA);
 
-                // Load CoursePlanner STILL BROKEN
-                Object coursePlannerObj = studentObj.get(STUDENT_COURSE_PLANNER);
+                JSONObject coursePlannerObj = (JSONObject) studentObj.get(STUDENT_COURSE_PLANNER);
                 CoursePlanner coursePlanner = null;
-                if (coursePlannerObj instanceof JSONObject) {
-                    coursePlanner = loadCoursePlannerFromJSON((JSONObject) coursePlannerObj);
+                if (coursePlannerObj != null) {
+                    coursePlanner = loadCoursePlannerFromJSON(coursePlannerObj);
                 }
 
                 // Load DegreeProgress
@@ -126,21 +125,28 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    /**
+     * Loads degree progress from a JSON object.
+     * 
+     * @param degreeProgressObj The JSON object containing degree progress data.
+     * @return The DegreeProgress object loaded from the JSON object, or null if the
+     *         input object is null.
+     */
     private static DegreeProgress loadDegreeProgressFromJSON(JSONObject degreeProgressObj) {
         if (degreeProgressObj == null) {
             return null;
         }
         String major = (String) degreeProgressObj.get("major");
         @SuppressWarnings("unchecked")
-        ArrayList<Course> majorCourses = (ArrayList<Course>) degreeProgressObj.get("majorCourses");
+        ArrayList<Course> majorCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PLANNER_MAJOR_COURSES);
         @SuppressWarnings("unchecked")
-        ArrayList<Course> electiveCourses = (ArrayList<Course>) degreeProgressObj.get("electiveCourses");
+        ArrayList<Course> electiveCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PLANNER_ELECTIVES);
         @SuppressWarnings("unchecked")
-        ArrayList<Course> carolinaCoreCourses = (ArrayList<Course>) degreeProgressObj.get("carolinaCoreCourses");
+        ArrayList<Course> carolinaCoreCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PLANNER_CC);
         @SuppressWarnings("unchecked")
-        ArrayList<Course> completeCourses = (ArrayList<Course>) degreeProgressObj.get("completeCourses");
+        ArrayList<Course> completeCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PLANNER_C_COURSES);
         @SuppressWarnings("unchecked")
-        ArrayList<Course> incompleteCourses = (ArrayList<Course>) degreeProgressObj.get("incompleteCourses");
+        ArrayList<Course> incompleteCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PLANNER_IC_COURSES);
 
         DegreeProgress degreeProgress = new DegreeProgress(major, majorCourses, electiveCourses, carolinaCoreCourses,
                 completeCourses, incompleteCourses);
@@ -152,13 +158,73 @@ public class DataLoader extends DataConstants {
         if (coursePlannerObj == null) {
             return null;
         }
-        @SuppressWarnings("unchecked")
-        ArrayList<Course> plannedCourses = (ArrayList<Course>) coursePlannerObj.getOrDefault(COURSE_PLANNER_PLAN,
-                new ArrayList<>());
-
-        CoursePlanner coursePlanner = new CoursePlanner(plannedCourses);
-
+    
+        CoursePlanner coursePlanner = new CoursePlanner();
+        JSONArray semestersArray = (JSONArray) coursePlannerObj.get(COURSE_PLANNER_SEMESTERS);
+    
+        for (int i = 0; i < semestersArray.size(); i++) {
+            JSONArray semesterCoursesArray = (JSONArray) semestersArray.get(i);
+    
+            for (int j = 0; j < semesterCoursesArray.size(); j++) {
+                JSONObject courseObj = (JSONObject) semesterCoursesArray.get(j);
+                Course course = parseCourseFromJSONObject(courseObj);
+                if (course != null) {
+                    coursePlanner.addCourse(i + 1, course);
+                }
+            }
+        }
+    
         return coursePlanner;
+    }
+    /**
+     * Loads a course planner from a JSON object.
+     * 
+     * @param coursePlannerObj The JSON object containing course planner data.
+     * @return The CoursePlanner object loaded from the JSON object, or null if the
+     *         input object is null.
+     */
+    /**
+     * Parses a Course object from a JSON object representation.
+     * 
+     * @param courseJson The JSON object containing course data.
+     * @return The Course object parsed from the JSON object, or null if the input
+     *         object is null.
+     */
+    private static Course parseCourseFromJSONObject(JSONObject courseJson) {
+        if (courseJson == null) {
+            return null;
+        }
+
+        String id = (String) courseJson.get(COURSE_ID);
+        String name = (String) courseJson.get(COURSE_NAME);
+        String code = (String) courseJson.get(COURSE_CODE);
+        String description = (String) courseJson.get(COURSE_DESCRIPTION);
+        int creditHours = ((Long) courseJson.get(COURSE_CREDIT_HOURS)).intValue();
+        String subject = (String) courseJson.get(COURSE_SUBJECT);
+        char passGrade = ((String) courseJson.get(COURSE_PASS_GRADE)).charAt(0);
+        boolean elective = (boolean) courseJson.get(COURSE_ELECTIVE);
+        boolean carolinaCore = (boolean) courseJson.get(COURSE_CAROLINA_CORE);
+
+        JSONArray preReqsArray = (JSONArray) courseJson.get(COURSE_PREREQUISITES);
+        ArrayList<Course> preReqs = new ArrayList<>();
+        if (preReqsArray != null) {
+            for (Object preReq : preReqsArray) {
+                if (preReq instanceof String) {
+                    // Assuming preReq is the course ID
+                    String courseId = (String) preReq;
+                    Course preReqCourse = findCourseByCode(courseId);
+                    if (preReqCourse != null) {
+                        preReqs.add(preReqCourse);
+                    }
+                }
+            }
+        }
+
+        String semester = (String) courseJson.get(COURSE_SEMESTER);
+        String year = (String) courseJson.get(COURSE_YEAR);
+
+        return new Course(id, name, code, description, creditHours, subject, passGrade, elective, carolinaCore, preReqs,
+                semester, year);
     }
 
     /**
@@ -176,16 +242,15 @@ public class DataLoader extends DataConstants {
 
             for (int i = 0; i < adminJSON.size(); i++) {
                 JSONObject adminOBJ = (JSONObject) adminJSON.get(i);
-                String firstName = (String) adminOBJ.get("firstName");
-                String lastName = (String) adminOBJ.get("lastName");
-                String email = (String) adminOBJ.get("email");
-                String uscIDString = (String) adminOBJ.get("uscID");
+                String firstName = (String) adminOBJ.get(USER_FIRST_NAME);
+                String lastName = (String) adminOBJ.get(USER_LAST_NAME);
+                String email = (String) adminOBJ.get(USER_EMAIL);
+                String uscIDString = (String) adminOBJ.get(USER_USCID);
                 UUID uscID = UUID.fromString(uscIDString);
-                String password = (String) adminOBJ.get("password");
-                String userType = (String) adminOBJ.get("userType");
+                String password = (String) adminOBJ.get(USER_PASSWORD);
+                String userType = (String) adminOBJ.get(USER_TYPE);
 
-                // Handle null or empty arrays for changesMade
-                JSONArray changesMadeJSON = (JSONArray) adminOBJ.get("changesMade");
+                JSONArray changesMadeJSON = (JSONArray) adminOBJ.get(ADMIN_CHANGES_MADE);
                 ArrayList<String> changesMade = new ArrayList<>();
                 if (changesMadeJSON != null) {
                     for (Object changeObj : changesMadeJSON) {
@@ -221,24 +286,24 @@ public class DataLoader extends DataConstants {
 
             for (int i = 0; i < advisorJSON.size(); i++) {
                 JSONObject advisorOBJ = (JSONObject) advisorJSON.get(i);
-                String firstName = (String) advisorOBJ.get("firstName");
-                String lastName = (String) advisorOBJ.get("lastName");
-                String email = (String) advisorOBJ.get("email");
-                String uscIDString = (String) advisorOBJ.get("uscID");
+                String firstName = (String) advisorOBJ.get(USER_FIRST_NAME);
+                String lastName = (String) advisorOBJ.get(USER_LAST_NAME);
+                String email = (String) advisorOBJ.get(USER_EMAIL);
+                String uscIDString = (String) advisorOBJ.get(USER_USCID);
                 UUID uscID = UUID.fromString(uscIDString);
-                String password = (String) advisorOBJ.get("password");
-                String userType = (String) advisorOBJ.get("userType");
+                String password = (String) advisorOBJ.get(USER_PASSWORD);
+                String userType = (String) advisorOBJ.get(USER_TYPE);
 
-                JSONArray listOfAdviseesJSON = (JSONArray) advisorOBJ.get("listOfAdvisees");
+                JSONArray listOfAdviseesJSON = (JSONArray) advisorOBJ.get(ADVISOR_LIST_OF_ADVISEES);
                 ArrayList<User> listOfAdvisees = new ArrayList<>();
                 if (listOfAdviseesJSON != null) {
                     for (Object adviseeObj : listOfAdviseesJSON) {
                     }
                 }
 
-                JSONArray listOfFailingStudentsJSON = (JSONArray) advisorOBJ.get("listOfFailingStudents");
+                JSONArray listOfFailingStudentsJSON = (JSONArray) advisorOBJ.get(ADVISOR_LIST_OF_FAILING_STUDENTS);
                 ArrayList<User> listOfFailingStudents = new ArrayList<>();
-                JSONArray listOfAdvisorNotesJSON = (JSONArray) advisorOBJ.get("listOfAdvisorNotes");
+                JSONArray listOfAdvisorNotesJSON = (JSONArray) advisorOBJ.get(ADVISOR_LIST_OF_NOTES);
                 ArrayList<Note> listOfAdvisorNotes = new ArrayList<>();
 
                 advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType,
@@ -325,7 +390,8 @@ public class DataLoader extends DataConstants {
                 int ccHours = ((Long) majorObj.get(MAJOR_CC_HOURS)).intValue();
                 double minGPA = ((Number) majorObj.get(MAJOR_MIN_GPA)).doubleValue();
 
-                MajorMap major = new MajorMap(id, name, courses, electives, coreCourses, appAreaCourses, minHours, minGradHours, ccHours, minGPA);
+                MajorMap major = new MajorMap(id, name, courses, electives, coreCourses, appAreaCourses, minHours,
+                        minGradHours, ccHours, minGPA);
                 majors.add(major);
             }
             return majors;

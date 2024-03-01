@@ -1,5 +1,5 @@
 [
-    {
+  {
     "uscID": "faa91c60-3201-4870-84c8-9473df2b6a1e",
     "firstName": "Farrah",
     "lastName": "Rio",
@@ -27,12 +27,32 @@
       "PHYS212L",
       "SPCH140"
     ],
-    "gpa": 4.00,
+    "gpa": 4.0,
     "coursePlanner": {
-      "courseList": [
-        { "courseId": "CSCE101", "courseName": "Introduction to Computer Science" },
-        { "courseId": "CSCE102", "courseName": "Data Structures" },
-        { "courseId": "CSCE201", "courseName": "Algorithms" }
+      "semesters": [
+        [
+          {
+            "id": "CSCE247",
+            "name": "CSCE247 Software Engineering",
+            "code": "PR",
+            "description": "Advanced object-oriented concepts and techniques; multiple inheritance; memory management; operator overloading; polymorphism; performance issues.",
+            "creditHours": 3,
+            "subject": "CSCE",
+            "passGrade": "C",
+            "elective": false,
+            "carolinaCore": false,
+            "preReqs": ["CSCE147"],
+            "semester": "Fall, Spring",
+            "year": "2024-2025"
+          }
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     },
     "degreeProgress": {
@@ -40,9 +60,9 @@
       "majorCourses": [
         {
           "id": "CSCE101",
-          "name": "CSCE101 Introduction to Computer Science",
-          "code": "CSCE",
-          "description": "Introduction to Computer Science is an introductory course that covers fundamental concepts in computer science, including problem-solving strategies, algorithm development, data types, control structures, and basic programming techniques. The course provides a foundation for further study in computer science.",
+          "name": "CSCE101 Introduction to Computer Concepts",
+          "code": "PR",
+          "description": "History, application, and social impact of computers; problem-solving, algorithm development, applications software, and programming in a procedural language.",
           "creditHours": 3,
           "subject": "CSCE",
           "passGrade": "C",
@@ -55,16 +75,16 @@
       ],
       "electiveCourses": [
         {
-          "id": "CSCE201",
-          "name": "CSCE201 Algorithms",
-          "code": "CSCE",
-          "description": "Algorithms is a course that covers the design and analysis of algorithms. Topics include algorithmic techniques such as divide and conquer, dynamic programming, greedy algorithms, and graph algorithms. The course also explores the theoretical foundations of algorithm analysis.",
-          "creditHours": 3,
+          "id": "CSCE145",
+          "name": "CSCE145 Algorithmic Design I ",
+          "code": "PR",
+          "description": "Problem-solving, algorithmic design, and programming. Three lectures and two laboratory hours per week.",
+          "creditHours": 4,
           "subject": "CSCE",
           "passGrade": "C",
           "elective": false,
           "carolinaCore": false,
-          "preReqs": ["CSCE101", "CSCE102"],
+          "preReqs": ["MATH 111,MATH 115"],
           "semester": "Fall, Spring",
           "year": "2024-2025"
         }
@@ -73,10 +93,10 @@
       "completeCourses": [
         {
           "id": "BIOL101",
-          "name": "BIOL101 Introduction to Biology",
-          "code": "BIOL",
-          "description": "Introduction to Biology is a foundational course that explores the principles of biology, including cellular structure and function, genetics, evolution, and ecology. The course emphasizes critical thinking and scientific inquiry.",
-          "creditHours": 4,
+          "name": "BIOL101 Biological Principles I ",
+          "code": "SCI",
+          "description": "Introductory survey of macromolecules, cell structure and function, genetics, and molecular biology.",
+          "creditHours": 3,
           "subject": "BIOL",
           "passGrade": "C",
           "elective": false,
@@ -87,9 +107,9 @@
         },
         {
           "id": "CHEM111",
-          "name": "CHEM111 General Chemistry I",
-          "code": "CHEM",
-          "description": "General Chemistry I is an introductory course that covers the fundamental principles of chemistry, including atomic structure, chemical bonding, stoichiometry, and thermodynamics. Laboratory experiments complement the lecture material.",
+          "name": "CHEM111 Fundamental Chemistry I ",
+          "code": "GHS",
+          "description": "A science elective surveying inorganic and solution chemistry. First of a terminal two-semester sequence. Three lecture, one recitation, and two laboratory hours per week.",
           "creditHours": 4,
           "subject": "CHEM",
           "passGrade": "C",
@@ -103,13 +123,13 @@
       "incompleteCourses": [
         {
           "id": "HIST101",
-          "name": "HIST101 World History",
+          "name": "HIST101 European Civilization from Ancient Times to the Mid-17th Century",
           "code": "HIST",
-          "description": "World History is a survey course that explores the major events, movements, and civilizations in world history from prehistoric times to the present. Topics include ancient civilizations, the Middle Ages, the Renaissance, and modern global developments.",
+          "description": "The rise and development of European civilization from its Mediterranean origins through the Renaissance and Reformation.",
           "creditHours": 3,
-          "subject": "HIST",
+          "subject": "GHS",
           "passGrade": "C",
-          "elective": true,
+          "elective": false,
           "carolinaCore": true,
           "preReqs": [],
           "semester": "Fall, Spring",
