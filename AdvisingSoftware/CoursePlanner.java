@@ -19,7 +19,6 @@ public class CoursePlanner {
    * Constructor for the CoursePlanner
    */
   public CoursePlanner() {
-    // Initialize semesters array list
     this.semesters = new ArrayList<>();
 
     // Add 8 semesters

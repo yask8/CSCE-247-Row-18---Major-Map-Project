@@ -396,19 +396,4 @@ public class Facade {
       return null;
     }
   }
-
-  /**
-   * Gets the list of advisor notes.
-   * 
-   * @return ArrayList of advisor notes.
-   */
-  public ArrayList<Note> getListOfAdvisorNotes() {
-    if(user.getUserType().equals("ADVISOR")){
-      Advisor advisor = (Advisor) user;
-      return advisor.getListOfAdvisorNotes();
-    } else {
-      return null;
-    }
-  }
-
 }

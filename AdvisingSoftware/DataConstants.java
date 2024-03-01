@@ -39,7 +39,6 @@ public abstract class DataConstants {
     protected static final String ADVISOR_FILE_NAME = "Json/advisors.json";
     protected static final String ADVISOR_LIST_OF_ADVISEES = "listOfAdivsees";
     protected static final String ADVISOR_LIST_OF_FAILING_STUDENTS = "listOfFailingStudents";
-    protected static final String ADVISOR_LIST_OF_NOTES = "listOfAdvisorNotes";
 
     // Admin Constants
     protected static final String ADMIN_FILE_NAME = "Json/admins.json";
@@ -75,6 +74,7 @@ public abstract class DataConstants {
 
     //Course Planner Constants
     protected static final String COURSE_PLANNER_SEMESTERS = "semesters";
+    
     //Degree Progress Contants
     protected static final String DEGREE_PLANNER_STUDENT = "student";
     protected static final String DEGREE_PLANNER_MAJOR = "major";
@@ -85,4 +85,6 @@ public abstract class DataConstants {
     protected static final String DEGREE_PLANNER_IC_COURSES ="incompleteCourses";
 
     //Notes Constants
+    protected static final String NOTE_NOTE = "note";
+    protected static final String NOTE_DATE = "date";
 }

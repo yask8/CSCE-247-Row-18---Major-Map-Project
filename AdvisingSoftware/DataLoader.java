@@ -1,7 +1,12 @@
 package AdvisingSoftware;
 
+import static AdvisingSoftware.DataConstants.NOTE_DATE;
+import static AdvisingSoftware.DataConstants.NOTE_NOTE;
+
 import java.io.FileReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -72,7 +77,7 @@ public class DataLoader extends DataConstants {
      * 
      * @return An ArrayList of Student objects loaded from the JSON file.
      */
-    public static ArrayList<Student> loadStudents() {
+  public static ArrayList<Student> loadStudents() {
         ArrayList<Student> students = new ArrayList<>();
 
         try {
@@ -96,13 +101,14 @@ public class DataLoader extends DataConstants {
                 ArrayList<Course> completedCourses = (ArrayList<Course>) studentObj.get(STUDENT_COMPLETED_COURSES);
                 double gpa = (double) studentObj.get(STUDENT_GPA);
 
+                // Load Course Planner
                 JSONObject coursePlannerObj = (JSONObject) studentObj.get(STUDENT_COURSE_PLANNER);
                 CoursePlanner coursePlanner = null;
                 if (coursePlannerObj != null) {
                     coursePlanner = loadCoursePlannerFromJSON(coursePlannerObj);
                 }
 
-                // Load DegreeProgress
+                // Load Degree Progress
                 JSONObject degreeProgressObj = (JSONObject) studentObj.get(STUDENT_DEGREE_PROGRESS);
                 DegreeProgress degreeProgress = null;
                 if (degreeProgressObj != null) {
@@ -110,8 +116,18 @@ public class DataLoader extends DataConstants {
                 }
 
                 // Load Advisor Notes
-                @SuppressWarnings("unchecked")
-                ArrayList<Note> advisorNotes = (ArrayList<Note>) studentObj.get(STUDENT_ADVISOR_NOTES);
+                JSONArray advisorNotesJSON = (JSONArray) studentObj.get(STUDENT_ADVISOR_NOTES);
+                ArrayList<Note> advisorNotes = new ArrayList<>();
+                if (advisorNotesJSON != null) {
+                    for (Object noteObj : advisorNotesJSON) {
+                        JSONObject noteJSON = (JSONObject) noteObj;
+                        String note = (String) noteJSON.get(NOTE_NOTE);
+                        String dateString = (String) noteJSON.get(NOTE_DATE);
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        Date date = dateFormat.parse(dateString);
+                        advisorNotes.add(new Note(note, date));
+                    }
+                }
 
                 Student student = new Student(firstName, lastName, email, uscID, password, userType, year,
                         major, creditHours, completedCourses, gpa, coursePlanner, degreeProgress,
@@ -124,7 +140,6 @@ public class DataLoader extends DataConstants {
         }
         return null;
     }
-
     /**
      * Loads degree progress from a JSON object.
      * 
@@ -302,11 +317,10 @@ public class DataLoader extends DataConstants {
 
                 JSONArray listOfFailingStudentsJSON = (JSONArray) advisorOBJ.get(ADVISOR_LIST_OF_FAILING_STUDENTS);
                 ArrayList<User> listOfFailingStudents = new ArrayList<>();
-                JSONArray listOfAdvisorNotesJSON = (JSONArray) advisorOBJ.get(ADVISOR_LIST_OF_NOTES);
-                ArrayList<Note> listOfAdvisorNotes = new ArrayList<>();
+
 
                 advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType,
-                        listOfAdvisees, listOfFailingStudents, listOfAdvisorNotes));
+                        listOfAdvisees, listOfFailingStudents));
             }
 
             return advisors;

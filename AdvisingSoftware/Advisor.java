@@ -7,7 +7,7 @@ public class Advisor extends User {
 
   private ArrayList<User> listOfAdvisees;
   private ArrayList<User> listOfFailingStudents;
-  private ArrayList<Note> listOfAdvisorNotes;
+
 
   /**
    * Advisor Constructor
@@ -23,13 +23,11 @@ public class Advisor extends User {
       String password,
       String userType,
       ArrayList<User> listOfAdvisees,
-      ArrayList<User> listOfFailingStudents,
-      ArrayList<Note> listOfAdvisorNotes) {
+      ArrayList<User> listOfFailingStudents) {
     super(firstName, lastName, email, uscID, password, userType);
     this.listOfAdvisees = listOfAdvisees;
     this.listOfFailingStudents = listOfFailingStudents;
-    this.listOfAdvisorNotes = listOfAdvisorNotes;
-  }
+      }
 
   /**
    * Students under the advisor at risk of failing
@@ -146,14 +144,6 @@ public class Advisor extends User {
     return listOfFailingStudents;
   }
 
-  /**
-   * Getter for listOfAdvisorNotes
-   *
-   * @return ArrayList of advisor notes
-   */
-  public ArrayList<Note> getListOfAdvisorNotes() {
-    return listOfAdvisorNotes;
-  }
 
   /**
    * To string to view user details
@@ -164,7 +154,6 @@ public class Advisor extends User {
     return "\n********* ADVISOR PROFILE *********\n" +
         super.toString() +
         "\nList of Advisees: " + listOfAdvisees +
-        "\nList of Failing Students: " + listOfFailingStudents +
-        "\nList of Advisor Notes: " + listOfAdvisorNotes;
+        "\nList of Failing Students: " + listOfFailingStudents;
   }
 }

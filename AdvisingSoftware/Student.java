@@ -226,6 +226,6 @@ public class Student extends User {
         "gpa: " + gpa + "\n" +
         "coursePlanner: " + coursePlanner.toString()+ "\n" +
         "degreeProgress: " + degreeProgress.toString()+ "\n" +
-        "advisorNotes: " + advisorNotes + "\n";
+        "advisorNotes: " + advisorNotes.toString()+"\n";
   }
 }

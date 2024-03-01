@@ -90,7 +90,6 @@ public class DataWriter extends DataConstants {
             Advisor advisor = (Advisor) user;
             userJSON.put(ADVISOR_LIST_OF_ADVISEES, advisor.getListOfAdvisees());
             userJSON.put(ADVISOR_LIST_OF_FAILING_STUDENTS, advisor.getListOfFailingStudents());
-            userJSON.put(ADVISOR_LIST_OF_NOTES, advisor.getListOfFailingStudents());
         }
 
         return userJSON;

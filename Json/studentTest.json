@@ -137,6 +137,15 @@
         }
       ]
     },
-    "advisorNotes": null
+    "advisorNotes": [
+      {
+        "note": "Student is doing exceptionally well in CSCE145.",
+        "date": "2024-02-29"
+      },
+      {
+        "note": "Student may need additional help in HIST101.",
+        "date": "2024-02-28"
+      }
+    ]
   }
 ]
