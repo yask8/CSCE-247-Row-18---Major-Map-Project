@@ -1,8 +1,5 @@
 package AdvisingSoftware;
 
-import static AdvisingSoftware.DataConstants.NOTE_DATE;
-import static AdvisingSoftware.DataConstants.NOTE_NOTE;
-
 import java.io.FileReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,9 +28,9 @@ public class DataLoader extends DataConstants {
     public static void main(String[] args) {
         // testLoadingAdmins();
 
-        testLoadingStudents();
+        //testLoadingStudents();
 
-        // testLoadingAdvisors();
+         testLoadingAdvisors();
 
         // testLoadingCourses();
 
@@ -292,14 +289,14 @@ public class DataLoader extends DataConstants {
      */
     public static ArrayList<Advisor> loadAdvisors() {
         ArrayList<Advisor> advisors = new ArrayList<>();
-
+    
         try {
             FileReader reader = new FileReader(ADVISOR_FILE_NAME);
             JSONParser parser = new JSONParser();
             JSONArray advisorJSON = (JSONArray) parser.parse(reader);
-
-            for (int i = 0; i < advisorJSON.size(); i++) {
-                JSONObject advisorOBJ = (JSONObject) advisorJSON.get(i);
+    
+            for (Object obj : advisorJSON) {
+                JSONObject advisorOBJ = (JSONObject) obj;
                 String firstName = (String) advisorOBJ.get(USER_FIRST_NAME);
                 String lastName = (String) advisorOBJ.get(USER_LAST_NAME);
                 String email = (String) advisorOBJ.get(USER_EMAIL);
@@ -308,27 +305,18 @@ public class DataLoader extends DataConstants {
                 String password = (String) advisorOBJ.get(USER_PASSWORD);
                 String userType = (String) advisorOBJ.get(USER_TYPE);
 
-                JSONArray listOfAdviseesJSON = (JSONArray) advisorOBJ.get(ADVISOR_LIST_OF_ADVISEES);
                 ArrayList<User> listOfAdvisees = new ArrayList<>();
-                if (listOfAdviseesJSON != null) {
-                    for (Object adviseeObj : listOfAdviseesJSON) {
-                    }
-                }
-
-                JSONArray listOfFailingStudentsJSON = (JSONArray) advisorOBJ.get(ADVISOR_LIST_OF_FAILING_STUDENTS);
                 ArrayList<User> listOfFailingStudents = new ArrayList<>();
 
-
-                advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType,
-                        listOfAdvisees, listOfFailingStudents));
+                advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType, listOfAdvisees, listOfFailingStudents));
             }
-
+    
             return advisors;
-
+    
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+    
         return null;
     }
 
