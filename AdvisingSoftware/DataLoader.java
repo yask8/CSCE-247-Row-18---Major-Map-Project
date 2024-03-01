@@ -153,7 +153,13 @@ public class DataLoader extends DataConstants {
 
         return degreeProgress;
     }
-
+    /**
+     * Loads a course planner from a JSON object.
+     * 
+     * @param coursePlannerObj The JSON object containing course planner data.
+     * @return The CoursePlanner object loaded from the JSON object, or null if the
+     *         input object is null.
+     */
     private static CoursePlanner loadCoursePlannerFromJSON(JSONObject coursePlannerObj) {
         if (coursePlannerObj == null) {
             return null;
@@ -176,13 +182,6 @@ public class DataLoader extends DataConstants {
     
         return coursePlanner;
     }
-    /**
-     * Loads a course planner from a JSON object.
-     * 
-     * @param coursePlannerObj The JSON object containing course planner data.
-     * @return The CoursePlanner object loaded from the JSON object, or null if the
-     *         input object is null.
-     */
     /**
      * Parses a Course object from a JSON object representation.
      * 
