@@ -91,6 +91,7 @@ public class Student extends User {
    *                         respective grade
    */
   public void viewCompletedCourses(ArrayList<Grades> completedCourses) {
+            
   }
 
   /**
