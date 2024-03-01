@@ -28,7 +28,7 @@ public class DataLoader extends DataConstants {
     public static void main(String[] args) {
         // testLoadingAdmins();
 
-         testLoadingStudents();
+        testLoadingStudents();
 
         // testLoadingAdvisors();
 
@@ -36,7 +36,7 @@ public class DataLoader extends DataConstants {
 
         // testLoadingMajorMaps();
 
-        //LoadUsers();
+        // LoadUsers();
     }
 
     /**
@@ -94,8 +94,17 @@ public class DataLoader extends DataConstants {
                 String year = (String) studentObj.get(STUDENT_CLASS);
                 String major = (String) studentObj.get(STUDENT_MAJOR);
                 int creditHours = ((Long) studentObj.get(STUDENT_CREDITHOURS)).intValue();
-                @SuppressWarnings("unchecked")
-                ArrayList<Grades> completedCourses = (ArrayList<Grades>) studentObj.get(STUDENT_COMPLETED_COURSES);
+                // Parse completedCourses array
+                JSONArray completedCoursesJSON = (JSONArray) studentObj.get(STUDENT_COMPLETED_COURSES);
+                ArrayList<Grades> completedCourses = new ArrayList<Grades>();
+                if (completedCoursesJSON != null) {
+                    for (Object gradeObj : completedCoursesJSON) {
+                        JSONObject gradeJSON = (JSONObject) gradeObj;
+                        String courseName = (String) gradeJSON.get(GRADES_COURSE_NAME);
+                        double grade = ((Number) gradeJSON.get(GRADES_GRADE)).doubleValue(); 
+                        completedCourses.add(new Grades(courseName, grade));
+                    }
+                }
                 double gpa = (double) studentObj.get(STUDENT_GPA);
 
                 // Load Course Planner
@@ -151,15 +160,17 @@ public class DataLoader extends DataConstants {
         }
         String major = (String) degreeProgressObj.get("major");
         @SuppressWarnings("unchecked")
-        ArrayList<Course> majorCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PLANNER_MAJOR_COURSES);
+        ArrayList<Course> majorCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PROGRESS_MAJOR_COURSES);
         @SuppressWarnings("unchecked")
-        ArrayList<Course> electiveCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PLANNER_ELECTIVES);
+        ArrayList<Course> electiveCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PROGRESS_ELECTIVE_COURSES);
         @SuppressWarnings("unchecked")
-        ArrayList<Course> carolinaCoreCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PLANNER_CC);
+        ArrayList<Course> carolinaCoreCourses = (ArrayList<Course>) degreeProgressObj
+                .get(DEGREE_PROGRESS_CAROLINA_CORE_COURSES);
         @SuppressWarnings("unchecked")
-        ArrayList<Course> completeCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PLANNER_C_COURSES);
+        ArrayList<Course> completeCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PROGRESS_COMPLETE_COURSES);
         @SuppressWarnings("unchecked")
-        ArrayList<Course> incompleteCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PLANNER_IC_COURSES);
+        ArrayList<Course> incompleteCourses = (ArrayList<Course>) degreeProgressObj
+                .get(DEGREE_PROGRESS_INCOMPLETE_COURSES);
 
         DegreeProgress degreeProgress = new DegreeProgress(major, majorCourses, electiveCourses, carolinaCoreCourses,
                 completeCourses, incompleteCourses);

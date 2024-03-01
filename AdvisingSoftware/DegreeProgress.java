@@ -30,6 +30,7 @@ public class DegreeProgress {
         return "-----Degree Progress-----"
                 + "Current Major: " + this.major;
     }
+
     /**
      * Searches for a course by its ID in all course lists.
      * Returns the first occurrence of the course with the given ID,
@@ -109,4 +110,28 @@ public class DegreeProgress {
         return result;
     }
 
+    public String getMajor() {
+        return major;
+    }
+
+    public ArrayList<Course> getMajorCourses() {
+        return majorCourses;
+    }
+
+    public ArrayList<Course> getElectiveCourses() {
+        return electiveCourses;
+    }
+
+    public ArrayList<Course> getCarolinaCoreCourses() {
+        return carolinaCoreCourses;
+    }
+
+    public ArrayList<Course> getCompleteCourses() {
+        return completeCourses;
+    }
+
+    public ArrayList<Course> getIncompleteCourses() {
+        return incompleteCourses;
+
+    }
 }

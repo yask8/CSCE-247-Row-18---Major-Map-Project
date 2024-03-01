@@ -14,7 +14,13 @@ public class Note {
     this.note = note;
     this.date = date;
   }
+  public String getNote() {
+    return note;
+}
 
+public Date getDate() {
+    return date;
+}
   public String toString() {
     return "Note: " + note + "\tDate: " + date;
   }

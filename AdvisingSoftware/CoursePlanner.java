@@ -70,17 +70,25 @@ public class CoursePlanner {
   public String toString() {
     String result = "\n";
     for (int i = 1; i <= 8; i++) {
-        result += "********** Semester " + i + " *********"+"\n";
-        ArrayList<Course> semesterCourses = this.semesters.get(i - 1);
-        if (semesterCourses.isEmpty()) {
-            result += "No courses added to this semester.\n";
-        } else {
-            for (Course course : semesterCourses) {
-                result += course.toString() + "\n";
-            }
+      result += "********** Semester " + i + " *********" + "\n";
+      ArrayList<Course> semesterCourses = this.semesters.get(i - 1);
+      if (semesterCourses.isEmpty()) {
+        result += "No courses added to this semester.\n";
+      } else {
+        for (Course course : semesterCourses) {
+          result += course.toString() + "\n";
         }
-        result += "\n";
+      }
+      result += "\n";
     }
     return result;
-}
+  }
+    /**
+     * Getter for the semesters attribute
+     * 
+     * @return the semesters
+     */
+    public ArrayList<ArrayList<Course>> getSemesters() {
+      return semesters;
+  }
 }

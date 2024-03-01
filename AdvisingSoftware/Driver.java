@@ -15,7 +15,7 @@ public class Driver {
   }
 
   public void run() {
-    //scenario1(); Do not run will break the studentTest JSON
+    scenario1();
     //scenario2();
     //scenario3();
     //scenario4();
