@@ -54,15 +54,7 @@ public class Grades {
      * Displays the course and the grade with a comma
      * @return The course and the grade
      */
-    public String displayGrades(){
-       return courseName + "," + grade;
-    }
-    /**
-     * Testing purposes
-     * @param args
-     */
-    public static void main(String[] args) {
-        Grades test = new Grades("CSCE145",99.5);
-        System.out.println(test.displayGrades());
+    public String toString(){
+       return courseName + " : " + grade;
     }
 }

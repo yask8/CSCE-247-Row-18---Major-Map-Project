@@ -21,10 +21,10 @@ public class DataWriter extends DataConstants {
 
     public static void main(String[] args) {
         // Test saveUsers
-        testSaveUsers();
+        // testSaveUsers();
 
         // Test saveCourses
-        // testSaveCourses();
+        testSaveCourses();
 
         // Test saveMajorMaps
         // testSaveMajorMaps();
@@ -44,7 +44,7 @@ public class DataWriter extends DataConstants {
             JSONObject userJSON = getUserJSON(user);
             String userId = user.getID().toString();
             boolean userExists = false;
-    
+
             for (int i = 0; i < existingData.size(); i++) {
                 JSONObject existingUserJSON = (JSONObject) existingData.get(i);
                 String existingUserId = (String) existingUserJSON.get(USER_USCID);
@@ -54,11 +54,11 @@ public class DataWriter extends DataConstants {
                     break;
                 }
             }
-    
+
             if (!userExists) {
                 existingData.add(userJSON);
             }
-    
+
             writeJSONToFile(existingData, fileName);
         }
     }
@@ -72,7 +72,7 @@ public class DataWriter extends DataConstants {
      */
     private static String getFileNameForUser(User user) {
         String userType = user.getUserType().toUpperCase();
-    
+
         switch (userType) {
             case "STUDENT":
                 return STUDENT_FILE_NAME;
@@ -84,6 +84,7 @@ public class DataWriter extends DataConstants {
                 throw new IllegalArgumentException("Unknown user type: " + userType);
         }
     }
+
     /**
      * Generates a JSON object with the provided user.
      *
@@ -130,12 +131,21 @@ public class DataWriter extends DataConstants {
 
     /**
      * Saves the provided list of courses into a JSON file.
+     * If a course with the same ID already exists, it updates the existing course.
      *
      * @param courses The list of courses to be saved.
      */
     @SuppressWarnings("unchecked")
     public static void saveCourses(ArrayList<Course> courses) {
         JSONArray coursesArray = new JSONArray();
+        JSONArray existingData = readExistingData(COURSE_FILE_NAME);
+
+        // Add existing courses to coursesArray
+        for (Object obj : existingData) {
+            coursesArray.add(obj);
+        }
+
+        // Update existing courses or add new courses
         for (Course course : courses) {
             JSONObject courseJSON = new JSONObject();
             courseJSON.put(COURSE_ID, course.getID());
@@ -154,19 +164,48 @@ public class DataWriter extends DataConstants {
             courseJSON.put(COURSE_PREREQUISITES, prerequisitesArray);
             courseJSON.put(COURSE_SEMESTER, course.getSemester());
             courseJSON.put(COURSE_YEAR, course.getYear());
-            coursesArray.add(courseJSON);
+
+            // Check if the course with the same ID already exists
+            boolean courseExists = false;
+            for (int i = 0; i < coursesArray.size(); i++) {
+                JSONObject existingCourseJSON = (JSONObject) coursesArray.get(i);
+                String existingCourseID = (String) existingCourseJSON.get(COURSE_ID);
+                if (existingCourseID.equals(course.getID())) {
+                    // Update the existing course
+                    coursesArray.set(i, courseJSON);
+                    courseExists = true;
+                    break;
+                }
+            }
+
+            // If the course doesn't exist, add it to the coursesArray
+            if (!courseExists) {
+                coursesArray.add(courseJSON);
+            }
         }
+
+        // Write coursesArray to the file
         writeJSONToFile(coursesArray, COURSE_FILE_NAME);
     }
 
     /**
      * Saves the provided list of major maps into a JSON file.
+     * If a major map with the same name already exists, it updates the existing
+     * major map.
      *
      * @param majorMaps The list of major maps to be saved.
      */
     @SuppressWarnings("unchecked")
     public static void saveMajorMaps(ArrayList<MajorMap> majorMaps) {
         JSONArray majorMapsArray = new JSONArray();
+        JSONArray existingData = readExistingData(MAJOR_FILE_NAME);
+
+        // Add existing major maps to majorMapsArray
+        for (Object obj : existingData) {
+            majorMapsArray.add(obj);
+        }
+
+        // Update existing major maps or add new ones
         for (MajorMap majorMap : majorMaps) {
             JSONObject majorMapJSON = new JSONObject();
             majorMapJSON.put(MAJOR_NAME, majorMap.getMajor());
@@ -190,8 +229,27 @@ public class DataWriter extends DataConstants {
                 appAreaArray.add(course.getID());
             }
             majorMapJSON.put(MAJOR_APP_AREA, appAreaArray);
-            majorMapsArray.add(majorMapJSON);
+
+            // Check if the major map with the same name already exists
+            boolean majorMapExists = false;
+            for (int i = 0; i < majorMapsArray.size(); i++) {
+                JSONObject existingMajorMapJSON = (JSONObject) majorMapsArray.get(i);
+                String existingMajorMapName = (String) existingMajorMapJSON.get(MAJOR_NAME);
+                if (existingMajorMapName.equals(majorMap.getMajor())) {
+                    // Update the existing major map
+                    majorMapsArray.set(i, majorMapJSON);
+                    majorMapExists = true;
+                    break;
+                }
+            }
+
+            // If the major map doesn't exist, add it to the majorMapsArray
+            if (!majorMapExists) {
+                majorMapsArray.add(majorMapJSON);
+            }
         }
+
+        // Write majorMapsArray to the file
         writeJSONToFile(majorMapsArray, MAJOR_FILE_NAME);
     }
 
@@ -209,6 +267,7 @@ public class DataWriter extends DataConstants {
             e.printStackTrace();
         }
     }
+
     /**
      * Reads the existing data from the JSON file with the given file name.
      *
@@ -237,7 +296,7 @@ public class DataWriter extends DataConstants {
 
         Student student = new Student("Test", "1", "Test1@example.com", studentUscID, "12345", "STUDENT", "Sophomore",
                 "Computer Science", 60, new ArrayList<Grades>(), 3.5, null, null, null);
-        Admin admin = new Admin("Test1", "2", "Test2@example.com", adminUscID, "54321", "ADMIN",
+        Admin admin = new Admin("Test", "2", "Test2@example.com", adminUscID, "54321", "ADMIN",
                 new ArrayList<String>());
         Advisor advisor = new Advisor("Test", "3", "Test3@example.com", advisorUscID, "98765", "ADVISOR",
                 new ArrayList<User>(), new ArrayList<User>());

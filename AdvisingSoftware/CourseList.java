@@ -21,7 +21,7 @@ public class CourseList {
     loaded = false;
   }
 
-    /**
+  /**
    * Get the singleton instance of CourseList.
    *
    * @return The singleton instance of CourseList.
@@ -41,8 +41,7 @@ public class CourseList {
               course.getPassGrade(),
               course.isElective(),
               course.isCarolinaCore(),
-              course.getPreReqs()
-          );
+              course.getPreReqs());
         }
         courseList.setLoaded(true);
       }
@@ -108,8 +107,7 @@ public class CourseList {
       char passGrade,
       boolean elective,
       boolean carolinaCore,
-      ArrayList<Course> prereqs
-  ) {
+      ArrayList<Course> prereqs) {
     Course newCourse = new Course(
         name,
         code,
@@ -120,8 +118,8 @@ public class CourseList {
         elective,
         carolinaCore,
         prereqs,
-        null, // Default year, can be modified later
-        null  // Default semester, can be modified later
+        null, // Default year
+        null // Default semester
     );
     courses.add(newCourse);
   }
@@ -144,40 +142,13 @@ public class CourseList {
     return loaded;
   }
 
-  public void loadCourses(User user) {
-    if (user != null && user.getUserType().equals("STUDENT")) {
-        if (!loaded) {
-            ArrayList<Course> courses = DataLoader.loadCourses();
-            for (Course course : courses) {
-                addCourse(
-                    course.getName(),
-                    course.getCode(),
-                    course.getDescription(),
-                    course.getCreditHours(),
-                    course.getSubject(),
-                    course.getPassGrade(),
-                    course.isElective(),
-                    course.isCarolinaCore(),
-                    course.getPreReqs()
-                );
-            }
-            loaded = true;
-            System.out.println("Courses loaded successfully.");
-        } else {
-            System.out.println("Courses are already loaded.");
-        }
-    } else {
-        System.out.println("Only students can load courses.");
-    }
-}
-
-public void displayAllCourses() {
-  System.out.println("Printing Course Details:");
-  ArrayList<Course> allCourses = getCourses();
-  for (Course course : allCourses) {
+  public void displayAllCourses() {
+    System.out.println("Printing Course Details:");
+    ArrayList<Course> allCourses = getCourses();
+    for (Course course : allCourses) {
       System.out.println(course.toString());
+    }
   }
-}
 
   /**
    * Gets the list of courses.
@@ -189,26 +160,32 @@ public void displayAllCourses() {
   }
 
   /**
- * Show course details for a the course code given.
- *
- * @param code The course code to search for.
- */
-public void showCourseByCode(String code) {
-  Course course = getCourse(code);
-  if (course != null) {
-      System.out.println("Course Details for Code: " + code);
-      System.out.println("Name: " + course.getName());
-      System.out.println("Code: " + course.getCode());
-      System.out.println("Description: " + course.getDescription());
-      System.out.println("Credit Hours: " + course.getCreditHours());
-      System.out.println("Subject: " + course.getSubject());
-      System.out.println("Passing Grade: " + course.getPassGrade());
-      System.out.println("Elective: " + (course.isElective() ? "Yes" : "No"));
-      System.out.println("Carolina Core: " + (course.isCarolinaCore() ? "Yes" : "No"));
-      System.out.println("Prerequisites: " + course.getPreReqs());
-  } else {
-      System.out.println("Course with code " + code + " not found.");
+   * Checks if a course with the given ID exists in the course list.
+   *
+   * @param id The ID of the course to check.
+   * @return true if the course exists, false otherwise.
+   */
+  public boolean courseExistsById(String id) {
+    for (Course course : courses) {
+      if (course.getID().equals(id)) {
+        return true;
+      }
+    }
+    return false;
   }
-}
 
+  /**
+   * Gets a course based on the given ID.
+   *
+   * @param id The ID of the course to retrieve.
+   * @return The course with the matching ID, or null if not found.
+   */
+  public Course getCourseById(String id) {
+    for (Course course : courses) {
+      if (course.getID().equals(id)) {
+        return course; 
+      }
+    }
+    return null; 
+  }
 }

@@ -130,6 +130,7 @@ public class Facade {
     UserList userList = UserList.getInstance();
     userList.signUp(firstName, lastName, email, password, userType);
   }
+
   public MajorMap checkMajorMap(String major) {
     return majorMap;
   }
@@ -165,12 +166,12 @@ public class Facade {
     if (majorMap == null) {
       majorMap = getMajorMap();
       if (majorMap == null) {
-          System.out.println("User has not declared major.");
-          return;
+        System.out.println("User has not declared major.");
+        return;
       }
+    }
+    majorMap.displayMajorMap(major);
   }
-  majorMap.displayMajorMap(major);
-}
 
   protected void modifyStudentGrades(
       User user,
@@ -214,24 +215,24 @@ public class Facade {
     }
   }
 
-    public void showCourseByCode(String courseCode) {
-      CourseList courseListInstance = CourseList.getInstance();
-      Course course = courseListInstance.getCourse(courseCode);
+  public void showCourseByCode(String courseCode) {
+    CourseList courseListInstance = CourseList.getInstance();
+    Course course = courseListInstance.getCourse(courseCode);
 
-      if (course != null) {
-          System.out.println("Course Details for Code: " + courseCode);
-          System.out.println("Name: " + course.getName());
-          System.out.println("Code: " + course.getCode());
-          System.out.println("Description: " + course.getDescription());
-          System.out.println("Credit Hours: " + course.getCreditHours());
-          System.out.println("Subject: " + course.getSubject());
-          System.out.println("Passing Grade: " + course.getPassGrade());
-          System.out.println("Elective: " + (course.isElective() ? "Yes" : "No"));
-          System.out.println("Carolina Core: " + (course.isCarolinaCore() ? "Yes" : "No"));
-          System.out.println("Prerequisites: " + course.getPreReqs());
-      } else {
-          System.out.println("Course with code " + courseCode + " not found.");
-      }
+    if (course != null) {
+      System.out.println("Course Details for Code: " + courseCode);
+      System.out.println("Name: " + course.getName());
+      System.out.println("Code: " + course.getCode());
+      System.out.println("Description: " + course.getDescription());
+      System.out.println("Credit Hours: " + course.getCreditHours());
+      System.out.println("Subject: " + course.getSubject());
+      System.out.println("Passing Grade: " + course.getPassGrade());
+      System.out.println("Elective: " + (course.isElective() ? "Yes" : "No"));
+      System.out.println("Carolina Core: " + (course.isCarolinaCore() ? "Yes" : "No"));
+      System.out.println("Prerequisites: " + course.getPreReqs());
+    } else {
+      System.out.println("Course with code " + courseCode + " not found.");
+    }
   }
 
   // GETTER FOR USER INSTANCES
@@ -243,7 +244,7 @@ public class Facade {
    * @return The year of the logged-in student.
    */
   public String getStudentYear() {
-    if(user.getUserType().equals("STUDENT")){
+    if (user.getUserType().equals("STUDENT")) {
       return ((Student) user).getYear();
     } else {
       return null;
@@ -258,7 +259,7 @@ public class Facade {
    * @return The major of the logged-in student.
    */
   public String getStudentMajor() {
-    if(user.getUserType().equals("STUDENT")) {
+    if (user.getUserType().equals("STUDENT")) {
       return ((Student) user).getMajor();
     } else {
       return null;
@@ -273,7 +274,7 @@ public class Facade {
    * @return The credit hours of the logged-in student.
    */
   public int getStudentCreditHours() {
-    if(user.getUserType().equals("STUDENT")){
+    if (user.getUserType().equals("STUDENT")) {
       return ((Student) user).getCreditHours();
     } else {
       return -1;
@@ -288,7 +289,7 @@ public class Facade {
    * @return The completed courses of the logged-in student.
    */
   public ArrayList<Grades> getStudentCompletedCourses() {
-    if(user.getUserType().equals("STUDENT")){
+    if (user.getUserType().equals("STUDENT")) {
       return ((Student) user).getCompletedCourses();
     } else {
       return null;
@@ -303,7 +304,7 @@ public class Facade {
    * @return The GPA of the logged-in student.
    */
   public double getStudentGPA() {
-    if(user.getUserType().equals("STUDENT")){
+    if (user.getUserType().equals("STUDENT")) {
       return ((Student) user).getGpa();
     } else {
       return -1.0;
@@ -318,7 +319,7 @@ public class Facade {
    * @return The course planner of the logged-in student.
    */
   public CoursePlanner getStudentCoursePlanner() {
-    if(user.getUserType().equals("STUDENT")){
+    if (user.getUserType().equals("STUDENT")) {
       return ((Student) user).getCoursePlanner();
     } else {
       return null;
@@ -333,7 +334,7 @@ public class Facade {
    * @return The degree progress of the logged-in student.
    */
   public DegreeProgress getStudentDegreeProgress() {
-    if(user.getUserType().equals("STUDENT")){
+    if (user.getUserType().equals("STUDENT")) {
       return ((Student) user).getDegreeProgress();
     } else {
       return null;
@@ -348,12 +349,13 @@ public class Facade {
    * @return The advisor notes of the logged-in student.
    */
   public ArrayList<Note> getStudentAdvisorNotes() {
-    if(user.getUserType().equals("STUDENT")){
+    if (user.getUserType().equals("STUDENT")) {
       return ((Student) user).getAdvisorNotes();
     } else {
       return null;
     }
   }
+
   /**
    * Gets the changes made list by a logged in Admin.
    * 
@@ -362,7 +364,7 @@ public class Facade {
    * @return the changes made list by a logged in Admin.
    */
   public ArrayList<String> getAdminChangesMade() {
-    if(user.getUserType().equals("ADMIN")){
+    if (user.getUserType().equals("ADMIN")) {
       return ((Admin) user).getChangesMade();
     } else {
       return null;
@@ -375,7 +377,7 @@ public class Facade {
    * @return ArrayList of advisees.
    */
   public ArrayList<User> getListOfAdvisees() {
-    if(user.getUserType().equals("ADVISOR")){
+    if (user.getUserType().equals("ADVISOR")) {
       Advisor advisor = (Advisor) user;
       return advisor.getListOfAdvisees();
     } else {
@@ -389,11 +391,22 @@ public class Facade {
    * @return ArrayList of failing students.
    */
   public ArrayList<User> getListOfFailingStudents() {
-    if(user.getUserType().equals("ADVISOR")){
+    if (user.getUserType().equals("ADVISOR")) {
       Advisor advisor = (Advisor) user;
       return advisor.getListOfFailingStudents();
     } else {
       return null;
     }
+  }
+
+  /**
+   * Gets a course based on the given course code.
+   *
+   * @param code The course code to search for.
+   * @return The course with the matching code, or null if not found.
+   */
+  public Course getCourseById(String code) {
+    CourseList courseListInstance = CourseList.getInstance();
+    return courseListInstance.getCourseById(code);
   }
 }

@@ -70,7 +70,7 @@ public class CoursePlanner {
   public String toString() {
     String result = "\n";
     for (int i = 1; i <= 8; i++) {
-        result += "********** Semester " + i + " *********"+":\n";
+        result += "********** Semester " + i + " *********"+"\n";
         ArrayList<Course> semesterCourses = this.semesters.get(i - 1);
         if (semesterCourses.isEmpty()) {
             result += "No courses added to this semester.\n";

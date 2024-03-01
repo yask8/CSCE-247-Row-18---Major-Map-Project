@@ -36,7 +36,7 @@ public class Student extends User {
       String year,
       String major,
       int creditHours,
-      ArrayList<Grades> completedCourses2,
+      ArrayList<Grades> completedCourses,
       double gpa,
       CoursePlanner coursePlanner,
       DegreeProgress degreeProgress,
@@ -45,7 +45,7 @@ public class Student extends User {
     this.year = year;
     this.major = major;
     this.creditHours = creditHours;
-    this.completedCourses = completedCourses2;
+    this.completedCourses = completedCourses;
     this.gpa = gpa;
     this.coursePlanner = coursePlanner;
     this.degreeProgress = degreeProgress;

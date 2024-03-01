@@ -38,12 +38,30 @@ public class Driver {
     if (facade.getUser() != null) {
       System.out.println("Login successful!");
       System.out.println("Current user:");
-      System.out.println(facade.getUser().toString());
+      System.out.println(facade.getUser());
     } else {
       System.out.println("Login failed. Incorrect email or password.");
     }
     System.out.println("Student checks degree progress\n");
     System.out.println(facade.getStudentDegreeProgress());
+
+    System.out.println("Student look at all courses in data base\n");
+    System.out.println(facade.getCourseList());
+
+    System.out.println("\nStudent did not see BIOL101 and looks it up\n");
+    System.out.println(facade.getCourseById("BIOL101"));
+    System.out.println("\nStudent did not see HIST101 and looks it up\n");
+    System.out.println(facade.getCourseById("HIST101"));
+
+    System.out.println("\nStudent adds BIOL101 into the course planner\n");
+    facade.getStudentCoursePlanner().addCourse(2,facade.getCourseById("BIOL101"));
+    System.out.println(facade.getStudentCoursePlanner().toString());
+
+    System.out.println("\nStudent Signs out and changes are saved during sign out\n");
+    facade.signOut();
+
+  
+
 
   }
 
