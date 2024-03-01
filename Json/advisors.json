@@ -1,1 +1,13 @@
-[{"firstName":"Michael","lastName":"Flanagan","password":"philly$Gr33n","uscID":"af593075-ea9e-4ed7-be74-4604863b702b","listOfFailingStudents":[],"listOfAdvisorNotes":[],"userType":"ADVISOR","listOfAdivsees":[],"email":"FlanaganMichael@gmail.com"},{"firstName":"Test","lastName":"3","password":"98765","uscID":"ae01acb5-b8d8-44c0-8ab2-94d168f6de19","listOfFailingStudents":[],"userType":"ADVISOR","listOfAdivsees":[],"email":"Test3@example.com"}]
+[
+  {
+    "firstName": "Michael",
+    "lastName": "Flanagan",
+    "password": "philly$Gr33n",
+    "uscID": "af593075-ea9e-4ed7-be74-4604863b702b",
+    "listOfFailingStudents": [],
+    "listOfAdvisorNotes": [],
+    "userType": "ADVISOR",
+    "listOfAdivsees": [],
+    "email": "FlanaganMichael@gmail.com"
+  }
+]
