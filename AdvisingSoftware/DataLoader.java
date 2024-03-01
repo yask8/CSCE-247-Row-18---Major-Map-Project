@@ -28,15 +28,15 @@ public class DataLoader extends DataConstants {
     public static void main(String[] args) {
         // testLoadingAdmins();
 
-        //testLoadingStudents();
+        // testLoadingStudents();
 
-         testLoadingAdvisors();
+        // testLoadingAdvisors();
 
         // testLoadingCourses();
 
         // testLoadingMajorMaps();
 
-        // LoadUsers();
+        LoadUsers();
     }
 
     /**
@@ -74,7 +74,7 @@ public class DataLoader extends DataConstants {
      * 
      * @return An ArrayList of Student objects loaded from the JSON file.
      */
-  public static ArrayList<Student> loadStudents() {
+    public static ArrayList<Student> loadStudents() {
         ArrayList<Student> students = new ArrayList<>();
 
         try {
@@ -137,6 +137,7 @@ public class DataLoader extends DataConstants {
         }
         return null;
     }
+
     /**
      * Loads degree progress from a JSON object.
      * 
@@ -165,6 +166,7 @@ public class DataLoader extends DataConstants {
 
         return degreeProgress;
     }
+
     /**
      * Loads a course planner from a JSON object.
      * 
@@ -176,13 +178,13 @@ public class DataLoader extends DataConstants {
         if (coursePlannerObj == null) {
             return null;
         }
-    
+
         CoursePlanner coursePlanner = new CoursePlanner();
         JSONArray semestersArray = (JSONArray) coursePlannerObj.get(COURSE_PLANNER_SEMESTERS);
-    
+
         for (int i = 0; i < semestersArray.size(); i++) {
             JSONArray semesterCoursesArray = (JSONArray) semestersArray.get(i);
-    
+
             for (int j = 0; j < semesterCoursesArray.size(); j++) {
                 JSONObject courseObj = (JSONObject) semesterCoursesArray.get(j);
                 Course course = parseCourseFromJSONObject(courseObj);
@@ -191,9 +193,10 @@ public class DataLoader extends DataConstants {
                 }
             }
         }
-    
+
         return coursePlanner;
     }
+
     /**
      * Parses a Course object from a JSON object representation.
      * 
@@ -289,12 +292,12 @@ public class DataLoader extends DataConstants {
      */
     public static ArrayList<Advisor> loadAdvisors() {
         ArrayList<Advisor> advisors = new ArrayList<>();
-    
+
         try {
             FileReader reader = new FileReader(ADVISOR_FILE_NAME);
             JSONParser parser = new JSONParser();
             JSONArray advisorJSON = (JSONArray) parser.parse(reader);
-    
+
             for (Object obj : advisorJSON) {
                 JSONObject advisorOBJ = (JSONObject) obj;
                 String firstName = (String) advisorOBJ.get(USER_FIRST_NAME);
@@ -308,15 +311,16 @@ public class DataLoader extends DataConstants {
                 ArrayList<User> listOfAdvisees = new ArrayList<>();
                 ArrayList<User> listOfFailingStudents = new ArrayList<>();
 
-                advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType, listOfAdvisees, listOfFailingStudents));
+                advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType, listOfAdvisees,
+                        listOfFailingStudents));
             }
-    
+
             return advisors;
-    
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    
+
         return null;
     }
 
