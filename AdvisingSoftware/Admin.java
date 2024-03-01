@@ -8,7 +8,7 @@ public class Admin extends User {
   private ArrayList<String> changesMade;
 
   /**
-   * Private constructor
+   * constructor
    */
   public Admin(
       String firstName,
