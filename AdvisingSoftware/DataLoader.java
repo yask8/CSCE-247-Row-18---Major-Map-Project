@@ -95,7 +95,7 @@ public class DataLoader extends DataConstants {
                 String major = (String) studentObj.get(STUDENT_MAJOR);
                 int creditHours = ((Long) studentObj.get(STUDENT_CREDITHOURS)).intValue();
                 @SuppressWarnings("unchecked")
-                ArrayList<Course> completedCourses = (ArrayList<Course>) studentObj.get(STUDENT_COMPLETED_COURSES);
+                ArrayList<Grades> completedCourses = (ArrayList<Grades>) studentObj.get(STUDENT_COMPLETED_COURSES);
                 double gpa = (double) studentObj.get(STUDENT_GPA);
 
                 // Load Course Planner

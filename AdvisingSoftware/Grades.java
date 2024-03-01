@@ -7,8 +7,8 @@ public class Grades {
     /**
      * Attributes
      */
-    double grade;
-    String courseName;
+    private double grade;
+    private String courseName;
     /**
      * Constructor for Grades
      * @param course The course 

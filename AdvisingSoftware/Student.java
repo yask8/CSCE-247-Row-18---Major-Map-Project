@@ -1,7 +1,6 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.UUID;
 
 public class Student extends User {
@@ -9,7 +8,7 @@ public class Student extends User {
   private String year;
   private String major;
   private int creditHours;
-  private ArrayList<Course> completedCourses;
+  private ArrayList<Grades> completedCourses;
   private double gpa;
   private CoursePlanner coursePlanner;
   private DegreeProgress degreeProgress;
@@ -21,7 +20,7 @@ public class Student extends User {
    * @param year             Student's year/class
    * @param major            Student's major
    * @param creditHours      Student's number of credit hours taken
-   * @param completedCourses Courses the student has completed
+   * @param completedCourses2 Courses the student has completed
    * @param gpa              Student's GPA
    * @param coursePlanner    Student's courses planned for the future
    * @param degreeProgress   Student's degree progress
@@ -37,7 +36,7 @@ public class Student extends User {
       String year,
       String major,
       int creditHours,
-      ArrayList<Course> completedCourses,
+      ArrayList<Grades> completedCourses2,
       double gpa,
       CoursePlanner coursePlanner,
       DegreeProgress degreeProgress,
@@ -46,7 +45,7 @@ public class Student extends User {
     this.year = year;
     this.major = major;
     this.creditHours = creditHours;
-    this.completedCourses = completedCourses;
+    this.completedCourses = completedCourses2;
     this.gpa = gpa;
     this.coursePlanner = coursePlanner;
     this.degreeProgress = degreeProgress;
@@ -88,11 +87,10 @@ public class Student extends User {
   /**
    * Allows student to view their completed courses
    * 
-   * @param completedCourses HashMap of students completed courses with their
+   * @param completedCourses ArrayList of students completed courses with their
    *                         respective grade
    */
-  public void viewCompletedCourses(
-      HashMap<Course, Character> completedCourses) {
+  public void viewCompletedCourses(ArrayList<Grades> completedCourses) {
   }
 
   /**
@@ -176,7 +174,7 @@ public class Student extends User {
    * 
    * @return the courses the student has completed
    */
-  public ArrayList<Course> getCompletedCourses() {
+  public ArrayList<Grades> getCompletedCourses() {
     return completedCourses;
   }
 

@@ -287,7 +287,7 @@ public class Facade {
    * 
    * @return The completed courses of the logged-in student.
    */
-  public ArrayList<Course> getStudentCompletedCourses() {
+  public ArrayList<Grades> getStudentCompletedCourses() {
     if(user.getUserType().equals("STUDENT")){
       return ((Student) user).getCompletedCourses();
     } else {
