@@ -16,12 +16,11 @@ import java.util.ArrayList;
 
 public class Facade {
 
-  private ArrayList<Course> courseList;
-  private Course course;
-  private ArrayList<User> userList;
+  private CourseList courseList;
+  private UserList userList;
   private User user;
-  private ArrayList<MajorMap> majorList;
-  private MajorMap majorMap;
+  private MajorList majorList;
+
 
   /*
    * + Facade(CourseList courseList, Course course, UserList userList, User user,
@@ -43,22 +42,12 @@ public class Facade {
    * # modifyStudentList(): ArrayList<Student>
    * # modifyStudentGrades(User user, DegreeProgress degreeProgress): void
    */
-  public Facade(
-      CourseList courseList,
-      Course course,
-      User user,
-      MajorMap majorMap) {
-    this.courseList = courseList.getCourses();
-    this.course = course;
-    UserList userList = UserList.getInstance();
-    this.userList = userList.getUsers();
-    this.majorMap = majorMap;
-  }
-
   public Facade() {
+    this.courseList = CourseList.getInstance();
+    this.userList = UserList.getInstance();
+    this.majorList = MajorList.getInstance();
 
   }
-
   /**
    * Logs in a user with the specified email and password.
    * If the user list is not already loaded, it loads the users using data loader
@@ -73,31 +62,9 @@ public class Facade {
    * @return The logged-in user if successful.
    */
   public User login(String email, String password) {
-    loadUserList();
-    loadCourseList();
-    loadMajorList();
-    UserList userList = UserList.getInstance();
-
     User loggedInUser = userList.getUserByLoginInfo(email, password);
-
     this.user = loggedInUser;
-
     return loggedInUser;
-  }
-
-  private void loadCourseList() {
-    CourseList courseListInstance = CourseList.getInstance();
-    this.courseList = courseListInstance.getCourses();
-  }
-
-  private void loadMajorList() {
-    MajorList majorListInstance = MajorList.getInstance();
-    this.majorList = majorListInstance.getMajors();
-  }
-
-  private void loadUserList() {
-    UserList courseListInstance = UserList.getInstance();
-    this.userList = courseListInstance.getUsers();
   }
 
   /**
@@ -108,7 +75,9 @@ public class Facade {
    */
   public void signOut() {
     user = null;
-    DataWriter.saveUsers(getUserList());
+    DataWriter.saveUsers(getUsers());
+    DataWriter.saveCourses(getCourses());
+    DataWriter.saveMajorMaps(getMajors());
   }
 
   /**
@@ -126,22 +95,14 @@ public class Facade {
    * @param userType  The type of user ('STUDENT', 'ADMIN', or 'ADVISOR').
    */
   public void signUp(String firstName, String lastName, String email, String password, String userType) {
-    loadUserList();
-    UserList userList = UserList.getInstance();
     userList.signUp(firstName, lastName, email, password, userType);
   }
 
-  public MajorMap checkMajorMap(String major) {
-    return majorMap;
-  }
 
   public User checkProfile(String uscID) {
     return user;
   }
 
-  public Course chooseCourse(String UUID) {
-    return course;
-  }
 
   public boolean switchMajor(String uscID, String major) {
     return true;
@@ -162,17 +123,6 @@ public class Facade {
     return new ArrayList<Student>();
   }
 
-  public void displayMap(String major) {
-    if (majorMap == null) {
-      majorMap = getMajorMap();
-      if (majorMap == null) {
-        System.out.println("User has not declared major.");
-        return;
-      }
-    }
-    majorMap.displayMajorMap(major);
-  }
-
   protected void modifyStudentGrades(
       User user,
       DegreeProgress degreeProgress) {
@@ -180,15 +130,13 @@ public class Facade {
   }
 
   // Getters
-  public ArrayList<Course> getCourseList() {
+  public CourseList getCourseList() {
     return courseList;
   }
 
-  public Course getCourse() {
-    return course;
-  }
 
-  public ArrayList<User> getUserList() {
+
+  public UserList getUserList() {
     return userList;
   }
 
@@ -196,13 +144,10 @@ public class Facade {
     return user;
   }
 
-  public ArrayList<MajorMap> getMajorList() {
+  public MajorList getMajorList() {
     return majorList;
   }
 
-  public MajorMap getMajorMap() {
-    return majorMap;
-  }
 
   public void displayAllCourses(ArrayList<Course> courseList) {
     if (courseList != null && !courseList.isEmpty()) {
@@ -235,6 +180,34 @@ public class Facade {
     }
   }
 
+  // GETTERS FOR THE SINGLETONS
+    /**
+     * Gets the list of courses from the CourseList singleton instance.
+     * 
+     * @return The list of courses.
+     */
+    public ArrayList<Course> getCourses() {
+      return courseList.getCourses();
+  }
+
+  /**
+   * Gets the list of users from the UserList singleton instance.
+   * 
+   * @return The list of users.
+   */
+  public ArrayList<User> getUsers() {
+      return userList.getUsers();
+  }
+
+  /**
+   * Gets the list of majors from the MajorList singleton instance.
+   * 
+   * @return The list of majors.
+   */
+  public ArrayList<MajorMap> getMajors() {
+      return majorList.getMajors();
+  }
+
   // GETTER FOR USER INSTANCES
   /**
    * Gets the year of the logged-in student.
@@ -251,22 +224,22 @@ public class Facade {
     }
   }
 
-  /**
-   * Gets the major of the logged-in student.
+  /*
+   * Gets the major of the logged-in student
+   *
+   * Returns null if the logged-in user is not a student
+   *
+   * @return The major of the logged-in student
+   *
+   * public String getStudentMajor() {
+   * if (user.getUserType().equals("STUDENT")) {
+   * return ((Student) user).getMajor();
+   * } else {
+   * return null;
+   * }
+   * }
    * 
-   * Returns null if the logged-in user is not a student.
-   * 
-   * @return The major of the logged-in student.
-   */
-  public String getStudentMajor() {
-    if (user.getUserType().equals("STUDENT")) {
-      return ((Student) user).getMajor();
-    } else {
-      return null;
-    }
-  }
-
-  /**
+   * /**
    * Gets the credit hours of the logged-in student.
    * 
    * Returns -1 if the logged-in user is not a student.

@@ -32,33 +32,33 @@ public class MajorList {
         return majors;
     }
 
-    /**
-     * Get the singleton instance of MajorList and ensures the list is loaded
-     * into the dataloader.
-     * 
-     * @return the singleton instance of MajorList
-     */
-    public static MajorList getInstance() {
-        if (majorList == null) {
-            majorList = new MajorList();
-            if (!majorList.isLoaded()) {
-                ArrayList<MajorMap> majorData = DataLoader.loadMajors();
-                for (MajorMap majorInData : majorData) {
-                    majorList.addMajor(majorInData.getMajor(),
-                            majorInData.getMajorCourses(),
-                            majorInData.getElectives(),
-                            majorInData.getCoreEdu(),
-                            majorInData.getAppArea(),
-                            majorInData.getMinTotalHours(),
-                            majorInData.getMinGradHours(),
-                            majorInData.getCaroCoreHours(),
-                            majorInData.getMinGPA());
-                }
-                majorList.setLoaded(true);
+/**
+ * Get the singleton instance of MajorList and ensures the list is loaded
+ * into the dataloader.
+ * 
+ * @return the singleton instance of MajorList
+ */
+public static MajorList getInstance() {
+    if (majorList == null) {
+        majorList = new MajorList();
+        if (!majorList.isLoaded()) {
+            ArrayList<MajorMap> majorData = DataLoader.loadMajors();
+            for (MajorMap majorInData : majorData) {
+                majorList.addMajor(majorInData.getMajor(),
+                        majorInData.getMajorCourses(),
+                        majorInData.getElectives(),
+                        majorInData.getCoreEdu(),
+                        majorInData.getAppArea(),
+                        majorInData.getMinTotalHours(),
+                        majorInData.getMinGradHours(),
+                        majorInData.getCaroCoreHours(),
+                        majorInData.getMinGPA());
             }
+            majorList.setLoaded(true);
         }
-        return majorList;
     }
+    return majorList;
+}
 
     /**
      * Get a major by the name from the Major Map

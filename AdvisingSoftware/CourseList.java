@@ -183,9 +183,9 @@ public class CourseList {
   public Course getCourseById(String id) {
     for (Course course : courses) {
       if (course.getID().equals(id)) {
-        return course; 
+        return course;
       }
     }
-    return null; 
+    return null;
   }
 }

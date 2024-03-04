@@ -15,33 +15,25 @@ public class UserList {
   private ArrayList<User> users;
   private boolean loaded;
 
-  /**
-   * Private constructor for UserList.
-   * Initializes the list of users.
-   */
   private UserList() {
-    this.users = new ArrayList<>();
+    users = new ArrayList<>(); 
     loaded = false;
-  }
+}
 
-  /**
-   * Get the singleton instance of UserList.
-   *
-   * @return The singleton instance of UserList.
-   */
-  public static UserList getInstance() {
+public static UserList getInstance() {
     if (userList == null) {
-      userList = new UserList();
-      if (!userList.isLoaded()) {
-        ArrayList<User> userData = DataLoader.loadUsers();
-        for (User user : userData) {
-          userList.addUser(user);
+        userList = new UserList();
+        if (!userList.isLoaded()) {
+            ArrayList<User> userData = DataLoader.loadUsers();
+            if (userData != null) { 
+                userList.users.addAll(userData); 
+            } else {
+                System.out.println("Failed to load users from DataLoader.");
+            }
         }
-        userList.setLoaded(true);
-      }
     }
     return userList;
-  }
+}
 
   /**
    * Get a user by their USC ID.
