@@ -15,11 +15,11 @@ public class Driver {
   }
 
   public void run() {
-    //scenario1(); 
-    //scenario2();
-    //scenario3();
-    //scenario4();
-   scenario5(); 
+    // scenario1();
+    // scenario2();
+    // scenario3();
+    // scenario4();
+    // scenario5(); idk its still not printing the major map
   }
 
   /*
@@ -42,23 +42,23 @@ public class Driver {
     } else {
       System.out.println("Login failed. Incorrect email or password.");
     }
-     System.out.println("Student checks degree progress\n");
-     System.out.println(facade.getStudentDegreeProgress());
+    System.out.println("Student checks degree progress\n");
+    System.out.println(facade.getStudentDegreeProgress());
 
-     System.out.println("Student look at all courses in data base\n");
-     System.out.println(facade.getCourseList());
+    System.out.println("Student look at all courses in data base\n");
+    System.out.println(facade.getCourseList());
 
-     System.out.println("\nStudent did not see BIOL101 and looks it up\n");
-     System.out.println(facade.getCourseById("BIOL101"));
-     System.out.println("\nStudent did not see HIST101 and looks it up\n");
-     System.out.println(facade.getCourseById("HIST101"));
+    System.out.println("\nStudent did not see BIOL101 and looks it up\n");
+    System.out.println(facade.getCourseById("BIOL101"));
+    System.out.println("\nStudent did not see HIST101 and looks it up\n");
+    System.out.println(facade.getCourseById("HIST101"));
 
-     System.out.println("\nStudent adds BIOL101 into the course planner\n");
-     facade.getStudentCoursePlanner().addCourse(2,facade.getCourseById("BIOL101"));
-     System.out.println(facade.getStudentCoursePlanner().toString());
+    System.out.println("\nStudent adds BIOL101 into the course planner\n");
+    facade.getStudentCoursePlanner().addCourse(2, facade.getCourseById("BIOL101"));
+    System.out.println(facade.getStudentCoursePlanner().toString());
 
-     System.out.println("\nStudent Signs out and changes are saved during sign out\n");
-     facade.signOut();
+    System.out.println("\nStudent Signs out and changes are saved during sign out\n");
+    facade.signOut();
   }
 
   public void scenario2() {
@@ -76,12 +76,11 @@ public class Driver {
       System.out.println(facade.getUser().toString());
     } else {
       System.out.println(
-        "Login failed for email " +
-        email +
-        " and/or " +
-        password +
-        ". Incorrect email or password."
-      );
+          "Login failed for email " +
+              email +
+              " and/or " +
+              password +
+              ". Incorrect email or password.");
     }
     facade.signOut();
 
@@ -97,12 +96,11 @@ public class Driver {
       System.out.println(facade.getUser().toString());
     } else {
       System.out.println(
-        "Login failed for email " +
-        email2 +
-        " and/or " +
-        password2 +
-        ". Incorrect email or password."
-      );
+          "Login failed for email " +
+              email2 +
+              " and/or " +
+              password2 +
+              ". Incorrect email or password.");
     }
     facade.signOut();
   }
@@ -117,19 +115,17 @@ public class Driver {
 
     System.out.println("\nSigning up a new student\n");
     facade.signUpStudent(
-      signupFirstName,
-      signupLastName,
-      signupEmail,
-      signupPassword
-    );
+        signupFirstName,
+        signupLastName,
+        signupEmail,
+        signupPassword);
 
     facade.signOut();
   }
 
   public void scenario4() {
     System.out.println(
-      "\nScenario 4: Loading Courses and Printing Respective Course Details"
-    );
+        "\nScenario 4: Loading Courses and Printing Respective Course Details");
     System.out.println("--------------------------------------------");
 
     // Hardcoding the email and password
@@ -149,7 +145,7 @@ public class Driver {
       String courseCodeToSearch = "PR"; // Example course code to search
       System.out.println("\nTrying to find course with code: " + courseCodeToSearch);
       facade.showCourseByCode(courseCodeToSearch);
-  } else {
+    } else {
       System.out.println("Incorrect email or password. Please try again.");
     }
   }
@@ -159,35 +155,31 @@ public class Driver {
    *
    * @author yask8(Yasmine Kennedy)
    */
-   public void scenario5() {
+  public void scenario5() {
     System.out.println("Scenario 5: Loading Majors and Printing Respective Major Map");
-     System.out.println("--------------------------------------------");
+    System.out.println("--------------------------------------------");
 
-     // Hardcoding the email and password
-     String email = "rio.farrah2004@gmail.com";
-     String password = "Real?dejaneir0";
+    // Hardcoding the email and password
+    String email = "rio.farrah2004@gmail.com";
+    String password = "Real?dejaneir0";
 
-     // Creating a user object that operates the facade login method
-     facade.login(email, password);
+    // Creating a user object that operates the facade login method
+    facade.login(email, password);
 
-     // Checking if the user is logged in
-     if (facade.getUser() != null) {
-       System.out.println("Hello " + facade.getUser().getFirstName() + "!");
+    // Checking if the user is logged in
+    if (facade.getUser() != null) {
+      System.out.println("Hello " + facade.getUser().getFirstName() + "!");
 
-       // Displays the User Info
-       System.out.println(facade.getUser().getFirstName() + " Current Info:");
-       System.out.println(facade.getUser().toString());
+      // Displays the User Info
+      System.out.println(facade.getUser().getFirstName() + " Current Info:");
+      System.out.println(facade.getUser().toString());
 
-     
-
-    
-     } else {
-       System.out.println("Incorrect email or password. Please try again.");
-     }
-     System.out.println(facade.getStudentMajor());
-     System.out.println("\nPrinting Major Map");
-     facade.getMajorMap(facade.getStudentMajor().toString());
-   }
+    } else {
+      System.out.println("Incorrect email or password. Please try again.");
+    }
+    System.out.println("Printing Major Map");
+    facade.getMajorMap(facade.getStudentMajor().toString());
+  }
 
   public static void main(String[] args) {
     Driver advisingInterface = new Driver();
