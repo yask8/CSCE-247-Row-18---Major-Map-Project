@@ -219,7 +219,7 @@ public class DataLoader extends DataConstants {
         if (courseJson == null) {
             return null;
         }
-
+    
         String id = (String) courseJson.get(COURSE_ID);
         String name = (String) courseJson.get(COURSE_NAME);
         String code = (String) courseJson.get(COURSE_CODE);
@@ -229,27 +229,22 @@ public class DataLoader extends DataConstants {
         char passGrade = ((String) courseJson.get(COURSE_PASS_GRADE)).charAt(0);
         boolean elective = (boolean) courseJson.get(COURSE_ELECTIVE);
         boolean carolinaCore = (boolean) courseJson.get(COURSE_CAROLINA_CORE);
-
+    
         JSONArray preReqsArray = (JSONArray) courseJson.get(COURSE_PREREQUISITES);
-        ArrayList<Course> preReqs = new ArrayList<>();
+        ArrayList<String> preReqs = new ArrayList<>();
         if (preReqsArray != null) {
             for (Object preReq : preReqsArray) {
                 if (preReq instanceof String) {
-                    // Assuming preReq is the course ID
                     String courseId = (String) preReq;
-                    Course preReqCourse = findCourseByCode(courseId);
-                    if (preReqCourse != null) {
-                        preReqs.add(preReqCourse);
-                    }
+                    preReqs.add(courseId);
                 }
             }
         }
-
+    
         String semester = (String) courseJson.get(COURSE_SEMESTER);
         String year = (String) courseJson.get(COURSE_YEAR);
-
-        return new Course(id, name, code, description, creditHours, subject, passGrade, elective, carolinaCore, preReqs,
-                semester, year);
+    
+        return new Course(id, name, code, description, creditHours, subject, passGrade, elective, carolinaCore, preReqs, semester, year);
     }
 
     /**
@@ -335,19 +330,14 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
-    /**
-     * Loads courses from a JSON file.
-     * 
-     * @return An ArrayList of Course objects loaded from the JSON file
-     */
     public static ArrayList<Course> loadCourses() {
         ArrayList<Course> courses = new ArrayList<>();
-
+    
         try {
             FileReader reader = new FileReader(COURSE_FILE_NAME);
             JSONParser parser = new JSONParser();
             JSONArray courseJSON = (JSONArray) parser.parse(reader);
-
+    
             for (int i = 0; i < courseJSON.size(); i++) {
                 JSONObject courseObj = (JSONObject) courseJSON.get(i);
                 String id = (String) courseObj.get(COURSE_ID);
@@ -359,25 +349,31 @@ public class DataLoader extends DataConstants {
                 char passGrade = ((String) courseObj.get(COURSE_PASS_GRADE)).charAt(0);
                 boolean elective = (Boolean) courseObj.get(COURSE_ELECTIVE);
                 boolean carolinaCore = (Boolean) courseObj.get(COURSE_CAROLINA_CORE);
-                @SuppressWarnings("unchecked")
-                ArrayList<Course> prerequisites = (ArrayList<Course>) courseObj.get(COURSE_PREREQUISITES);
+                JSONArray prerequisitesArray = (JSONArray) courseObj.get(COURSE_PREREQUISITES);
+                ArrayList<String> prerequisites = new ArrayList<>();
+                if (prerequisitesArray != null) {
+                    for (Object prerequisite : prerequisitesArray) {
+                        if (prerequisite instanceof String) {
+                            prerequisites.add((String) prerequisite);
+                        }
+                    }
+                }
                 String semester = (String) courseObj.get(COURSE_SEMESTER);
                 String year = (String) courseObj.get(COURSE_YEAR);
-
+    
                 Course course = new Course(id, name, code, description, creditHours, subject, passGrade, elective,
                         carolinaCore, prerequisites, semester, year);
                 courses.add(course);
             }
-
+    
             return courses;
-
+    
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+    
         return null;
     }
-
     /**
      * Loads majors from a JSON file.
      * 

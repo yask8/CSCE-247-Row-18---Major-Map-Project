@@ -203,13 +203,10 @@ public class DataWriter extends DataConstants {
     public static void saveCourses(ArrayList<Course> courses) {
         JSONArray coursesArray = new JSONArray();
         JSONArray existingData = readExistingData(COURSE_FILE_NAME);
-
-        // Add existing courses to coursesArray
+    
         for (Object obj : existingData) {
             coursesArray.add(obj);
         }
-
-        // Update existing courses or add new courses
         for (Course course : courses) {
             JSONObject courseJSON = new JSONObject();
             courseJSON.put(COURSE_ID, course.getID());
@@ -222,13 +219,14 @@ public class DataWriter extends DataConstants {
             courseJSON.put(COURSE_ELECTIVE, course.isElective());
             courseJSON.put(COURSE_CAROLINA_CORE, course.isCarolinaCore());
             JSONArray prerequisitesArray = new JSONArray();
-            for (Course prerequisite : course.getPreReqs()) {
-                prerequisitesArray.add(prerequisite.getID());
+            for (String prerequisite : course.getPreReqs()) {
+                prerequisitesArray.add(prerequisite);
             }
             courseJSON.put(COURSE_PREREQUISITES, prerequisitesArray);
+    
             courseJSON.put(COURSE_SEMESTER, course.getSemester());
             courseJSON.put(COURSE_YEAR, course.getYear());
-
+    
             // Check if the course with the same ID already exists
             boolean courseExists = false;
             for (int i = 0; i < coursesArray.size(); i++) {
@@ -241,14 +239,13 @@ public class DataWriter extends DataConstants {
                     break;
                 }
             }
-
+    
             // If the course doesn't exist, add it to the coursesArray
             if (!courseExists) {
                 coursesArray.add(courseJSON);
             }
         }
-
-        // Write coursesArray to the file
+    
         writeJSONToFile(coursesArray, COURSE_FILE_NAME);
     }
 
@@ -263,37 +260,47 @@ public class DataWriter extends DataConstants {
     public static void saveMajorMaps(ArrayList<MajorMap> majorMaps) {
         JSONArray majorMapsArray = new JSONArray();
         JSONArray existingData = readExistingData(MAJOR_FILE_NAME);
-
+    
         // Add existing major maps to majorMapsArray
         for (Object obj : existingData) {
             majorMapsArray.add(obj);
         }
-
+    
         // Update existing major maps or add new ones
         for (MajorMap majorMap : majorMaps) {
             JSONObject majorMapJSON = new JSONObject();
             majorMapJSON.put(MAJOR_NAME, majorMap.getMajor());
+            
             JSONArray coursesArray = new JSONArray();
             for (Course course : majorMap.getMajorCourses()) {
                 coursesArray.add(course.getID());
             }
             majorMapJSON.put(MAJOR_COURSES, coursesArray);
+
             JSONArray electivesArray = new JSONArray();
             for (Course course : majorMap.getElectives()) {
                 electivesArray.add(course.getID());
             }
             majorMapJSON.put(MAJOR_ELECTIVE, electivesArray);
+
             JSONArray coreEduArray = new JSONArray();
             for (Course course : majorMap.getCoreEdu()) {
                 coreEduArray.add(course.getID());
             }
             majorMapJSON.put(MAJOR_CORE_EDU, coreEduArray);
+        
             JSONArray appAreaArray = new JSONArray();
             for (Course course : majorMap.getAppArea()) {
                 appAreaArray.add(course.getID());
             }
             majorMapJSON.put(MAJOR_APP_AREA, appAreaArray);
+            
 
+            majorMapJSON.put(MAJOR_MIN_HOURS, majorMap.getMinTotalHours());
+            majorMapJSON.put(MAJOR_MIN_GRAD_HOURS, majorMap.getMinGradHours());
+            majorMapJSON.put(MAJOR_CC_HOURS, majorMap.getCaroCoreHours());
+            majorMapJSON.put(MAJOR_MIN_GPA, majorMap.getMinGPA());
+    
             // Check if the major map with the same name already exists
             boolean majorMapExists = false;
             for (int i = 0; i < majorMapsArray.size(); i++) {
@@ -306,17 +313,16 @@ public class DataWriter extends DataConstants {
                     break;
                 }
             }
-
+    
             // If the major map doesn't exist, add it to the majorMapsArray
             if (!majorMapExists) {
                 majorMapsArray.add(majorMapJSON);
             }
         }
-
+    
         // Write majorMapsArray to the file
         writeJSONToFile(majorMapsArray, MAJOR_FILE_NAME);
     }
-
     /**
      * Writes the JSON array to a file with the given file name.
      *
@@ -379,9 +385,9 @@ public class DataWriter extends DataConstants {
 
         ArrayList<Course> courses = new ArrayList<>();
         Course course1 = new Course("TEST 1", "Introduction to Computer Science", "CSCE", "Introductory course", 3, "A",
-                'A', false, true, new ArrayList<Course>(), "Fall", "2022");
+                'A', false, true, new ArrayList<String>(), "Fall", "2022");
         Course course2 = new Course("TEST 2", "Calculus", "MATH", "Calculus course", 4, "B", 'B', false, true,
-                new ArrayList<Course>(), "Fall", "2022");
+                new ArrayList<String>(), "Fall", "2022");
 
         courses.add(course1);
         courses.add(course2);

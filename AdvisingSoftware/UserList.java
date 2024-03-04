@@ -16,24 +16,24 @@ public class UserList {
   private boolean loaded;
 
   private UserList() {
-    users = new ArrayList<>(); 
+    users = new ArrayList<>();
     loaded = false;
-}
+  }
 
-public static UserList getInstance() {
+  public static UserList getInstance() {
     if (userList == null) {
-        userList = new UserList();
-        if (!userList.isLoaded()) {
-            ArrayList<User> userData = DataLoader.loadUsers();
-            if (userData != null) { 
-                userList.users.addAll(userData); 
-            } else {
-                System.out.println("Failed to load users from DataLoader.");
-            }
+      userList = new UserList();
+      if (!userList.isLoaded()) {
+        ArrayList<User> userData = DataLoader.loadUsers();
+        if (userData != null) {
+          userList.users.addAll(userData);
+        } else {
+          System.out.println("Failed to load users from DataLoader.");
         }
+      }
     }
     return userList;
-}
+  }
 
   /**
    * Get a user by their USC ID.
@@ -253,12 +253,13 @@ public static UserList getInstance() {
 
     User newUser = null;
     if (userType.equals("STUDENT")) {
-      newUser = new Student(firstName, lastName, email, uscID, password, userType, "Freshman", null, 0, null, 0, null,
-          null, null);
+      newUser = new Student(firstName, lastName, email, uscID, password, userType, "Freshman", "Undeclared", 0, new ArrayList<Grades>(), 0.0, new CoursePlanner(), new DegreeProgress("Undeclared", new ArrayList<Course>(), new ArrayList<Course>(), new ArrayList<Course>(), new ArrayList<Course>(), new ArrayList<Course>()),
+      new ArrayList<Note>());
     } else if (userType.equals("ADMIN")) {
-      newUser = new Admin(firstName, lastName, email, uscID, password, userType, null);
+      newUser = new Admin(firstName, lastName, email, uscID, password, userType, new ArrayList<String>());
     } else if (userType.equals("ADVISOR")) {
-      newUser = new Advisor(firstName, lastName, email, uscID, password, userType, null, null);
+      newUser = new Advisor(firstName, lastName, email, uscID, password, userType, new ArrayList<User>(),
+          new ArrayList<User>());
     } else {
       System.out.println("Sign up failed. Invalid user type. Please specify either 'STUDENT', 'ADMIN', or 'ADVISOR'.");
       return;

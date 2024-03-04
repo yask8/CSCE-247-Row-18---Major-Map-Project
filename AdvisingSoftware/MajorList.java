@@ -5,6 +5,7 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class MajorList {
     /**
@@ -74,6 +75,15 @@ public static MajorList getInstance() {
         }
         return null;
     }
+    public MajorMap getMajorMapbyID(UUID id) {
+        for (MajorMap existingMajor : majors) {
+            if (existingMajor.getId().equals(id)) {
+                return existingMajor;
+            }
+        }
+        return null;
+    }
+
 
     /**
      * Add a major to the list

@@ -1,6 +1,7 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * @author Lia Zhao (zhaolia9)
@@ -20,7 +21,6 @@ public class Facade {
   private UserList userList;
   private User user;
   private MajorList majorList;
-
 
   /*
    * + Facade(CourseList courseList, Course course, UserList userList, User user,
@@ -48,6 +48,7 @@ public class Facade {
     this.majorList = MajorList.getInstance();
 
   }
+
   /**
    * Logs in a user with the specified email and password.
    * If the user list is not already loaded, it loads the users using data loader
@@ -81,28 +82,48 @@ public class Facade {
   }
 
   /**
-   * 
-   * Signs up a new user
-   * Checks if the email already exists
-   * If the email already exists the sign-up fails
-   * 
-   * @author @Spillmag
-   * 
-   * @param firstName The first name of the user.
-   * @param lastName  The last name of the user.
-   * @param email     The email of the user.
-   * @param password  The password of the user.
-   * @param userType  The type of user ('STUDENT', 'ADMIN', or 'ADVISOR').
+   * Signs up a new student.
+   *
+   * @param firstName The first name of the student.
+   * @param lastName  The last name of the student.
+   * @param email     The email of the student.
+   * @param password  The password of the student.
    */
-  public void signUp(String firstName, String lastName, String email, String password, String userType) {
-    userList.signUp(firstName, lastName, email, password, userType);
+  public void signUpStudent(String firstName, String lastName, String email, String password) {
+    userList.signUp(firstName, lastName, email, password, "STUDENT");
   }
 
+  /**
+   * Signs up a new administrator.
+   *
+   * @param firstName The first name of the administrator.
+   * @param lastName  The last name of the administrator.
+   * @param email     The email of the administrator.
+   * @param password  The password of the administrator.
+   */
+  public void signUpAdministrator(String firstName, String lastName, String email, String password) {
+    userList.signUp(firstName, lastName, email, password, "ADMIN");
+  }
+
+  /**
+   * Signs up a new advisor.
+   *
+   * @param firstName The first name of the advisor.
+   * @param lastName  The last name of the advisor.
+   * @param email     The email of the advisor.
+   * @param password  The password of the advisor.
+   */
+  public void signUpAdvisor(String firstName, String lastName, String email, String password) {
+    userList.signUp(firstName, lastName, email, password, "ADVISOR");
+  }
+
+  public MajorMap getMajorMap(String major){
+    return majorList.getMajorByName(major);
+  }
 
   public User checkProfile(String uscID) {
     return user;
   }
-
 
   public boolean switchMajor(String uscID, String major) {
     return true;
@@ -134,8 +155,6 @@ public class Facade {
     return courseList;
   }
 
-
-
   public UserList getUserList() {
     return userList;
   }
@@ -147,7 +166,6 @@ public class Facade {
   public MajorList getMajorList() {
     return majorList;
   }
-
 
   public void displayAllCourses(ArrayList<Course> courseList) {
     if (courseList != null && !courseList.isEmpty()) {
@@ -181,13 +199,13 @@ public class Facade {
   }
 
   // GETTERS FOR THE SINGLETONS
-    /**
-     * Gets the list of courses from the CourseList singleton instance.
-     * 
-     * @return The list of courses.
-     */
-    public ArrayList<Course> getCourses() {
-      return courseList.getCourses();
+  /**
+   * Gets the list of courses from the CourseList singleton instance.
+   * 
+   * @return The list of courses.
+   */
+  public ArrayList<Course> getCourses() {
+    return courseList.getCourses();
   }
 
   /**
@@ -196,7 +214,7 @@ public class Facade {
    * @return The list of users.
    */
   public ArrayList<User> getUsers() {
-      return userList.getUsers();
+    return userList.getUsers();
   }
 
   /**
@@ -205,7 +223,7 @@ public class Facade {
    * @return The list of majors.
    */
   public ArrayList<MajorMap> getMajors() {
-      return majorList.getMajors();
+    return majorList.getMajors();
   }
 
   // GETTER FOR USER INSTANCES
@@ -224,22 +242,7 @@ public class Facade {
     }
   }
 
-  /*
-   * Gets the major of the logged-in student
-   *
-   * Returns null if the logged-in user is not a student
-   *
-   * @return The major of the logged-in student
-   *
-   * public String getStudentMajor() {
-   * if (user.getUserType().equals("STUDENT")) {
-   * return ((Student) user).getMajor();
-   * } else {
-   * return null;
-   * }
-   * }
-   * 
-   * /**
+   /**
    * Gets the credit hours of the logged-in student.
    * 
    * Returns -1 if the logged-in user is not a student.
@@ -324,6 +327,20 @@ public class Facade {
   public ArrayList<Note> getStudentAdvisorNotes() {
     if (user.getUserType().equals("STUDENT")) {
       return ((Student) user).getAdvisorNotes();
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Gets the major of the logged-in student.
+   * Returns null if the logged-in user is not a student.
+   * 
+   * @return The major of the logged-in student.
+   */
+  public String getStudentMajor() {
+    if (user.getUserType().equals("STUDENT")) {
+      return ((Student) user).getMajor();
     } else {
       return null;
     }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *         - passGrade: Char
  *         - elective: boolean
  *         - carolinaCore: boolean
- *         - preReqs: ArrayList <Course>
+ *         - preReqs: ArrayList <String>
  *         - semester: String
  *         - year: String
  *         + Course(UUID id, String name, String code, String description, int
@@ -28,7 +28,6 @@ import java.util.ArrayList;
  *         + deleteCourse(String code)
  */
 public class Course {
-
   private String id;
   private String name;
   private String code;
@@ -38,7 +37,7 @@ public class Course {
   private char passGrade;
   private boolean elective;
   private boolean carolinaCore;
-  private ArrayList<Course> preReqs;
+  private ArrayList<String> preReqs;
   private String semester;
   private String year;
 
@@ -55,20 +54,9 @@ public class Course {
    * @param carolinaCore boolean
    * @param preReqs      ArrayList<Course>
    */
-  public Course(
-    String id,
-    String name,
-    String code,
-    String description,
-    int creditHours,
-    String subject,
-    char passGrade,
-    boolean elective,
-    boolean carolinaCore,
-    ArrayList<Course> preReqs,
-    String year,
-    String semester
-  ) {
+  public Course(String id, String name, String code, String description, int creditHours,
+      String subject, char passGrade, boolean elective, boolean carolinaCore,
+      ArrayList<String> preReqs, String year, String semester) {
     this.id = id;
     this.name = name;
     this.code = code;
@@ -79,8 +67,8 @@ public class Course {
     this.elective = elective;
     this.carolinaCore = carolinaCore;
     this.preReqs = preReqs;
-    this.year = year;
     this.semester = semester;
+    this.year = year;
   }
 
   /**
@@ -95,19 +83,9 @@ public class Course {
    * @param carolinaCore boolean
    * @param preReqs      ArrayList<Course>
    */
-  public Course(
-    String name,
-    String code,
-    String description,
-    int creditHours,
-    String subject,
-    char passGrade,
-    boolean elective,
-    boolean carolinaCore,
-    ArrayList<Course> preReqs,
-    String year,
-    String semester
-  ) {
+  public Course(String name, String code, String description, int creditHours,
+      String subject, char passGrade, boolean elective, boolean carolinaCore,
+      ArrayList<String> preReqs, String year, String semester) {
     this.id = name.split(" ")[0];
     this.name = name;
     this.code = code;
@@ -118,8 +96,8 @@ public class Course {
     this.elective = elective;
     this.carolinaCore = carolinaCore;
     this.preReqs = preReqs;
-    this.year = year;
     this.semester = semester;
+    this.year = year;
   }
 
   /**
@@ -127,176 +105,101 @@ public class Course {
    * @return Course
    */
   public Course editCourse(String id) {
-    Course course = new Course(
-      this.id = id,
-      name,
-      code,
-      description,
-      creditHours,
-      subject,
-      passGrade,
-      elective,
-      carolinaCore,
-      preReqs,
-      year,
-      semester
-    );
-    return course;
+    return new Course(id, name, code, description, creditHours, subject, passGrade,
+        elective, carolinaCore, preReqs, year, semester);
   }
 
-  public void deleteCourse() {}
+  public void deleteCourse() {
+  }
 
   /**
    * To string to view user details
    * Added by @Spillmag for tesing purposes
    */
   public String toString() {
-    return (
-      "\n********* COURSE INFO *********\n" +
-      "id: " +
-      id +
-      '\n' +
-      "name: " +
-      name +
-      '\n' +
-      "code: " +
-      code +
-      '\n' +
-      "description: " +
-      description +
-      '\n' +
-      "creditHours: " +
-      creditHours +
-      '\n' +
-      "subject: " +
-      subject +
-      '\n' +
-      "passGrade: " +
-      passGrade +
-      '\n' +
-      "elective: " +
-      elective +
-      '\n' +
-      "carolinaCore: " +
-      carolinaCore +
-      '\n' +
-      "preReqs: " +
-      preReqs +
-      '\n' +
-      "semester: " +
-      semester +
-      '\n' +
-      "year: " +
-      year +
-      '\n'
-    );
+    return ("\n********* COURSE INFO *********\n" +
+        "id: " +
+        id +
+        '\n' +
+        "name: " +
+        name +
+        '\n' +
+        "code: " +
+        code +
+        '\n' +
+        "description: " +
+        description +
+        '\n' +
+        "creditHours: " +
+        creditHours +
+        '\n' +
+        "subject: " +
+        subject +
+        '\n' +
+        "passGrade: " +
+        passGrade +
+        '\n' +
+        "elective: " +
+        elective +
+        '\n' +
+        "carolinaCore: " +
+        carolinaCore +
+        '\n' +
+        "preReqs: " +
+        preReqs +
+        '\n' +
+        "semester: " +
+        semester +
+        '\n' +
+        "year: " +
+        year +
+        '\n');
   }
 
-  /**
-   * Get the UUID of the course.
-   *
-   * @return The UUID of the course.
-   */
   public String getID() {
     return id;
   }
 
-  /**
-   * Get the name of the course.
-   *
-   * @return The name of the course.
-   */
   public String getName() {
     return name;
   }
 
-  /**
-   * Get the code of the course.
-   *
-   * @return The code of the course.
-   */
   public String getCode() {
     return code;
   }
 
-  /**
-   * Get the description of the course.
-   *
-   * @return The description of the course.
-   */
   public String getDescription() {
     return description;
   }
 
-  /**
-   * Get the credit hours of the course.
-   *
-   * @return The credit hours of the course.
-   */
   public int getCreditHours() {
     return creditHours;
   }
 
-  /**
-   * Get the subject of the course.
-   *
-   * @return The subject of the course.
-   */
   public String getSubject() {
     return subject;
   }
 
-  /**
-   * Get the pass grade of the course.
-   *
-   * @return The pass grade of the course.
-   */
   public char getPassGrade() {
     return passGrade;
   }
 
-  /**
-   * Check if the course is elective.
-   *
-   * @return {@code true} if the course is elective, {@code false} otherwise.
-   */
   public boolean isElective() {
     return elective;
   }
 
-  /**
-   * Check if the course is a Carolina Core course.
-   *
-   * @return {@code true} if the course is a Carolina Core course, {@code false}
-   *         otherwise.
-   */
   public boolean isCarolinaCore() {
     return carolinaCore;
   }
 
-  /**
-   * Get the list of prerequisites for the course.
-   *
-   * @return The list of prerequisites for the course.
-   */
-  public ArrayList<Course> getPreReqs() {
+  public ArrayList<String> getPreReqs() {
     return preReqs;
   }
 
-  /**
-   * Get the semester of the course.
-   *
-   * @return The semester of the course.
-   */
   public String getSemester() {
     return semester;
   }
 
-  /**
-   * Get the year of the course.
-   *
-   * @return The year of the course.
-   */
   public String getYear() {
     return year;
   }

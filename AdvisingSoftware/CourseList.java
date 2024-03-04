@@ -107,7 +107,7 @@ public class CourseList {
       char passGrade,
       boolean elective,
       boolean carolinaCore,
-      ArrayList<Course> prereqs) {
+      ArrayList<String> prereqs) {
     Course newCourse = new Course(
         name,
         code,
