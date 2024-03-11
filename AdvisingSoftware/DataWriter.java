@@ -110,6 +110,7 @@ public class DataWriter extends DataConstants {
             Student student = (Student) user;
             userJSON.put(STUDENT_CLASS, student.getYear());
             userJSON.put(STUDENT_MAJOR, student.getMajor());
+            userJSON.put(STUDENT_APP_AREA, student.getAppArea());
             userJSON.put(STUDENT_CREDITHOURS, student.getCreditHours());
 
             // Convert completed courses to JSON array
@@ -365,7 +366,7 @@ public class DataWriter extends DataConstants {
         UUID advisorUscID = UUID.randomUUID();
 
         Student student = new Student("Test", "1", "Test1@example.com", studentUscID, "12345", "STUDENT", "Sophomore",
-                "Computer Science", 60, new ArrayList<Grades>(), 3.5, null, null, null);
+                "Computer Science","Undeclared", 60, new ArrayList<Grades>(), 3.5, null, null, null);
         Admin admin = new Admin("Test", "2", "Test2@example.com", adminUscID, "54321", "ADMIN",
                 new ArrayList<String>());
         Advisor advisor = new Advisor("Test", "3", "Test3@example.com", advisorUscID, "98765", "ADVISOR",

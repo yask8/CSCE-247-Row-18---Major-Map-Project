@@ -75,6 +75,7 @@ public class DataLoader extends DataConstants {
                 String userType = (String) studentObj.get(USER_TYPE);
                 String year = (String) studentObj.get(STUDENT_CLASS);
                 String major = (String) studentObj.get(STUDENT_MAJOR);
+                String applicationArea = (String) studentObj.get(STUDENT_APP_AREA);
                 int creditHours = ((Long) studentObj.get(STUDENT_CREDITHOURS)).intValue();
                 // Parse completedCourses array
                 JSONArray completedCoursesJSON = (JSONArray) studentObj.get(STUDENT_COMPLETED_COURSES);
@@ -118,7 +119,7 @@ public class DataLoader extends DataConstants {
                 }
 
                 Student student = new Student(firstName, lastName, email, uscID, password, userType, year,
-                        major, creditHours, completedCourses, gpa, coursePlanner, degreeProgress,
+                        major, applicationArea,creditHours, completedCourses, gpa, coursePlanner, degreeProgress,
                         advisorNotes);
                 students.add(student);
             }

@@ -28,6 +28,7 @@ public abstract class DataConstants {
     protected static final String STUDENT_FILE_NAME = "Json/students.json";
     protected static final String STUDENT_CLASS = "class";
     protected static final String STUDENT_MAJOR = "major";
+    protected static final String STUDENT_APP_AREA ="applicationArea";
     protected static final String STUDENT_CREDITHOURS = "creditHours";
     protected static final String STUDENT_COMPLETED_COURSES = "completedCourses";
     protected static final String STUDENT_GPA = "gpa";
