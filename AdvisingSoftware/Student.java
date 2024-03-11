@@ -56,12 +56,23 @@ public class Student extends User {
    * Allows student to view the details of their profile
    */
   public void viewProfile() {
+    System.out.println("************** Student Profile **************\n" +
+        super.toString() +
+        "year: '" + year + "'\n" +
+        "major: '" + major + "'\n" +
+        "creditHours: " + creditHours + "\n" +
+        "completedCourses: " + completedCourses + "\n" +
+        "gpa: " + gpa + "\n" +
+        "coursePlanner: " + coursePlanner + "\n" +
+        "degreeProgress: " + degreeProgress + "\n" +
+        "advisorNotes: " + advisorNotes + "\n");
   }
 
   /**
    * Allows student to edit their profile
    */
   public void editProfile() {
+
   }
 
   /**
@@ -71,6 +82,18 @@ public class Student extends User {
    * @return String of newly updated year/class
    */
   public String updateYear(int creditHours) {
+    if(year=="Freshman"){
+      year="Sophomore";
+    }
+    if(year=="Sophomore"){
+      year="Junior";
+    }
+    if(year=="Junior"){
+      year="Senior";
+    }
+    if(year=="Senior"){
+      year="5th Year";
+    }
     return year;
   }
 

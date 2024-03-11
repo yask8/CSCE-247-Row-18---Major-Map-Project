@@ -115,6 +115,13 @@ public class Advisor extends User {
    * @return boolean of to recognize pass/fail
    */
   public boolean checkStudentFailStatus(double gpa, double minGPA) {
+    if(gpa<minGPA){
+      System.out.println("Failing");
+      
+    }
+    else{
+      System.out.println("Passing");
+    }
     return true;
   }
 
