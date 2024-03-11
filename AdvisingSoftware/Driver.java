@@ -187,7 +187,16 @@ public class Driver {
     System.out.println("Printing Major Map");
     facade.getMajorMap(facade.getStudentMajor().toString());
   }
+  public void scenario6(){}
+  /**
+   * Listed as Scenario 2 on sheet
+   * @author Yasmine Kennedy (yask8)
+   */
+ public void scenario7(){
+    facade.signUpAdvisor("Osbert", "Odden", "osberto@mailbox.sc.edu", "h3110m0m!2");
+    
 
+  }
   public static void main(String[] args) {
     Driver advisingInterface = new Driver();
     advisingInterface.run();
