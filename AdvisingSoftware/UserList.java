@@ -86,7 +86,8 @@ public class UserList {
       String password,
       String userType,
       String year,
-      String major) {
+      String major,
+      String applicationArea) {
     Student student = new Student(
         firstName,
         lastName,
@@ -96,6 +97,7 @@ public class UserList {
         userType,
         year,
         major,
+        applicationArea,
         0,
         null,
         0,
@@ -253,7 +255,7 @@ public class UserList {
 
     User newUser = null;
     if (userType.equals("STUDENT")) {
-      newUser = new Student(firstName, lastName, email, uscID, password, userType, "Freshman", "Undeclared", 0, new ArrayList<Grades>(), 0.0, new CoursePlanner(), new DegreeProgress("Undeclared", new ArrayList<Course>(), new ArrayList<Course>(), new ArrayList<Course>(), new ArrayList<Course>(), new ArrayList<Course>()),
+      newUser = new Student(firstName, lastName, email, uscID, password, userType, "Freshman", "Undeclared","Undeclared", 0, new ArrayList<Grades>(), 0.0, new CoursePlanner(), new DegreeProgress("Undeclared", new ArrayList<Course>(), new ArrayList<Course>(), new ArrayList<Course>(), new ArrayList<Course>(), new ArrayList<Course>()),
       new ArrayList<Note>());
     } else if (userType.equals("ADMIN")) {
       newUser = new Admin(firstName, lastName, email, uscID, password, userType, new ArrayList<String>());
