@@ -21,24 +21,6 @@ import org.json.simple.parser.JSONParser;
  * @author @Spillmag
  */
 public class DataLoader extends DataConstants {
-
-    /**
-     * Main method to test DataLoader methods.
-     */
-    public static void main(String[] args) {
-        // testLoadingAdmins();
-
-        testLoadingStudents();
-
-        // testLoadingAdvisors();
-
-        // testLoadingCourses();
-
-        // testLoadingMajorMaps();
-
-        // LoadUsers();
-    }
-
     /**
      * Loads users (students, admins, advisors) and puts them into a single
      * list.
@@ -449,77 +431,5 @@ public class DataLoader extends DataConstants {
             }
         }
         return null;
-    }
-
-    /*
-     * TESTING METHODS
-     */
-    public static void LoadUsers() {
-        ArrayList<User> users = loadUsers();
-
-        if (users != null && !users.isEmpty()) {
-            System.out.println("Users loaded successfully:");
-            for (User user : users) {
-                System.out.println(user.toString());
-            }
-        } else {
-            System.out.println("No users loaded or an error occurred.");
-        }
-    }
-
-    public static void testLoadingAdmins() {
-        ArrayList<Admin> admins = DataLoader.loadAdmin();
-        if (admins != null) {
-            for (Admin admin : admins) {
-                System.out.println(admin.toString());
-            }
-        } else {
-            System.out.println("Failed to load admins from the file.");
-        }
-    }
-
-    public static void testLoadingMajorMaps() {
-        ArrayList<MajorMap> majorMaps = DataLoader.loadMajors();
-        if (majorMaps != null) {
-            for (MajorMap majorMap : majorMaps) {
-                System.out.println(majorMap.toString());
-            }
-        } else {
-            System.out.println("Failed to load major maps from the file.");
-        }
-    }
-
-    public static void testLoadingCourses() {
-        ArrayList<Course> courses = DataLoader.loadCourses();
-        if (courses != null) {
-            for (Course course : courses) {
-                System.out.println(course.toString());
-            }
-        } else {
-            System.out.println("Failed to load courses from the file.");
-        }
-    }
-
-    public static void testLoadingAdvisors() {
-        ArrayList<Advisor> advisors = DataLoader.loadAdvisors();
-        if (advisors != null) {
-            for (Advisor advisor : advisors) {
-                System.out.println(advisor.toString());
-            }
-        } else {
-            System.out.println("Failed to load advisors from the file.");
-        }
-    }
-
-    public static void testLoadingStudents() {
-        ArrayList<Student> students = DataLoader.loadStudents();
-        if (students != null) {
-            for (Student student : students) {
-                System.out.println(student.toString());
-            }
-        } else {
-            System.out.println("Failed to load students from the file.");
-        }
-
     }
 }

@@ -2,7 +2,6 @@ package AdvisingSoftware;
 
 import java.util.ArrayList;
 
-
 /**
  * @author Lia Zhao (zhaolia9)
  *         - courseList: ArrayList <Course>
@@ -101,7 +100,7 @@ public class Facade {
    * @param email     The email of the administrator.
    * @param password  The password of the administrator.
    */
-  public void signUpAdministrator(String firstName, String lastName, String email, String password) {
+  public void signUpAdmin(String firstName, String lastName, String email, String password) {
     userList.signUp(firstName, lastName, email, password, "ADMIN");
   }
 
@@ -115,56 +114,6 @@ public class Facade {
    */
   public void signUpAdvisor(String firstName, String lastName, String email, String password) {
     userList.signUp(firstName, lastName, email, password, "ADVISOR");
-  }
-
-  public MajorMap getMajorMap(String major){
-    return majorList.getMajorByName(major);
-  }
-
-  public User checkProfile(String uscID) {
-    return user;
-  }
-
-  public boolean switchMajor(String uscID, String major) {
-    return true;
-  }
-
-  protected boolean removeProfile(String uscID) {
-    return true;
-  }
-
-  protected Student searchStudentList(String uscID) {
-    return null;
-  }
-
-  protected void moveStudentToAnotherList(String uscID, String advisorID) {
-  }
-
-  protected ArrayList<Student> modifyStudentList() {
-    return new ArrayList<Student>();
-  }
-
-  protected void modifyStudentGrades(
-      User user,
-      DegreeProgress degreeProgress) {
-
-  }
-
-  // Getters
-  public CourseList getCourseList() {
-    return courseList;
-  }
-
-  public UserList getUserList() {
-    return userList;
-  }
-
-  public User getUser() {
-    return user;
-  }
-
-  public MajorList getMajorList() {
-    return majorList;
   }
 
   public void displayAllCourses(ArrayList<Course> courseList) {
@@ -183,19 +132,26 @@ public class Facade {
     Course course = courseListInstance.getCourse(courseCode);
 
     if (course != null) {
-      System.out.println("Course Details for Code: " + courseCode);
-      System.out.println("Name: " + course.getName());
-      System.out.println("Code: " + course.getCode());
-      System.out.println("Description: " + course.getDescription());
-      System.out.println("Credit Hours: " + course.getCreditHours());
-      System.out.println("Subject: " + course.getSubject());
-      System.out.println("Passing Grade: " + course.getPassGrade());
-      System.out.println("Elective: " + (course.isElective() ? "Yes" : "No"));
-      System.out.println("Carolina Core: " + (course.isCarolinaCore() ? "Yes" : "No"));
-      System.out.println("Prerequisites: " + course.getPreReqs());
-    } else {
-      System.out.println("Course with code " + courseCode + " not found.");
+    System.out.println(course.toString());
     }
+    System.out.println("Course with code " + courseCode + " not found.");
+  }
+
+  // Getters
+  public CourseList getCourseList() {
+    return courseList;
+  }
+
+  public UserList getUserList() {
+    return userList;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public MajorList getMajorList() {
+    return majorList;
   }
 
   // GETTERS FOR THE SINGLETONS
@@ -242,7 +198,7 @@ public class Facade {
     }
   }
 
-   /**
+  /**
    * Gets the credit hours of the logged-in student.
    * 
    * Returns -1 if the logged-in user is not a student.
