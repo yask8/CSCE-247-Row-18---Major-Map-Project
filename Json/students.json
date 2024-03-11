@@ -128,11 +128,11 @@
             "preReqs": [],
             "code": "PR",
             "elective": false,
-            "year": "Fall, Spring",
+            "year": "2024-2025",
             "subject": "CSCE",
             "name": "CSCE247 Software Engineering",
             "description": "Advanced object-oriented concepts and techniques.",
-            "semester": "2024-2025",
+            "semester": "Fall, Spring",
             "id": "CSCE247",
             "passGrade": "C",
             "carolinaCore": false

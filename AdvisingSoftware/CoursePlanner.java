@@ -42,21 +42,21 @@ public class CoursePlanner {
   }
 
   /**
-   * Removes a course from the specified semester by its UUID
+   * Removes a course from the specified semester by its code
    * 
    * @param semesterIndex the index of the semester (1-based)
    * @param UUID          the UUID of the course to remove
    */
-  public void removeCourse(int semesterIndex, String UUID) {
+  public void removeCourse(int semesterIndex, String code) {
     if (semesterIndex >= 1 && semesterIndex <= 8) {
       ArrayList<Course> semesterCourses = this.semesters.get(semesterIndex - 1);
       for (Course course : semesterCourses) {
-        if (course.getID().equals(UUID)) {
+        if (course.getID().equals(code)) {
           semesterCourses.remove(course);
           return;
         }
       }
-      System.out.println("Course with UUID " + UUID + " not found in semester " + semesterIndex);
+      System.out.println("Course with UUID " + code + " not found in semester " + semesterIndex);
     } else {
       System.out.println("Invalid semester index.");
     }

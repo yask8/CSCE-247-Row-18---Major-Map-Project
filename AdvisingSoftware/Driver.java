@@ -15,7 +15,7 @@ public class Driver {
   }
 
   public void run() {
-    // scenario1();
+    scenario1();
     // scenario2();
     // scenario3();
     // scenario4();
@@ -53,8 +53,15 @@ public class Driver {
     System.out.println("\nStudent did not see HIST101 and looks it up\n");
     System.out.println(facade.getCourseById("HIST101"));
 
-    System.out.println("\nStudent adds BIOL101 into the course planner\n");
+    System.out.println("\nStudent adds BIOL101 into the course planner for semester 2\n");
     facade.getStudentCoursePlanner().addCourse(2, facade.getCourseById("BIOL101"));
+    System.out.println(facade.getStudentCoursePlanner().toString());
+
+    System.out.println("\nStudent wants to switch from BIOL101 and trys to remove it from semester 2 but makes a typo and inputs the wrong semester\n");
+    facade.getStudentCoursePlanner().removeCourse(1, "BIOL101");
+
+    System.out.println("\nStudent wants to switch from BIOL101 and removes it from the course planner semester 2\n");
+    facade.getStudentCoursePlanner().removeCourse(2, "BIOL101");
     System.out.println(facade.getStudentCoursePlanner().toString());
 
     System.out.println("\nStudent Signs out and changes are saved during sign out\n");

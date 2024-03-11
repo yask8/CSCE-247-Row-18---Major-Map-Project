@@ -115,6 +115,10 @@ public class Facade {
   public void signUpAdvisor(String firstName, String lastName, String email, String password) {
     userList.signUp(firstName, lastName, email, password, "ADVISOR");
   }
+  public void getMajorMap(String string) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getMajorMap'");
+}
 
   public void displayAllCourses(ArrayList<Course> courseList) {
     if (courseList != null && !courseList.isEmpty()) {
