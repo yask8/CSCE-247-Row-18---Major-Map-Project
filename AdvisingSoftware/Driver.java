@@ -23,7 +23,8 @@ public class Driver {
     // scenario3();
     // scenario4();
     // scenario5(); idk its still not printing the major map
-    scenario7();
+   // scenario7();
+   scenario8();
   }
 
   /*
@@ -234,14 +235,9 @@ public class Driver {
     preReqs.add(pre1);
     preReqs.add(pre2);
     preReqs.add(pre3);
-    String year = "1";
-    String semester = "1";
 
-    Course t = new Course(name, code, description, creditHours, subject, passGrade, elective, carolinaCore, preReqs,
-        year, semester);
-    facade.getCourses().add(t);
+    facade.getCourseList().addCourse(name, code, description, creditHours, subject, passGrade, elective, carolinaCore, preReqs);
     facade.saveCourses();
-    System.out.println(facade.getCourses().toString());;
   }
 
   public static void main(String[] args) {
