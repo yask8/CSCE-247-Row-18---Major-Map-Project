@@ -1,6 +1,7 @@
 package AdvisingSoftware;
 
 import java.util.UUID;
+import java.util.ArrayList;
 
 /**
  * @author Lia Zhao (zhaolia9)
@@ -266,6 +267,29 @@ public class Driver {
     // } else {
     // System.out.println("Login failed. Incorrect email or password.");
     // }
+  }
+  public void scenario8(){
+    String name = "MATH 141 Calculus 1";
+    String code = "CC-ARP";
+    String description = "Functions, limits, derivatives, introduction to integrals, and the Fundamental Theorem of Calculus";
+    int creditHours = 4;
+    String subject = "MATH";
+    char passGrade = 'C';
+    boolean elective = false;
+    boolean carolinaCore = false;
+    ArrayList<String> preReqs = new ArrayList<String>();
+    String pre1 = "MATH 112";
+    String pre2 = "MATH 115";
+    String pre3 = "MATH 116";
+    preReqs.add(pre1);
+    preReqs.add(pre2);
+    preReqs.add(pre3);
+    String year = "2024 - 2025" ;
+    String semester = "Fall and Spring";
+
+    Course t = new Course(name, code, description, creditHours, subject, passGrade, elective, carolinaCore,preReqs, year, semester);
+    facade.getCourses().add(t);
+    facade.signOut();
   }
 
   public static void main(String[] args) {
