@@ -182,26 +182,19 @@ public class DataWriter extends DataConstants {
 
         if (user.getUserType().equals("ADVISOR")) {
             Advisor advisor = (Advisor) user;
-    
-            StringBuilder adviseeUUIDsBuilder = new StringBuilder();
-            for (int i = 0; i < advisor.getListOfAdvisees().size(); i++) {
-                adviseeUUIDsBuilder.append(advisor.getListOfAdvisees().get(i).toString());
-                if (i < advisor.getListOfAdvisees().size() - 1) {
-                    adviseeUUIDsBuilder.append(",");
-                }
+            JSONArray adviseesArray = new JSONArray();
+            JSONArray failingStudentsArray = new JSONArray();
+        
+            for (UUID uuid : advisor.getListOfAdvisees()) {
+                adviseesArray.add(uuid.toString());
             }
-            String adviseeUUIDs = adviseeUUIDsBuilder.toString();
-            userJSON.put(ADVISOR_LIST_OF_ADVISEES, adviseeUUIDs);
 
-            StringBuilder failingStudentUUIDsBuilder = new StringBuilder();
-            for (int i = 0; i < advisor.getListOfFailingStudents().size(); i++) {
-                failingStudentUUIDsBuilder.append(advisor.getListOfFailingStudents().get(i).toString());
-                if (i < advisor.getListOfFailingStudents().size() - 1) {
-                    failingStudentUUIDsBuilder.append(",");
-                }
+            for (UUID uuid : advisor.getListOfFailingStudents()) {
+                failingStudentsArray.add(uuid.toString());
             }
-            String failingStudentUUIDs = failingStudentUUIDsBuilder.toString();
-            userJSON.put(ADVISOR_LIST_OF_FAILING_STUDENTS, failingStudentUUIDs);
+        
+            userJSON.put(ADVISOR_LIST_OF_ADVISEES, adviseesArray);
+            userJSON.put(ADVISOR_LIST_OF_FAILING_STUDENTS, failingStudentsArray);
         }
 
         return userJSON;
@@ -222,7 +215,7 @@ public class DataWriter extends DataConstants {
     public static void saveCourses(ArrayList<Course> courses) {
         JSONArray coursesArray = new JSONArray();
         JSONArray existingData = readExistingData(COURSE_FILE_NAME);
-
+    
         for (Object obj : existingData) {
             coursesArray.add(obj);
         }
@@ -242,10 +235,10 @@ public class DataWriter extends DataConstants {
                 prerequisitesArray.add(prerequisite);
             }
             courseJSON.put(COURSE_PREREQUISITES, prerequisitesArray);
-
+    
             courseJSON.put(COURSE_SEMESTER, course.getSemester());
             courseJSON.put(COURSE_YEAR, course.getYear());
-
+    
             // Check if the course with the same ID already exists
             boolean courseExists = false;
             for (int i = 0; i < coursesArray.size(); i++) {
@@ -258,13 +251,13 @@ public class DataWriter extends DataConstants {
                     break;
                 }
             }
-
+    
             // If the course doesn't exist, add it to the coursesArray
             if (!courseExists) {
                 coursesArray.add(courseJSON);
             }
         }
-
+    
         writeJSONToFile(coursesArray, COURSE_FILE_NAME);
     }
 
@@ -279,17 +272,17 @@ public class DataWriter extends DataConstants {
     public static void saveMajorMaps(ArrayList<MajorMap> majorMaps) {
         JSONArray majorMapsArray = new JSONArray();
         JSONArray existingData = readExistingData(MAJOR_FILE_NAME);
-
+    
         // Add existing major maps to majorMapsArray
         for (Object obj : existingData) {
             majorMapsArray.add(obj);
         }
-
+    
         // Update existing major maps or add new ones
         for (MajorMap majorMap : majorMaps) {
             JSONObject majorMapJSON = new JSONObject();
             majorMapJSON.put(MAJOR_NAME, majorMap.getMajor());
-
+            
             JSONArray coursesArray = new JSONArray();
             for (Course course : majorMap.getMajorCourses()) {
                 coursesArray.add(course.getID());
@@ -307,18 +300,19 @@ public class DataWriter extends DataConstants {
                 coreEduArray.add(course.getID());
             }
             majorMapJSON.put(MAJOR_CORE_EDU, coreEduArray);
-
+        
             JSONArray appAreaArray = new JSONArray();
             for (Course course : majorMap.getAppArea()) {
                 appAreaArray.add(course.getID());
             }
             majorMapJSON.put(MAJOR_APP_AREA, appAreaArray);
+            
 
             majorMapJSON.put(MAJOR_MIN_HOURS, majorMap.getMinTotalHours());
             majorMapJSON.put(MAJOR_MIN_GRAD_HOURS, majorMap.getMinGradHours());
             majorMapJSON.put(MAJOR_CC_HOURS, majorMap.getCaroCoreHours());
             majorMapJSON.put(MAJOR_MIN_GPA, majorMap.getMinGPA());
-
+    
             // Check if the major map with the same name already exists
             boolean majorMapExists = false;
             for (int i = 0; i < majorMapsArray.size(); i++) {
@@ -331,17 +325,16 @@ public class DataWriter extends DataConstants {
                     break;
                 }
             }
-
+    
             // If the major map doesn't exist, add it to the majorMapsArray
             if (!majorMapExists) {
                 majorMapsArray.add(majorMapJSON);
             }
         }
-
+    
         // Write majorMapsArray to the file
         writeJSONToFile(majorMapsArray, MAJOR_FILE_NAME);
     }
-
     /**
      * Writes the JSON array to a file with the given file name.
      *
@@ -384,7 +377,7 @@ public class DataWriter extends DataConstants {
         UUID advisorUscID = UUID.randomUUID();
 
         Student student = new Student("Test", "1", "Test1@example.com", studentUscID, "12345", "STUDENT", "Sophomore",
-                "Computer Science", "Undeclared", 60, new ArrayList<Grades>(), 3.5, null, null, null);
+                "Computer Science","Undeclared", 60, new ArrayList<Grades>(), 3.5, null, null, null);
         Admin admin = new Admin("Test", "2", "Test2@example.com", adminUscID, "54321", "ADMIN",
                 new ArrayList<String>());
         Advisor advisor = new Advisor("Test", "3", "Test3@example.com", advisorUscID, "98765", "ADVISOR",
