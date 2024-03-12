@@ -142,9 +142,7 @@ private static DegreeProgress loadDegreeProgressFromJSON(JSONObject degreeProgre
         return null;
     }
     String major = (String) degreeProgressObj.get("major");
-    @SuppressWarnings("unchecked")
     ArrayList<String> completeCourses = loadStringsFromJSONArray((JSONArray) degreeProgressObj.get(DEGREE_PROGRESS_COMPLETE_COURSES));
-    @SuppressWarnings("unchecked")
     ArrayList<String> incompleteCourses = loadStringsFromJSONArray((JSONArray) degreeProgressObj.get(DEGREE_PROGRESS_INCOMPLETE_COURSES));
 
     DegreeProgress degreeProgress = new DegreeProgress(major, completeCourses, incompleteCourses);
@@ -163,22 +161,19 @@ private static DegreeProgress loadDegreeProgressFromJSON(JSONObject degreeProgre
         if (coursePlannerObj == null) {
             return null;
         }
-
+    
         CoursePlanner coursePlanner = new CoursePlanner();
         JSONArray semestersArray = (JSONArray) coursePlannerObj.get(COURSE_PLANNER_SEMESTERS);
-
+    
         for (int i = 0; i < semestersArray.size(); i++) {
             JSONArray semesterCoursesArray = (JSONArray) semestersArray.get(i);
-
+    
             for (int j = 0; j < semesterCoursesArray.size(); j++) {
-                JSONObject courseObj = (JSONObject) semesterCoursesArray.get(j);
-                Course course = parseCourseFromJSONObject(courseObj);
-                if (course != null) {
-                    coursePlanner.addCourse(i + 1, course);
-                }
+                String courseName = (String) semesterCoursesArray.get(j);
+                coursePlanner.addCourse(i + 1, courseName);
             }
         }
-
+    
         return coursePlanner;
     }
 

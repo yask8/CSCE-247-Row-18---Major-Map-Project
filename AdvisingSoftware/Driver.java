@@ -57,7 +57,7 @@ public class Driver {
     System.out.println(facade.getCourseById("HIST101"));
 
     System.out.println("\nStudent adds BIOL101 into the course planner for semester 2\n");
-    facade.getStudentCoursePlanner().addCourse(2, facade.getCourseById("BIOL101"));
+    facade.getStudentCoursePlanner().addCourse(2, "BIOL101");
     System.out.println(facade.getStudentCoursePlanner().toString());
 
     System.out.println(

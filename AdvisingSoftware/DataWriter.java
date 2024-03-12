@@ -98,21 +98,21 @@ public class DataWriter extends DataConstants {
     @SuppressWarnings("unchecked")
     public static JSONObject getUserJSON(User user) {
         JSONObject userJSON = new JSONObject();
-
+    
         userJSON.put(USER_FIRST_NAME, user.getFirstName());
         userJSON.put(USER_LAST_NAME, user.getLastName());
         userJSON.put(USER_EMAIL, user.getEmail());
         userJSON.put(USER_USCID, user.getID().toString());
         userJSON.put(USER_PASSWORD, user.getPassword());
         userJSON.put(USER_TYPE, user.getUserType());
-
+    
         if (user.getUserType().equals("STUDENT")) {
             Student student = (Student) user;
             userJSON.put(STUDENT_CLASS, student.getYear());
             userJSON.put(STUDENT_MAJOR, student.getMajor());
             userJSON.put(STUDENT_APP_AREA, student.getAppArea());
             userJSON.put(STUDENT_CREDITHOURS, student.getCreditHours());
-
+    
             // Convert completed courses to JSON array
             JSONArray completedCoursesArray = new JSONArray();
             for (Grades grade : student.getCompletedCourses()) {
@@ -123,14 +123,27 @@ public class DataWriter extends DataConstants {
             }
             userJSON.put(STUDENT_COMPLETED_COURSES, completedCoursesArray);
             userJSON.put(STUDENT_GPA, student.getGpa());
-
-           // Convert degree progress to JSON object
-        JSONObject degreeProgressJSON = new JSONObject();
-        degreeProgressJSON.put(DEGREE_PROGRESS_MAJOR, student.getDegreeProgress().getMajor());
-        degreeProgressJSON.put(DEGREE_PROGRESS_INCOMPLETE_COURSES, student.getDegreeProgress().getIncompleteCourses());
-        degreeProgressJSON.put(DEGREE_PROGRESS_COMPLETE_COURSES, student.getDegreeProgress().getCompleteCourses());
-        userJSON.put(STUDENT_DEGREE_PROGRESS, degreeProgressJSON);
-        
+    
+            // Convert degree progress to JSON object
+            JSONObject degreeProgressJSON = new JSONObject();
+            degreeProgressJSON.put(DEGREE_PROGRESS_MAJOR, student.getDegreeProgress().getMajor());
+    
+            // Convert complete courses to JSON array
+            JSONArray completeCoursesArray = new JSONArray();
+            for (String course : student.getDegreeProgress().getCompleteCourses()) {
+                completeCoursesArray.add(course);
+            }
+            degreeProgressJSON.put(DEGREE_PROGRESS_COMPLETE_COURSES, completeCoursesArray);
+    
+            // Convert incomplete courses to JSON array
+            JSONArray incompleteCoursesArray = new JSONArray();
+            for (String course : student.getDegreeProgress().getIncompleteCourses()) {
+                incompleteCoursesArray.add(course);
+            }
+            degreeProgressJSON.put(DEGREE_PROGRESS_INCOMPLETE_COURSES, incompleteCoursesArray);
+    
+            userJSON.put(STUDENT_DEGREE_PROGRESS, degreeProgressJSON);
+    
             // Convert advisor notes to JSON array
             JSONArray advisorNotesArray = new JSONArray();
             for (Note note : student.getAdvisorNotes()) {
@@ -142,56 +155,43 @@ public class DataWriter extends DataConstants {
                 advisorNotesArray.add(advisorNoteJSON);
             }
             userJSON.put(STUDENT_ADVISOR_NOTES, advisorNotesArray);
-
+    
             // Convert course planner to JSON object
             JSONObject coursePlannerJSON = new JSONObject();
             JSONArray semestersArray = new JSONArray();
-            for (List<Course> semester : student.getCoursePlanner().getSemesters()) {
+            for (List<String> semester : student.getCoursePlanner().getSemesters()) {
                 JSONArray semesterCoursesArray = new JSONArray();
-                for (Course course : semester) {
-                    JSONObject courseJSON = new JSONObject();
-                    courseJSON.put(COURSE_CREDIT_HOURS, course.getCreditHours());
-                    courseJSON.put(COURSE_PREREQUISITES, course.getPreReqs());
-                    courseJSON.put(COURSE_CODE, course.getCode());
-                    courseJSON.put(COURSE_ELECTIVE, course.isElective());
-                    courseJSON.put(COURSE_YEAR, course.getYear());
-                    courseJSON.put(COURSE_SUBJECT, course.getSubject());
-                    courseJSON.put(COURSE_NAME, course.getName());
-                    courseJSON.put(COURSE_DESCRIPTION, course.getDescription());
-                    courseJSON.put(COURSE_SEMESTER, course.getSemester());
-                    courseJSON.put(COURSE_ID, course.getID());
-                    courseJSON.put(COURSE_PASS_GRADE, String.valueOf(course.getPassGrade()));
-                    courseJSON.put(COURSE_CAROLINA_CORE, course.isCarolinaCore());
-                    semesterCoursesArray.add(courseJSON);
+                for (String course : semester) {
+                    semesterCoursesArray.add(course);
                 }
                 semestersArray.add(semesterCoursesArray);
             }
             coursePlannerJSON.put(COURSE_PLANNER_SEMESTERS, semestersArray);
             userJSON.put(STUDENT_COURSE_PLANNER, coursePlannerJSON);
         }
-
+    
         if (user.getUserType().equals("ADMIN")) {
             Admin admin = (Admin) user;
             userJSON.put(ADMIN_CHANGES_MADE, admin.getChangesMade());
         }
-
+    
         if (user.getUserType().equals("ADVISOR")) {
             Advisor advisor = (Advisor) user;
             JSONArray adviseesArray = new JSONArray();
             JSONArray failingStudentsArray = new JSONArray();
-
+    
             for (UUID uuid : advisor.getListOfAdvisees()) {
                 adviseesArray.add(uuid.toString());
             }
-
+    
             for (UUID uuid : advisor.getListOfFailingStudents()) {
                 failingStudentsArray.add(uuid.toString());
             }
-
+    
             userJSON.put(ADVISOR_LIST_OF_ADVISEES, adviseesArray);
             userJSON.put(ADVISOR_LIST_OF_FAILING_STUDENTS, failingStudentsArray);
         }
-
+    
         return userJSON;
     }
 

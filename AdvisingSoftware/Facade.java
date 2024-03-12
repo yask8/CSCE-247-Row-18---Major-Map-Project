@@ -370,7 +370,6 @@ public void saveMajorMaps() {
       return null;
     }
   }
-
   /**
    * Gets a course based on the given course code.
    *
