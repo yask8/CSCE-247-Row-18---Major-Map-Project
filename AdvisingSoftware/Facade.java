@@ -68,18 +68,39 @@ public class Facade {
     return loggedInUser;
   }
 
-  /**
-   * Signs out the currently logged-in user and saves any changes made during the
-   * session.
-   * 
-   * @author @Spillmag
-   */
-  public void signOut() {
-    user = null;
-    DataWriter.saveUsers(getUsers());
-    DataWriter.saveCourses(getCourses());
-    DataWriter.saveMajorMaps(getMajors());
-  }
+/**
+ * Signs out the currently logged-in user and saves any changes made during the
+ * session.
+ * 
+ * @author @Spillmag
+ */
+public void signOut() {
+  user = null;
+  saveUsers();
+  saveCourses();
+  saveMajorMaps();
+}
+
+/**
+* Saves the list of users.
+*/
+public void saveUsers() {
+  DataWriter.saveUsers(getUsers());
+}
+
+/**
+* Saves the list of courses.
+*/
+public void saveCourses() {
+  DataWriter.saveCourses(getCourses());
+}
+
+/**
+* Saves the list of major maps.
+*/
+public void saveMajorMaps() {
+  DataWriter.saveMajorMaps(getMajors());
+}
 
   /**
    * Signs up a new student.

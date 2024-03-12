@@ -202,33 +202,20 @@ public class Driver {
    * @author Yasmine Kennedy (yask8)
    */
   public void scenario7() {
-    // Signing up Tawnie
-    facade.signUpStudent("Tawnie", "Hill", "thill@email.sc.edu", "bi117");
-    facade.signOut();
-
     // Logging in Osbert
     facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
-    if (facade.getUser() != null) {
-      System.out.println("Login Successful. \nCurrent User: ");
-      System.out.println(facade.getUser());
-    } else {
-      System.out.println("Login Failed.");
-    }
+    System.out.println("Login Successful. \nCurrent User: "+ facade.getUser().toString());
 
-    // Searching for student
-    if (facade.getUserList().getIDByName("Tawnie", "Hill") != null) {
-      System.out.println("...Searching Student...");
-      System.out.println("Student Found. \nStudent: ");
-      // Temporary spot to make code look simplistic
-      UUID studentUSCID = facade.getUserList().getIDByName("Tawnie", "Hill");
-      System.out.println(studentUSCID);
-      System.out.println(facade.getUserList().getUserbyUSCID(studentUSCID));
-      facade.getListOfAdvisees().add(studentUSCID);
-      System.out.println(facade.getListOfAdvisees().toString());
-    } else {
-      System.out.println("Student not found");
-    }
+    System.out.println("...Searching for Student...");
+
+    facade.getListOfAdvisees().add(facade.getUserList().getIDByName("Tawnie", "Hill"));
+    
+    System.out.println("...Student found and added to list");
+
+    System.out.println(facade.getListOfAdvisees().toString());
+    System.out.println(facade.getUser().toString());
     facade.signOut();
+
 
     // TODO: add Twanie to advisor list and create the advisor notes
 
@@ -269,7 +256,8 @@ public class Driver {
     // System.out.println("Login failed. Incorrect email or password.");
     // }
   }
-  public void scenario8(){
+
+  public void scenario8() {
     String name = "MATH 141 Calculus 1";
     String code = "CC-ARP";
     String description = "Functions, limits, derivatives, introduction to integrals, and the Fundamental Theorem of Calculus";
@@ -285,12 +273,13 @@ public class Driver {
     preReqs.add(pre1);
     preReqs.add(pre2);
     preReqs.add(pre3);
-    String year = "2024 - 2025" ;
+    String year = "2024 - 2025";
     String semester = "Fall and Spring";
 
-    Course t = new Course(name, code, description, creditHours, subject, passGrade, elective, carolinaCore,preReqs, year, semester);
+    Course t = new Course(name, code, description, creditHours, subject, passGrade, elective, carolinaCore, preReqs,
+        year, semester);
     facade.getCourses().add(t);
-    facade.signOut();
+    facade.saveCourses();
   }
 
   public static void main(String[] args) {
