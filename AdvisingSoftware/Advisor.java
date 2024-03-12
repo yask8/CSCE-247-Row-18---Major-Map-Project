@@ -5,8 +5,8 @@ import java.util.UUID;
 
 public class Advisor extends User {
 
-  private ArrayList<User> listOfAdvisees;
-  private ArrayList<User> listOfFailingStudents;
+  private ArrayList<UUID> listOfAdvisees;
+  private ArrayList<UUID> listOfFailingStudents;
 
 
   /**
@@ -22,8 +22,8 @@ public class Advisor extends User {
       UUID uscID,
       String password,
       String userType,
-      ArrayList<User> listOfAdvisees,
-      ArrayList<User> listOfFailingStudents) {
+      ArrayList<UUID> listOfAdvisees,
+      ArrayList<UUID> listOfFailingStudents) {
     super(firstName, lastName, email, uscID, password, userType);
     this.listOfAdvisees = listOfAdvisees;
     this.listOfFailingStudents = listOfFailingStudents;
@@ -60,8 +60,8 @@ public class Advisor extends User {
   /**
    * Allows advisor to add a student to their list of advisees
    */
-  public void addStudent (Student student) {
-     listOfAdvisees.add(student);
+  public void addStudent (UUID uuid) {
+     listOfAdvisees.add(uuid);
   }
   /**
    * Allows advisor to remove a student from their list of advisees
@@ -143,7 +143,7 @@ public class Advisor extends User {
    *
    * @return ArrayList of advisees under the advisor
    */
-  public ArrayList<User> getListOfAdvisees() {
+  public ArrayList<UUID> getListOfAdvisees() {
     return listOfAdvisees;
   }
 
@@ -152,7 +152,7 @@ public class Advisor extends User {
    *
    * @return ArrayList of failing students under the advisor
    */
-  public ArrayList<User> getListOfFailingStudents() {
+  public ArrayList<UUID> getListOfFailingStudents() {
     return listOfFailingStudents;
   }
 

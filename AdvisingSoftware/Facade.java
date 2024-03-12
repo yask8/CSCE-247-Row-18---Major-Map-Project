@@ -1,6 +1,7 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * @author Lia Zhao (zhaolia9)
@@ -326,7 +327,7 @@ public class Facade {
    * 
    * @return ArrayList of advisees.
    */
-  public ArrayList<User> getListOfAdvisees() {
+  public ArrayList<UUID> getListOfAdvisees() {
     if (user.getUserType().equals("ADVISOR")) {
       Advisor advisor = (Advisor) user;
       return advisor.getListOfAdvisees();
@@ -340,7 +341,7 @@ public class Facade {
    * 
    * @return ArrayList of failing students.
    */
-  public ArrayList<User> getListOfFailingStudents() {
+  public ArrayList<UUID> getListOfFailingStudents() {
     if (user.getUserType().equals("ADVISOR")) {
       Advisor advisor = (Advisor) user;
       return advisor.getListOfFailingStudents();

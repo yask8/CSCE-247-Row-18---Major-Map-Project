@@ -370,7 +370,7 @@ public class DataWriter extends DataConstants {
         Admin admin = new Admin("Test", "2", "Test2@example.com", adminUscID, "54321", "ADMIN",
                 new ArrayList<String>());
         Advisor advisor = new Advisor("Test", "3", "Test3@example.com", advisorUscID, "98765", "ADVISOR",
-                new ArrayList<User>(), new ArrayList<User>());
+                new ArrayList<UUID>(), new ArrayList<UUID>());
 
         // Adding users to the list
         users.add(student);

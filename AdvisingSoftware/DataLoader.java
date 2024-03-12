@@ -297,8 +297,8 @@ public class DataLoader extends DataConstants {
                 String password = (String) advisorOBJ.get(USER_PASSWORD);
                 String userType = (String) advisorOBJ.get(USER_TYPE);
 
-                ArrayList<User> listOfAdvisees = new ArrayList<>();
-                ArrayList<User> listOfFailingStudents = new ArrayList<>();
+                ArrayList<UUID> listOfAdvisees = new ArrayList<>();
+                ArrayList<UUID> listOfFailingStudents = new ArrayList<>();
 
                 advisors.add(new Advisor(firstName, lastName, email, uscID, password, userType, listOfAdvisees,
                         listOfFailingStudents));

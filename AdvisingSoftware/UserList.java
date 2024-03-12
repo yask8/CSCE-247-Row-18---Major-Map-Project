@@ -260,8 +260,8 @@ public class UserList {
     } else if (userType.equals("ADMIN")) {
       newUser = new Admin(firstName, lastName, email, uscID, password, userType, new ArrayList<String>());
     } else if (userType.equals("ADVISOR")) {
-      newUser = new Advisor(firstName, lastName, email, uscID, password, userType, new ArrayList<User>(),
-          new ArrayList<User>());
+      newUser = new Advisor(firstName, lastName, email, uscID, password, userType, new ArrayList<UUID>(),
+          new ArrayList<UUID>());
     } else {
       System.out.println("Sign up failed. Invalid user type. Please specify either 'STUDENT', 'ADMIN', or 'ADVISOR'.");
       return;
