@@ -5,15 +5,8 @@ import java.util.UUID;
 
 /**
  * @author Lia Zhao (zhaolia9)
- *         - courseList: ArrayList <Course>
- *         - course: Course
- *         - userList: ArrayList <User>
- *         - majorList ArrayList <MajorMap>
- *         - degreeProgress: DegreeProgress
- *         - coursePlan: CoursePlanner
- *         - majorMap: MajorMap
- *         - gradReq: GraduationRequirements
- */
+ *         
+ **/
 
 public class Facade {
 
@@ -21,27 +14,6 @@ public class Facade {
   private UserList userList;
   private User user;
   private MajorList majorList;
-
-  /*
-   * + Facade(CourseList courseList, Course course, UserList userList, User user,
-   * degreeProgress degreeProgress, MajorMap majorMap, GraduationRequirements
-   * gradReq)
-   * + login(String email, String password): User
-   * + signOut(): void
-   * + checkDegreeProgress(String uscID): DegreeProgress
-   * + checkCoursePlanner(String uscID): CoursePlanner
-   * + checkMajorMap(String major): MajorMap
-   * + checkProfile(String uscID): User
-   * + chooseCourse(String UUID): Course
-   * + removeCourse(String UUID): boolean
-   * + switchMajor(String uscID, String Major):boolean
-   * + viewCourse(Arraylist <course> courseList , String UUID) : String
-   * # removeProfile(String uscID): boolean
-   * # searchStudentList(String uscID): Student
-   * # moveStudentToAnotherList(String uscID, String advisorID): void
-   * # modifyStudentList(): ArrayList<Student>
-   * # modifyStudentGrades(User user, DegreeProgress degreeProgress): void
-   */
   public Facade() {
     this.courseList = CourseList.getInstance();
     this.userList = UserList.getInstance();
@@ -137,32 +109,53 @@ public void saveMajorMaps() {
   public void signUpAdvisor(String firstName, String lastName, String email, String password) {
     userList.signUp(firstName, lastName, email, password, "ADVISOR");
   }
-  public void getMajorMap(String string) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getMajorMap'");
+
+/**
+ * Retrieves the MajorMap object corresponding to the specified major name.
+ * 
+ * @param majorName The name of the major for which to retrieve the MajorMap.
+ * @return The MajorMap object if found, or null if not found.
+ */
+public MajorMap getMajorMap(String majorName) {
+    MajorMap majorMap = majorList.getMajorByName(majorName);
+    if (majorMap != null) {
+        return majorMap;
+    } else {
+        System.out.println("Major map not found for " + majorName);
+        return null;
+    }
 }
 
-  public void displayAllCourses(ArrayList<Course> courseList) {
+/**
+ * Displays information about all the courses in the provided list.
+ * 
+ * @param courseList The list of courses to display.
+ */
+public void displayAllCourses(ArrayList<Course> courseList) {
     if (courseList != null && !courseList.isEmpty()) {
-      System.out.println("Courses Available:");
-      for (Course course : courseList) {
-        System.out.println(course.toString());
-      }
+        System.out.println("Courses Available:");
+        for (Course course : courseList) {
+            System.out.println(course.toString());
+        }
     } else {
-      System.out.println("No courses available.");
+        System.out.println("No courses available.");
     }
-  }
+}
 
-  public void showCourseByCode(String courseCode) {
+/**
+ * Displays information about the course with the specified course code.
+ * 
+ * @param courseCode The code of the course to display.
+ */
+public void showCourseByCode(String courseCode) {
     CourseList courseListInstance = CourseList.getInstance();
     Course course = courseListInstance.getCourse(courseCode);
 
     if (course != null) {
-    System.out.println(course.toString());
+        System.out.println(course.toString());
     }
     System.out.println("Course with code " + courseCode + " not found.");
-  }
-
+}
   // Getters
   public CourseList getCourseList() {
     return courseList;
