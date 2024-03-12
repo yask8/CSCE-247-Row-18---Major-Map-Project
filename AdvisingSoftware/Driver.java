@@ -206,55 +206,16 @@ public class Driver {
     facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
     System.out.println("Login Successful. \nCurrent User: "+ facade.getUser().toString());
 
-    System.out.println("...Searching for Student...");
-
+    System.out.println("...Searching for Student and adding to list");
     facade.getListOfAdvisees().add(facade.getUserList().getIDByName("Tawnie", "Hill"));
     
-    System.out.println("...Student found and added to list");
-
+    System.out.println("...Student found and added to list...");
     System.out.println(facade.getListOfAdvisees().toString());
     System.out.println(facade.getUser().toString());
     facade.signOut();
 
 
     // TODO: add Twanie to advisor list and create the advisor notes
-
-    // System.out.println("Scenario 7: Advisor Osbert Odden");
-    // System.out.println("---------------------");
-    // System.out.println(".....Signing up Osbert Odden.....");
-    // facade.signUpAdvisor("Osbert", "Odden", "osberto@mailbox.sc.edu",
-    // "h3110m0m!2");
-
-    // System.out.println("...Osbert searches for student by their ID...");
-    // facade.getUserList().getUserbyUSCID(uscID);
-    // User twanie = facade.getUserList().getUserbyUSCID(uscID);
-
-    // System.out.println("...Osbert adds student to list of advisees...");
-    // if(facade.getListOfAdvisees() != null){
-    // facade.getListOfAdvisees().add(twanie);
-    // } else {
-    // System.out.println("Error: Trouble with adding user.");
-    // }
-
-    // System.out.println("...Obsert looks through student degree progress...");
-    // facade.getStudentDegreeProgress();
-
-    // System.out.println("Osbert adds a note to Twanie's profile");
-    // String suggestion = "I suggest declaring STATS as an application area, you
-    // have taken 2 elective classes, adding another will statisfy your application
-    // area";
-    // Note note = new Note(suggestion, null);
-    // facade.getStudentAdvisorNotes().add(note);
-    // facade.signOut();
-
-    // facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
-    // if (facade.getUser() != null) {
-    // System.out.println("Login successful!");
-    // System.out.println("Current user:");
-    // System.out.println(facade.getUser());
-    // } else {
-    // System.out.println("Login failed. Incorrect email or password.");
-    // }
   }
 
   public void scenario8() {
@@ -265,7 +226,7 @@ public class Driver {
     String subject = "MATH";
     char passGrade = 'C';
     boolean elective = false;
-    boolean carolinaCore = false;
+    boolean carolinaCore = true;
     ArrayList<String> preReqs = new ArrayList<String>();
     String pre1 = "MATH 112";
     String pre2 = "MATH 115";
@@ -273,13 +234,14 @@ public class Driver {
     preReqs.add(pre1);
     preReqs.add(pre2);
     preReqs.add(pre3);
-    String year = "2024 - 2025";
-    String semester = "Fall and Spring";
+    String year = "1";
+    String semester = "1";
 
     Course t = new Course(name, code, description, creditHours, subject, passGrade, elective, carolinaCore, preReqs,
         year, semester);
     facade.getCourses().add(t);
     facade.saveCourses();
+    System.out.println(facade.getCourses().toString());;
   }
 
   public static void main(String[] args) {
