@@ -128,7 +128,38 @@ public class CourseList {
 
   }
 }
+public void addCourse(
+  String name,
+  String code,
+  String description,
+  int creditHours,
+  String subject,
+  char passGrade,
+  boolean elective,
+  boolean carolinaCore,
+  ArrayList<String> prereqs,
+  String year,
+  String semester) {
+if (!courseWithNameExists(name)) {
+    Course newCourse = new Course(
+        name,
+        code,
+        description,
+        creditHours,
+        subject,
+        passGrade,
+        elective,
+        carolinaCore,
+        prereqs,
+        year,
+        semester 
+    );
+    courses.add(newCourse);
+} else {
+    System.out.println("A course with the same name already exists.");
 
+}
+}
 private boolean courseWithNameExists(String name) {
   for (Course course : courses) {
       if (course.getName().equals(name)) {

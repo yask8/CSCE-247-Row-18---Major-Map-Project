@@ -235,8 +235,10 @@ public class Driver {
     preReqs.add(pre1);
     preReqs.add(pre2);
     preReqs.add(pre3);
+    String year = "1";
+    String semester = "1";
 
-    facade.getCourseList().addCourse(name, code, description, creditHours, subject, passGrade, elective, carolinaCore, preReqs);
+    facade.getCourseList().addCourse(name, code, description, creditHours, subject, passGrade, elective, carolinaCore, preReqs,year,semester);
     facade.saveCourses();
   }
 

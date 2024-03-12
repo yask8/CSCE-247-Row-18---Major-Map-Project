@@ -65,7 +65,7 @@ public class DegreeProgress {
                 return course;
             }
         }
-        return null; // Course not found
+        return null;
     }
 
     public String toString() {
