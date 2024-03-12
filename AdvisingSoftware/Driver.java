@@ -1,5 +1,7 @@
 package AdvisingSoftware;
 
+import java.util.UUID;
+
 /**
  * @author Lia Zhao (zhaolia9)
  *         - facade: Facade
@@ -15,11 +17,12 @@ public class Driver {
   }
 
   public void run() {
-    scenario1();
+    //scenario1();
     // scenario2();
     // scenario3();
     // scenario4();
     // scenario5(); idk its still not printing the major map
+    scenario7();
   }
 
   /*
@@ -193,9 +196,50 @@ public class Driver {
    * @author Yasmine Kennedy (yask8)
    */
  public void scenario7(){
-    facade.signUpAdvisor("Osbert", "Odden", "osberto@mailbox.sc.edu", "h3110m0m!2");
-    
+    String first = "Tawnie";
+    String last = "Hill";
+    String email = "thill@email.sc.edu";
+    String password = "bi117";
+    String userType = "STUDENT";
+    String year = "2024";
+    String major = "Computer Information Systems";
+    String appArea = "Unknown";
+    UUID uscID = UUID.randomUUID();
+   facade.getUserList().addStudent(first, last, email, uscID, password, userType, year, major, appArea);
 
+    System.out.println("Scenario 7: Advisor Osbert Odden");
+    System.out.println("---------------------");
+    System.out.println(".....Signing up Osbert Odden.....");
+    facade.signUpAdvisor("Osbert", "Odden", "osberto@mailbox.sc.edu", "h3110m0m!2");
+
+    System.out.println("...Osbert searches for student by their ID...");
+    facade.getUserList().getUserbyUSCID(uscID);
+    User twanie = facade.getUserList().getUserbyUSCID(uscID);
+
+    System.out.println("...Osbert adds student to list of advisees...");
+    if(facade.getListOfAdvisees() != null){
+      facade.getListOfAdvisees().add(twanie);
+    } else {
+      System.out.println("Error: Trouble with adding user.");
+    }
+
+    System.out.println("...Obsert looks through student degree progress...");
+    facade.getStudentDegreeProgress();
+    
+    System.out.println("Osbert adds a note to Twanie's profile");
+    String suggestion = "I suggest declaring STATS as an application area, you have taken 2 elective classes, adding another will statisfy your application area";
+    Note note =  new Note(suggestion, null);
+    facade.getStudentAdvisorNotes().add(note);
+    facade.signOut();
+
+    facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    if (facade.getUser() != null) {
+      System.out.println("Login successful!");
+      System.out.println("Current user:");
+      System.out.println(facade.getUser());
+    } else {
+      System.out.println("Login failed. Incorrect email or password.");
+    }
   }
   public static void main(String[] args) {
     Driver advisingInterface = new Driver();

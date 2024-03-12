@@ -57,7 +57,12 @@ public class Advisor extends User {
   public Course coursePlanner() {
     return null;
   }
-
+  /**
+   * Allows advisor to add a student to their list of advisees
+   */
+  public void addStudent (User person) {
+     listOfAdvisees.add(person);
+  }
   /**
    * Allows advisor to remove a student from their list of advisees
    *
