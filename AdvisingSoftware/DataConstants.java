@@ -65,7 +65,7 @@ public abstract class DataConstants {
     protected static final String MAJOR_UUID = "id";
     protected static final String MAJOR_NAME = "major";
     protected static final String MAJOR_COURSES = "majorCourses";
-    protected static final String MAJOR_ELECTIVE = "majorElective";
+    protected static final String MAJOR_PROGRAM_COURSES = "programCourses";
     protected static final String MAJOR_CORE_EDU = "coreEdu";
     protected static final String MAJOR_APP_AREA = "appArea";
     protected static final String MAJOR_MIN_HOURS = "minTotalHours";

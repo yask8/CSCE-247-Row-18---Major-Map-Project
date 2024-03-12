@@ -1,6 +1,7 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author Lia Zhao (zhaolia9)
@@ -21,7 +22,6 @@ public class Driver {
     // scenario2();
     // scenario3();
     // scenario4();
-     scenario5(); 
     // scenario7();
     //scenario8();
   }
@@ -160,10 +160,6 @@ public class Driver {
     } else {
       System.out.println("Incorrect email or password. Please try again.");
     }
-  }
-
-  public void scenario5() {
-  System.out.println(facade.getMajorList().toString());
   }
 
   public void scenario6() {

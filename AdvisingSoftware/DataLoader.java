@@ -391,10 +391,10 @@ public class DataLoader extends DataConstants {
                 String name = (String) majorObj.get(MAJOR_NAME);
 
                 UUID id = (UUID) majorObj.get(MAJOR_UUID);
-                ArrayList<Course> courses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_COURSES));
-                ArrayList<Course> electives = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_ELECTIVE));
-                ArrayList<Course> coreCourses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_CORE_EDU));
-                ArrayList<Course> appAreaCourses = loadCoursesFromJSONArray((JSONArray) majorObj.get(MAJOR_APP_AREA));
+                ArrayList<String> courses = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_COURSES));
+                ArrayList<String> electives = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_PROGRAM_COURSES));
+                ArrayList<String> coreCourses = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_CORE_EDU));
+                ArrayList<String> appAreaCourses = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_APP_AREA));
                 int minHours = ((Long) majorObj.get(MAJOR_MIN_HOURS)).intValue();
                 int minGradHours = ((Long) majorObj.get(MAJOR_MIN_GRAD_HOURS)).intValue();
                 int ccHours = ((Long) majorObj.get(MAJOR_CC_HOURS)).intValue();
@@ -412,40 +412,24 @@ public class DataLoader extends DataConstants {
     }
 
     /**
-     * Helper method to load courses from a JSONArray.
+     * Helper method to load strings from a JSONArray.
      * 
-     * @param courseArray The JSONArray containing course data.
-     * @return An ArrayList of Course objects loaded from the JSONArray.
+     * @param jsonArray The JSONArray containing strings.
+     * @return An ArrayList of strings.
      */
-    private static ArrayList<Course> loadCoursesFromJSONArray(JSONArray courseArray) {
-        ArrayList<Course> courses = new ArrayList<>();
-        if (courseArray != null) {
-            for (Object courseObj : courseArray) {
-                String courseId = (String) courseObj;
-                Course course = findCourseByCode(courseId);
-                if (course != null) {
-                    courses.add(course);
-                }
-            }
-        }
-        return courses;
-    }
-
     /**
-     * Helper method to find a course by its code.
+     * Helper method to load strings from a JSONArray.
      * 
-     * @param id The course code.
-     * @return The Course object if found.
+     * @param jsonArray The JSONArray containing strings.
+     * @return An ArrayList of strings.
      */
-    private static Course findCourseByCode(String id) {
-        ArrayList<Course> allCourses = loadCourses();
-        if (allCourses != null) {
-            for (Course course : allCourses) {
-                if (course.getID().toString().equals(id)) {
-                    return course;
-                }
+    private static ArrayList<String> loadStringsFromJSONArray(JSONArray jsonArray) {
+        ArrayList<String> strings = new ArrayList<>();
+        if (jsonArray != null) {
+            for (Object obj : jsonArray) {
+                strings.add((String) obj);
             }
         }
-        return null;
+        return strings;
     }
 }
