@@ -21,9 +21,9 @@ public class Driver {
     // scenario2();
     // scenario3();
     // scenario4();
-    // scenario5(); idk its still not printing the major map
-   // scenario7();
-   scenario8();
+     scenario5(); 
+    // scenario7();
+    //scenario8();
   }
 
   /*
@@ -162,35 +162,8 @@ public class Driver {
     }
   }
 
-  /**
-   * Scenario to test the MajorList
-   *
-   * @author yask8(Yasmine Kennedy)
-   */
   public void scenario5() {
-    System.out.println("Scenario 5: Loading Majors and Printing Respective Major Map");
-    System.out.println("--------------------------------------------");
-
-    // Hardcoding the email and password
-    String email = "rio.farrah2004@gmail.com";
-    String password = "Real?dejaneir0";
-
-    // Creating a user object that operates the facade login method
-    facade.login(email, password);
-
-    // Checking if the user is logged in
-    if (facade.getUser() != null) {
-      System.out.println("Hello " + facade.getUser().getFirstName() + "!");
-
-      // Displays the User Info
-      System.out.println(facade.getUser().getFirstName() + " Current Info:");
-      System.out.println(facade.getUser().toString());
-
-    } else {
-      System.out.println("Incorrect email or password. Please try again.");
-    }
-    System.out.println("Printing Major Map");
-    facade.getMajorMap(facade.getStudentMajor().toString());
+  System.out.println(facade.getMajorList().toString());
   }
 
   public void scenario6() {
