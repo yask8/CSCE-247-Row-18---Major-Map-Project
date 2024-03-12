@@ -227,6 +227,7 @@ public class Driver {
     } else {
       System.out.println("Student not found");
     }
+    facade.signOut();
 
     // TODO: add Twanie to advisor list and create the advisor notes
 
