@@ -200,6 +200,28 @@ public class Driver {
    facade.signUpStudent("Tawnie","Hill","thill@email.sc.edu","bi117");
    facade.signOut();
 
+   // Logging in Osbert
+  facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+  if(facade.getUser() != null){
+    System.out.println("Login Successful. \nCurrent User: ");
+    System.out.println(facade.getUser());
+  } else {
+    System.out.println("Login Failed.");
+  }
+
+  // Searching for student
+  if(facade.getUserList().getIDByName("Tawnie", "Hill") != null) {
+    System.out.println("...Searching Student...");
+    System.out.println("Student Found. \nStudent: ");
+    // Temporary spot to make code look simplistic
+    UUID studentUSCID = facade.getUserList().getIDByName("Tawnie", "Hill");
+    System.out.println(facade.getUserList().getUserbyUSCID(studentUSCID));
+  } else {
+    System.out.println("Student not found");
+  }
+
+  //TODO: add Twanie to advisor list and create the advisor notes
+
     // System.out.println("Scenario 7: Advisor Osbert Odden");
     // System.out.println("---------------------");
     // System.out.println(".....Signing up Osbert Odden.....");
