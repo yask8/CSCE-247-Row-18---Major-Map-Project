@@ -1,58 +1,22 @@
-[{"firstName":"Michael","lastName":"Flanagan","password":"philly$Gr33n","uscID":"af593075-ea9e-4ed7-be74-4604863b702b","listOfFailingStudents":[],"userType":"ADVISOR","listOfAdivsees":[],"email":"FlanaganMichael@gmail.com"},{"firstName":"Osbert","lastName":"Odden","password":"h3110m0m!2","uscID":"c1100fcf-4201-4992-a3a8-6e1fb9ee3ba3","listOfFailingStudents":[],"userType":"ADVISOR","listOfAdivsees":[************** Student Profile **************
-firstName: Twanie
-lastName: Hill
-email: thill@email.sc.edu
-uscID: 8420ecb4-9f3c-4fc2-8e62-3707a9a4ab3c
-password: bi117
-userType: STUDENT
-year: 'Freshman'
-major: 'Undeclared'
-creditHours: 0
-completedCourses: []
-gpa: 0.0
-coursePlanner: 
-********** Semester 1 *********
-No courses added to this semester.
-
-********** Semester 2 *********
-No courses added to this semester.
-
-********** Semester 3 *********
-No courses added to this semester.
-
-********** Semester 4 *********
-No courses added to this semester.
-
-********** Semester 5 *********
-No courses added to this semester.
-
-********** Semester 6 *********
-No courses added to this semester.
-
-********** Semester 7 *********
-No courses added to this semester.
-
-********** Semester 8 *********
-No courses added to this semester.
-
-
-degreeProgress: 
-Current Major: Undeclared
-
-********* Major Courses *********
-No major courses specified.
-
-********* Elective Courses *********
-No elective courses specified.
-
-********* Carolina Core *********
-No Carolina Core courses specified.
-
-********* Completed Courses *********
-No completed courses specified.
-
-********* Incomplete Courses *********
-No incomplete courses specified.
-
-advisorNotes: []
-],"email":"osberto@mailbox.sc.edu"}]
+[
+  {
+    "firstName": "Michael",
+    "lastName": "Flanagan",
+    "password": "philly$Gr33n",
+    "uscID": "af593075-ea9e-4ed7-be74-4604863b702b",
+    "listOfFailingStudents": [],
+    "userType": "ADVISOR",
+    "listOfAdivsees": [],
+    "email": "FlanaganMichael@gmail.com"
+  },
+  {
+    "firstName": "Osbert",
+    "lastName": "Odden",
+    "password": "h3110m0m!2",
+    "uscID": "c1100fcf-4201-4992-a3a8-6e1fb9ee3ba3",
+    "listOfFailingStudents": [],
+    "userType": "ADVISOR",
+    "listOfAdivsees": [],
+    "email": "osberto@mailbox.sc.edu"
+  }
+]
