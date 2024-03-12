@@ -17,19 +17,21 @@ public class Driver {
   }
 
   public void run() {
-    scenario1();
+    //Testing Scenarios
+    // scenarioTesting();
+    // scenarioAddingCourses;
+
+    // Portias Scenarios
+    // scenario1():
     // scenario2();
-    // scenario3();
-    // scenario4();
-    // scenario7();
-    //scenario8();
+
   }
 
   /*
    * @author @Spillmag
    * Tests login method
    */
-  public void scenario1() {
+  public void scenarioTesting() {
     System.out.println("\nScenario 1: Login and Signout");
 
     // Hardcoded email and password
@@ -72,121 +74,27 @@ public class Driver {
     facade.signOut();
   }
 
-  public void scenario2() {
-    System.out.println("\nScenario 2: Login Fail");
-
-    // Hardcoded email and password (has a typo)
-    String email = "rio.farrah204@gmail.com";
-    String password = "Real?dejaneir0";
-
-    facade.login(email, password);
-
-    if (facade.getUser() != null) {
-      System.out.println("Login successful!");
-      System.out.println("Current user:");
-      System.out.println(facade.getUser().toString());
-    } else {
-      System.out.println(
-          "Login failed for email " +
-              email +
-              " and/or " +
-              password +
-              ". Incorrect email or password.");
-    }
-    facade.signOut();
-
-    // Hardcoded email and password (has a typo)
-    String email2 = "thebillybob@gmail.com";
-    String password2 = "guiy#ghawe";
-
-    facade.login(email2, password2);
-
-    if (facade.getUser() != null) {
-      System.out.println("Login successful!");
-      System.out.println("Current user:");
-      System.out.println(facade.getUser().toString());
-    } else {
-      System.out.println(
-          "Login failed for email " +
-              email2 +
-              " and/or " +
-              password2 +
-              ". Incorrect email or password.");
-    }
-    facade.signOut();
-  }
-
-  public void scenario3() {
-    System.out.println("\nScenario 3: Sign Up");
-    // Hardcoded email and password for signup
-    String signupEmail = "newstudent@example.com";
-    String signupPassword = "newPassword";
-    String signupFirstName = "John";
-    String signupLastName = "Doe";
-
-    System.out.println("\nSigning up a new student\n");
-    facade.signUpStudent(
-        signupFirstName,
-        signupLastName,
-        signupEmail,
-        signupPassword);
-
-    facade.signOut();
-  }
-
-  public void scenario4() {
-    System.out.println(
-        "\nScenario 4: Loading Courses and Printing Respective Course Details");
-    System.out.println("--------------------------------------------");
-
-    // Hardcoding the email and password
-    String email = "rio.farrah2004@gmail.com";
-    String password = "Real?dejaneir0";
-
-    facade.login(email, password);
-
-    // Checking if the user is logged in
-    if (facade.getUser() != null) {
-      System.out.println("Hello " + facade.getUser().getFirstName() + "!");
-      System.out.println(facade.getUser().getFirstName() + " Current Info:");
-      System.out.println(facade.getUser().toString());
-      facade.displayAllCourses(facade.getCourseList().getCourses());
-
-      // Show course details by code
-      String courseCodeToSearch = "PR"; // Example course code to search
-      System.out.println("\nTrying to find course with code: " + courseCodeToSearch);
-      facade.showCourseByCode(courseCodeToSearch);
-    } else {
-      System.out.println("Incorrect email or password. Please try again.");
-    }
-  }
-
-  public void scenario6() {
-  }
-
   /**
-   * Listed as Scenario 2 on sheet
    * 
    * @author Yasmine Kennedy (yask8)
    */
-  public void scenario7() {
+  public void scenario2() {
     // Logging in Osbert
     facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
-    System.out.println("Login Successful. \nCurrent User: "+ facade.getUser().toString());
+    System.out.println("Login Successful. \nCurrent User: " + facade.getUser().toString());
 
     System.out.println("...Searching for Student and adding to list");
     facade.getListOfAdvisees().add(facade.getUserList().getIDByName("Tawnie", "Hill"));
-    
+
     System.out.println("...Student found and added to list...");
     System.out.println(facade.getListOfAdvisees().toString());
     System.out.println(facade.getUser().toString());
     facade.signOut();
 
-
     // TODO: add Twanie to advisor list and create the advisor notes
   }
 
-  public void scenario8() {
+  public void scenarioAddingCourses() {
     String name = "MATH 141 Calculus 1";
     String code = "CC-ARP";
     String description = "Functions, limits, derivatives, introduction to integrals, and the Fundamental Theorem of Calculus";
@@ -205,7 +113,8 @@ public class Driver {
     String year = "1";
     String semester = "1";
 
-    facade.getCourseList().addCourse(name, code, description, creditHours, subject, passGrade, elective, carolinaCore, preReqs,year,semester);
+    facade.getCourseList().addCourse(name, code, description, creditHours, subject, passGrade, elective, carolinaCore,
+        preReqs, year, semester);
     facade.saveCourses();
   }
 
