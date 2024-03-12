@@ -175,48 +175,7 @@ private static DegreeProgress loadDegreeProgressFromJSON(JSONObject degreeProgre
         }
     
         return coursePlanner;
-    }
-
-    /**
-     * Parses a Course object from a JSON object representation.
-     * 
-     * @param courseJson The JSON object containing course data.
-     * @return The Course object parsed from the JSON object, or null if the input
-     *         object is null.
-     */
-    private static Course parseCourseFromJSONObject(JSONObject courseJson) {
-        if (courseJson == null) {
-            return null;
-        }
-
-        String id = (String) courseJson.get(COURSE_ID);
-        String name = (String) courseJson.get(COURSE_NAME);
-        String code = (String) courseJson.get(COURSE_CODE);
-        String description = (String) courseJson.get(COURSE_DESCRIPTION);
-        int creditHours = ((Long) courseJson.get(COURSE_CREDIT_HOURS)).intValue();
-        String subject = (String) courseJson.get(COURSE_SUBJECT);
-        char passGrade = ((String) courseJson.get(COURSE_PASS_GRADE)).charAt(0);
-        boolean elective = (boolean) courseJson.get(COURSE_ELECTIVE);
-        boolean carolinaCore = (boolean) courseJson.get(COURSE_CAROLINA_CORE);
-
-        JSONArray preReqsArray = (JSONArray) courseJson.get(COURSE_PREREQUISITES);
-        ArrayList<String> preReqs = new ArrayList<>();
-        if (preReqsArray != null) {
-            for (Object preReq : preReqsArray) {
-                if (preReq instanceof String) {
-                    String courseId = (String) preReq;
-                    preReqs.add(courseId);
-                }
-            }
-        }
-
-        String semester = (String) courseJson.get(COURSE_SEMESTER);
-        String year = (String) courseJson.get(COURSE_YEAR);
-
-        return new Course(id, name, code, description, creditHours, subject, passGrade, elective, carolinaCore, preReqs,
-                semester, year);
-    }
-
+    }   
     /**
      * Loads admins from a JSON file.
      * 
