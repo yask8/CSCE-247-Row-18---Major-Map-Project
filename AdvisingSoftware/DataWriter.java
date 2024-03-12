@@ -182,8 +182,19 @@ public class DataWriter extends DataConstants {
 
         if (user.getUserType().equals("ADVISOR")) {
             Advisor advisor = (Advisor) user;
-            userJSON.put(ADVISOR_LIST_OF_ADVISEES, advisor.getListOfAdvisees());
-            userJSON.put(ADVISOR_LIST_OF_FAILING_STUDENTS, advisor.getListOfFailingStudents());
+            JSONArray adviseesArray = new JSONArray();
+            JSONArray failingStudentsArray = new JSONArray();
+        
+            for (UUID uuid : advisor.getListOfAdvisees()) {
+                adviseesArray.add(uuid.toString());
+            }
+
+            for (UUID uuid : advisor.getListOfFailingStudents()) {
+                failingStudentsArray.add(uuid.toString());
+            }
+        
+            userJSON.put(ADVISOR_LIST_OF_ADVISEES, adviseesArray);
+            userJSON.put(ADVISOR_LIST_OF_FAILING_STUDENTS, failingStudentsArray);
         }
 
         return userJSON;
