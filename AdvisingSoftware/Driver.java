@@ -1,7 +1,6 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * @author Lia Zhao (zhaolia9)
@@ -18,7 +17,7 @@ public class Driver {
   }
 
   public void run() {
-    // scenario1();
+    scenario1();
     // scenario2();
     // scenario3();
     // scenario4();

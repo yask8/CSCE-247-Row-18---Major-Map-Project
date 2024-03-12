@@ -130,36 +130,27 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
-    /**
-     * Loads degree progress from a JSON object.
-     * 
-     * @param degreeProgressObj The JSON object containing degree progress data.
-     * @return The DegreeProgress object loaded from the JSON object, or null if the
-     *         input object is null.
-     */
-    private static DegreeProgress loadDegreeProgressFromJSON(JSONObject degreeProgressObj) {
-        if (degreeProgressObj == null) {
-            return null;
-        }
-        String major = (String) degreeProgressObj.get("major");
-        @SuppressWarnings("unchecked")
-        ArrayList<Course> majorCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PROGRESS_MAJOR_COURSES);
-        @SuppressWarnings("unchecked")
-        ArrayList<Course> electiveCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PROGRESS_ELECTIVE_COURSES);
-        @SuppressWarnings("unchecked")
-        ArrayList<Course> carolinaCoreCourses = (ArrayList<Course>) degreeProgressObj
-                .get(DEGREE_PROGRESS_CAROLINA_CORE_COURSES);
-        @SuppressWarnings("unchecked")
-        ArrayList<Course> completeCourses = (ArrayList<Course>) degreeProgressObj.get(DEGREE_PROGRESS_COMPLETE_COURSES);
-        @SuppressWarnings("unchecked")
-        ArrayList<Course> incompleteCourses = (ArrayList<Course>) degreeProgressObj
-                .get(DEGREE_PROGRESS_INCOMPLETE_COURSES);
-
-        DegreeProgress degreeProgress = new DegreeProgress(major, majorCourses, electiveCourses, carolinaCoreCourses,
-                completeCourses, incompleteCourses);
-
-        return degreeProgress;
+ /**
+ * Loads degree progress from a JSON object.
+ * 
+ * @param degreeProgressObj The JSON object containing degree progress data.
+ * @return The DegreeProgress object loaded from the JSON object, or null if the
+ *         input object is null.
+ */
+private static DegreeProgress loadDegreeProgressFromJSON(JSONObject degreeProgressObj) {
+    if (degreeProgressObj == null) {
+        return null;
     }
+    String major = (String) degreeProgressObj.get("major");
+    @SuppressWarnings("unchecked")
+    ArrayList<String> completeCourses = loadStringsFromJSONArray((JSONArray) degreeProgressObj.get(DEGREE_PROGRESS_COMPLETE_COURSES));
+    @SuppressWarnings("unchecked")
+    ArrayList<String> incompleteCourses = loadStringsFromJSONArray((JSONArray) degreeProgressObj.get(DEGREE_PROGRESS_INCOMPLETE_COURSES));
+
+    DegreeProgress degreeProgress = new DegreeProgress(major, completeCourses, incompleteCourses);
+
+    return degreeProgress;
+}
 
     /**
      * Loads a course planner from a JSON object.

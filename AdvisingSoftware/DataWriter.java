@@ -124,18 +124,13 @@ public class DataWriter extends DataConstants {
             userJSON.put(STUDENT_COMPLETED_COURSES, completedCoursesArray);
             userJSON.put(STUDENT_GPA, student.getGpa());
 
-            // Convert degree progress to JSON object
-            JSONObject degreeProgressJSON = new JSONObject();
-            degreeProgressJSON.put(DEGREE_PROGRESS_MAJOR, student.getDegreeProgress().getMajor());
-            degreeProgressJSON.put(DEGREE_PROGRESS_ELECTIVE_COURSES, student.getDegreeProgress().getElectiveCourses());
-            degreeProgressJSON.put(DEGREE_PROGRESS_INCOMPLETE_COURSES,
-                    student.getDegreeProgress().getIncompleteCourses());
-            degreeProgressJSON.put(DEGREE_PROGRESS_CAROLINA_CORE_COURSES,
-                    student.getDegreeProgress().getCarolinaCoreCourses());
-            degreeProgressJSON.put(DEGREE_PROGRESS_MAJOR_COURSES, student.getDegreeProgress().getMajorCourses());
-            degreeProgressJSON.put(DEGREE_PROGRESS_COMPLETE_COURSES, student.getDegreeProgress().getCompleteCourses());
-            userJSON.put(STUDENT_DEGREE_PROGRESS, degreeProgressJSON);
-
+           // Convert degree progress to JSON object
+        JSONObject degreeProgressJSON = new JSONObject();
+        degreeProgressJSON.put(DEGREE_PROGRESS_MAJOR, student.getDegreeProgress().getMajor());
+        degreeProgressJSON.put(DEGREE_PROGRESS_INCOMPLETE_COURSES, student.getDegreeProgress().getIncompleteCourses());
+        degreeProgressJSON.put(DEGREE_PROGRESS_COMPLETE_COURSES, student.getDegreeProgress().getCompleteCourses());
+        userJSON.put(STUDENT_DEGREE_PROGRESS, degreeProgressJSON);
+        
             // Convert advisor notes to JSON array
             JSONArray advisorNotesArray = new JSONArray();
             for (Note note : student.getAdvisorNotes()) {
