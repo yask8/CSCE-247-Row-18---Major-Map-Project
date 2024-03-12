@@ -221,6 +221,13 @@ public class Driver {
   }
 
   //TODO: add Twanie to advisor list and create the advisor notes
+  // Adding Twanie to the list of advisees
+  UUID studentUSCID = facade.getUserList().getIDByName("Twanie", "Hill");
+  System.out.println(studentUSCID);
+  System.out.println(facade.getListOfAdvisees().add(facade.getUserList().getUserbyUSCID(studentUSCID)));
+  System.out.println(facade.getListOfAdvisees().toString());
+
+  facade.signOut();
 
     // System.out.println("Scenario 7: Advisor Osbert Odden");
     // System.out.println("---------------------");

@@ -271,11 +271,6 @@ public class UserList {
     System.out.println("Sign up successful! New profile:");
     System.out.println(newUser.toString());
   }
-
-public Object getStudentbyName(String string, String string2) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getStudentbyName'");
-}
 /**
  * Gets the user's uscID by their first and last name
  * @author Yasmine Kennedy (yask8)

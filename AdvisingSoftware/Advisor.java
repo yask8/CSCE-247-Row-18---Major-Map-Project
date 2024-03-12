@@ -60,8 +60,8 @@ public class Advisor extends User {
   /**
    * Allows advisor to add a student to their list of advisees
    */
-  public void addStudent (User person) {
-     listOfAdvisees.add(person);
+  public void addStudent (Student student) {
+     listOfAdvisees.add(student);
   }
   /**
    * Allows advisor to remove a student from their list of advisees
