@@ -222,6 +222,7 @@ public class Driver {
       UUID studentUSCID = facade.getUserList().getIDByName("Tawnie", "Hill");
       System.out.println(studentUSCID);
       System.out.println(facade.getUserList().getUserbyUSCID(studentUSCID));
+      facade.getListOfAdvisees().add(studentUSCID);
       System.out.println(facade.getListOfAdvisees().toString());
     } else {
       System.out.println("Student not found");
