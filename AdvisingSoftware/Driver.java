@@ -17,7 +17,7 @@ public class Driver {
   }
 
   public void run() {
-    //scenario1();
+    // scenario1();
     // scenario2();
     // scenario3();
     // scenario4();
@@ -60,7 +60,8 @@ public class Driver {
     facade.getStudentCoursePlanner().addCourse(2, facade.getCourseById("BIOL101"));
     System.out.println(facade.getStudentCoursePlanner().toString());
 
-    System.out.println("\nStudent wants to switch from BIOL101 and trys to remove it from semester 2 but makes a typo and inputs the wrong semester\n");
+    System.out.println(
+        "\nStudent wants to switch from BIOL101 and trys to remove it from semester 2 but makes a typo and inputs the wrong semester\n");
     facade.getStudentCoursePlanner().removeCourse(1, "BIOL101");
 
     System.out.println("\nStudent wants to switch from BIOL101 and removes it from the course planner semester 2\n");
@@ -190,49 +191,49 @@ public class Driver {
     System.out.println("Printing Major Map");
     facade.getMajorMap(facade.getStudentMajor().toString());
   }
-  public void scenario6(){}
+
+  public void scenario6() {
+  }
+
   /**
    * Listed as Scenario 2 on sheet
+   * 
    * @author Yasmine Kennedy (yask8)
    */
- public void scenario7(){
+  public void scenario7() {
     // Signing up Tawnie
-   facade.signUpStudent("Tawnie","Hill","thill@email.sc.edu","bi117");
-   facade.signOut();
+    facade.signUpStudent("Tawnie", "Hill", "thill@email.sc.edu", "bi117");
+    facade.signOut();
 
-   // Logging in Osbert
-  facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
-  if(facade.getUser() != null){
-    System.out.println("Login Successful. \nCurrent User: ");
-    System.out.println(facade.getUser());
-  } else {
-    System.out.println("Login Failed.");
-  }
+    // Logging in Osbert
+    facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    if (facade.getUser() != null) {
+      System.out.println("Login Successful. \nCurrent User: ");
+      System.out.println(facade.getUser());
+    } else {
+      System.out.println("Login Failed.");
+    }
 
-  // Searching for student
-  if(facade.getUserList().getIDByName("Tawnie", "Hill") != null) {
-    System.out.println("...Searching Student...");
-    System.out.println("Student Found. \nStudent: ");
-    // Temporary spot to make code look simplistic
-    UUID studentUSCID = facade.getUserList().getIDByName("Tawnie", "Hill");
-    System.out.println(facade.getUserList().getUserbyUSCID(studentUSCID));
-  } else {
-    System.out.println("Student not found");
-  }
+    // Searching for student
+    if (facade.getUserList().getIDByName("Tawnie", "Hill") != null) {
+      System.out.println("...Searching Student...");
+      System.out.println("Student Found. \nStudent: ");
+      // Temporary spot to make code look simplistic
+      UUID studentUSCID = facade.getUserList().getIDByName("Tawnie", "Hill");
+      System.out.println(studentUSCID);
+      System.out.println(facade.getUserList().getUserbyUSCID(studentUSCID));
+      System.out.println(facade.getListOfAdvisees().toString());
+    } else {
+      System.out.println("Student not found");
+    }
 
-  //TODO: add Twanie to advisor list and create the advisor notes
-  // Adding Twanie to the list of advisees
-  UUID studentUSCID = facade.getUserList().getIDByName("Twanie", "Hill");
-  System.out.println(studentUSCID);
-  System.out.println(facade.getListOfAdvisees().add(facade.getUserList().getUserbyUSCID(studentUSCID)));
-  System.out.println(facade.getListOfAdvisees().toString());
-
-  facade.signOut();
+    // TODO: add Twanie to advisor list and create the advisor notes
 
     // System.out.println("Scenario 7: Advisor Osbert Odden");
     // System.out.println("---------------------");
     // System.out.println(".....Signing up Osbert Odden.....");
-    // facade.signUpAdvisor("Osbert", "Odden", "osberto@mailbox.sc.edu", "h3110m0m!2");
+    // facade.signUpAdvisor("Osbert", "Odden", "osberto@mailbox.sc.edu",
+    // "h3110m0m!2");
 
     // System.out.println("...Osbert searches for student by their ID...");
     // facade.getUserList().getUserbyUSCID(uscID);
@@ -240,29 +241,32 @@ public class Driver {
 
     // System.out.println("...Osbert adds student to list of advisees...");
     // if(facade.getListOfAdvisees() != null){
-    //   facade.getListOfAdvisees().add(twanie);
+    // facade.getListOfAdvisees().add(twanie);
     // } else {
-    //   System.out.println("Error: Trouble with adding user.");
+    // System.out.println("Error: Trouble with adding user.");
     // }
 
     // System.out.println("...Obsert looks through student degree progress...");
     // facade.getStudentDegreeProgress();
-    
+
     // System.out.println("Osbert adds a note to Twanie's profile");
-    // String suggestion = "I suggest declaring STATS as an application area, you have taken 2 elective classes, adding another will statisfy your application area";
-    // Note note =  new Note(suggestion, null);
+    // String suggestion = "I suggest declaring STATS as an application area, you
+    // have taken 2 elective classes, adding another will statisfy your application
+    // area";
+    // Note note = new Note(suggestion, null);
     // facade.getStudentAdvisorNotes().add(note);
     // facade.signOut();
 
     // facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
     // if (facade.getUser() != null) {
-    //   System.out.println("Login successful!");
-    //   System.out.println("Current user:");
-    //   System.out.println(facade.getUser());
+    // System.out.println("Login successful!");
+    // System.out.println("Current user:");
+    // System.out.println(facade.getUser());
     // } else {
-    //   System.out.println("Login failed. Incorrect email or password.");
+    // System.out.println("Login failed. Incorrect email or password.");
     // }
   }
+
   public static void main(String[] args) {
     Driver advisingInterface = new Driver();
     advisingInterface.run();
