@@ -121,22 +121,29 @@ public class Driver {
   }
 
   public void scenarioAddingCourses() {
-    String name = "MATH141 Calculus 1";
-    String code = "CC-ARP";
+    String name = "FAMS 180 Film and Media Analysis";
+    String code = "CC-AIU";
     String description =
-      "Functions, limits, derivatives, introduction to integrals, and the Fundamental Theorem of Calculus";
-    int creditHours = 4;
-    String subject = "MATH";
+      "An introduction to the critical study of film and media." +
+      " Students will closely analyze moving images and develop written arguments about film and media.";
+    int creditHours = 3;
+    String subject = "FAMS";
     char passGrade = 'C';
     boolean elective = false;
     boolean carolinaCore = true;
     ArrayList<String> preReqs = new ArrayList<String>();
-    String pre1 = "MATH112";
-    String pre2 = "MATH115";
-    String pre3 = "MATH116";
+    /*String pre1 = "CSCE 145";
+    String pre2 = "CSCE 204";
+    String pre3 = "CSCE 205";
+    String pre4 = "CSCE 206";
     preReqs.add(pre1);
     preReqs.add(pre2);
     preReqs.add(pre3);
+    preReqs.add(pre4);
+    */
+    // Only used if pre-req is not needed for course
+    String preNotNeeded = "None required.";
+    preReqs.add(preNotNeeded);
     String year = "1";
     String semester = "1";
 
