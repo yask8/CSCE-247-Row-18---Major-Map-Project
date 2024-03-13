@@ -112,7 +112,7 @@ public class Driver {
     System.out.println(facade.getListOfAdvisees().toString());
     System.out.println(facade.getUser().toString());
     facade.signOut();
-    // TODO: add Twanie to advisor list and create the advisor notes
+    // TODO: add Tawnie to advisor list and create the advisor notes
   }
 
   public void scenarioAddingCourses() {
