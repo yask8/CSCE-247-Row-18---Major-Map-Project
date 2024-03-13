@@ -141,9 +141,6 @@ public class Driver {
     preReqs.add(pre3);
     preReqs.add(pre4);
     */
-    // Only used if pre-req is not needed for course
-    String preNotNeeded = "None required.";
-    preReqs.add(preNotNeeded);
     String year = "1";
     String semester = "1";
 
