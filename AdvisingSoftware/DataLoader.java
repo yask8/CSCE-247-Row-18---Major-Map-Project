@@ -30,19 +30,16 @@ public class DataLoader extends DataConstants {
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<>();
 
-        // Load students
         ArrayList<Student> students = loadStudents();
         if (students != null) {
             users.addAll(students);
         }
 
-        // Load admins
         ArrayList<Admin> admins = loadAdmin();
         if (admins != null) {
             users.addAll(admins);
         }
 
-        // Load advisors
         ArrayList<Advisor> advisors = loadAdvisors();
         if (advisors != null) {
             users.addAll(advisors);
@@ -77,7 +74,6 @@ public class DataLoader extends DataConstants {
                 String major = (String) studentObj.get(STUDENT_MAJOR);
                 String applicationArea = (String) studentObj.get(STUDENT_APP_AREA);
                 int creditHours = ((Long) studentObj.get(STUDENT_CREDITHOURS)).intValue();
-                // Parse completedCourses array
                 JSONArray completedCoursesJSON = (JSONArray) studentObj.get(STUDENT_COMPLETED_COURSES);
                 ArrayList<Grades> completedCourses = new ArrayList<Grades>();
                 if (completedCoursesJSON != null) {
@@ -90,21 +86,18 @@ public class DataLoader extends DataConstants {
                 }
                 double gpa = (double) studentObj.get(STUDENT_GPA);
 
-                // Load Course Planner
                 JSONObject coursePlannerObj = (JSONObject) studentObj.get(STUDENT_COURSE_PLANNER);
                 CoursePlanner coursePlanner = null;
                 if (coursePlannerObj != null) {
                     coursePlanner = loadCoursePlannerFromJSON(coursePlannerObj);
                 }
 
-                // Load Degree Progress
                 JSONObject degreeProgressObj = (JSONObject) studentObj.get(STUDENT_DEGREE_PROGRESS);
                 DegreeProgress degreeProgress = null;
                 if (degreeProgressObj != null) {
                     degreeProgress = loadDegreeProgressFromJSON(degreeProgressObj);
                 }
 
-                // Load Advisor Notes
                 JSONArray advisorNotesJSON = (JSONArray) studentObj.get(STUDENT_ADVISOR_NOTES);
                 ArrayList<Note> advisorNotes = new ArrayList<>();
                 if (advisorNotesJSON != null) {
@@ -130,25 +123,27 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
- /**
- * Loads degree progress from a JSON object.
- * 
- * @param degreeProgressObj The JSON object containing degree progress data.
- * @return The DegreeProgress object loaded from the JSON object, or null if the
- *         input object is null.
- */
-private static DegreeProgress loadDegreeProgressFromJSON(JSONObject degreeProgressObj) {
-    if (degreeProgressObj == null) {
-        return null;
+    /**
+     * Loads degree progress from a JSON object.
+     * 
+     * @param degreeProgressObj The JSON object containing degree progress data.
+     * @return The DegreeProgress object loaded from the JSON object, or null if the
+     *         input object is null.
+     */
+    private static DegreeProgress loadDegreeProgressFromJSON(JSONObject degreeProgressObj) {
+        if (degreeProgressObj == null) {
+            return null;
+        }
+        String major = (String) degreeProgressObj.get("major");
+        ArrayList<String> completeCourses = loadStringsFromJSONArray(
+                (JSONArray) degreeProgressObj.get(DEGREE_PROGRESS_COMPLETE_COURSES));
+        ArrayList<String> incompleteCourses = loadStringsFromJSONArray(
+                (JSONArray) degreeProgressObj.get(DEGREE_PROGRESS_INCOMPLETE_COURSES));
+
+        DegreeProgress degreeProgress = new DegreeProgress(major, completeCourses, incompleteCourses);
+
+        return degreeProgress;
     }
-    String major = (String) degreeProgressObj.get("major");
-    ArrayList<String> completeCourses = loadStringsFromJSONArray((JSONArray) degreeProgressObj.get(DEGREE_PROGRESS_COMPLETE_COURSES));
-    ArrayList<String> incompleteCourses = loadStringsFromJSONArray((JSONArray) degreeProgressObj.get(DEGREE_PROGRESS_INCOMPLETE_COURSES));
-
-    DegreeProgress degreeProgress = new DegreeProgress(major, completeCourses, incompleteCourses);
-
-    return degreeProgress;
-}
 
     /**
      * Loads a course planner from a JSON object.
@@ -161,21 +156,22 @@ private static DegreeProgress loadDegreeProgressFromJSON(JSONObject degreeProgre
         if (coursePlannerObj == null) {
             return null;
         }
-    
+
         CoursePlanner coursePlanner = new CoursePlanner();
         JSONArray semestersArray = (JSONArray) coursePlannerObj.get(COURSE_PLANNER_SEMESTERS);
-    
+
         for (int i = 0; i < semestersArray.size(); i++) {
             JSONArray semesterCoursesArray = (JSONArray) semestersArray.get(i);
-    
+
             for (int j = 0; j < semesterCoursesArray.size(); j++) {
                 String courseName = (String) semesterCoursesArray.get(j);
                 coursePlanner.addCourse(i + 1, courseName);
             }
         }
-    
+
         return coursePlanner;
-    }   
+    }
+
     /**
      * Loads admins from a JSON file.
      * 
@@ -318,46 +314,47 @@ private static DegreeProgress loadDegreeProgressFromJSON(JSONObject degreeProgre
     }
 
     /**
- * Loads majors from a JSON file.
- *
- * @return An ArrayList of MajorMap objects loaded from the JSON file
- */
-public static ArrayList<MajorMap> loadMajors() {
-    ArrayList<MajorMap> majors = new ArrayList<>();
+     * Loads majors from a JSON file.
+     *
+     * @return An ArrayList of MajorMap objects loaded from the JSON file
+     */
+    public static ArrayList<MajorMap> loadMajors() {
+        ArrayList<MajorMap> majors = new ArrayList<>();
 
-    try {
-        FileReader reader = new FileReader(MAJOR_FILE_NAME);
-        JSONParser parser = new JSONParser();
-        JSONArray majorJSON = (JSONArray) parser.parse(reader);
+        try {
+            FileReader reader = new FileReader(MAJOR_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray majorJSON = (JSONArray) parser.parse(reader);
 
-        for (int i = 0; i < majorJSON.size(); i++) {
-            JSONObject majorObj = (JSONObject) majorJSON.get(i);
-            String name = (String) majorObj.get(MAJOR_NAME);
+            for (int i = 0; i < majorJSON.size(); i++) {
+                JSONObject majorObj = (JSONObject) majorJSON.get(i);
+                String name = (String) majorObj.get(MAJOR_NAME);
 
-            UUID id = UUID.fromString((String) majorObj.get(MAJOR_UUID));
-            ArrayList<String> semester1 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_1));
-            ArrayList<String> semester2 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_2));
-            ArrayList<String> semester3 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_3));
-            ArrayList<String> semester4 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_4));
-            ArrayList<String> semester5 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_5));
-            ArrayList<String> semester6 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_6));
-            ArrayList<String> semester7 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_7));
-            ArrayList<String> semester8 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_8));
-            int minHours = ((Long) majorObj.get(MAJOR_MIN_HOURS)).intValue();
-            int minGradHours = ((Long) majorObj.get(MAJOR_MIN_GRAD_HOURS)).intValue();
-            int ccHours = ((Long) majorObj.get(MAJOR_CC_HOURS)).intValue();
-            double minGPA = ((Number) majorObj.get(MAJOR_MIN_GPA)).doubleValue();
+                UUID id = UUID.fromString((String) majorObj.get(MAJOR_UUID));
+                ArrayList<String> semester1 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_1));
+                ArrayList<String> semester2 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_2));
+                ArrayList<String> semester3 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_3));
+                ArrayList<String> semester4 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_4));
+                ArrayList<String> semester5 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_5));
+                ArrayList<String> semester6 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_6));
+                ArrayList<String> semester7 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_7));
+                ArrayList<String> semester8 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_8));
+                int minHours = ((Long) majorObj.get(MAJOR_MIN_HOURS)).intValue();
+                int minGradHours = ((Long) majorObj.get(MAJOR_MIN_GRAD_HOURS)).intValue();
+                int ccHours = ((Long) majorObj.get(MAJOR_CC_HOURS)).intValue();
+                double minGPA = ((Number) majorObj.get(MAJOR_MIN_GPA)).doubleValue();
 
-            MajorMap major = new MajorMap(id, name, semester1, semester2, semester3, semester4, semester5,
-                    semester6, semester7, semester8, minHours, minGradHours, ccHours, minGPA);
-            majors.add(major);
+                MajorMap major = new MajorMap(id, name, semester1, semester2, semester3, semester4, semester5,
+                        semester6, semester7, semester8, minHours, minGradHours, ccHours, minGPA);
+                majors.add(major);
+            }
+            return majors;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return majors;
-    } catch (Exception e) {
-        e.printStackTrace();
+        return null;
     }
-    return null;
-}
+
     /**
      * Helper method to load strings from a JSONArray.
      * 

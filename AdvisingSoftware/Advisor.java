@@ -48,15 +48,6 @@ public class Advisor extends User {
   public String viewStudentProfile() {
     return "";
   }
-
-  /**
-   * Shows the course planner
-   *
-   * @return returns Course instance
-   */
-  public Course coursePlanner() {
-    return null;
-  }
   /**
    * Allows advisor to add a student to their list of advisees
    */

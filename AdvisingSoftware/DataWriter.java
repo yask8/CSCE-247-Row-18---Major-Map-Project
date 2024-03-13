@@ -21,19 +21,6 @@ import org.json.simple.JSONValue;
  * @author @Spillmag
  */
 public class DataWriter extends DataConstants {
-
-    public static void main(String[] args) {
-
-        // Test saveUsers
-        // testSaveUsers();
-
-        // Test saveCourses
-        // testSaveCourses();
-
-        // Test saveMajorMaps
-        // testSaveMajorMaps();
-    }
-
     /**
      * Saves the list of users into a JSON file.
      * Appends new user data to the existing data in the file.
@@ -113,7 +100,6 @@ public class DataWriter extends DataConstants {
             userJSON.put(STUDENT_APP_AREA, student.getApplicationArea());
             userJSON.put(STUDENT_CREDITHOURS, student.getCreditHours());
 
-            // Convert completed courses to JSON array
             JSONArray completedCoursesArray = new JSONArray();
             for (Grades grade : student.getCompletedCourses()) {
                 JSONObject completedCourseJSON = new JSONObject();
@@ -124,18 +110,18 @@ public class DataWriter extends DataConstants {
             userJSON.put(STUDENT_COMPLETED_COURSES, completedCoursesArray);
             userJSON.put(STUDENT_GPA, student.getGpa());
 
-            // Convert degree progress to JSON object
+
             JSONObject degreeProgressJSON = new JSONObject();
             degreeProgressJSON.put(DEGREE_PROGRESS_MAJOR, student.getDegreeProgress().getMajor());
 
-            // Convert complete courses to JSON array
+
             JSONArray completeCoursesArray = new JSONArray();
             for (String course : student.getDegreeProgress().getCompleteCourses()) {
                 completeCoursesArray.add(course);
             }
             degreeProgressJSON.put(DEGREE_PROGRESS_COMPLETE_COURSES, completeCoursesArray);
 
-            // Convert incomplete courses to JSON array
+
             JSONArray incompleteCoursesArray = new JSONArray();
             for (String course : student.getDegreeProgress().getIncompleteCourses()) {
                 incompleteCoursesArray.add(course);
@@ -144,11 +130,11 @@ public class DataWriter extends DataConstants {
 
             userJSON.put(STUDENT_DEGREE_PROGRESS, degreeProgressJSON);
 
-            // Convert advisor notes to JSON array
+
             JSONArray advisorNotesArray = new JSONArray();
             for (Note note : student.getAdvisorNotes()) {
                 JSONObject advisorNoteJSON = new JSONObject();
-                // Format date as string
+          
                 String formattedDate = formatDate(note.getDate());
                 advisorNoteJSON.put(NOTE_DATE, formattedDate);
                 advisorNoteJSON.put(NOTE_NOTE, note.getNote());
@@ -156,7 +142,6 @@ public class DataWriter extends DataConstants {
             }
             userJSON.put(STUDENT_ADVISOR_NOTES, advisorNotesArray);
 
-            // Convert course planner to JSON object
             JSONObject coursePlannerJSON = new JSONObject();
             JSONArray semestersArray = new JSONArray();
             for (List<String> semester : student.getCoursePlanner().getSemesters()) {

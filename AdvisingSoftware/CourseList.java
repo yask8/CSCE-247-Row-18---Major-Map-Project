@@ -63,7 +63,7 @@ public class CourseList {
         return course;
       }
     }
-    return null; // Course not found
+    return null;
   }
 
   /**
@@ -82,9 +82,9 @@ public class CourseList {
     }
     if (courseToRemove != null) {
       courses.remove(courseToRemove);
-      return true; // Course removed successfully
+      return true; 
     }
-    return false; // Course not found
+    return false;
   }
 
   /**
@@ -121,8 +121,8 @@ public class CourseList {
           elective,
           carolinaCore,
           prereqs,
-          null, // Default year
-          null // Default semester
+          null,
+          null 
       );
       courses.add(newCourse);
   } else {

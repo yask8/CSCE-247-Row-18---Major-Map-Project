@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 /**
  * @author Lia Zhao (zhaolia9)
- *         - facade: Facade
- *         + run(): void
- *         - displayMainMenu(): void
+
  */
 public class Driver {
 
@@ -19,11 +17,12 @@ public class Driver {
   public void run() {
     //Testing Scenarios
     //scenarioTesting();
-    scenarioAddingCourses();
+    //scenarioAddingCourses();
 
     // Portias Scenarios
-    // scenario1():
-    // scenario2();
+    // scenario1();
+     scenario2();
+
   }
 
   /*
@@ -78,16 +77,25 @@ public class Driver {
    * @author Yasmine Kennedy (yask8)
    */
   public void scenario2() {
-    // Logging in Osbert
+    
     facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
     System.out.println("Login Successful. \nCurrent User: " + facade.getUser().toString());
 
-    System.out.println("...Searching for Student and adding to list");
-    facade.getListOfAdvisees().add(facade.getUserList().getIDByName("Tawnie", "Hill"));
+    System.out.println("\nSearching for Student and adding to list");
+    facade.addStudentToListOfAdvisees(facade.getUser().getID(),facade.getUserList().getIDByName("Tawnie", "Hill"));
 
-    System.out.println("...Student found and added to list...");
+    System.out.println("\nStudent found and added to list");
     System.out.println(facade.getListOfAdvisees().toString());
-    System.out.println(facade.getUser().toString());
+    System.out.println("\nOsbert looks at Tawnie's current degree progress and sees two stat classes");
+    System.out.println(facade.getStudentByAdvisor(facade.getUserList().getIDByName("Tawnie", "Hill")).getDegreeProgress().toString());
+
+    System.out.println("\nObsert goes to add the note to her profile\nList of notes before not added");
+    System.out.println(facade.getStudentByAdvisor(facade.getUserList().getIDByName("Tawnie", "Hill")).getAdvisorNotes());
+    System.out.println("\nNote added");
+    facade.addNoteToStudentAdvisor((facade.getUserList().getIDByName("Tawnie", "Hill")), "Make Stats Your Application Area");
+    System.out.println("\nList of notes after note is left");
+    System.out.println(facade.getStudentByAdvisor(facade.getUserList().getIDByName("Tawnie", "Hill")).getAdvisorNotes().toString());
+
     facade.signOut();
 
     // TODO: create the advisor notes
@@ -115,23 +123,6 @@ public class Driver {
     facade.getCourseList().addCourse(name, code, description, creditHours, subject, passGrade, elective, carolinaCore,
         preReqs, year, semester);
     facade.saveCourses();
-  }
-
-  public void scenario1() {
-    // Student: Brax West
-    // Junior Computer Science major
-    facade.login("braxwest1@email.sc.edu", "Bestdinoistr3x!");
-    System.out.println(
-      "Login Successful. \nCurrent User: " + facade.getUser().toString()
-    );
-
-    // Degree Progress - courses taken, grades earned, pass or fail, Incomplete courses
-    // GFL Elective needed, look through courses that satisfy requirement, pick one
-    // browse through sample application area topics: Science, Math, Digital Design, Robotics, Speech
-    // choose an app area and pick classes
-    // generate and print to a text file of 8 semester plan
-    // clearly highlights which semester Brax is about to take
-    facade.signOut();
   }
 
   public static void main(String[] args) {
