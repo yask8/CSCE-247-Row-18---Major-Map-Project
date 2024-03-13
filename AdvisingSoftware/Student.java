@@ -3,11 +3,13 @@ package AdvisingSoftware;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/*
+ * @author oshumate
+ */
 public class Student extends User {
 
   private String year;
   private String major;
-  private String applicationArea;
   private int creditHours;
   private ArrayList<Grades> completedCourses;
   private double gpa;
@@ -20,7 +22,6 @@ public class Student extends User {
    * 
    * @param year             Student's year/class
    * @param major            Student's major
-   * @param applicationArea  Student's app area
    * @param creditHours      Student's number of credit hours taken
    * @param completedCourses2 Courses the student has completed
    * @param gpa              Student's GPA
@@ -37,7 +38,6 @@ public class Student extends User {
       String userType,
       String year,
       String major,
-      String applicationArea,
       int creditHours,
       ArrayList<Grades> completedCourses,
       double gpa,
@@ -47,7 +47,6 @@ public class Student extends User {
     super(firstName, lastName, email, uscID, password, userType);
     this.year = year;
     this.major = major;
-    this.applicationArea = applicationArea;
     this.creditHours = creditHours;
     this.completedCourses = completedCourses;
     this.gpa = gpa;
@@ -64,7 +63,6 @@ public class Student extends User {
         super.toString() +
         "year: '" + year + "'\n" +
         "major: '" + major + "'\n" +
-        "applicationArea: '" + applicationArea + "'\n" +
         "creditHours: " + creditHours + "\n" +
         "completedCourses: " + completedCourses + "\n" +
         "gpa: " + gpa + "\n" +
@@ -77,7 +75,6 @@ public class Student extends User {
    * Allows student to edit their profile
    */
   public void editProfile() {
-
   }
 
   /**
@@ -187,15 +184,6 @@ public class Student extends User {
    */
   public String getMajor() {
     return major;
-  }
-
-    /**
-   * Getter for application area
-   * 
-   * @return the student's app area
-   */
-  public String getAppArea() {
-    return applicationArea;
   }
 
   /**
