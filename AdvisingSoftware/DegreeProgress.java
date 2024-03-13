@@ -7,113 +7,29 @@ import java.util.HashMap;
 public class DegreeProgress {
 
   private String major;
-  private ArrayList<Course> majorCourses;
-  private ArrayList<Course> electiveCourses;
-  private ArrayList<Course> carolinaCoreCourses;
-  private ArrayList<Course> completeCourses;
-  private ArrayList<Course> incompleteCourses;
-    private String major;
-    private ArrayList<String> completeCourses;
-    private ArrayList<String> incompleteCourses;
+  private ArrayList<String> completeCourses;
+  private ArrayList<String> incompleteCourses;
 
   public DegreeProgress(
     String major,
-    ArrayList<Course> majorCourses,
-    ArrayList<Course> electiveCourses,
-    ArrayList<Course> carolinaCoreCourses,
-    ArrayList<Course> completeCourses,
-    ArrayList<Course> incompleteCourses
+    ArrayList<String> completeCourses,
+    ArrayList<String> incompleteCourses
   ) {
     this.major = major;
-    this.majorCourses = majorCourses;
-    this.electiveCourses = electiveCourses;
-    this.carolinaCoreCourses = carolinaCoreCourses;
     this.completeCourses = completeCourses;
     this.incompleteCourses = incompleteCourses;
   }
-    public DegreeProgress(String major, ArrayList<String> completeCourses, ArrayList<String> incompleteCourses) {
-        this.major = major;
-        this.completeCourses = completeCourses;
-        this.incompleteCourses = incompleteCourses;
-    }
 
   public String displayProgress(
     MajorMap majorMap,
-    ArrayList<Grades> completedCourses
+    HashMap<String, ArrayList<Course>> completedCourses
   ) {
-    // Check if courses are completed and print it in toString
-    // Check if courses are not completed and print it in toString
     return "-----Degree Progress-----" + "Current Major: " + this.major;
   }
-
-  /**
-   * Searches for a course by its ID in all course lists.
-   * Returns the first occurrence of the course with the given ID,
-   * or null if not found.
-   *
-   * @param courseId The ID of the course to search for.
-   * @return The Course object if found, null otherwise.
-   */
-  public Course findCourseById(String courseId) {
-    for (Course course : majorCourses) {
-      if (course.getID().equals(courseId)) {
-        return course;
-      }
-    }
-    for (Course course : electiveCourses) {
-      if (course.getID().equals(courseId)) {
-        return course;
-      }
-    }
-    for (Course course : carolinaCoreCourses) {
-      if (course.getID().equals(courseId)) {
-        return course;
-      }
-    }
-    for (Course course : completeCourses) {
-      if (course.getID().equals(courseId)) {
-        return course;
-      }
-    }
-    for (Course course : incompleteCourses) {
-      if (course.getID().equals(courseId)) {
-        return course;
-      }
-    }
-    return null; // Course not found
-  }
-    public String displayProgress(MajorMap majorMap, HashMap<String, ArrayList<Course>> completedCourses) {
-        return "-----Degree Progress-----"
-                + "Current Major: " + this.major;
-    }
 
   public String toString() {
     String result = "\n";
     result += "Current Major: " + this.major + "\n";
-
-    result += "\n********* Major Courses *********\n";
-    if (majorCourses.isEmpty()) {
-      result += "No major courses specified.\n";
-    } else {
-      result += "Major Courses: " + this.majorCourses + "\n";
-    }
-
-    result += "\n********* Elective Courses *********\n";
-    if (electiveCourses.isEmpty()) {
-      result += "No elective courses specified.\n";
-    } else {
-      result += "Elective Courses: " + this.electiveCourses + "\n";
-    }
-
-    result += "\n********* Carolina Core *********\n";
-    if (carolinaCoreCourses.isEmpty()) {
-      result += "No Carolina Core courses specified.\n";
-    } else {
-      result += "Carolina Core Courses: " + this.carolinaCoreCourses + "\n";
-    }
-    public String toString() {
-        String result = "\n";
-        result += "Current Major: " + this.major + "\n";
 
     result += "\n********* Completed Courses *********\n";
     if (completeCourses.isEmpty()) {
@@ -136,26 +52,11 @@ public class DegreeProgress {
     return major;
   }
 
-  public ArrayList<Course> getMajorCourses() {
-    return majorCourses;
-  }
-
-  public ArrayList<Course> getElectiveCourses() {
-    return electiveCourses;
-  }
-
-  public ArrayList<Course> getCarolinaCoreCourses() {
-    return carolinaCoreCourses;
-  }
-
-  public ArrayList<Course> getCompleteCourses() {
+  public ArrayList<String> getCompleteCourses() {
     return completeCourses;
   }
-    public ArrayList<String> getCompleteCourses() {
-        return completeCourses;
-    }
 
-  public ArrayList<Course> getIncompleteCourses() {
+  public ArrayList<String> getIncompleteCourses() {
     return incompleteCourses;
   }
 
@@ -206,9 +107,4 @@ public class DegreeProgress {
 
     return gpa;
   }
-}
-
-    public ArrayList<String> getIncompleteCourses() {
-        return incompleteCourses;
-    }
 }
