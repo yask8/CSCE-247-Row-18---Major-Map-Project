@@ -118,6 +118,22 @@ public class Driver {
     facade.saveCourses();
   }
 
+  public void scenario1() {
+    // Student: Brax West
+    // Junior Computer Science major
+    facade.login("braxwest1@email.sc.edu", "Bestdinoistr3x!");
+    System.out.println(
+      "Login Successful. \nCurrent User: " + facade.getUser().toString()
+    );
+
+    // Degree Progress - courses taken, grades earned, pass or fail, Incomplete courses
+    // GFL Elective needed, look through courses that satisfy requirement, pick one
+    // browse through sample application area topics: Science, Math, Digital Design, Robotics, Speech
+    // choose an app area and pick classes
+    // generate and print to a text file of 8 semester plan
+    // clearly highlights which semester Brax is about to take
+    facade.signOut();
+  }
   public static void main(String[] args) {
     Driver advisingInterface = new Driver();
     advisingInterface.run();
