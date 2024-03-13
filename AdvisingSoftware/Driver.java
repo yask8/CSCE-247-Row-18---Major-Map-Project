@@ -19,7 +19,7 @@ public class Driver {
   public void run() {
     //Testing Scenarios
     //scenarioTesting();
-    //scenarioAddingCourses();
+    scenarioAddingCourses();
 
     // Portias Scenarios
     // scenario1():
@@ -132,69 +132,6 @@ public class Driver {
     // generate and print to a text file of 8 semester plan
     // clearly highlights which semester Brax is about to take
     facade.signOut();
-  }
-
-  /**
-   *
-   * @author Yasmine Kennedy (yask8)
-   */
-  public void scenario2() {
-    // Logging in Osbert
-    facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
-    System.out.println(
-      "Login Successful. \nCurrent User: " + facade.getUser().toString()
-    );
-
-    System.out.println("...Searching for Student and adding to list");
-    facade
-      .getListOfAdvisees()
-      .add(facade.getUserList().getIDByName("Tawnie", "Hill"));
-
-    System.out.println("...Student found and added to list...");
-    System.out.println(facade.getListOfAdvisees().toString());
-    System.out.println(facade.getUser().toString());
-    facade.signOut();
-    // TODO: add Tawnie to advisor list and create the advisor notes
-  }
-
-  public void scenarioAddingCourses() {
-    String name = "CSCE 211 Digital Logic Design";
-    String code = "PR";
-    String description = 
-            "Number systems, Boolean algebra, logic design, sequential machines.";
-    int creditHours = 3;
-    String subject = "CSCE";
-    char passGrade = 'C';
-    boolean elective = false;
-    boolean carolinaCore = false;
-    ArrayList<String> preReqs = new ArrayList<String>();
-    String pre1 = "MATH 141";
-    //String pre2 = "MATH 122";
-    //String pre3 = "MATH 141";
-    //String pre4 = "MATH 141";
-    preReqs.add(pre1);
-    //preReqs.add(pre2);
-    //preReqs.add(pre3);
-    //preReqs.add(pre4);
-    String year = "2";
-    String semester = "3";
-    
-    facade
-      .getCourseList()
-      .addCourse(
-        name,
-        code,
-        description,
-        creditHours,
-        subject,
-        passGrade,
-        elective,
-        carolinaCore,
-        preReqs,
-        year,
-        semester
-      );
-    facade.saveCourses();
   }
 
   public static void main(String[] args) {
