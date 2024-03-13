@@ -65,7 +65,7 @@ public abstract class DataConstants {
     protected static final String MAJOR_UUID = "id";
     protected static final String MAJOR_NAME = "major";
     protected static final String MAJOR_COURSES = "majorCourses";
-    protected static final String MAJOR_ELECTIVE = "majorElective";
+    protected static final String MAJOR_PROGRAM_COURSES = "programCourses";
     protected static final String MAJOR_CORE_EDU = "coreEdu";
     protected static final String MAJOR_APP_AREA = "appArea";
     protected static final String MAJOR_MIN_HOURS = "minTotalHours";
@@ -78,10 +78,7 @@ public abstract class DataConstants {
 
     // Degree Progress Contants
     protected static final String DEGREE_PROGRESS_MAJOR = "major";
-    protected static final String DEGREE_PROGRESS_ELECTIVE_COURSES = "electiveCourses";
     protected static final String DEGREE_PROGRESS_INCOMPLETE_COURSES = "incompleteCourses";
-    protected static final String DEGREE_PROGRESS_CAROLINA_CORE_COURSES = "carolinaCoreCourses";
-    protected static final String DEGREE_PROGRESS_MAJOR_COURSES = "majorCourses";
     protected static final String DEGREE_PROGRESS_COMPLETE_COURSES = "completeCourses";
 
     // Notes Constants

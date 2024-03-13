@@ -12,6 +12,9 @@ public class DegreeProgress {
   private ArrayList<Course> carolinaCoreCourses;
   private ArrayList<Course> completeCourses;
   private ArrayList<Course> incompleteCourses;
+    private String major;
+    private ArrayList<String> completeCourses;
+    private ArrayList<String> incompleteCourses;
 
   public DegreeProgress(
     String major,
@@ -28,6 +31,11 @@ public class DegreeProgress {
     this.completeCourses = completeCourses;
     this.incompleteCourses = incompleteCourses;
   }
+    public DegreeProgress(String major, ArrayList<String> completeCourses, ArrayList<String> incompleteCourses) {
+        this.major = major;
+        this.completeCourses = completeCourses;
+        this.incompleteCourses = incompleteCourses;
+    }
 
   public String displayProgress(
     MajorMap majorMap,
@@ -74,6 +82,10 @@ public class DegreeProgress {
     }
     return null; // Course not found
   }
+    public String displayProgress(MajorMap majorMap, HashMap<String, ArrayList<Course>> completedCourses) {
+        return "-----Degree Progress-----"
+                + "Current Major: " + this.major;
+    }
 
   public String toString() {
     String result = "\n";
@@ -99,6 +111,9 @@ public class DegreeProgress {
     } else {
       result += "Carolina Core Courses: " + this.carolinaCoreCourses + "\n";
     }
+    public String toString() {
+        String result = "\n";
+        result += "Current Major: " + this.major + "\n";
 
     result += "\n********* Completed Courses *********\n";
     if (completeCourses.isEmpty()) {
@@ -136,6 +151,9 @@ public class DegreeProgress {
   public ArrayList<Course> getCompleteCourses() {
     return completeCourses;
   }
+    public ArrayList<String> getCompleteCourses() {
+        return completeCourses;
+    }
 
   public ArrayList<Course> getIncompleteCourses() {
     return incompleteCourses;
@@ -188,4 +206,9 @@ public class DegreeProgress {
 
     return gpa;
   }
+}
+
+    public ArrayList<String> getIncompleteCourses() {
+        return incompleteCourses;
+    }
 }

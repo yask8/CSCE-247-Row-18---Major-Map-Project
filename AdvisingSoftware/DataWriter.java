@@ -98,21 +98,21 @@ public class DataWriter extends DataConstants {
     @SuppressWarnings("unchecked")
     public static JSONObject getUserJSON(User user) {
         JSONObject userJSON = new JSONObject();
-
+    
         userJSON.put(USER_FIRST_NAME, user.getFirstName());
         userJSON.put(USER_LAST_NAME, user.getLastName());
         userJSON.put(USER_EMAIL, user.getEmail());
         userJSON.put(USER_USCID, user.getID().toString());
         userJSON.put(USER_PASSWORD, user.getPassword());
         userJSON.put(USER_TYPE, user.getUserType());
-
+    
         if (user.getUserType().equals("STUDENT")) {
             Student student = (Student) user;
             userJSON.put(STUDENT_CLASS, student.getYear());
             userJSON.put(STUDENT_MAJOR, student.getMajor());
             userJSON.put(STUDENT_APP_AREA, student.getAppArea());
             userJSON.put(STUDENT_CREDITHOURS, student.getCreditHours());
-
+    
             // Convert completed courses to JSON array
             JSONArray completedCoursesArray = new JSONArray();
             for (Grades grade : student.getCompletedCourses()) {
@@ -123,19 +123,27 @@ public class DataWriter extends DataConstants {
             }
             userJSON.put(STUDENT_COMPLETED_COURSES, completedCoursesArray);
             userJSON.put(STUDENT_GPA, student.getGpa());
-
+    
             // Convert degree progress to JSON object
             JSONObject degreeProgressJSON = new JSONObject();
             degreeProgressJSON.put(DEGREE_PROGRESS_MAJOR, student.getDegreeProgress().getMajor());
-            degreeProgressJSON.put(DEGREE_PROGRESS_ELECTIVE_COURSES, student.getDegreeProgress().getElectiveCourses());
-            degreeProgressJSON.put(DEGREE_PROGRESS_INCOMPLETE_COURSES,
-                    student.getDegreeProgress().getIncompleteCourses());
-            degreeProgressJSON.put(DEGREE_PROGRESS_CAROLINA_CORE_COURSES,
-                    student.getDegreeProgress().getCarolinaCoreCourses());
-            degreeProgressJSON.put(DEGREE_PROGRESS_MAJOR_COURSES, student.getDegreeProgress().getMajorCourses());
-            degreeProgressJSON.put(DEGREE_PROGRESS_COMPLETE_COURSES, student.getDegreeProgress().getCompleteCourses());
+    
+            // Convert complete courses to JSON array
+            JSONArray completeCoursesArray = new JSONArray();
+            for (String course : student.getDegreeProgress().getCompleteCourses()) {
+                completeCoursesArray.add(course);
+            }
+            degreeProgressJSON.put(DEGREE_PROGRESS_COMPLETE_COURSES, completeCoursesArray);
+    
+            // Convert incomplete courses to JSON array
+            JSONArray incompleteCoursesArray = new JSONArray();
+            for (String course : student.getDegreeProgress().getIncompleteCourses()) {
+                incompleteCoursesArray.add(course);
+            }
+            degreeProgressJSON.put(DEGREE_PROGRESS_INCOMPLETE_COURSES, incompleteCoursesArray);
+    
             userJSON.put(STUDENT_DEGREE_PROGRESS, degreeProgressJSON);
-
+    
             // Convert advisor notes to JSON array
             JSONArray advisorNotesArray = new JSONArray();
             for (Note note : student.getAdvisorNotes()) {
@@ -147,45 +155,43 @@ public class DataWriter extends DataConstants {
                 advisorNotesArray.add(advisorNoteJSON);
             }
             userJSON.put(STUDENT_ADVISOR_NOTES, advisorNotesArray);
-
+    
             // Convert course planner to JSON object
             JSONObject coursePlannerJSON = new JSONObject();
             JSONArray semestersArray = new JSONArray();
-            for (List<Course> semester : student.getCoursePlanner().getSemesters()) {
+            for (List<String> semester : student.getCoursePlanner().getSemesters()) {
                 JSONArray semesterCoursesArray = new JSONArray();
-                for (Course course : semester) {
-                    JSONObject courseJSON = new JSONObject();
-                    courseJSON.put(COURSE_CREDIT_HOURS, course.getCreditHours());
-                    courseJSON.put(COURSE_PREREQUISITES, course.getPreReqs());
-                    courseJSON.put(COURSE_CODE, course.getCode());
-                    courseJSON.put(COURSE_ELECTIVE, course.isElective());
-                    courseJSON.put(COURSE_YEAR, course.getYear());
-                    courseJSON.put(COURSE_SUBJECT, course.getSubject());
-                    courseJSON.put(COURSE_NAME, course.getName());
-                    courseJSON.put(COURSE_DESCRIPTION, course.getDescription());
-                    courseJSON.put(COURSE_SEMESTER, course.getSemester());
-                    courseJSON.put(COURSE_ID, course.getID());
-                    courseJSON.put(COURSE_PASS_GRADE, String.valueOf(course.getPassGrade()));
-                    courseJSON.put(COURSE_CAROLINA_CORE, course.isCarolinaCore());
-                    semesterCoursesArray.add(courseJSON);
+                for (String course : semester) {
+                    semesterCoursesArray.add(course);
                 }
                 semestersArray.add(semesterCoursesArray);
             }
             coursePlannerJSON.put(COURSE_PLANNER_SEMESTERS, semestersArray);
             userJSON.put(STUDENT_COURSE_PLANNER, coursePlannerJSON);
         }
-
+    
         if (user.getUserType().equals("ADMIN")) {
             Admin admin = (Admin) user;
             userJSON.put(ADMIN_CHANGES_MADE, admin.getChangesMade());
         }
-
+    
         if (user.getUserType().equals("ADVISOR")) {
             Advisor advisor = (Advisor) user;
-            userJSON.put(ADVISOR_LIST_OF_ADVISEES, advisor.getListOfAdvisees());
-            userJSON.put(ADVISOR_LIST_OF_FAILING_STUDENTS, advisor.getListOfFailingStudents());
+            JSONArray adviseesArray = new JSONArray();
+            JSONArray failingStudentsArray = new JSONArray();
+    
+            for (UUID uuid : advisor.getListOfAdvisees()) {
+                adviseesArray.add(uuid.toString());
+            }
+    
+            for (UUID uuid : advisor.getListOfFailingStudents()) {
+                failingStudentsArray.add(uuid.toString());
+            }
+    
+            userJSON.put(ADVISOR_LIST_OF_ADVISEES, adviseesArray);
+            userJSON.put(ADVISOR_LIST_OF_FAILING_STUDENTS, failingStudentsArray);
         }
-
+    
         return userJSON;
     }
 
@@ -204,7 +210,7 @@ public class DataWriter extends DataConstants {
     public static void saveCourses(ArrayList<Course> courses) {
         JSONArray coursesArray = new JSONArray();
         JSONArray existingData = readExistingData(COURSE_FILE_NAME);
-    
+
         for (Object obj : existingData) {
             coursesArray.add(obj);
         }
@@ -224,10 +230,10 @@ public class DataWriter extends DataConstants {
                 prerequisitesArray.add(prerequisite);
             }
             courseJSON.put(COURSE_PREREQUISITES, prerequisitesArray);
-    
+
             courseJSON.put(COURSE_SEMESTER, course.getSemester());
             courseJSON.put(COURSE_YEAR, course.getYear());
-    
+
             // Check if the course with the same ID already exists
             boolean courseExists = false;
             for (int i = 0; i < coursesArray.size(); i++) {
@@ -240,13 +246,13 @@ public class DataWriter extends DataConstants {
                     break;
                 }
             }
-    
+
             // If the course doesn't exist, add it to the coursesArray
             if (!courseExists) {
                 coursesArray.add(courseJSON);
             }
         }
-    
+
         writeJSONToFile(coursesArray, COURSE_FILE_NAME);
     }
 
@@ -261,47 +267,46 @@ public class DataWriter extends DataConstants {
     public static void saveMajorMaps(ArrayList<MajorMap> majorMaps) {
         JSONArray majorMapsArray = new JSONArray();
         JSONArray existingData = readExistingData(MAJOR_FILE_NAME);
-    
+
         // Add existing major maps to majorMapsArray
         for (Object obj : existingData) {
             majorMapsArray.add(obj);
         }
-    
+
         // Update existing major maps or add new ones
         for (MajorMap majorMap : majorMaps) {
             JSONObject majorMapJSON = new JSONObject();
             majorMapJSON.put(MAJOR_NAME, majorMap.getMajor());
-            
+
             JSONArray coursesArray = new JSONArray();
-            for (Course course : majorMap.getMajorCourses()) {
-                coursesArray.add(course.getID());
+            for (String course : majorMap.getMajorCourses()) {
+                coursesArray.add(course);
             }
             majorMapJSON.put(MAJOR_COURSES, coursesArray);
 
-            JSONArray electivesArray = new JSONArray();
-            for (Course course : majorMap.getElectives()) {
-                electivesArray.add(course.getID());
+            JSONArray programCourses = new JSONArray();
+            for (String course : majorMap.getProgramCourses()) {
+                programCourses.add(course);
             }
-            majorMapJSON.put(MAJOR_ELECTIVE, electivesArray);
+            majorMapJSON.put(MAJOR_PROGRAM_COURSES, programCourses);
 
             JSONArray coreEduArray = new JSONArray();
-            for (Course course : majorMap.getCoreEdu()) {
-                coreEduArray.add(course.getID());
+            for (String course : majorMap.getCoreEdu()) {
+                coreEduArray.add(course);
             }
             majorMapJSON.put(MAJOR_CORE_EDU, coreEduArray);
-        
+
             JSONArray appAreaArray = new JSONArray();
-            for (Course course : majorMap.getAppArea()) {
-                appAreaArray.add(course.getID());
+            for (String course : majorMap.getAppArea()) {
+                appAreaArray.add(course);
             }
             majorMapJSON.put(MAJOR_APP_AREA, appAreaArray);
-            
 
             majorMapJSON.put(MAJOR_MIN_HOURS, majorMap.getMinTotalHours());
             majorMapJSON.put(MAJOR_MIN_GRAD_HOURS, majorMap.getMinGradHours());
             majorMapJSON.put(MAJOR_CC_HOURS, majorMap.getCaroCoreHours());
             majorMapJSON.put(MAJOR_MIN_GPA, majorMap.getMinGPA());
-    
+
             // Check if the major map with the same name already exists
             boolean majorMapExists = false;
             for (int i = 0; i < majorMapsArray.size(); i++) {
@@ -314,16 +319,17 @@ public class DataWriter extends DataConstants {
                     break;
                 }
             }
-    
+
             // If the major map doesn't exist, add it to the majorMapsArray
             if (!majorMapExists) {
                 majorMapsArray.add(majorMapJSON);
             }
         }
-    
+
         // Write majorMapsArray to the file
         writeJSONToFile(majorMapsArray, MAJOR_FILE_NAME);
     }
+
     /**
      * Writes the JSON array to a file with the given file name.
      *
@@ -354,61 +360,5 @@ public class DataWriter extends DataConstants {
             e.printStackTrace();
         }
         return existingData;
-    }
-
-    public static void testSaveUsers() {
-        // Creating sample users
-        ArrayList<User> users = new ArrayList<>();
-
-        // Generate UUIDs for uscID
-        UUID studentUscID = UUID.randomUUID();
-        UUID adminUscID = UUID.randomUUID();
-        UUID advisorUscID = UUID.randomUUID();
-
-        Student student = new Student("Test", "1", "Test1@example.com", studentUscID, "12345", "STUDENT", "Sophomore",
-                "Computer Science","Undeclared", 60, new ArrayList<Grades>(), 3.5, null, null, null);
-        Admin admin = new Admin("Test", "2", "Test2@example.com", adminUscID, "54321", "ADMIN",
-                new ArrayList<String>());
-        Advisor advisor = new Advisor("Test", "3", "Test3@example.com", advisorUscID, "98765", "ADVISOR",
-                new ArrayList<UUID>(), new ArrayList<UUID>());
-
-        // Adding users to the list
-        users.add(student);
-        users.add(admin);
-        users.add(advisor);
-
-        // Saving users
-        DataWriter.saveUsers(users);
-        System.out.println("Users saved successfully.");
-    }
-
-    public static void testSaveCourses() {
-
-        ArrayList<Course> courses = new ArrayList<>();
-        Course course1 = new Course("TEST 1", "Introduction to Computer Science", "CSCE", "Introductory course", 3, "A",
-                'A', false, true, new ArrayList<String>(), "Fall", "2022");
-        Course course2 = new Course("TEST 2", "Calculus", "MATH", "Calculus course", 4, "B", 'B', false, true,
-                new ArrayList<String>(), "Fall", "2022");
-
-        courses.add(course1);
-        courses.add(course2);
-
-        DataWriter.saveCourses(courses);
-        System.out.println("Courses saved successfully.");
-    }
-
-    public static void testSaveMajorMaps() {
-
-        ArrayList<MajorMap> majorMaps = new ArrayList<>();
-        MajorMap majorMap1 = new MajorMap("Test Major 1", new ArrayList<Course>(), new ArrayList<Course>(),
-                new ArrayList<Course>(), new ArrayList<Course>(), 0, 0, 0, null);
-        MajorMap majorMap2 = new MajorMap("Test Major 2", new ArrayList<Course>(), new ArrayList<Course>(),
-                new ArrayList<Course>(), new ArrayList<Course>(), 0, 0, 0, null);
-
-        majorMaps.add(majorMap1);
-        majorMaps.add(majorMap2);
-
-        DataWriter.saveMajorMaps(majorMaps);
-        System.out.println("Major maps saved successfully.");
     }
 }

@@ -13,7 +13,7 @@ public class CoursePlanner {
   /**
    * Attributes
    */
-  private ArrayList<ArrayList<Course>> semesters;
+  private ArrayList<ArrayList<String>> semesters;
 
   /**
    * Constructor for the CoursePlanner
@@ -31,32 +31,30 @@ public class CoursePlanner {
    * Adds a course to the specified semester
    * 
    * @param semesterIndex the index of the semester (1-based)
-   * @param course        the course to add
+   * @param courseName    the name of the course to add
    */
-  public void addCourse(int semesterIndex, Course course) {
+  public void addCourse(int semesterIndex, String courseName) {
     if (semesterIndex >= 1 && semesterIndex <= 8) {
-      this.semesters.get(semesterIndex - 1).add(course);
+      this.semesters.get(semesterIndex - 1).add(courseName);
     } else {
       System.out.println("Invalid semester index.");
     }
   }
 
   /**
-   * Removes a course from the specified semester by its code
+   * Removes a course from the specified semester by its name
    * 
    * @param semesterIndex the index of the semester (1-based)
-   * @param UUID          the UUID of the course to remove
+   * @param courseName    the name of the course to remove
    */
-  public void removeCourse(int semesterIndex, String code) {
+  public void removeCourse(int semesterIndex, String courseName) {
     if (semesterIndex >= 1 && semesterIndex <= 8) {
-      ArrayList<Course> semesterCourses = this.semesters.get(semesterIndex - 1);
-      for (Course course : semesterCourses) {
-        if (course.getID().equals(code)) {
-          semesterCourses.remove(course);
-          return;
-        }
+      ArrayList<String> semesterCourses = this.semesters.get(semesterIndex - 1);
+      if (semesterCourses.contains(courseName)) {
+        semesterCourses.remove(courseName);
+      } else {
+        System.out.println("Course '" + courseName + "' not found in semester " + semesterIndex);
       }
-      System.out.println("Course with UUID " + code + " not found in semester " + semesterIndex);
     } else {
       System.out.println("Invalid semester index.");
     }
@@ -71,24 +69,25 @@ public class CoursePlanner {
     String result = "\n";
     for (int i = 1; i <= 8; i++) {
       result += "********** Semester " + i + " *********" + "\n";
-      ArrayList<Course> semesterCourses = this.semesters.get(i - 1);
+      ArrayList<String> semesterCourses = this.semesters.get(i - 1);
       if (semesterCourses.isEmpty()) {
         result += "No courses added to this semester.\n";
       } else {
-        for (Course course : semesterCourses) {
-          result += course.toString() + "\n";
+        for (String courseName : semesterCourses) {
+          result += courseName + "\n";
         }
       }
       result += "\n";
     }
     return result;
   }
-    /**
-     * Getter for the semesters attribute
-     * 
-     * @return the semesters
-     */
-    public ArrayList<ArrayList<Course>> getSemesters() {
-      return semesters;
+
+  /**
+   * Getter for the semesters attribute
+   * 
+   * @return the semesters
+   */
+  public ArrayList<ArrayList<String>> getSemesters() {
+    return semesters;
   }
 }
