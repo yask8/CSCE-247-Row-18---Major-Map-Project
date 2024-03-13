@@ -22,7 +22,7 @@ public class Driver {
     // scenarioAddingCourses;
 
     // Portias Scenarios
-    // scenario1();
+    scenario1();
     // scenario2();
 
   }
@@ -83,6 +83,13 @@ public class Driver {
 
   public void scenario1() {
     // Student: Brax West
+    facade.signUpStudent(
+      "Brax",
+      "West",
+      "braxwest1@email.sc.edu",
+      "Bestdinoistr3x"
+    );
+    facade.signOut();
     // Junior Computer Science major
     // Degree Progress - courses taken, grades earned, pass or fail, Incomplete courses
     // GFL Elective needed, look through courses that satisfy requirement, pick one
