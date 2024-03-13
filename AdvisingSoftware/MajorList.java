@@ -1,8 +1,9 @@
 /**
  * MajorList class for managing majors
- * @author yask8(Yasmine Kennedy)
+ * @author yask8 (Yasmine Kennedy)
  */
 package AdvisingSoftware;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -26,11 +27,16 @@ public class MajorList {
             if (!majorList.isLoaded()) {
                 ArrayList<MajorMap> majorData = DataLoader.loadMajors();
                 for (MajorMap majorInData : majorData) {
-                    majorList.addMajor(majorInData.getMajor(),
-                            majorInData.getMajorCourses(),
-                            majorInData.getProgramCourses(),
-                            majorInData.getCoreEdu(),
-                            majorInData.getAppArea(),
+                    majorList.addMajor(
+                            majorInData.getMajor(),
+                            majorInData.getSemester1(),
+                            majorInData.getSemester2(),
+                            majorInData.getSemester3(),
+                            majorInData.getSemester4(),
+                            majorInData.getSemester5(),
+                            majorInData.getSemester6(),
+                            majorInData.getSemester7(),
+                            majorInData.getSemester8(),
                             majorInData.getMinTotalHours(),
                             majorInData.getMinGradHours(),
                             majorInData.getCaroCoreHours(),
@@ -51,7 +57,7 @@ public class MajorList {
         return null;
     }
 
-    public MajorMap getMajorMapbyID(UUID id) {
+    public MajorMap getMajorMapById(UUID id) {
         for (MajorMap existingMajor : majors) {
             if (existingMajor.getId().equals(id)) {
                 return existingMajor;
@@ -62,20 +68,28 @@ public class MajorList {
 
     public void addMajor(
             String majorName,
-            ArrayList<String> majorCourses,
-            ArrayList<String> majorElectives,
-            ArrayList<String> coreEdu,
-            ArrayList<String> appArea,
+            ArrayList<String> semester1,
+            ArrayList<String> semester2,
+            ArrayList<String> semester3,
+            ArrayList<String> semester4,
+            ArrayList<String> semester5,
+            ArrayList<String> semester6,
+            ArrayList<String> semester7,
+            ArrayList<String> semester8,
             int minTotalHours,
             int minGradHours,
             int caroCoreHours,
             double minGPA) {
         MajorMap newMajorMap = new MajorMap(
                 majorName,
-                majorCourses,
-                majorElectives,
-                coreEdu,
-                appArea,
+                semester1,
+                semester2,
+                semester3,
+                semester4,
+                semester5,
+                semester6,
+                semester7,
+                semester8,
                 minTotalHours,
                 minGradHours,
                 caroCoreHours,
@@ -87,7 +101,7 @@ public class MajorList {
         for (MajorMap existingMajor : majors) {
             if (existingMajor.getMajor().equals(major)) {
                 majors.remove(existingMajor);
-                return; 
+                return;
             }
         }
         System.out.println(major + " does not exist.");

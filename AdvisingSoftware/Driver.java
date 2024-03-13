@@ -18,12 +18,12 @@ public class Driver {
 
   public void run() {
     //Testing Scenarios
-    // scenarioTesting();
-    scenarioAddingCourses();
+    //scenarioTesting();
+    //scenarioAddingCourses();
 
     // Portias Scenarios
-    //scenario1();
-    //scenario2();
+    // scenario1():
+    // scenario2();
   }
 
   /*
@@ -57,27 +57,64 @@ public class Driver {
     System.out.println("\nStudent did not see HIST101 and looks it up\n");
     System.out.println(facade.getCourseById("HIST101"));
 
-    System.out.println(
-      "\nStudent adds BIOL101 into the course planner for semester 2\n"
-    );
+    System.out.println("\nStudent adds BIOL101 into the course planner for semester 2\n");
     facade.getStudentCoursePlanner().addCourse(2, "BIOL101");
     System.out.println(facade.getStudentCoursePlanner().toString());
 
     System.out.println(
-      "\nStudent wants to switch from BIOL101 and trys to remove it from semester 2 but makes a typo and inputs the wrong semester\n"
-    );
+        "\nStudent wants to switch from BIOL101 and trys to remove it from semester 2 but makes a typo and inputs the wrong semester\n");
     facade.getStudentCoursePlanner().removeCourse(1, "BIOL101");
 
-    System.out.println(
-      "\nStudent wants to switch from BIOL101 and removes it from the course planner semester 2\n"
-    );
+    System.out.println("\nStudent wants to switch from BIOL101 and removes it from the course planner semester 2\n");
     facade.getStudentCoursePlanner().removeCourse(2, "BIOL101");
     System.out.println(facade.getStudentCoursePlanner().toString());
 
-    System.out.println(
-      "\nStudent Signs out and changes are saved during sign out\n"
-    );
+    System.out.println("\nStudent Signs out and changes are saved during sign out\n");
     facade.signOut();
+  }
+
+  /**
+   * 
+   * @author Yasmine Kennedy (yask8)
+   */
+  public void scenario2() {
+    // Logging in Osbert
+    facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    System.out.println("Login Successful. \nCurrent User: " + facade.getUser().toString());
+
+    System.out.println("...Searching for Student and adding to list");
+    facade.getListOfAdvisees().add(facade.getUserList().getIDByName("Tawnie", "Hill"));
+
+    System.out.println("...Student found and added to list...");
+    System.out.println(facade.getListOfAdvisees().toString());
+    System.out.println(facade.getUser().toString());
+    facade.signOut();
+
+    // TODO: create the advisor notes
+  }
+
+  public void scenarioAddingCourses() {
+    String name = "MATH 141 Calculus 1";
+    String code = "CC-ARP";
+    String description = "Functions, limits, derivatives, introduction to integrals, and the Fundamental Theorem of Calculus";
+    int creditHours = 4;
+    String subject = "MATH";
+    char passGrade = 'C';
+    boolean elective = false;
+    boolean carolinaCore = true;
+    ArrayList<String> preReqs = new ArrayList<String>();
+    String pre1 = "MATH 112";
+    String pre2 = "MATH 115";
+    String pre3 = "MATH 116";
+    preReqs.add(pre1);
+    preReqs.add(pre2);
+    preReqs.add(pre3);
+    String year = "1";
+    String semester = "1";
+
+    facade.getCourseList().addCourse(name, code, description, creditHours, subject, passGrade, elective, carolinaCore,
+        preReqs, year, semester);
+    facade.saveCourses();
   }
 
   public void scenario1() {

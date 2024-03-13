@@ -28,7 +28,7 @@ public abstract class DataConstants {
     protected static final String STUDENT_FILE_NAME = "Json/students.json";
     protected static final String STUDENT_CLASS = "class";
     protected static final String STUDENT_MAJOR = "major";
-    protected static final String STUDENT_APP_AREA ="applicationArea";
+    protected static final String STUDENT_APP_AREA = "applicationArea";
     protected static final String STUDENT_CREDITHOURS = "creditHours";
     protected static final String STUDENT_COMPLETED_COURSES = "completedCourses";
     protected static final String STUDENT_GPA = "gpa";
@@ -64,10 +64,14 @@ public abstract class DataConstants {
     protected static final String MAJOR_FILE_NAME = "Json/majors.json";
     protected static final String MAJOR_UUID = "id";
     protected static final String MAJOR_NAME = "major";
-    protected static final String MAJOR_COURSES = "majorCourses";
-    protected static final String MAJOR_PROGRAM_COURSES = "programCourses";
-    protected static final String MAJOR_CORE_EDU = "coreEdu";
-    protected static final String MAJOR_APP_AREA = "appArea";
+    protected static final String MAJOR_SEMESTER_1 = "semester 1";
+    protected static final String MAJOR_SEMESTER_2 = "semester 2";
+    protected static final String MAJOR_SEMESTER_3 = "semester 3";
+    protected static final String MAJOR_SEMESTER_4 = "semester 4";
+    protected static final String MAJOR_SEMESTER_5 = "semester 5";
+    protected static final String MAJOR_SEMESTER_6 = "semester 6";
+    protected static final String MAJOR_SEMESTER_7 = "semester 7";
+    protected static final String MAJOR_SEMESTER_8 = "semester 8";
     protected static final String MAJOR_MIN_HOURS = "minTotalHours";
     protected static final String MAJOR_MIN_GRAD_HOURS = "minGradHours";
     protected static final String MAJOR_CC_HOURS = "caroCoreHours";
@@ -85,7 +89,7 @@ public abstract class DataConstants {
     protected static final String NOTE_NOTE = "note";
     protected static final String NOTE_DATE = "date";
 
-    //Grades Constants
+    // Grades Constants
     protected static final String GRADES_COURSE_NAME = "courseName";
     protected static final String GRADES_GRADE = "grade";
 }

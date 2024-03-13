@@ -7,111 +7,144 @@ public class MajorMap {
 
   private UUID id;
   private String major;
-  private ArrayList<String> majorCourses;
-  private ArrayList<String> programCourses;
-  private ArrayList<String> coreEdu;
-  private ArrayList<String> appArea;
+  private ArrayList<String> semester1;
+  private ArrayList<String> semester2;
+  private ArrayList<String> semester3;
+  private ArrayList<String> semester4;
+  private ArrayList<String> semester5;
+  private ArrayList<String> semester6;
+  private ArrayList<String> semester7;
+  private ArrayList<String> semester8;
   private int minTotalHours;
   private int minGradHours;
   private int caroCoreHours;
   private Double minGPA;
 
   public MajorMap(
-      UUID id,
-      String major,
-      ArrayList<String> majorCourses,
-      ArrayList<String> programCourses,
-      ArrayList<String> coreEdu,
-      ArrayList<String> appArea,
-      int minTotalHours,
-      int minGradHours,
-      int caroCoreHours,
-      Double minGPA) {
-    this.id = id;
-    this.major = major;
-    this.majorCourses = majorCourses;
-    this.programCourses = programCourses;
-    this.coreEdu = coreEdu;
-    this.appArea = appArea;
-    this.minTotalHours = minTotalHours;
-    this.minGradHours = minGradHours;
-    this.caroCoreHours = caroCoreHours;
-    this.minGPA = minGPA;
+          UUID id,
+          String major,
+          ArrayList<String> semester1,
+          ArrayList<String> semester2,
+          ArrayList<String> semester3,
+          ArrayList<String> semester4,
+          ArrayList<String> semester5,
+          ArrayList<String> semester6,
+          ArrayList<String> semester7,
+          ArrayList<String> semester8,
+          int minTotalHours,
+          int minGradHours,
+          int caroCoreHours,
+          Double minGPA) {
+      this.id = id;
+      this.major = major;
+      this.semester1 = semester1;
+      this.semester2 = semester2;
+      this.semester3 = semester3;
+      this.semester4 = semester4;
+      this.semester5 = semester5;
+      this.semester6 = semester6;
+      this.semester7 = semester7;
+      this.semester8 = semester8;
+      this.minTotalHours = minTotalHours;
+      this.minGradHours = minGradHours;
+      this.caroCoreHours = caroCoreHours;
+      this.minGPA = minGPA;
   }
 
   public MajorMap(
-      String major,
-      ArrayList<String> majorCourses,
-      ArrayList<String> programCourses,
-      ArrayList<String> coreEdu,
-      ArrayList<String> appArea,
-      int minTotalHours,
-      int minGradHours,
-      int caroCoreHours,
-      Double minGPA) {
-    this.id = UUID.randomUUID();
-    this.major = major;
-    this.majorCourses = majorCourses;
-    this.programCourses = programCourses;
-    this.coreEdu = coreEdu;
-    this.appArea = appArea;
-    this.minTotalHours = minTotalHours;
-    this.minGradHours = minGradHours;
-    this.caroCoreHours = caroCoreHours;
-    this.minGPA = minGPA;
+          String major,
+          ArrayList<String> semester1,
+          ArrayList<String> semester2,
+          ArrayList<String> semester3,
+          ArrayList<String> semester4,
+          ArrayList<String> semester5,
+          ArrayList<String> semester6,
+          ArrayList<String> semester7,
+          ArrayList<String> semester8,
+          int minTotalHours,
+          int minGradHours,
+          int caroCoreHours,
+          Double minGPA) {
+      this.id = UUID.randomUUID();
+      this.major = major;
+      this.semester1 = semester1;
+      this.semester2 = semester2;
+      this.semester3 = semester3;
+      this.semester4 = semester4;
+      this.semester5 = semester5;
+      this.semester6 = semester6;
+      this.semester7 = semester7;
+      this.semester8 = semester8;
+      this.minTotalHours = minTotalHours;
+      this.minGradHours = minGradHours;
+      this.caroCoreHours = caroCoreHours;
+      this.minGPA = minGPA;
   }
 
   public void deleteMajor(String major) {
     if (this.major.equals(major)) {
-      this.major = null;
-      this.majorCourses = null;
-      this.programCourses = null; 
-      this.coreEdu = null;
-      this.appArea = null;
-      this.id = null;
-      this.minTotalHours = 0;
-      this.minGradHours = 0;
-      this.caroCoreHours = 0;
-      this.minGPA = 0.0;
+        this.major = null;
+        this.semester1 = null;
+        this.semester2 = null;
+        this.semester3 = null;
+        this.semester4 = null;
+        this.semester5 = null;
+        this.semester6 = null;
+        this.semester7 = null;
+        this.semester8 = null;
+        this.id = null;
+        this.minTotalHours = 0;
+        this.minGradHours = 0;
+        this.caroCoreHours = 0;
+        this.minGPA = 0.0;
     }
-  }
+}
 
-  public void displayMajorMap(String major) {
+public void displayMajorMap(String major) {
     if (this.major.equals(major)) {
-      System.out.println("\n************ Major Map *************");
-      System.out.println("Major: " + this.major);
-      System.out.println("MajorMap ID: " + this.id);
-      System.out.println("Major Courses: " + this.majorCourses);
-      System.out.println("Program Courses: " + this.programCourses); 
-      System.out.println("Carolina Core: " + this.coreEdu);
-      System.out.println("Application Area: " + this.appArea);
-      System.out.println("Minimum Total Hours: " + this.minTotalHours);
-      System.out.println("Minimum Grad Hours: " + this.minGradHours);
-      System.out.println("Carolina Core Hours: " + this.caroCoreHours);
-      System.out.println("Minimum GPA: " + this.minGPA);
+        System.out.println("\n************ Major Map *************");
+        System.out.println("Major: " + this.major);
+        System.out.println("MajorMap ID: " + this.id);
+        System.out.println("Semester 1: " + this.semester1);
+        System.out.println("Semester 2: " + this.semester2);
+        System.out.println("Semester 3: " + this.semester3);
+        System.out.println("Semester 4: " + this.semester4);
+        System.out.println("Semester 5: " + this.semester5);
+        System.out.println("Semester 6: " + this.semester6);
+        System.out.println("Semester 7: " + this.semester7);
+        System.out.println("Semester 8: " + this.semester8);
+        System.out.println("Minimum Total Hours: " + this.minTotalHours);
+        System.out.println("Minimum Grad Hours: " + this.minGradHours);
+        System.out.println("Carolina Core Hours: " + this.caroCoreHours);
+        System.out.println("Minimum GPA: " + this.minGPA);
     } else {
-      System.out.println("No matching major found.");
+        System.out.println("No matching major found.");
     }
-  }
+}
 
-  public String toString() {
+public String toString() {
     return "\n********* MAJOR MAP *********\n" +
-          "Major: " + this.major + "\n" +
-          "MajorMap ID: " + this.id + "\n" +
-          "\n********* Minimum Requirements *********\n" +
-          "Minimum Total Hours: " + this.minTotalHours + "\n" +
-          "Minimum Grad Hours: " + this.minGradHours + "\n" +
-          "Carolina Core Hours: " + this.caroCoreHours + "\n" +
-          "Minimum GPA: " + this.minGPA + "\n" +
-          "\n********* Major Courses *********\n" +
-          "Major Courses: " + this.majorCourses + "\n" +
-          "\n********* Program Courses *********\n" +
-          "Program Courses: " + this.programCourses + "\n" + 
-          "\n********* Carolina Core *********\n" +
-          "Carolina Core: " + this.coreEdu + "\n" +
-          "\n********* Application Area *********\n" +
-          "Application Area: " + this.appArea + "\n";
-  }
+            "Major: " + this.major + "\n" +
+            "MajorMap ID: " + this.id + "\n" +
+            "\n********* Minimum Requirements *********\n" +
+            "Minimum Total Hours: " + this.minTotalHours + "\n" +
+            "Minimum Grad Hours: " + this.minGradHours + "\n" +
+            "Carolina Core Hours: " + this.caroCoreHours + "\n" +
+            "Minimum GPA: " + this.minGPA + "\n" +
+            "\n********* By Semester Details *********\n" +
+            "\n********* Year 1 *********\n" +
+            "Semester 1: " + this.semester1 + "\n" +
+            "Semester 2: " + this.semester2 + "\n" +
+            "\n********* Year 2 *********\n" +
+            "Semester 3: " + this.semester3 + "\n" +
+            "Semester 4: " + this.semester4 + "\n" +
+            "\n********* Year 3 *********\n" +
+            "Semester 5: " + this.semester5 + "\n" +
+            "Semester 6: " + this.semester6 + "\n" +
+            "\n********* Year 4 *********\n" +
+            "Semester 7: " + this.semester7 + "\n" +
+            "Semester 8: " + this.semester8 + "\n";
+}
 
   public UUID getId() {
     return id;
@@ -120,22 +153,38 @@ public class MajorMap {
   public String getMajor() {
     return major;
   }
+  public ArrayList<String> getSemester1() {
+    return semester1;
+}
 
-  public ArrayList<String> getMajorCourses() {
-    return majorCourses;
-  }
+public ArrayList<String> getSemester2() {
+    return semester2;
+}
 
-  public ArrayList<String> getProgramCourses() {
-    return programCourses;
-  }
+public ArrayList<String> getSemester3() {
+    return semester3;
+}
 
-  public ArrayList<String> getCoreEdu() {
-    return coreEdu;
-  }
+public ArrayList<String> getSemester4() {
+    return semester4;
+}
 
-  public ArrayList<String> getAppArea() {
-    return appArea;
-  }
+public ArrayList<String> getSemester5() {
+    return semester5;
+}
+
+public ArrayList<String> getSemester6() {
+    return semester6;
+}
+
+public ArrayList<String> getSemester7() {
+    return semester7;
+}
+
+public ArrayList<String> getSemester8() {
+    return semester8;
+}
+
 
   public int getMinTotalHours() {
     return minTotalHours;
@@ -178,7 +227,9 @@ public class MajorMap {
   }
 
   public boolean containsCourse(String courseName) {
-    return majorCourses.contains(courseName) || programCourses.contains(courseName) || 
-           coreEdu.contains(courseName) || appArea.contains(courseName);
-  }
+    return semester1.contains(courseName) || semester2.contains(courseName) || 
+           semester3.contains(courseName) || semester4.contains(courseName) ||
+           semester5.contains(courseName) || semester6.contains(courseName) ||
+           semester7.contains(courseName) || semester8.contains(courseName);
+}
 }

@@ -98,21 +98,21 @@ public class DataWriter extends DataConstants {
     @SuppressWarnings("unchecked")
     public static JSONObject getUserJSON(User user) {
         JSONObject userJSON = new JSONObject();
-    
+
         userJSON.put(USER_FIRST_NAME, user.getFirstName());
         userJSON.put(USER_LAST_NAME, user.getLastName());
         userJSON.put(USER_EMAIL, user.getEmail());
         userJSON.put(USER_USCID, user.getID().toString());
         userJSON.put(USER_PASSWORD, user.getPassword());
         userJSON.put(USER_TYPE, user.getUserType());
-    
+
         if (user.getUserType().equals("STUDENT")) {
             Student student = (Student) user;
             userJSON.put(STUDENT_CLASS, student.getYear());
             userJSON.put(STUDENT_MAJOR, student.getMajor());
             userJSON.put(STUDENT_APP_AREA, student.getApplicationArea());
             userJSON.put(STUDENT_CREDITHOURS, student.getCreditHours());
-    
+
             // Convert completed courses to JSON array
             JSONArray completedCoursesArray = new JSONArray();
             for (Grades grade : student.getCompletedCourses()) {
@@ -123,27 +123,27 @@ public class DataWriter extends DataConstants {
             }
             userJSON.put(STUDENT_COMPLETED_COURSES, completedCoursesArray);
             userJSON.put(STUDENT_GPA, student.getGpa());
-    
+
             // Convert degree progress to JSON object
             JSONObject degreeProgressJSON = new JSONObject();
             degreeProgressJSON.put(DEGREE_PROGRESS_MAJOR, student.getDegreeProgress().getMajor());
-    
+
             // Convert complete courses to JSON array
             JSONArray completeCoursesArray = new JSONArray();
             for (String course : student.getDegreeProgress().getCompleteCourses()) {
                 completeCoursesArray.add(course);
             }
             degreeProgressJSON.put(DEGREE_PROGRESS_COMPLETE_COURSES, completeCoursesArray);
-    
+
             // Convert incomplete courses to JSON array
             JSONArray incompleteCoursesArray = new JSONArray();
             for (String course : student.getDegreeProgress().getIncompleteCourses()) {
                 incompleteCoursesArray.add(course);
             }
             degreeProgressJSON.put(DEGREE_PROGRESS_INCOMPLETE_COURSES, incompleteCoursesArray);
-    
+
             userJSON.put(STUDENT_DEGREE_PROGRESS, degreeProgressJSON);
-    
+
             // Convert advisor notes to JSON array
             JSONArray advisorNotesArray = new JSONArray();
             for (Note note : student.getAdvisorNotes()) {
@@ -155,7 +155,7 @@ public class DataWriter extends DataConstants {
                 advisorNotesArray.add(advisorNoteJSON);
             }
             userJSON.put(STUDENT_ADVISOR_NOTES, advisorNotesArray);
-    
+
             // Convert course planner to JSON object
             JSONObject coursePlannerJSON = new JSONObject();
             JSONArray semestersArray = new JSONArray();
@@ -169,29 +169,29 @@ public class DataWriter extends DataConstants {
             coursePlannerJSON.put(COURSE_PLANNER_SEMESTERS, semestersArray);
             userJSON.put(STUDENT_COURSE_PLANNER, coursePlannerJSON);
         }
-    
+
         if (user.getUserType().equals("ADMIN")) {
             Admin admin = (Admin) user;
             userJSON.put(ADMIN_CHANGES_MADE, admin.getChangesMade());
         }
-    
+
         if (user.getUserType().equals("ADVISOR")) {
             Advisor advisor = (Advisor) user;
             JSONArray adviseesArray = new JSONArray();
             JSONArray failingStudentsArray = new JSONArray();
-    
+
             for (UUID uuid : advisor.getListOfAdvisees()) {
                 adviseesArray.add(uuid.toString());
             }
-    
+
             for (UUID uuid : advisor.getListOfFailingStudents()) {
                 failingStudentsArray.add(uuid.toString());
             }
-    
+
             userJSON.put(ADVISOR_LIST_OF_ADVISEES, adviseesArray);
             userJSON.put(ADVISOR_LIST_OF_FAILING_STUDENTS, failingStudentsArray);
         }
-    
+
         return userJSON;
     }
 
@@ -234,20 +234,19 @@ public class DataWriter extends DataConstants {
             courseJSON.put(COURSE_SEMESTER, course.getSemester());
             courseJSON.put(COURSE_YEAR, course.getYear());
 
-            // Check if the course with the same ID already exists
             boolean courseExists = false;
             for (int i = 0; i < coursesArray.size(); i++) {
                 JSONObject existingCourseJSON = (JSONObject) coursesArray.get(i);
                 String existingCourseID = (String) existingCourseJSON.get(COURSE_ID);
                 if (existingCourseID.equals(course.getID())) {
-                    // Update the existing course
+                   
                     coursesArray.set(i, courseJSON);
                     courseExists = true;
                     break;
                 }
             }
 
-            // If the course doesn't exist, add it to the coursesArray
+    
             if (!courseExists) {
                 coursesArray.add(courseJSON);
             }
@@ -268,65 +267,48 @@ public class DataWriter extends DataConstants {
         JSONArray majorMapsArray = new JSONArray();
         JSONArray existingData = readExistingData(MAJOR_FILE_NAME);
 
-        // Add existing major maps to majorMapsArray
         for (Object obj : existingData) {
             majorMapsArray.add(obj);
         }
 
-        // Update existing major maps or add new ones
+        
         for (MajorMap majorMap : majorMaps) {
             JSONObject majorMapJSON = new JSONObject();
             majorMapJSON.put(MAJOR_NAME, majorMap.getMajor());
+            majorMapJSON.put(MAJOR_UUID, majorMap.getId().toString());
 
-            JSONArray coursesArray = new JSONArray();
-            for (String course : majorMap.getMajorCourses()) {
-                coursesArray.add(course);
-            }
-            majorMapJSON.put(MAJOR_COURSES, coursesArray);
-
-            JSONArray programCourses = new JSONArray();
-            for (String course : majorMap.getProgramCourses()) {
-                programCourses.add(course);
-            }
-            majorMapJSON.put(MAJOR_PROGRAM_COURSES, programCourses);
-
-            JSONArray coreEduArray = new JSONArray();
-            for (String course : majorMap.getCoreEdu()) {
-                coreEduArray.add(course);
-            }
-            majorMapJSON.put(MAJOR_CORE_EDU, coreEduArray);
-
-            JSONArray appAreaArray = new JSONArray();
-            for (String course : majorMap.getAppArea()) {
-                appAreaArray.add(course);
-            }
-            majorMapJSON.put(MAJOR_APP_AREA, appAreaArray);
+            majorMapJSON.put(MAJOR_SEMESTER_1, majorMap.getSemester1());
+            majorMapJSON.put(MAJOR_SEMESTER_2, majorMap.getSemester2());
+            majorMapJSON.put(MAJOR_SEMESTER_3, majorMap.getSemester3());
+            majorMapJSON.put(MAJOR_SEMESTER_4, majorMap.getSemester4());
+            majorMapJSON.put(MAJOR_SEMESTER_5, majorMap.getSemester5());
+            majorMapJSON.put(MAJOR_SEMESTER_6, majorMap.getSemester6());
+            majorMapJSON.put(MAJOR_SEMESTER_7, majorMap.getSemester7());
+            majorMapJSON.put(MAJOR_SEMESTER_8, majorMap.getSemester8());
 
             majorMapJSON.put(MAJOR_MIN_HOURS, majorMap.getMinTotalHours());
             majorMapJSON.put(MAJOR_MIN_GRAD_HOURS, majorMap.getMinGradHours());
             majorMapJSON.put(MAJOR_CC_HOURS, majorMap.getCaroCoreHours());
             majorMapJSON.put(MAJOR_MIN_GPA, majorMap.getMinGPA());
 
-            // Check if the major map with the same name already exists
             boolean majorMapExists = false;
             for (int i = 0; i < majorMapsArray.size(); i++) {
                 JSONObject existingMajorMapJSON = (JSONObject) majorMapsArray.get(i);
                 String existingMajorMapName = (String) existingMajorMapJSON.get(MAJOR_NAME);
                 if (existingMajorMapName.equals(majorMap.getMajor())) {
-                    // Update the existing major map
+                 
                     majorMapsArray.set(i, majorMapJSON);
                     majorMapExists = true;
                     break;
                 }
             }
 
-            // If the major map doesn't exist, add it to the majorMapsArray
             if (!majorMapExists) {
                 majorMapsArray.add(majorMapJSON);
             }
         }
 
-        // Write majorMapsArray to the file
+   
         writeJSONToFile(majorMapsArray, MAJOR_FILE_NAME);
     }
 
