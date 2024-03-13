@@ -110,7 +110,7 @@ public class DataWriter extends DataConstants {
             Student student = (Student) user;
             userJSON.put(STUDENT_CLASS, student.getYear());
             userJSON.put(STUDENT_MAJOR, student.getMajor());
-            userJSON.put(STUDENT_APP_AREA, student.getAppArea());
+            userJSON.put(STUDENT_APP_AREA, student.getApplicationArea());
             userJSON.put(STUDENT_CREDITHOURS, student.getCreditHours());
     
             // Convert completed courses to JSON array

@@ -13,6 +13,7 @@ public class Student extends User {
   private int creditHours;
   private ArrayList<Grades> completedCourses;
   private double gpa;
+  private String applicationArea;
   private CoursePlanner coursePlanner;
   private DegreeProgress degreeProgress;
   private ArrayList<Note> advisorNotes;
@@ -38,6 +39,7 @@ public class Student extends User {
       String userType,
       String year,
       String major,
+      String applicationArea,
       int creditHours,
       ArrayList<Grades> completedCourses,
       double gpa,
@@ -47,6 +49,7 @@ public class Student extends User {
     super(firstName, lastName, email, uscID, password, userType);
     this.year = year;
     this.major = major;
+    this.applicationArea = applicationArea;
     this.creditHours = creditHours;
     this.completedCourses = completedCourses;
     this.gpa = gpa;
@@ -66,6 +69,7 @@ public class Student extends User {
         "creditHours: " + creditHours + "\n" +
         "completedCourses: " + completedCourses + "\n" +
         "gpa: " + gpa + "\n" +
+        "applicationArea: " + applicationArea + "\n" +
         "coursePlanner: " + coursePlanner + "\n" +
         "degreeProgress: " + degreeProgress + "\n" +
         "advisorNotes: " + advisorNotes + "\n");
@@ -214,6 +218,14 @@ public class Student extends User {
   }
 
   /**
+   * Getter for application area
+   * @return the student's application area
+   */
+  public String getApplicationArea() {
+    return applicationArea;
+  } 
+
+  /**
    * Getter for coursePlanner
    * 
    * @return the student's course planner
@@ -248,6 +260,7 @@ public class Student extends User {
         "creditHours: " + creditHours + "\n" +
         "completedCourses: " + completedCourses + "\n" +
         "gpa: " + gpa + "\n" +
+        "applicationArea: " + applicationArea + "\n" +
         "coursePlanner: " + coursePlanner.toString()+ "\n" +
         "degreeProgress: " + degreeProgress.toString()+ "\n" +
         "advisorNotes: " + advisorNotes.toString()+"\n";
