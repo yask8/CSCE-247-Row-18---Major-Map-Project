@@ -1,15 +1,1 @@
-[
-    {
-        "minGradHours": 90,
-        "major": "Computer Science",
-        "programCourses": [
-            "CSCE145"
-        ],
-        "caroCoreHours": 30,
-        "minTotalHours": 125,
-        "majorCourses": [],
-        "appArea": [],
-        "minGPA": 2.0,
-        "coreEdu": []
-    }
-]
+[{"minGradHours":90,"major":"Computer Science","programCourses":["CSCE145"],"caroCoreHours":30,"minTotalHours":125,"majorCourses":[],"appArea":[],"minGPA":2.0,"coreEdu":[]}]

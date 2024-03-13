@@ -22,9 +22,8 @@ public class Driver {
     // scenarioAddingCourses;
 
     // Portias Scenarios
-    scenario1();
-    // scenario2();
-
+    //scenario1();
+    //scenario2();
   }
 
   /*
@@ -122,7 +121,7 @@ public class Driver {
   }
 
   public void scenarioAddingCourses() {
-    String name = "MATH 141 Calculus 1";
+    String name = "MATH141 Calculus 1";
     String code = "CC-ARP";
     String description =
       "Functions, limits, derivatives, introduction to integrals, and the Fundamental Theorem of Calculus";
@@ -132,9 +131,9 @@ public class Driver {
     boolean elective = false;
     boolean carolinaCore = true;
     ArrayList<String> preReqs = new ArrayList<String>();
-    String pre1 = "MATH 112";
-    String pre2 = "MATH 115";
-    String pre3 = "MATH 116";
+    String pre1 = "MATH112";
+    String pre2 = "MATH115";
+    String pre3 = "MATH116";
     preReqs.add(pre1);
     preReqs.add(pre2);
     preReqs.add(pre3);

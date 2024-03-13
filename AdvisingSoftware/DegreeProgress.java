@@ -98,13 +98,30 @@ public class DegreeProgress {
     return gradePoint;
   }
 
-  public double calculateGPA(ArrayList<Grades> completedCourses) {
+  public double calculateGPA(
+    CourseList courseList,
+    ArrayList<Grades> completedCourses
+  ) {
     double gpa = 0.0;
     double totalPoints = 0;
     double totalCreditHours = 0;
 
-    for (Grades completeCourse : completedCourses) {}
-
+    for (Grades completeCourse : completedCourses) {
+      totalCreditHours += getCreditHours(completeCourse, courseList);
+      totalPoints +=
+        getCreditHours(completeCourse, courseList) *
+        getGradePoint(completeCourse.getGrade());
+    }
+    gpa = totalPoints / totalCreditHours;
     return gpa;
+  }
+
+  public int getCreditHours(Grades completeCourse, CourseList courseList) {
+    if (courseList.getCourse(completeCourse.getCourseName()) == null) {
+      return 0;
+    }
+    return courseList
+      .getCourse((completeCourse.getCourseName()))
+      .getCreditHours();
   }
 }
