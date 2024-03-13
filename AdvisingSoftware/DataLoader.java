@@ -318,50 +318,46 @@ private static DegreeProgress loadDegreeProgressFromJSON(JSONObject degreeProgre
     }
 
     /**
-     * Loads majors from a JSON file.
-     * 
-     * @return An ArrayList of MajorMap objects loaded from the JSON file
-     * 
-     */
-    public static ArrayList<MajorMap> loadMajors() {
-        ArrayList<MajorMap> majors = new ArrayList<>();
+ * Loads majors from a JSON file.
+ *
+ * @return An ArrayList of MajorMap objects loaded from the JSON file
+ */
+public static ArrayList<MajorMap> loadMajors() {
+    ArrayList<MajorMap> majors = new ArrayList<>();
 
-        try {
-            FileReader reader = new FileReader(MAJOR_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray majorJSON = (JSONArray) parser.parse(reader);
+    try {
+        FileReader reader = new FileReader(MAJOR_FILE_NAME);
+        JSONParser parser = new JSONParser();
+        JSONArray majorJSON = (JSONArray) parser.parse(reader);
 
-            for (int i = 0; i < majorJSON.size(); i++) {
-                JSONObject majorObj = (JSONObject) majorJSON.get(i);
-                String name = (String) majorObj.get(MAJOR_NAME);
+        for (int i = 0; i < majorJSON.size(); i++) {
+            JSONObject majorObj = (JSONObject) majorJSON.get(i);
+            String name = (String) majorObj.get(MAJOR_NAME);
 
-                UUID id = (UUID) majorObj.get(MAJOR_UUID);
-                ArrayList<String> courses = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_COURSES));
-                ArrayList<String> electives = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_PROGRAM_COURSES));
-                ArrayList<String> coreCourses = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_CORE_EDU));
-                ArrayList<String> appAreaCourses = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_APP_AREA));
-                int minHours = ((Long) majorObj.get(MAJOR_MIN_HOURS)).intValue();
-                int minGradHours = ((Long) majorObj.get(MAJOR_MIN_GRAD_HOURS)).intValue();
-                int ccHours = ((Long) majorObj.get(MAJOR_CC_HOURS)).intValue();
-                double minGPA = ((Number) majorObj.get(MAJOR_MIN_GPA)).doubleValue();
+            UUID id = UUID.fromString((String) majorObj.get(MAJOR_UUID));
+            ArrayList<String> semester1 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_1));
+            ArrayList<String> semester2 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_2));
+            ArrayList<String> semester3 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_3));
+            ArrayList<String> semester4 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_4));
+            ArrayList<String> semester5 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_5));
+            ArrayList<String> semester6 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_6));
+            ArrayList<String> semester7 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_7));
+            ArrayList<String> semester8 = loadStringsFromJSONArray((JSONArray) majorObj.get(MAJOR_SEMESTER_8));
+            int minHours = ((Long) majorObj.get(MAJOR_MIN_HOURS)).intValue();
+            int minGradHours = ((Long) majorObj.get(MAJOR_MIN_GRAD_HOURS)).intValue();
+            int ccHours = ((Long) majorObj.get(MAJOR_CC_HOURS)).intValue();
+            double minGPA = ((Number) majorObj.get(MAJOR_MIN_GPA)).doubleValue();
 
-                MajorMap major = new MajorMap(id, name, courses, electives, coreCourses, appAreaCourses, minHours,
-                        minGradHours, ccHours, minGPA);
-                majors.add(major);
-            }
-            return majors;
-        } catch (Exception e) {
-            e.printStackTrace();
+            MajorMap major = new MajorMap(id, name, semester1, semester2, semester3, semester4, semester5,
+                    semester6, semester7, semester8, minHours, minGradHours, ccHours, minGPA);
+            majors.add(major);
         }
-        return null;
+        return majors;
+    } catch (Exception e) {
+        e.printStackTrace();
     }
-
-    /**
-     * Helper method to load strings from a JSONArray.
-     * 
-     * @param jsonArray The JSONArray containing strings.
-     * @return An ArrayList of strings.
-     */
+    return null;
+}
     /**
      * Helper method to load strings from a JSONArray.
      * 

@@ -157,10 +157,7 @@ if (!courseWithNameExists(name)) {
         semester 
     );
     courses.add(newCourse);
-} else {
-    System.out.println("A course with the same name already exists.");
-
-}
+} 
 }
 private boolean courseWithNameExists(String name) {
   for (Course course : courses) {

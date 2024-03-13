@@ -18,13 +18,14 @@ public class Driver {
 
   public void run() {
     //Testing Scenarios
-    // scenarioTesting();
-    scenarioAddingCourses();
+    //scenarioTesting();
+    //scenarioAddingCourses();
 
     // Portias Scenarios
     // scenario1():
     // scenario2();
 
+    System.err.println(facade.getMajors());
   }
 
   /*
