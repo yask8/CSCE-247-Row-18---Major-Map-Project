@@ -82,23 +82,22 @@ public class Driver {
     System.out.println("Login Successful. \nCurrent User: " + facade.getUser().toString());
 
     System.out.println("\nSearching for Student and adding to list");
-    facade.addStudentToListOfAdvisees(facade.getUser().getID(),facade.getUserList().getIDByName("Tawnie", "Hill"));
+    facade.addStudentToListOfAdvisees(facade.getCurrentUserId(),facade.getUserIdByName("Tawnie", "Hill"));
 
     System.out.println("\nStudent found and added to list");
     System.out.println(facade.getListOfAdvisees().toString());
     System.out.println("\nOsbert looks at Tawnie's current degree progress and sees two stat classes");
-    System.out.println(facade.getStudentByAdvisor(facade.getUserList().getIDByName("Tawnie", "Hill")).getDegreeProgress().toString());
+    System.out.println(facade.getStudentByAdvisor(facade.getUserIdByName("Tawnie", "Hill")).getDegreeProgress().toString());
 
-    System.out.println("\nObsert goes to add the note to her profile\nList of notes before not added");
-    System.out.println(facade.getStudentByAdvisor(facade.getUserList().getIDByName("Tawnie", "Hill")).getAdvisorNotes());
+    System.out.println("\nObsert goes to add the note to her profile\nList of notes before not added\n");
+    System.out.println(facade.getStudentByAdvisor(facade.getUserIdByName("Tawnie", "Hill")).getAdvisorNotes());
     System.out.println("\nNote added");
-    facade.addNoteToStudentAdvisor((facade.getUserList().getIDByName("Tawnie", "Hill")), "Make Stats Your Application Area");
-    System.out.println("\nList of notes after note is left");
-    System.out.println(facade.getStudentByAdvisor(facade.getUserList().getIDByName("Tawnie", "Hill")).getAdvisorNotes().toString());
+    facade.addNoteToStudentAdvisor((facade.getUserIdByName("Tawnie", "Hill")), "Make Stats Your Application Area");
+    System.out.println("\nList of notes after note is made\n");
+    System.out.println(facade.getStudentByAdvisor(facade.getUserIdByName("Tawnie", "Hill")).getAdvisorNotes()+"\n");
 
     facade.signOut();
 
-    // TODO: create the advisor notes
   }
 
   public void scenarioAddingCourses() {

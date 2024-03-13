@@ -424,6 +424,29 @@ public class Facade {
         return true;
       }
     }
-    return false; 
+    return false;
   }
+
+  /**
+   * Gets the ID of a user by their first name and last name.
+   * 
+   * @param firstName The first name of the user.
+   * @param lastName  The last name of the user.
+   * @return The ID of the user if found, or null if not found.
+   */
+  public UUID getUserIdByName(String firstName, String lastName) {
+    return userList.getIDByName(firstName, lastName);
+  }
+  /**
+ * Gets the ID of the currently logged-in user.
+ * 
+ * @return The ID of the currently logged-in user if available, or null if no user is logged in.
+ */
+public UUID getCurrentUserId() {
+  if (user != null) {
+      return user.getID();
+  } else {
+      return null;
+  }
+}
 }
