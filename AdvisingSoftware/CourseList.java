@@ -41,7 +41,9 @@ public class CourseList {
               course.getPassGrade(),
               course.isElective(),
               course.isCarolinaCore(),
-              course.getPreReqs());
+              course.getPreReqs(),
+              course.getYear(),
+              course.getSemester());
         }
         courseList.setLoaded(true);
       }
@@ -98,7 +100,7 @@ public class CourseList {
    * @param carolinaCore Indicates if the course is part of Carolina Core.
    * @param prereqs      The prerequisites of the course.
    */
-  public void addCourse(
+  public void addCourseNoYearorSem(
     String name,
     String code,
     String description,
