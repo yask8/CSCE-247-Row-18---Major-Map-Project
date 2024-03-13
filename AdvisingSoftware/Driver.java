@@ -19,7 +19,7 @@ public class Driver {
   public void run() {
     //Testing Scenarios
     // scenarioTesting();
-    // scenarioAddingCourses;
+    scenarioAddingCourses();
 
     // Portias Scenarios
     //scenario1();

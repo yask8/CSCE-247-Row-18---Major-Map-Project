@@ -58,5 +58,23 @@
         "id": "CHEM111",
         "passGrade": "C",
         "carolinaCore": true
+    },
+    {
+        "creditHours": 4,
+        "preReqs": [
+            "MATH112",
+            "MATH115",
+            "MATH116"
+        ],
+        "code": "CC-ARP",
+        "elective": false,
+        "year": "1",
+        "subject": "MATH",
+        "name": "MATH141 Calculus 1",
+        "description": "Functions, limits, derivatives, introduction to integrals, and the Fundamental Theorem of Calculus",
+        "semester": "1",
+        "id": "MATH141",
+        "passGrade": "C",
+        "carolinaCore": true
     }
 ]
