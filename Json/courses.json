@@ -72,5 +72,86 @@
         "id": "FAMS",
         "passGrade": "C",
         "carolinaCore": true
+    },
+    {
+        "creditHours": 3,
+        "preReqs": [
+            "MATH 142",
+            "CSCE 146"
+        ],
+        "code": "PR",
+        "elective": false,
+        "year": "3",
+        "subject": "MATH",
+        "name": "MATH 374 Discrete Structures",
+        "description": "Propositional and predicate logic; proof techniques; recursion and reccurence relations; sets, combinatorics, and probability; functions, relations, and matrices; algebraic structures.",
+        "semester": "2",
+        "id": "MATH",
+        "passGrade": "C",
+        "carolinaCore": false
+    },
+    {
+        "creditHours": 3,
+        "preReqs": [
+            "MATH 141"
+        ],
+        "code": "PR",
+        "elective": false,
+        "year": "2",
+        "subject": "CSCE",
+        "name": "CSCE 211 Digital Logic Design",
+        "description": "Number systems, Boolean algebra, logic design, sequential machines.",
+        "semester": "3",
+        "id": "CSCE",
+        "passGrade": "C",
+        "carolinaCore": false
+    },
+    {
+        "creditHours": 3,
+        "preReqs": [],
+        "code": "CC-AIU",
+        "elective": false,
+        "year": "1",
+        "subject": "ARTE",
+        "name": "ARTE 101 Introduction to Art",
+        "description": "Introduction to art appreciation. Elements and principles of the visual arts, with examples from the history of art.",
+        "semester": "1",
+        "id": "ARTE",
+        "passGrade": "C",
+        "carolinaCore": true
+    },
+    {
+        "creditHours": 1,
+        "preReqs": [
+            "MATH 111",
+            "MATH 115"
+        ],
+        "code": "CC-SCI",
+        "elective": true,
+        "year": "2",
+        "subject": "PHYS",
+        "name": "PHYS 211L Essentials of Physics I Lab",
+        "description": "Experiments, excerises, and demonstrations to accompany PHYS 211",
+        "semester": "1",
+        "id": "PHYS",
+        "passGrade": "C",
+        "carolinaCore": false
+    },
+    {
+        "creditHours": 1,
+        "preReqs": [
+            "MATH 111",
+            "MATH 115"
+        ],
+        "code": "CC-SCI",
+        "elective": true,
+        "year": "1",
+        "subject": "CHEM",
+        "name": "CHEM 111L General Chemistry I Lab",
+        "description": "Introduction to the principles and techniques of experimental chemistry with emphasis on formula investigations, equations, elementary statistics, and chemical reactivity",
+        "semester": "2",
+        "id": "CHEM",
+        "passGrade": "C",
+        "carolinaCore": false
     }
 ]

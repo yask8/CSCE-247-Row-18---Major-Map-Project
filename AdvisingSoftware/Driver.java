@@ -121,28 +121,26 @@ public class Driver {
   }
 
   public void scenarioAddingCourses() {
-    String name = "FAMS 180 Film and Media Analysis";
-    String code = "CC-AIU";
-    String description =
-      "An introduction to the critical study of film and media." +
-      " Students will closely analyze moving images and develop written arguments about film and media.";
+    String name = "CSCE 211 Digital Logic Design";
+    String code = "PR";
+    String description = 
+            "Number systems, Boolean algebra, logic design, sequential machines.";
     int creditHours = 3;
-    String subject = "FAMS";
+    String subject = "CSCE";
     char passGrade = 'C';
     boolean elective = false;
-    boolean carolinaCore = true;
+    boolean carolinaCore = false;
     ArrayList<String> preReqs = new ArrayList<String>();
-    /*String pre1 = "CSCE 145";
-    String pre2 = "CSCE 204";
-    String pre3 = "CSCE 205";
-    String pre4 = "CSCE 206";
+    String pre1 = "MATH 141";
+    //String pre2 = "MATH 122";
+    //String pre3 = "MATH 141";
+    //String pre4 = "MATH 141";
     preReqs.add(pre1);
-    preReqs.add(pre2);
-    preReqs.add(pre3);
-    preReqs.add(pre4);
-    */
-    String year = "1";
-    String semester = "1";
+    //preReqs.add(pre2);
+    //preReqs.add(pre3);
+    //preReqs.add(pre4);
+    String year = "2";
+    String semester = "3";
     
     facade
       .getCourseList()
