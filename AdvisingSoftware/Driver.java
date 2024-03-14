@@ -108,19 +108,19 @@ public class Driver {
     " expository and analytical essays.";
     ArrayList<String> re = new ArrayList<String>();
     facade.getCourseList().addCourse("ENGL 101 Critical Reading and Composition", 
-                                      "CC-CMW", 
+                                      "CMW", 
                                       ENG101, 
                                       3, 
                                       "ENGL", 
                                       'C', 
                                       false, 
-                                      false, 
+                                      true, 
                                       re, 
                                       "1", 
                                       "1");
     // MATH 141
     String name = "MATH 141 Calculus I";
-    String code = "CC-ARP";
+    String code = "ARP";
     String description = 
           "Functions, limits, derivatives, introduction to integrals," + 
           " the Fundamental Theorem of Calculus, applications of derivatives " +
@@ -193,7 +193,7 @@ public class Driver {
     ArrayList<String> pre = new ArrayList<String>();
 
     facade.getCourseList().addCourse("ARTE 101 Introduction to Art", 
-                                    "CC-AIU", 
+                                    "AIU", 
                                     CCA1, 
                                     3, 
                                     "ARTE", 
@@ -210,7 +210,7 @@ public class Driver {
     ArrayList<String> require = new ArrayList<String>();
 
     facade.getCourseList().addCourse("FAMS 240 Film and Media Analysis", 
-                                    "CC-AIU", 
+                                    "AIU", 
                                     CCA2, 
                                     3, 
                                     "FAMS", 
@@ -232,13 +232,13 @@ public class Driver {
     preReqs.add(pre1);
 
     facade.getCourseList().addCourse("MATH 142 Calculus II", 
-                                     "CC-ARP", 
+                                     "ARP", 
                                      MATH142, 
                                      4, 
                                      "MATH", 
                                      'C', 
                                      false, 
-                                     false,
+                                     true,
                                      preReqs, 
                                      "1", 
                                      "2");
@@ -257,13 +257,13 @@ public class Driver {
     preRequire.add(preRequ);
 
     facade.getCourseList().addCourse("CHEM 111 General Chemistry I", 
-                                      "CC-SCI", 
+                                      "SCI", 
                                       CHEM111, 
                                       3, 
                                       "CHEM", 
                                       'C', 
                                       false, 
-                                      false, 
+                                      true, 
                                       preRequire, 
                                       "1", 
                                       "2");
@@ -278,13 +278,13 @@ public class Driver {
     preRequirement.add(r);
 
       facade.getCourseList().addCourse("CHEM 111L General Chemistry I Lab", 
-                                      "CC-SCI", 
+                                      "SCI", 
                                       CHEM111L, 
                                       1, 
                                       "CHEM", 
                                       'C', 
                                       false, 
-                                      false, 
+                                      true, 
                                       preRequirement, 
                                       "1", 
                                       "2");
@@ -302,13 +302,13 @@ public class Driver {
     pre.add(d);
 
     facade.getCourseList().addCourse("PHYS 211 Essentials of Physics I", 
-                                    "CC-SCI", 
+                                    "SCI", 
                                     PHYS211, 
                                     3, 
                                     "PHYS", 
                                     'C', 
                                     false, 
-                                    false, 
+                                    true, 
                                     pre, 
                                     "1", 
                                     "2");
@@ -321,13 +321,13 @@ public class Driver {
     require.add(k);
 
     facade.getCourseList().addCourse("PHYS 211L Essentials of Physics I Lab", 
-                                    "CC-SCI", 
+                                    "SCI", 
                                     PHYS211L, 
                                     1, 
                                     "PHYS", 
                                     'C', 
                                     false, 
-                                    false, 
+                                    true, 
                                     require, 
                                     "1", 
                                     "2");
