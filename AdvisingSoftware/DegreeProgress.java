@@ -99,7 +99,7 @@ public class DegreeProgress {
   }
 
   public double calculateGPA(
-    CourseList courseList,
+    ArrayList<Course> courseList,
     ArrayList<Grades> completedCourses
   ) {
     double gpa = 0.0;
@@ -116,12 +116,16 @@ public class DegreeProgress {
     return gpa;
   }
 
-  public int getCreditHours(Grades completeCourse, CourseList courseList) {
-    if (courseList.getCourse(completeCourse.getCourseName()) == null) {
-      return 0;
+  public int getCreditHours(
+    Grades completeCourse,
+    ArrayList<Course> courseList
+  ) {
+    int creditHours = 0;
+    for (Course searched : courseList) {
+      if (searched.getCode().equalsIgnoreCase(completeCourse.getCourseName())) {
+        return searched.getCreditHours();
+      }
     }
-    return courseList
-      .getCourse((completeCourse.getCourseName()))
-      .getCreditHours();
+    return creditHours;
   }
 }
