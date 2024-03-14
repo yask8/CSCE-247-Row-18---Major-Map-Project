@@ -181,6 +181,7 @@ public class Facade {
   }
 
   public User getUser() {
+    updateStudentGPA();
     return user;
   }
 
