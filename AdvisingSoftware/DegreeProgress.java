@@ -122,7 +122,7 @@ public class DegreeProgress {
   ) {
     int creditHours = 0;
     for (Course searched : courseList) {
-      if (searched.getCode().equalsIgnoreCase(completeCourse.getCourseName())) {
+      if (searched.getID().equalsIgnoreCase(completeCourse.getCourseName())) {
         return searched.getCreditHours();
       }
     }
