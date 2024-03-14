@@ -16,7 +16,7 @@ public class Driver {
 
   public void run() {
     //Testing Scenarios
-    scenarioTesting();
+    //scenarioTesting();
     //addingSem1Courses();
     //addingSem2Courses();
     //addingSem3Courses();
@@ -28,6 +28,10 @@ public class Driver {
     // Portias Scenarios
     // scenario1();
     //scenario2();
+
+    facade.login("bwest@email.sc.edu","bwest060903");
+    System.out.println(facade.getStudentDegreeProgress());
+    facade.signOut();
 
   }
 
