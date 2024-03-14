@@ -156,7 +156,7 @@ public class Student extends User {
    * @return degree progress
    */
   public String viewDegreeProgress() {
-    return "";
+    return degreeProgress.toString();
   }
 
   /**
@@ -262,6 +262,7 @@ public class Student extends User {
    * @return the student's degree progress
    */
   public DegreeProgress getDegreeProgress() {
+    degreeProgress.saveCompleteCourses(completedCourses);
     return degreeProgress;
   }
 

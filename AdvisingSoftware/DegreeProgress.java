@@ -56,6 +56,12 @@ public class DegreeProgress {
     return completeCourses;
   }
 
+  public void saveCompleteCourses(ArrayList<Grades> xcompleteCourses) {
+    for (Grades course : xcompleteCourses) {
+      completeCourses.add(course.getCourseName());
+    }
+  }
+
   public ArrayList<String> getIncompleteCourses() {
     return incompleteCourses;
   }
