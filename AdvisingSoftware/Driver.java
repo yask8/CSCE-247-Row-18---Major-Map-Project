@@ -989,43 +989,36 @@ public class Driver {
                                      requiredpre, 
                                      "3", 
                                      "5");
-    //Application Area 1
-    String CSCE518 =
-        "Fundamental principles and techniques of ethical hacking, including" +
-        " penetration testing life cycle, planning and scoping, identifying targerts" +
-        " and goals, active and passive reconnaissance, enumeration and scanning, exploitation," + 
-        " post-exploitation, and results reporting.";
+    //Application Area 1 --> NON CSCE Related Courses
+    String MART101 =
+        "Introductory media arts creation and study for non-majors, with"+
+        " emphasis on developing an individual aesthetic for screen and related media.";
     ArrayList<String> requires = new ArrayList<String>();
-    String t = "CSCE 215";
-    requires.add(t);
-
-    facade.getCourseList().addCourse("CSCE 518 Ethical Hacking", 
+    
+    facade.getCourseList().addCourse("MART 101 Making Media That Matters", 
                                      "PR", 
-                                     CSCE518, 
+                                     MART101, 
                                      3, 
-                                     "CSCE", 
+                                     "MART", 
                                      'C', 
-                                     false, 
+                                     true, 
                                      false, 
                                      requires, 
                                      "3", 
                                      "5");
-    // Application Area 2
-    String CSCE526 = 
-      "Cooperative information systems and service-oriented computing. Techniques for achieving"+
-      " coordinated behavior among a decentralized group of information system components." +
-      " Distributed databases, multiagent systems, conceptual modeling, Web services, and applications.";
+    // Application Area 2 --> NON-CSCE Related Courses
+    String MART110 = 
+      "Introduction to the critical study of film, video, photography,"+
+      " audio, and new media.";
     ArrayList<String> prer = new ArrayList<String>();
-    String l = "CSCE 311";
-    prer.add(l);
 
-    facade.getCourseList().addCourse("CSCE 526 Service Oriented Computing ", 
+    facade.getCourseList().addCourse("MART 110 Media Culture", 
                                      "PR", 
-                                     CSCE526, 
+                                     MART110, 
                                      3, 
-                                     "CSCE", 
+                                     "MART", 
                                      'C', 
-                                     false, 
+                                     true, 
                                      false, 
                                      prer, 
                                      "3", 
@@ -1036,8 +1029,9 @@ public class Driver {
   // In Progress do not test these are just the templates
   public void addingSem6Courses() {
     // CSCE 416
-    String CSCE416 = 
-          "Number systems, Boolean algebra, logic design, sequential machines.";
+    String CSCE416 =
+      "Concepts and components of computer networks and the internet" +
+      "; network applications; network protocol stack";
     ArrayList<String> preReqs = new ArrayList<String>();
     String pre1 = "CSCE 146";
     preReqs.add(pre1);
@@ -1055,380 +1049,341 @@ public class Driver {
                                      "6");
 
     // CSCE Major Elective 1
-    String CSCE240 =
-      "Pointers; memory management; advanced programming language structures: operator" +
-      " overloading, iterators, multiple inheritance, polymorphism, templates, virtual "+
-      "functions; Unix programming environment.";
-    ArrayList<String> preRequire = new ArrayList<String>();
-    String preR = "CSCE 215";
-    String preRe = "CSCE 146";
-    preRequire.add(preR);
-    preRequire.add(preRe);
+    String CSCE518 =
+    "Fundamental principles and techniques of ethical hacking, including" +
+    " penetration testing life cycle, planning and scoping, identifying targerts" +
+    " and goals, active and passive reconnaissance, enumeration and scanning, exploitation," + 
+    " post-exploitation, and results reporting.";
+    ArrayList<String> requires = new ArrayList<String>();
+    String t = "CSCE 215";
+    requires.add(t);
 
-    facade.getCourseList().addCourse("CSCE 240 Advanced Programming Techniques", 
-                                      "PR", 
-                                      CSCE240, 
-                                      3, 
-                                      "CSCE", 
-                                      'C', 
-                                      false, 
-                                      false, 
-                                      preRequire, 
-                                      "2", 
-                                      "3");
+    facade.getCourseList().addCourse("CSCE 518 Ethical Hacking", 
+                                    "PR", 
+                                    CSCE518, 
+                                    3, 
+                                    "CSCE", 
+                                    'C', 
+                                    false, 
+                                    false, 
+                                    requires, 
+                                    "3", 
+                                    "6");
     // CSCE Major Elective 2
-    String MATH374 =
-      "Propositional and predicate logic; proof techniques; recursion and " +
-      "recurrence relations; sets, combinatorics, and probability; functions, relations," +
-      "and matrices; algebraic structures.";
-    ArrayList<String> preRequirement = new ArrayList<String>();
-    String p = "MATH 142";
-    String r = "CSCE 146";
-    preRequirement.add(p);
-    preRequirement.add(r);
+    String CSCE526 = 
+      "Cooperative information systems and service-oriented computing. Techniques for achieving"+
+      " coordinated behavior among a decentralized group of information system components." +
+      " Distributed databases, multiagent systems, conceptual modeling, Web services, and applications.";
+    ArrayList<String> prer = new ArrayList<String>();
+    String l = "CSCE 311";
+    prer.add(l);
 
-      facade.getCourseList().addCourse("MATH 374 Discrete Structures", 
-                                      "PR", 
-                                      MATH374, 
-                                      3, 
-                                      "MATH", 
-                                      'C', 
-                                      false, 
-                                      false, 
-                                      preRequirement, 
-                                      "2", 
-                                      "3");
+    facade.getCourseList().addCourse("CSCE 526 Service Oriented Computing ", 
+                                    "PR", 
+                                    CSCE526, 
+                                    3, 
+                                    "CSCE", 
+                                    'C', 
+                                    false, 
+                                    false, 
+                                    prer, 
+                                    "3", 
+                                    "6");
     // STAT 509
-    String CHEM112 =
-       "Continuation of CHEM 111. Special emphasis on chemical equilibrium.";
+    String STAT509 =
+       "Basic probability and statistics with applications and examples" +
+       " in engineering. Elementary probability, random variables and their"+
+       " distribution, random processes, statistical inference, linear regression" +
+       ", correlation and basic design of experiments with application to quality assurance"+
+       ", reliability, and life testing.";
     ArrayList<String> pre = new ArrayList<String>();
-    String a = "CHEM 111";
-    String b = "CHEM 141";
-    String c = "MATH 111";
-    String d = "MATH 115";
-    String e = "MATH 122";
-    String f = "MATH 141";
-    pre.add(a);
-    pre.add(b);
-    pre.add(c);
-    pre.add(d);
-    pre.add(e);
+    String f = "MATH 142";
     pre.add(f);
 
-    facade.getCourseList().addCourse("CHEM 112 General Chemistry II", 
-                                    "SCI", 
-                                    CHEM112, 
+    facade.getCourseList().addCourse("STAT 509 Statistics for Engineers", 
+                                    "PR", 
+                                    STAT509, 
                                     3, 
-                                    "CHEM", 
+                                    "STAT", 
                                     'C', 
                                     false, 
-                                    true, 
+                                    false, 
                                     pre, 
-                                    "2", 
-                                    "3");
+                                    "3", 
+                                    "6");
     // Liberal Arts Elective 1
-    String CHEM112L =
-      "Continuation of CHEM 111L with emphasis on solution properties," +
-      " kinetics, equilibrium, acids and bases, and qualitative analysis.";
+    String ECON123 =
+      "Basic concepts, institutional foundations, structure of the private"+
+      " and public sector, labor markets; major economic problems.";
     ArrayList<String> require = new ArrayList<String>();
-    String g = "CHEM 111";
-    String h = "CHEM 111L";
-    String i = "CHEM 141";
-    require.add(g);
-    require.add(h);
-    require.add(i);
 
-    facade.getCourseList().addCourse("CHEM 112L General Chemistry II Lab", 
-                                    "SCI", 
-                                    CHEM112L, 
-                                    1, 
-                                    "CHEM", 
-                                    'C', 
-                                    false, 
-                                    true, 
-                                    require, 
-                                    "2", 
-                                    "3");
+    facade.getCourseList().addCourse("ECON 123 The American Economy", 
+                                     "PR", 
+                                     ECON123, 
+                                     3, 
+                                     "ECON", 
+                                     'C', 
+                                     true, 
+                                     false, 
+                                     require, 
+                                     "3", 
+                                     "6");
 
     // Liberal Arts Elective 2
-    String PHYS212 = 
-        "Classical electromagnetism and optics.";
+    String ECON221 = 
+        "The study of supply and demand, pricing and cost concepts, firm and consumer"+
+        " decision-making, market structure, and government policies.";
     ArrayList<String> requiredpre = new ArrayList<String>();
-    String j = "CHEM 111";
-    String k = "CHEM 141";
-    String l = "MATH 111";
-    String m = "MATH 115";
-    String n = "MATH 122";
-    String o = "MATH 141";
-    requiredpre.add(j);
-    requiredpre.add(k);
-    requiredpre.add(l);
-    requiredpre.add(m);
-    requiredpre.add(n);
-    requiredpre.add(o);
-    
+
     facade.getCourseList().addCourse("PHYS 212 Essentials of Physics II", 
                                      "SCI", 
-                                     PHYS212,
+                                     ECON221,
                                      3, 
-                                     "PHYS", 
+                                     "ECON", 
                                      'C', 
-                                     false, 
                                      true, 
+                                     false, 
                                      requiredpre, 
-                                     "2", 
-                                     "3");
+                                     "3", 
+                                     "6");
     // Application Area 1
-    String PHYS212L =
-        "Experiments, exercises, and demonstrations to accompany PHYS 212";
-    ArrayList<String> requires = new ArrayList<String>();
-    String t = "PHYS 211";
-    String u = "MATH 142";
-    requires.add(t);
-    requires.add(u);
+    String MART210 =
+        "Introduction to theory and practice of origination, sequencing,"+
+        " and processing of screen-based and related media art.";
+    ArrayList<String> requir = new ArrayList<String>();
 
     facade.getCourseList().addCourse("PHYS 212L Essentials of Physics II Laboratory", 
                                      "SCI", 
-                                     PHYS212L, 
-                                     1, 
-                                     "PHYS", 
-                                     'C', 
-                                     false, 
-                                     true, 
-                                     requires, 
-                                     "2", 
-                                     "3");
-    // Application Area 2
-    String SPCH140 = 
-      "Introduction to theory and practice of oral communication in public, social, and institutional" +
-      " contexts. Includes foundational and cumulative training in the invention, performance, and critical" +
-      " analysis of oral communication, with emphasis on argumentation, persuasion, audience analysis, delivery," +
-      " and eithical forms of engagement.";
-    ArrayList<String> prer = new ArrayList<String>();
-
-    facade.getCourseList().addCourse("SPCH 140 Public Communication", 
-                                     "CMS", 
-                                     SPCH140, 
+                                     MART210, 
                                      3, 
-                                     "SPCH", 
+                                     "MART", 
                                      'C', 
-                                     false, 
                                      true, 
-                                     prer, 
-                                     "2", 
-                                     "3");
+                                     false, 
+                                     requir, 
+                                     "3", 
+                                     "6");
+    // Application Area 2
+    String MART262 = 
+      "Introduction to time-based digital media, concept development, "+
+      "and foundational techniques for video compositing and visual effects.";
+    ArrayList<String> prere = new ArrayList<String>();
+    String prereqs = "MART 210";
+    prere.add(prereqs);
+
+    facade.getCourseList().addCourse("MART 262 Digital Compositing", 
+                                     "PR", 
+                                     MART262, 
+                                     3, 
+                                     "MART", 
+                                     'C', 
+                                     true, 
+                                     false, 
+                                     prere, 
+                                     "3", 
+                                     "6");
     facade.saveCourses();
   }
   public void addingSem7Courses() {
     // CSCE 490
-    String CSCE211 = 
-          "Number systems, Boolean algebra, logic design, sequential machines.";
+    String CSCE490 = 
+          "Major team-based software design project to be undertaken in a student's final year"+
+          " of study; project planning, software requirements analysis, design, and specification."+
+          " Written reports and oral presentations in a technical setting.";
     ArrayList<String> preReqs = new ArrayList<String>();
-    String pre1 = "MATH 141";
+    String pre1 = "CSCE 240";
+    String pre2 = "CSCE 350";
     preReqs.add(pre1);
+    preReqs.add(pre2);
 
-    facade.getCourseList().addCourse("CSCE 211 Digital Logic Design", 
-                                     "PR", 
-                                     CSCE211, 
+    facade.getCourseList().addCourse("CSCE 490 Capstone Computing Project I", 
+                                     "MR", 
+                                     CSCE490, 
                                      3, 
                                      "CSCE", 
                                      'C', 
                                      false, 
                                      false,
                                      preReqs, 
-                                     "2", 
-                                     "3");
+                                     "4", 
+                                     "7");
 
     // CSCE 355
-    String CSCE240 =
-      "Pointers; memory management; advanced programming language structures: operator" +
-      " overloading, iterators, multiple inheritance, polymorphism, templates, virtual "+
-      "functions; Unix programming environment.";
+    String CSCE355 =
+      "Basic theoretical principles of computing as modeled by formal languages,"+
+      " grammars, automata, and Turing machines; fundamental limits of computation.";
     ArrayList<String> preRequire = new ArrayList<String>();
-    String preR = "CSCE 215";
-    String preRe = "CSCE 146";
+    String preR = "CSCE 211";
+    String preRe = "CSCE 212";
+    String preReq = "CSCE 350";
     preRequire.add(preR);
     preRequire.add(preRe);
+    preRequire.add(preReq);
 
-    facade.getCourseList().addCourse("CSCE 240 Advanced Programming Techniques", 
-                                      "PR", 
-                                      CSCE240, 
+    facade.getCourseList().addCourse("CSCE 355 Foundations of Computation", 
+                                      "MR", 
+                                      CSCE355, 
                                       3, 
                                       "CSCE", 
                                       'C', 
                                       false, 
                                       false, 
                                       preRequire, 
-                                      "2", 
-                                      "3");
+                                      "4", 
+                                      "7");
     // Major Elective 1
-    String MATH374 =
-      "Propositional and predicate logic; proof techniques; recursion and " +
-      "recurrence relations; sets, combinatorics, and probability; functions, relations," +
-      "and matrices; algebraic structures.";
+    String CSCE548 =
+      "Construction of software systems resistant to vulnerabilities and attacks."+
+      " Cryptographic tools. Language, operating system, and network security. Case studies."+
+      " Development of best practices through programming assignments.";
     ArrayList<String> preRequirement = new ArrayList<String>();
-    String p = "MATH 142";
-    String r = "CSCE 146";
-    preRequirement.add(p);
+    String r = "CSCE 240";
     preRequirement.add(r);
 
-      facade.getCourseList().addCourse("MATH 374 Discrete Structures", 
-                                      "PR", 
-                                      MATH374, 
+      facade.getCourseList().addCourse("CSCE 548 Building Secure Software", 
+                                      "MR", 
+                                      CSCE548, 
                                       3, 
-                                      "MATH", 
+                                      "CSCE", 
                                       'C', 
-                                      false, 
+                                      true, 
                                       false, 
                                       preRequirement, 
-                                      "2", 
-                                      "3");
+                                      "4", 
+                                      "7");
     // Major Elective 2
-    String CHEM112 =
-       "Continuation of CHEM 111. Special emphasis on chemical equilibrium.";
+    String CSCE520 =
+       "Database management systems; database design and implementation;"+
+       " security, integrity, and privacy.";
     ArrayList<String> pre = new ArrayList<String>();
-    String a = "CHEM 111";
-    String b = "CHEM 141";
-    String c = "MATH 111";
-    String d = "MATH 115";
-    String e = "MATH 122";
-    String f = "MATH 141";
+    String a = "CSCE 240";
+    String b = "GEOG 563";
     pre.add(a);
     pre.add(b);
-    pre.add(c);
-    pre.add(d);
-    pre.add(e);
-    pre.add(f);
 
-    facade.getCourseList().addCourse("CHEM 112 General Chemistry II", 
-                                    "SCI", 
-                                    CHEM112, 
+    facade.getCourseList().addCourse("CSCE 520 Database System Design", 
+                                    "MR", 
+                                    CSCE520, 
                                     3, 
-                                    "CHEM", 
+                                    "CSCE", 
                                     'C', 
-                                    false, 
                                     true, 
+                                    false, 
                                     pre, 
-                                    "2", 
-                                    "3");
+                                    "4", 
+                                    "7");
     // MATH 344
-    String CHEM112L =
-      "Continuation of CHEM 111L with emphasis on solution properties," +
-      " kinetics, equilibrium, acids and bases, and qualitative analysis.";
+    String MATH344 =
+      "General solutions of systems of linear equations, vector spaces and"+
+      " subspaces, linear transformations, determinants, orthogonality, characteristic"+
+      " polynomials, eigenvalues and eigenvectors, singular value decomposition, and"+
+      " generalized inverse.";
     ArrayList<String> require = new ArrayList<String>();
-    String g = "CHEM 111";
-    String h = "CHEM 111L";
-    String i = "CHEM 141";
+    String g = "MATH 142";
     require.add(g);
-    require.add(h);
-    require.add(i);
 
-    facade.getCourseList().addCourse("CHEM 112L General Chemistry II Lab", 
-                                    "SCI", 
-                                    CHEM112L, 
-                                    1, 
-                                    "CHEM", 
+    facade.getCourseList().addCourse("MATH 344 Applied Linear Algebra", 
+                                    "PR", 
+                                    MATH344, 
+                                    3, 
+                                    "MATH", 
                                     'C', 
                                     false, 
-                                    true, 
+                                    false, 
                                     require, 
-                                    "2", 
-                                    "3");
+                                    "4", 
+                                    "7");
 
     // MATH 344L
-    String PHYS212 = 
-        "Classical electromagnetism and optics.";
+    String MATH344L = 
+        "Computer based applications of linear algebra for science and engineering students."+
+        " Topics include numerical analysis of matrices, direct and indirect methods for solving"+
+        " linear systems, and least squares method(regression). Typical applications include"+
+        " practical issues related to discrete Markov processes, image compression and linear programming.";
     ArrayList<String> requiredpre = new ArrayList<String>();
-    String j = "CHEM 111";
-    String k = "CHEM 141";
-    String l = "MATH 111";
-    String m = "MATH 115";
-    String n = "MATH 122";
-    String o = "MATH 141";
+    String j = "MATH 344";
     requiredpre.add(j);
-    requiredpre.add(k);
-    requiredpre.add(l);
-    requiredpre.add(m);
-    requiredpre.add(n);
-    requiredpre.add(o);
     
-    facade.getCourseList().addCourse("PHYS 212 Essentials of Physics II", 
-                                     "SCI", 
-                                     PHYS212,
-                                     3, 
-                                     "PHYS", 
-                                     'C', 
-                                     false, 
-                                     true, 
-                                     requiredpre, 
-                                     "2", 
-                                     "3");
-    // Application Area 1
-    String PHYS212L =
-        "Experiments, exercises, and demonstrations to accompany PHYS 212";
-    ArrayList<String> requires = new ArrayList<String>();
-    String t = "PHYS 211";
-    String u = "MATH 142";
-    requires.add(t);
-    requires.add(u);
-
-    facade.getCourseList().addCourse("PHYS 212L Essentials of Physics II Laboratory", 
-                                     "SCI", 
-                                     PHYS212L, 
+    facade.getCourseList().addCourse("MATH 344L Applied Linear Algebra Lab", 
+                                     "PR", 
+                                     MATH344L,
                                      1, 
-                                     "PHYS", 
+                                     "MATH", 
                                      'C', 
                                      false, 
-                                     true, 
-                                     requires, 
-                                     "2", 
-                                     "3");
-    // Application Area 2
-    String SPCH140 = 
-      "Introduction to theory and practice of oral communication in public, social, and institutional" +
-      " contexts. Includes foundational and cumulative training in the invention, performance, and critical" +
-      " analysis of oral communication, with emphasis on argumentation, persuasion, audience analysis, delivery," +
-      " and eithical forms of engagement.";
-    ArrayList<String> prer = new ArrayList<String>();
+                                     false, 
+                                     requiredpre, 
+                                     "4", 
+                                     "7");
+    // Application Area 1
+    String MART341 =
+        "Aesthetic and communicative elements of audio design for"+
+        " screen-based and related media arts.";
+    ArrayList<String> requires = new ArrayList<String>();
+    String t = "MART 210";
+    requires.add(t);
 
-    facade.getCourseList().addCourse("SPCH 140 Public Communication", 
-                                     "CMS", 
-                                     SPCH140, 
+    facade.getCourseList().addCourse("MART 341 Sound Design", 
+                                     "PR", 
+                                     MART341, 
                                      3, 
-                                     "SPCH", 
+                                     "MART", 
                                      'C', 
-                                     false, 
                                      true, 
+                                     false, 
+                                     requires, 
+                                     "4", 
+                                     "7");
+    // Application Area 2
+    String MART380 = 
+      "Introduction to the design and development of new media art, including"+
+      " internet-based art, media performance, installation, and interactivity.";
+    ArrayList<String> prer = new ArrayList<String>();
+    String c = "MART 210";
+    String q = "ARTS 102";
+    prer.add(c);
+    prer.add(q);
+
+    facade.getCourseList().addCourse("MART 380 New Media Art", 
+                                     "PR", 
+                                     MART380, 
+                                     3, 
+                                     "MART", 
+                                     'C', 
+                                     true, 
+                                     false, 
                                      prer, 
-                                     "2", 
-                                     "3");
+                                     "4", 
+                                     "7");
     facade.saveCourses();
   }
   public void addingSem8Courses() {
     // CSCE 492
-    String CSCE211 = 
-          "Number systems, Boolean algebra, logic design, sequential machines.";
+    String CSCE492 = 
+          "";
     ArrayList<String> preReqs = new ArrayList<String>();
-    String pre1 = "MATH 141";
+    String pre1 = "CSCE 490";
+    String pre2 = "CSCE 350";
+    String pre3 = "CSCE 240";
     preReqs.add(pre1);
+    preReqs.add(pre2);
+    preReqs.add(pre3);
 
-    facade.getCourseList().addCourse("CSCE 211 Digital Logic Design", 
-                                     "PR", 
-                                     CSCE211, 
+    facade.getCourseList().addCourse("CSCE 492 Capstone Computing Project II", 
+                                     "MR", 
+                                     CSCE492, 
                                      3, 
                                      "CSCE", 
                                      'C', 
                                      false, 
                                      false,
                                      preReqs, 
-                                     "2", 
-                                     "3");
+                                     "4", 
+                                     "8");
 
     // Major Elective 1
-    String CSCE240 =
-      "Pointers; memory management; advanced programming language structures: operator" +
-      " overloading, iterators, multiple inheritance, polymorphism, templates, virtual "+
-      "functions; Unix programming environment.";
+    String CSCE513 =
+      "";
     ArrayList<String> preRequire = new ArrayList<String>();
     String preR = "CSCE 215";
     String preRe = "CSCE 146";
@@ -1436,21 +1391,19 @@ public class Driver {
     preRequire.add(preRe);
 
     facade.getCourseList().addCourse("CSCE 240 Advanced Programming Techniques", 
-                                      "PR", 
-                                      CSCE240, 
+                                      "MR", 
+                                      CSCE513, 
                                       3, 
                                       "CSCE", 
                                       'C', 
-                                      false, 
+                                      true, 
                                       false, 
                                       preRequire, 
-                                      "2", 
-                                      "3");
+                                      "4", 
+                                      "8");
     // Major Elective 2
-    String MATH374 =
-      "Propositional and predicate logic; proof techniques; recursion and " +
-      "recurrence relations; sets, combinatorics, and probability; functions, relations," +
-      "and matrices; algebraic structures.";
+    String CSCE552 =
+      "";
     ArrayList<String> preRequirement = new ArrayList<String>();
     String p = "MATH 142";
     String r = "CSCE 146";
@@ -1458,19 +1411,19 @@ public class Driver {
     preRequirement.add(r);
 
       facade.getCourseList().addCourse("MATH 374 Discrete Structures", 
-                                      "PR", 
-                                      MATH374, 
+                                      "MR", 
+                                      CSCE552, 
                                       3, 
-                                      "MATH", 
+                                      "CSCE", 
                                       'C', 
-                                      false, 
+                                      true, 
                                       false, 
                                       preRequirement, 
-                                      "2", 
-                                      "3");
+                                      "4", 
+                                      "8");
     // Liberal Arts Elective 1
-    String CHEM112 =
-       "Continuation of CHEM 111. Special emphasis on chemical equilibrium.";
+    String MUSC110 =
+       "";
     ArrayList<String> pre = new ArrayList<String>();
     String a = "CHEM 111";
     String b = "CHEM 141";
@@ -1485,21 +1438,20 @@ public class Driver {
     pre.add(e);
     pre.add(f);
 
-    facade.getCourseList().addCourse("CHEM 112 General Chemistry II", 
-                                    "SCI", 
-                                    CHEM112, 
+    facade.getCourseList().addCourse("MUSC 110 Introduction to Music", 
+                                    "PR", 
+                                    MUSC110, 
                                     3, 
-                                    "CHEM", 
+                                    "MUSC", 
                                     'C', 
-                                    false, 
                                     true, 
+                                    false, 
                                     pre, 
-                                    "2", 
-                                    "3");
+                                    "4", 
+                                    "8");
     // Liberal Arts Elective 2
-    String CHEM112L =
-      "Continuation of CHEM 111L with emphasis on solution properties," +
-      " kinetics, equilibrium, acids and bases, and qualitative analysis.";
+    String POLI101 =
+      "";
     ArrayList<String> require = new ArrayList<String>();
     String g = "CHEM 111";
     String h = "CHEM 111L";
@@ -1509,20 +1461,20 @@ public class Driver {
     require.add(i);
 
     facade.getCourseList().addCourse("CHEM 112L General Chemistry II Lab", 
-                                    "SCI", 
-                                    CHEM112L, 
+                                    "PR", 
+                                    POLI101, 
                                     1, 
-                                    "CHEM", 
+                                    "POLI", 
                                     'C', 
-                                    false, 
                                     true, 
+                                    false, 
                                     require, 
-                                    "2", 
-                                    "3");
+                                    "4", 
+                                    "8");
 
     // Liberal Arts Elective 3
-    String PHYS212 = 
-        "Classical electromagnetism and optics.";
+    String PHIL102 = 
+        "";
     ArrayList<String> requiredpre = new ArrayList<String>();
     String j = "CHEM 111";
     String k = "CHEM 141";
@@ -1538,19 +1490,19 @@ public class Driver {
     requiredpre.add(o);
     
     facade.getCourseList().addCourse("PHYS 212 Essentials of Physics II", 
-                                     "SCI", 
-                                     PHYS212,
+                                     "PR", 
+                                     PHIL102,
                                      3, 
                                      "PHYS", 
                                      'C', 
-                                     false, 
                                      true, 
+                                     false, 
                                      requiredpre, 
-                                     "2", 
-                                     "3");
+                                     "4", 
+                                     "8");
     // Liberal Arts Elective 4
-    String PHYS212L =
-        "Experiments, exercises, and demonstrations to accompany PHYS 212";
+    String THEA170 =
+        "";
     ArrayList<String> requires = new ArrayList<String>();
     String t = "PHYS 211";
     String u = "MATH 142";
@@ -1558,55 +1510,48 @@ public class Driver {
     requires.add(u);
 
     facade.getCourseList().addCourse("PHYS 212L Essentials of Physics II Laboratory", 
-                                     "SCI", 
-                                     PHYS212L, 
+                                     "PR", 
+                                     THEA170, 
                                      1, 
-                                     "PHYS", 
+                                     "THEA", 
                                      'C', 
-                                     false, 
                                      true, 
+                                     false, 
                                      requires, 
-                                     "2", 
-                                     "3");
+                                     "4", 
+                                     "8");
     // Carolina Core GHS 1
-    String SPCH140 = 
-      "Introduction to theory and practice of oral communication in public, social, and institutional" +
-      " contexts. Includes foundational and cumulative training in the invention, performance, and critical" +
-      " analysis of oral communication, with emphasis on argumentation, persuasion, audience analysis, delivery," +
-      " and eithical forms of engagement.";
+    String SOST201 = 
+      "";
     ArrayList<String> prer = new ArrayList<String>();
 
     facade.getCourseList().addCourse("SPCH 140 Public Communication", 
-                                     "CMS", 
-                                     SPCH140, 
+                                     "GHS", 
+                                     SOST201, 
                                      3, 
                                      "SPCH", 
                                      'C', 
                                      false, 
                                      true, 
                                      prer, 
-                                     "2", 
-                                     "3");
+                                     "4", 
+                                     "8");
     // Carolina Core GHS 2
-    String SPCH145 =
-      "Introduction to theory and practice of live and recorded online spoken communcation" + 
-      " in public, social, and institutional contexts. Training in invention, performance, and " +
-      "critical analysis of online spoken communication, including audience analysis, persuasion, delivery, "+
-      "and ethical engagement. Includes signinficant practice in preparing and presenting live "+
-      "online public communication.";
+    String HIST111 =
+      "";
     ArrayList<String> pR = new ArrayList<String>();
 
     facade.getCourseList().addCourse("SPCH 145 Online Public Communication", 
                                      "CMS", 
-                                     SPCH145, 
+                                     HIST111, 
                                      3, 
-                                     "SPCH", 
+                                     "HIST", 
                                      'C', 
                                      false, 
                                      true, 
                                      pR, 
-                                     "2", 
-                                     "3");
+                                     "4", 
+                                     "8");
 
     // GFL???
     facade.saveCourses();
