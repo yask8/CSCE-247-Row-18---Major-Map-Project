@@ -86,7 +86,7 @@ public class Course {
   public Course(String name, String code, String description, int creditHours,
       String subject, char passGrade, boolean elective, boolean carolinaCore,
       ArrayList<String> preReqs, String year, String semester) {
-    this.id = name.split(" ")[0];
+    this.id = name.split("\\s+")[0] + name.split("\\s+")[1].replaceAll("\\s+", "");
     this.name = name;
     this.code = code;
     this.description = description;
