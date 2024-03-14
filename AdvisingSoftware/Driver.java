@@ -1169,6 +1169,29 @@ public class Driver {
         "5"
       );
     facade.saveCourses();
+    //GFL 2
+    String SPAN110 =
+      "Introduction to grammar and practical vocabulary necessary for" +
+      " fundamental communication skills.";
+      ArrayList<String> SPANpreRequire = new ArrayList<String>();
+    String SPANpreReq = "SPAN109";
+    SPANpreRequire.add(SPANpreReq);
+    facade
+      .getCourseList()
+      .addCourse(
+        "SPAN 110 Beginning Spanish II",
+        "GFL",
+        SPAN110,
+        3,
+        "SPAN",
+        'C',
+        false,
+        true,
+        SPANpreRequire,
+        "3",
+        "5"
+      );
+    facade.saveCourses();
   }
 
   public void addingSem6Courses() {
