@@ -100,6 +100,23 @@ public class MajorMap {
     }
 }
 
+public ArrayList<String> getCoursesForMajor(String major) {
+  if (this.major.equalsIgnoreCase(major)) {
+      ArrayList<String> allCourses = new ArrayList<>();
+      allCourses.addAll(semester1);
+      allCourses.addAll(semester2);
+      allCourses.addAll(semester3);
+      allCourses.addAll(semester4);
+      allCourses.addAll(semester5);
+      allCourses.addAll(semester6);
+      allCourses.addAll(semester7);
+      allCourses.addAll(semester8);
+      return allCourses;
+  } else {
+      return new ArrayList<>(); 
+  }
+}
+
 public void displayMajorMap(String major) {
     if (this.major.equals(major)) {
         System.out.println("\n************ Major Map *************");
