@@ -56,13 +56,16 @@ public class DegreeProgress {
     return completeCourses;
   }
 
-public void saveCompleteCourses(ArrayList<Grades> xcompleteCourses) {
+  public void saveCompleteCourses(ArrayList<Grades> xcompleteCourses) {
     for (Grades course : xcompleteCourses) {
-        if (!completeCourses.contains(course.getCourseName())) {
-            completeCourses.add(course.getCourseName());
-        }
+      boolean pass = course
+        .checkPass(course.getGrade())
+        .equalsIgnoreCase("PASS");
+      if (!completeCourses.contains(course.getCourseName()) && pass) {
+        completeCourses.add(course.getCourseName());
+      }
     }
-}
+  }
 
   public ArrayList<String> getIncompleteCourses() {
     return incompleteCourses;
