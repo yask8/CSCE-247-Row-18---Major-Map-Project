@@ -74,7 +74,7 @@ public class Driver {
 
   /**
    * 
-   * @author Yasmine Kennedy (yask8)
+   * @author Yasmine Kennedy (yask8) and Garrett Spillman (Spillmag)
    */
   public void scenario2() {
     
