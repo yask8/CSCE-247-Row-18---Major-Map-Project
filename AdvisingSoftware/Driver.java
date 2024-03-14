@@ -19,7 +19,12 @@ public class Driver {
     //scenarioTesting();
     addingSem1Courses();
     addingSem2Courses();
-
+    addingSem3Courses();
+    addingSem4Courses();
+    addingSem5Courses();
+    addingSem6Courses();
+    addingSem7Courses();
+    addingSem8Courses();
     // Portias Scenarios
     // scenario1();
     //scenario2();
@@ -849,6 +854,23 @@ public class Driver {
                                      requires, 
                                      "2", 
                                      "4");
+     // GFL
+     String SPAN109 = 
+     "Introduction to grammar and practical vocabulary necessary for"+
+     " fundamental communication skills.";
+     ArrayList<String> preCourses = new ArrayList<String>();
+
+     facade.getCourseList().addCourse("SPAN 109 Beginning Spanish I",
+                                      "GFL", 
+                                      SPAN109,
+                                      3, 
+                                      "SPAN", 
+                                      'C', 
+                                      false, 
+                                      true, 
+                                      preCourses, 
+                                      "2", 
+                                      "4");
     facade.saveCourses();
   }
   public void addingSem5Courses() {
@@ -1025,8 +1047,6 @@ public class Driver {
                                      "5");
     facade.saveCourses();
   }
-  // ----------------------------- From This point forward course adding is not complete---------------------
-  // In Progress do not test these are just the templates
   public void addingSem6Courses() {
     // CSCE 416
     String CSCE416 =
@@ -1360,7 +1380,9 @@ public class Driver {
   public void addingSem8Courses() {
     // CSCE 492
     String CSCE492 = 
-          "";
+          "Continuation of CSCE 490. Computer system implementation,"+
+          "testing, verification and validation of results. Written reports"+
+          " and oral presentations in a technical setting.";
     ArrayList<String> preReqs = new ArrayList<String>();
     String pre1 = "CSCE 490";
     String pre2 = "CSCE 350";
@@ -1383,7 +1405,9 @@ public class Driver {
 
     // Major Elective 1
     String CSCE513 =
-      "";
+      "Design methodoloy, processor design; computer arithmetic:"+
+      " microprogrammed control; memory organization; introduction to"+
+      " parallel architectures.";
     ArrayList<String> preRequire = new ArrayList<String>();
     String preR = "CSCE 215";
     String preRe = "CSCE 146";
@@ -1403,7 +1427,8 @@ public class Driver {
                                       "8");
     // Major Elective 2
     String CSCE552 =
-      "";
+      "Design and development of computer games, with emphasis on"+
+      " the technologies used. Hands-on development of computer games.";
     ArrayList<String> preRequirement = new ArrayList<String>();
     String p = "MATH 142";
     String r = "CSCE 146";
@@ -1423,20 +1448,11 @@ public class Driver {
                                       "8");
     // Liberal Arts Elective 1
     String MUSC110 =
-       "";
+       "Perceptive listening and appreciating of musical elements, forms"+
+       " and style periods, including composers' lives, individual styles"+
+       " and representative works. Emphasis on classical music; jazz and American"+
+       " popular music included.";
     ArrayList<String> pre = new ArrayList<String>();
-    String a = "CHEM 111";
-    String b = "CHEM 141";
-    String c = "MATH 111";
-    String d = "MATH 115";
-    String e = "MATH 122";
-    String f = "MATH 141";
-    pre.add(a);
-    pre.add(b);
-    pre.add(c);
-    pre.add(d);
-    pre.add(e);
-    pre.add(f);
 
     facade.getCourseList().addCourse("MUSC 110 Introduction to Music", 
                                     "PR", 
@@ -1451,19 +1467,14 @@ public class Driver {
                                     "8");
     // Liberal Arts Elective 2
     String POLI101 =
-      "";
+      "Introduction to theories about global politics. Issues and"+
+      "controversies central to global politics.";
     ArrayList<String> require = new ArrayList<String>();
-    String g = "CHEM 111";
-    String h = "CHEM 111L";
-    String i = "CHEM 141";
-    require.add(g);
-    require.add(h);
-    require.add(i);
 
-    facade.getCourseList().addCourse("CHEM 112L General Chemistry II Lab", 
+    facade.getCourseList().addCourse("POLI 101 Introduction to Global Politics", 
                                     "PR", 
                                     POLI101, 
-                                    1, 
+                                    3, 
                                     "POLI", 
                                     'C', 
                                     true, 
@@ -1474,22 +1485,12 @@ public class Driver {
 
     // Liberal Arts Elective 3
     String PHIL102 = 
-        "";
+        "An introduction to the main problems of philosophy and"+
+        " its methods of inquiry, analysis, and criticism. Works of"+
+        " important philosophers will be read.";
     ArrayList<String> requiredpre = new ArrayList<String>();
-    String j = "CHEM 111";
-    String k = "CHEM 141";
-    String l = "MATH 111";
-    String m = "MATH 115";
-    String n = "MATH 122";
-    String o = "MATH 141";
-    requiredpre.add(j);
-    requiredpre.add(k);
-    requiredpre.add(l);
-    requiredpre.add(m);
-    requiredpre.add(n);
-    requiredpre.add(o);
     
-    facade.getCourseList().addCourse("PHYS 212 Essentials of Physics II", 
+    facade.getCourseList().addCourse("PHIL 102 Introduction to Philosophy", 
                                      "PR", 
                                      PHIL102,
                                      3, 
@@ -1502,17 +1503,15 @@ public class Driver {
                                      "8");
     // Liberal Arts Elective 4
     String THEA170 =
-        "";
+        "Introduction to the art and craft of acting. Practical exploration"+
+        " through improvisation and scripted scene work. Includes a brief history"+
+        " of the development of modern acting techniques.";
     ArrayList<String> requires = new ArrayList<String>();
-    String t = "PHYS 211";
-    String u = "MATH 142";
-    requires.add(t);
-    requires.add(u);
 
-    facade.getCourseList().addCourse("PHYS 212L Essentials of Physics II Laboratory", 
+    facade.getCourseList().addCourse("THEA 170 Fundamentals of Acting ", 
                                      "PR", 
                                      THEA170, 
-                                     1, 
+                                     3, 
                                      "THEA", 
                                      'C', 
                                      true, 
@@ -1522,14 +1521,15 @@ public class Driver {
                                      "8");
     // Carolina Core GHS 1
     String SOST201 = 
-      "";
+      "Examination of major social and cultural developments of "+
+      "American South from early exploration to 1900.";
     ArrayList<String> prer = new ArrayList<String>();
 
-    facade.getCourseList().addCourse("SPCH 140 Public Communication", 
+    facade.getCourseList().addCourse("SOST 201 Introduction to Southern Studies 1580-1900", 
                                      "GHS", 
                                      SOST201, 
                                      3, 
-                                     "SPCH", 
+                                     "SOST", 
                                      'C', 
                                      false, 
                                      true, 
@@ -1538,11 +1538,13 @@ public class Driver {
                                      "8");
     // Carolina Core GHS 2
     String HIST111 =
-      "";
+      "A general survey of the United States from the era of discovery"+
+      " to 1865, emphasizing major political, economic, social, and"+
+      " intellectual developments.";
     ArrayList<String> pR = new ArrayList<String>();
 
-    facade.getCourseList().addCourse("SPCH 145 Online Public Communication", 
-                                     "CMS", 
+    facade.getCourseList().addCourse("HIST 111 United States History to 1865", 
+                                     "CHS", 
                                      HIST111, 
                                      3, 
                                      "HIST", 
