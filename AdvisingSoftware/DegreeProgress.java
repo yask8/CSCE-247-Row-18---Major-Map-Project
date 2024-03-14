@@ -63,12 +63,12 @@ public class DegreeProgress {
   public double getGradePoint(double courseGrade) {
     double gradePoint = 0;
     boolean gradeA = courseGrade <= 90;
-    boolean gradeBPlus = (courseGrade <= 85 && courseGrade <= 89.99);
-    boolean gradeB = (courseGrade <= 80 && courseGrade <= 84.99);
-    boolean gradeCPlus = (courseGrade <= 75 && courseGrade <= 79.99);
-    boolean gradeC = (courseGrade <= 70 && courseGrade <= 74.99);
-    boolean gradeDPlus = (courseGrade <= 65 && courseGrade <= 69.99);
-    boolean gradeD = (courseGrade <= 60 && courseGrade <= 64.99);
+    boolean gradeBPlus = (courseGrade <= 85 && courseGrade >= 89.99);
+    boolean gradeB = (courseGrade <= 80 && courseGrade >= 84.99);
+    boolean gradeCPlus = (courseGrade <= 75 && courseGrade >= 79.99);
+    boolean gradeC = (courseGrade <= 70 && courseGrade >= 74.99);
+    boolean gradeDPlus = (courseGrade <= 65 && courseGrade >= 69.99);
+    boolean gradeD = (courseGrade <= 60 && courseGrade >= 64.99);
     boolean gradeF = courseGrade < 59.99;
 
     if (gradeF) {
@@ -127,5 +127,17 @@ public class DegreeProgress {
       }
     }
     return creditHours;
+  }
+
+  public String checkPass(double courseGrade) {
+    boolean gradeDPlus = (courseGrade <= 65 && courseGrade >= 69.99);
+    boolean gradeD = (courseGrade <= 60 && courseGrade >= 64.99);
+    boolean gradeF = courseGrade < 59.99;
+
+    if ((gradeDPlus) || (gradeD) || (gradeF)) {
+      return "FAIL";
+    } else {
+      return "PASS";
+    }
   }
 }
