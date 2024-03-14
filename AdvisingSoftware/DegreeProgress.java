@@ -128,16 +128,4 @@ public class DegreeProgress {
     }
     return creditHours;
   }
-
-  public String checkPass(double courseGrade) {
-    boolean gradeDPlus = (courseGrade <= 65 && courseGrade >= 69.99);
-    boolean gradeD = (courseGrade <= 60 && courseGrade >= 64.99);
-    boolean gradeF = courseGrade < 59.99;
-
-    if ((gradeDPlus) || (gradeD) || (gradeF)) {
-      return "FAIL";
-    } else {
-      return "PASS";
-    }
-  }
 }
