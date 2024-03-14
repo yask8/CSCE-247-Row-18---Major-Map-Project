@@ -50,6 +50,12 @@ public class Grades {
     public void setCourseName(String course){
         this.courseName = course;
     }
+    /**
+     * Checks if grade is passing or failing
+     * @author Lia Zhao(zhaolia9)
+     * @param courseGrade the grade received
+     * @return PASS or FAIL depending on grade
+     */
     public String checkPass(double courseGrade) {
         boolean gradeDPlus = (courseGrade <= 65 && courseGrade >= 69.99);
         boolean gradeD = (courseGrade <= 60 && courseGrade >= 64.99);
