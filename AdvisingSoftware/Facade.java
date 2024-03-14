@@ -6,7 +6,7 @@ import java.util.UUID;
 
 /**
  * @author Lia Zhao (zhaolia9)
- *
+ * 
  **/
 
 public class Facade {
@@ -20,13 +20,14 @@ public class Facade {
     this.courseList = CourseList.getInstance();
     this.userList = UserList.getInstance();
     this.majorList = MajorList.getInstance();
+
   }
 
   /**
    * Logs in a user with the specified email and password.
    * If the user list is not already loaded, it loads the users using data loader
    * Loads Course and Majors as well
-   *
+   * 
    * @author @Spillmag
    *
    * @param email    The email of the user.
@@ -42,7 +43,7 @@ public class Facade {
   /**
    * Signs out the currently logged-in user and saves any changes made during the
    * session.
-   *
+   * 
    * @author @Spillmag
    */
   public void signOut() {
@@ -81,12 +82,7 @@ public class Facade {
    * @param email     The email of the student.
    * @param password  The password of the student.
    */
-  public void signUpStudent(
-    String firstName,
-    String lastName,
-    String email,
-    String password
-  ) {
+  public void signUpStudent(String firstName, String lastName, String email, String password) {
     userList.signUp(firstName, lastName, email, password, "STUDENT");
   }
 
@@ -98,12 +94,7 @@ public class Facade {
    * @param email     The email of the administrator.
    * @param password  The password of the administrator.
    */
-  public void signUpAdmin(
-    String firstName,
-    String lastName,
-    String email,
-    String password
-  ) {
+  public void signUpAdmin(String firstName, String lastName, String email, String password) {
     userList.signUp(firstName, lastName, email, password, "ADMIN");
   }
 
@@ -115,18 +106,13 @@ public class Facade {
    * @param email     The email of the advisor.
    * @param password  The password of the advisor.
    */
-  public void signUpAdvisor(
-    String firstName,
-    String lastName,
-    String email,
-    String password
-  ) {
+  public void signUpAdvisor(String firstName, String lastName, String email, String password) {
     userList.signUp(firstName, lastName, email, password, "ADVISOR");
   }
 
   /**
    * Retrieves the MajorMap object corresponding to the specified major name.
-   *
+   * 
    * @param majorName The name of the major for which to retrieve the MajorMap.
    * @return The MajorMap object if found, or null if not found.
    */
@@ -142,7 +128,7 @@ public class Facade {
 
   /**
    * Displays information about all the courses in the provided list.
-   *
+   * 
    * @param courseList The list of courses to display.
    */
   public void displayAllCourses(ArrayList<Course> courseList) {
@@ -158,7 +144,7 @@ public class Facade {
 
   /**
    * Displays information about the course with the specified course code.
-   *
+   * 
    * @param courseCode The code of the course to display.
    */
   public void showCourseByCode(String courseCode) {
@@ -181,7 +167,6 @@ public class Facade {
   }
 
   public User getUser() {
-    updateStudentGPA();
     return user;
   }
 
@@ -192,7 +177,7 @@ public class Facade {
   // GETTERS FOR THE SINGLETONS
   /**
    * Gets the list of courses from the CourseList singleton instance.
-   *
+   * 
    * @return The list of courses.
    */
   public ArrayList<Course> getCourses() {
@@ -201,7 +186,7 @@ public class Facade {
 
   /**
    * Gets the list of users from the UserList singleton instance.
-   *
+   * 
    * @return The list of users.
    */
   public ArrayList<User> getUsers() {
@@ -210,7 +195,7 @@ public class Facade {
 
   /**
    * Gets the list of majors from the MajorList singleton instance.
-   *
+   * 
    * @return The list of majors.
    */
   public ArrayList<MajorMap> getMajors() {
@@ -222,7 +207,7 @@ public class Facade {
    * Gets the year of the logged-in student.
    *
    * Returns null if the logged-in user is not a student.
-   *
+   * 
    * @return The year of the logged-in student.
    */
   public String getStudentYear() {
@@ -235,9 +220,9 @@ public class Facade {
 
   /**
    * Gets the credit hours of the logged-in student.
-   *
+   * 
    * Returns -1 if the logged-in user is not a student.
-   *
+   * 
    * @return The credit hours of the logged-in student.
    */
   public int getStudentCreditHours() {
@@ -250,9 +235,9 @@ public class Facade {
 
   /**
    * Gets the completed courses of the logged-in student.
-   *
+   * 
    * Returns null if the logged-in user is not a student.
-   *
+   * 
    * @return The completed courses of the logged-in student.
    */
   public ArrayList<Grades> getStudentCompletedCourses() {
@@ -265,29 +250,24 @@ public class Facade {
 
   /**
    * Gets the GPA of the logged-in student.
-   *
+   * 
    * Returns -1.0 if the logged-in user is not a student.
-   *
+   * 
    * @return The GPA of the logged-in student.
    */
   public double getStudentGPA() {
     if (user.getUserType().equals("STUDENT")) {
-      ((Student) user).updateGPA(courseList.getCourses());
       return ((Student) user).getGpa();
     } else {
       return -1.0;
     }
   }
 
-  public double updateStudentGPA() {
-    return ((Student) user).updateGPA(courseList.getCourses());
-  }
-
   /**
    * Gets the course planner of the logged-in student.
    *
    * Returns null if the logged-in user is not a student.
-   *
+   * 
    * @return The course planner of the logged-in student.
    */
   public CoursePlanner getStudentCoursePlanner() {
@@ -300,9 +280,9 @@ public class Facade {
 
   /**
    * Gets the degree progress of the logged-in student.
-   *
+   * 
    * Returns null if the logged-in user is not a student.
-   *
+   * 
    * @return The degree progress of the logged-in student.
    */
   public DegreeProgress getStudentDegreeProgress() {
@@ -315,9 +295,9 @@ public class Facade {
 
   /**
    * Gets the advisor notes of the logged-in student.
-   *
+   * 
    * Returns null if the logged-in user is not a student.
-   *
+   * 
    * @return The advisor notes of the logged-in student.
    */
   public ArrayList<Note> getStudentAdvisorNotes() {
@@ -331,7 +311,7 @@ public class Facade {
   /**
    * Gets the major of the logged-in student.
    * Returns null if the logged-in user is not a student.
-   *
+   * 
    * @return The major of the logged-in student.
    */
   public String getStudentMajor() {
@@ -344,9 +324,9 @@ public class Facade {
 
   /**
    * Gets the changes made list by a logged in Admin.
-   *
+   * 
    * Returns null if the logged-in user is not a Admin.
-   *
+   * 
    * @return the changes made list by a logged in Admin.
    */
   public ArrayList<String> getAdminChangesMade() {
@@ -359,7 +339,7 @@ public class Facade {
 
   /**
    * Gets the list of advisees for the advisor.
-   *
+   * 
    * @return ArrayList of advisees.
    */
   public ArrayList<UUID> getListOfAdvisees() {
@@ -373,7 +353,7 @@ public class Facade {
 
   /**
    * Gets the list of failing students for the advisor.
-   *
+   * 
    * @return ArrayList of failing students.
    */
   public ArrayList<UUID> getListOfFailingStudents() {
@@ -409,9 +389,7 @@ public class Facade {
       ArrayList<UUID> adviseeIds = advisor.getListOfAdvisees();
       if (adviseeIds.contains(studentId)) {
         User studentUser = userList.getUserbyUSCID(studentId);
-        if (
-          studentUser != null && studentUser.getUserType().equals("STUDENT")
-        ) {
+        if (studentUser != null && studentUser.getUserType().equals("STUDENT")) {
           return (Student) studentUser;
         }
       }
@@ -421,16 +399,16 @@ public class Facade {
 
   public void addNoteToStudentAdvisor(UUID studentId, String noteContent) {
     Student student = getStudentByAdvisor(studentId);
-
     if (student != null) {
       Note newNote = new Note(noteContent, new Date());
       student.getAdvisorNotes().add(newNote);
     }
+
   }
 
   /**
    * Adds a student to the list of advisees for the advisor.
-   *
+   * 
    * @param advisorId The ID of the advisor.
    * @param studentId The ID of the student to add.
    * @return True if the student is successfully added, false if the student is
@@ -450,7 +428,7 @@ public class Facade {
 
   /**
    * Gets the ID of a user by their first name and last name.
-   *
+   * 
    * @param firstName The first name of the user.
    * @param lastName  The last name of the user.
    * @return The ID of the user if found, or null if not found.
@@ -458,17 +436,16 @@ public class Facade {
   public UUID getUserIdByName(String firstName, String lastName) {
     return userList.getIDByName(firstName, lastName);
   }
-
   /**
-   * Gets the ID of the currently logged-in user.
-   *
-   * @return The ID of the currently logged-in user if available, or null if no user is logged in.
-   */
-  public UUID getCurrentUserId() {
-    if (user != null) {
+ * Gets the ID of the currently logged-in user.
+ * 
+ * @return The ID of the currently logged-in user if available, or null if no user is logged in.
+ */
+public UUID getCurrentUserId() {
+  if (user != null) {
       return user.getID();
-    } else {
+  } else {
       return null;
-    }
   }
+}
 }
