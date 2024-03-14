@@ -50,11 +50,31 @@ public class Grades {
     public void setCourseName(String course){
         this.courseName = course;
     }
+    public String checkPass(double courseGrade) {
+        boolean gradeDPlus = (courseGrade <= 65 && courseGrade >= 69.99);
+        boolean gradeD = (courseGrade <= 60 && courseGrade >= 64.99);
+        boolean gradeF = courseGrade < 59.99;
+    
+        if ((gradeDPlus) || (gradeD) || (gradeF)) {
+          return "FAIL";
+        } else {
+          return "PASS";
+        }
+      }
     /**
      * Displays the course and the grade with a comma
      * @return The course and the grade
      */
     public String toString(){
-       return courseName + " : " + grade;
+       return courseName + ": " + grade + " --> " + checkPass(grade);
+    }
+
+    public static void main(String[] args) {
+        String courseName = "CSCE 132";
+        double grade = 92.8;
+        Grades g = new Grades(courseName, grade);
+        
+        System.out.println(g.toString());
+
     }
 }
