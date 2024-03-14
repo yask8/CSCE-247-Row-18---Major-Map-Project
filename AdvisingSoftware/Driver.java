@@ -1032,6 +1032,8 @@ public class Driver {
                                      "5");
     facade.saveCourses();
   }
+  // ----------------------------- From This point forward course adding is not complete---------------------
+  // In Progress do not test these are just the templates
   public void addingSem6Courses() {
     // CSCE 416
     String CSCE416 = 
