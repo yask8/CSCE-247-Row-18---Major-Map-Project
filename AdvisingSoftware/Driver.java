@@ -47,6 +47,8 @@ public class Driver {
     if (facade.getUser() != null) {
       System.out.println("Login successful!");
       System.out.println("Current user:");
+      facade.updateStudentGPA();
+      //System.out.println(facade.getStudentGPA());
       System.out.println(facade.getUser());
     } else {
       System.out.println("Login failed. Incorrect email or password.");

@@ -278,6 +278,10 @@ public class Facade {
     }
   }
 
+  public double updateStudentGPA() {
+    return ((Student) user).updateGPA(courseList.getCourses());
+  }
+
   /**
    * Gets the course planner of the logged-in student.
    *
