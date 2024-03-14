@@ -188,12 +188,15 @@ public class Student extends User {
  *
  * @return The MajorMap object of the student's major if found, or null if not found.
  */
-public MajorMap getMajorMap() {
+public MajorMap getStudentsMajorMap() {
   String studentMajor = getMajor();
 
   if (studentMajor != null || studentMajor == "Undelared") {
       MajorList majorList = MajorList.getInstance();
       return majorList.getMajorByName(studentMajor);
+  }
+  else{
+    System.out.println("Please declare major before trying to view your major map");
   }
 
   return null;
@@ -286,7 +289,7 @@ public MajorMap getMajorMap() {
    * @return the student's degree progress
    */
   public DegreeProgress getDegreeProgress() {
-    MajorMap majorMap = getMajorMap();
+    MajorMap majorMap = getStudentsMajorMap();
     if (majorMap != null) {
         degreeProgress.saveCompleteCourses(completedCourses);
         degreeProgress.populateIncompleteCoursesFromMajorMap(majorMap);
