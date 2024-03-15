@@ -67,6 +67,22 @@ public class DegreeProgress {
     }
   }
 
+  public void upadateCourseCompletion(ArrayList<Grades> xcompleteCourses) {
+    saveCompleteCourses(xcompleteCourses);
+    for (String course : incompleteCourses) {
+      if (completeCourses.contains(course)) {
+        incompleteCourses.remove(course);
+      }
+    }
+    ArrayList<String> temp = new ArrayList<String>();
+    for (String incomplete : incompleteCourses) {
+      if (incomplete != null) {
+        temp.add(incomplete);
+      }
+    }
+    incompleteCourses = temp;
+  }
+
   public void populateIncompleteCoursesFromMajorMap(MajorMap majorMap) {
     ArrayList<String> majorCourses = majorMap.getCoursesForMajor(major);
     for (String course : majorCourses) {

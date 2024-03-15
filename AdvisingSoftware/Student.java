@@ -299,6 +299,7 @@ public class Student extends User {
       degreeProgress.saveCompleteCourses(completedCourses);
       degreeProgress.populateIncompleteCoursesFromMajorMap(majorMap);
       degreeProgress.populateIncompleteCoursesFromAppArea(this.applicationArea);
+      degreeProgress.upadateCourseCompletion(completedCourses);
     }
 
     return degreeProgress;
