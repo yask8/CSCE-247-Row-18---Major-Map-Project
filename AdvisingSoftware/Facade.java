@@ -271,7 +271,7 @@ public class Facade {
    */
   public double getStudentGPA() {
     if (user.getUserType().equals("STUDENT")) {
-      return ((Student) user).getGpa();
+      return ((Student) user).updateGPA(courseList.getCourses());
     } else {
       return -1.0;
     }
