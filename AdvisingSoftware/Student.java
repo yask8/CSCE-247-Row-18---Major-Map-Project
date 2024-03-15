@@ -207,9 +207,6 @@ public class Student extends User {
    *
    * @return returns updated gpa
    */
-  public double updateGPA() {
-    return 0;
-  }
 
   public double updateGPA(ArrayList<Course> courseList) {
     this.gpa = degreeProgress.calculateGPA(courseList, completedCourses);

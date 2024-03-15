@@ -165,6 +165,7 @@ public class DegreeProgress {
         getGradePoint(completeCourse.getGrade());
     }
     gpa = totalPoints / totalCreditHours;
+    gpa = Math.floor(gpa * 100) / 100;
     return gpa;
   }
 
