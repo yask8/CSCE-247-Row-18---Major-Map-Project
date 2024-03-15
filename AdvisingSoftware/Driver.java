@@ -149,10 +149,12 @@ public class Driver {
     );
 
     // Choosing the Application Area
-    System.out.println("Brax West looks at the following application areas.");
+    System.out.println(
+      "\nBrax West looks at the following application areas.\n"
+    );
     facade.showAppAreaOptions();
     System.out.println(
-      "Brax decides to choose Digital Design as his application area."
+      "Brax decides to choose Digital Design as his application area.\n"
     );
     facade.setAppArea("Digital Design");
     facade.saveCourses();

@@ -82,6 +82,7 @@ public class DegreeProgress {
     AppArea appArea = new AppArea(xappArea);
     ArrayList<String> majorElectives = appArea.getmajorElectives();
     ArrayList<String> appAreaCourses = appArea.getAppAreaCourses();
+
     for (String course : majorElectives) {
       if (
         !completeCourses.contains(course) && !incompleteCourses.contains(course)
@@ -101,7 +102,7 @@ public class DegreeProgress {
 
   public void displayAllAppAreas() {
     AppArea appArea = new AppArea("Science");
-    System.out.println(appArea.showAppAreaOptions());
+    //System.out.println(appArea.showAppAreaOptions());
     for (String option : appArea.getAppAreaOptions()) {
       appArea = new AppArea(option);
       System.out.println(appArea.toString());

@@ -118,7 +118,7 @@ public class AppArea {
 
   public String toString() {
     String appAreaText = "";
-    appAreaText += "*******Application Area*******\n";
+    appAreaText += "\n*******Application Area*******\n";
     appAreaText += appAreaName;
 
     appAreaText += "\n*******Major Electives*******\n";
