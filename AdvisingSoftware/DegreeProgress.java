@@ -11,17 +11,19 @@ public class DegreeProgress {
   private ArrayList<String> incompleteCourses;
 
   public DegreeProgress(
-      String major,
-      ArrayList<String> completeCourses,
-      ArrayList<String> incompleteCourses) {
+    String major,
+    ArrayList<String> completeCourses,
+    ArrayList<String> incompleteCourses
+  ) {
     this.major = major;
     this.completeCourses = completeCourses;
     this.incompleteCourses = incompleteCourses;
   }
 
   public String displayProgress(
-      MajorMap majorMap,
-      HashMap<String, ArrayList<Course>> completedCourses) {
+    MajorMap majorMap,
+    HashMap<String, ArrayList<Course>> completedCourses
+  ) {
     return "-----Degree Progress-----" + "Current Major: " + this.major;
   }
 
@@ -57,8 +59,8 @@ public class DegreeProgress {
   public void saveCompleteCourses(ArrayList<Grades> xcompleteCourses) {
     for (Grades course : xcompleteCourses) {
       boolean pass = course
-          .checkPass(course.getGrade())
-          .equalsIgnoreCase("PASS");
+        .checkPass(course.getGrade())
+        .equalsIgnoreCase("PASS");
       if (!completeCourses.contains(course.getCourseName()) && pass) {
         completeCourses.add(course.getCourseName());
       }
@@ -68,11 +70,33 @@ public class DegreeProgress {
   public void populateIncompleteCoursesFromMajorMap(MajorMap majorMap) {
     ArrayList<String> majorCourses = majorMap.getCoursesForMajor(major);
     for (String course : majorCourses) {
-      if (!completeCourses.contains(course) && !incompleteCourses.contains(course)) {
+      if (
+        !completeCourses.contains(course) && !incompleteCourses.contains(course)
+      ) {
+        incompleteCourses.add(course);
+      }
+    }
+  }
+
+  public void populateIncompleteCoursesFromAppArea(String xappArea) {
+    AppArea appArea = new AppArea(xappArea);
+    ArrayList<String> majorElectives = appArea.getmajorElectives();
+    ArrayList<String> appAreaCourses = appArea.getAppAreaCourses();
+    for (String course : majorElectives) {
+      if (
+        !completeCourses.contains(course) && !incompleteCourses.contains(course)
+      ) {
         incompleteCourses.add(course);
       }
     }
 
+    for (String course : appAreaCourses) {
+      if (
+        !completeCourses.contains(course) && !incompleteCourses.contains(course)
+      ) {
+        incompleteCourses.add(course);
+      }
+    }
   }
 
   public ArrayList<String> getIncompleteCourses() {
@@ -118,24 +142,27 @@ public class DegreeProgress {
   }
 
   public double calculateGPA(
-      ArrayList<Course> courseList,
-      ArrayList<Grades> completedCourses) {
+    ArrayList<Course> courseList,
+    ArrayList<Grades> completedCourses
+  ) {
     double gpa = 0.0;
     double totalPoints = 0;
     double totalCreditHours = 0;
 
     for (Grades completeCourse : completedCourses) {
       totalCreditHours += getCreditHours(completeCourse, courseList);
-      totalPoints += getCreditHours(completeCourse, courseList) *
-          getGradePoint(completeCourse.getGrade());
+      totalPoints +=
+        getCreditHours(completeCourse, courseList) *
+        getGradePoint(completeCourse.getGrade());
     }
     gpa = totalPoints / totalCreditHours;
     return gpa;
   }
 
   public int getCreditHours(
-      Grades completeCourse,
-      ArrayList<Course> courseList) {
+    Grades completeCourse,
+    ArrayList<Course> courseList
+  ) {
     int creditHours = 0;
     for (Course searched : courseList) {
       if (searched.getID().equalsIgnoreCase(completeCourse.getCourseName())) {
