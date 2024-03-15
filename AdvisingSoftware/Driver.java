@@ -142,18 +142,20 @@ public class Driver {
 
   public void scenario1() {
     // Student: Brax West
+    /* 
     facade.signUpStudent(
       "Brax",
       "West",
       "braxwest1@email.sc.edu",
       "Bestdinoistr3x!"
     );
-    facade.signOut();
+    facade.signOut();*/
     // Junior Computer Science major
     facade.login("braxwest1@email.sc.edu", "Bestdinoistr3x!");
     System.out.println(
       "Login Successful. \nCurrent User: " + facade.getUser().toString()
     );
+    facade.showAppAreaOptions();
   }
 
   public void addingSem1Courses() {

@@ -8,8 +8,8 @@ public class AppArea {
    * Attributes
    */
   private String appAreaName;
-  private ArrayList<String> majorElectives;
-  private ArrayList<String> appAreaCourses;
+  private ArrayList<String> majorElectives = new ArrayList<String>();
+  private ArrayList<String> appAreaCourses = new ArrayList<String>();
   private ArrayList<String> appAreaOptions = new ArrayList<String>();
 
   public AppArea(String appAreaName) {
