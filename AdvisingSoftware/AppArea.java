@@ -12,13 +12,7 @@ public class AppArea {
   private ArrayList<String> appAreaCourses;
   private ArrayList<String> appAreaOptions = new ArrayList<String>();
 
-  public AppArea(
-    String appAreaName,
-    ArrayList<String> majorElectives,
-    ArrayList<String> appAreaCourses
-  ) {
-    this.majorElectives = majorElectives;
-    this.appAreaCourses = appAreaCourses;
+  public AppArea(String appAreaName) {
     appAreaOptions.add("Science");
     appAreaOptions.add("Math");
     appAreaOptions.add("Digital Design");
@@ -27,6 +21,8 @@ public class AppArea {
     if (appAreaOptions.contains(appAreaName)) {
       this.appAreaName = appAreaName;
     }
+    setMajorElectives(appAreaName);
+    setAppAreaCourses(appAreaName);
   }
 
   public ArrayList<String> getmajorElectives() {
