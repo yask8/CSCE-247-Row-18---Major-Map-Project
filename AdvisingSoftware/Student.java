@@ -274,6 +274,14 @@ public class Student extends User {
     return applicationArea;
   }
 
+  public void showAppAreaOptions() {
+    degreeProgress.displayAllAppAreas();
+  }
+
+  public void setAppArea(String xappArea) {
+    this.applicationArea = xappArea;
+  }
+
   /**
    * Getter for coursePlanner
    *

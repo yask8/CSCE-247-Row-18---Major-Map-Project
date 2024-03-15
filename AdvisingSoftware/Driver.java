@@ -26,13 +26,12 @@ public class Driver {
     //addingSem7Courses();
     //addingSem8Courses();
     // Portias Scenarios
-    // scenario1();
+    scenario1();
     //scenario2();
 
-    facade.login("bwest@email.sc.edu","bwest060903");
+    facade.login("bwest@email.sc.edu", "bwest060903");
     System.out.println(facade.getStudentDegreeProgress());
     facade.signOut();
-
   }
 
   /*
@@ -143,6 +142,13 @@ public class Driver {
 
   public void scenario1() {
     // Student: Brax West
+    facade.signUpStudent(
+      "Brax",
+      "West",
+      "braxwest1@email.sc.edu",
+      "Bestdinoistr3x!"
+    );
+    facade.signOut();
     // Junior Computer Science major
     facade.login("braxwest1@email.sc.edu", "Bestdinoistr3x!");
     System.out.println(
@@ -1177,7 +1183,7 @@ public class Driver {
     String SPAN110 =
       "Introduction to grammar and practical vocabulary necessary for" +
       " fundamental communication skills.";
-      ArrayList<String> SPANpreRequire = new ArrayList<String>();
+    ArrayList<String> SPANpreRequire = new ArrayList<String>();
     String SPANpreReq = "SPAN109";
     SPANpreRequire.add(SPANpreReq);
     facade
