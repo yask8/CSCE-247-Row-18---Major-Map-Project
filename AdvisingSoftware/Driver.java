@@ -142,16 +142,8 @@ public class Driver {
 
   public void scenario1() {
     // Student: Brax West
-    /* 
-    facade.signUpStudent(
-      "Brax",
-      "West",
-      "braxwest1@email.sc.edu",
-      "Bestdinoistr3x!"
-    );
-    facade.signOut();*/
     // Junior Computer Science major
-    facade.login("braxwest1@email.sc.edu", "Bestdinoistr3x!");
+    facade.login("bwest@email.sc.edu", "bwest060903");
     System.out.println(
       "Login Successful. \nCurrent User: " + facade.getUser().toString()
     );
