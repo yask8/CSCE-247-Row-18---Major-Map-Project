@@ -25,6 +25,18 @@ public class AppArea {
     setAppAreaCourses(appAreaName);
   }
 
+  public String showAppAreaOptions() {
+    String appAreaOptions = "*******Application Areas*******\n";
+    for (String appArea : this.appAreaOptions) {
+      appAreaOptions += appArea + ", ";
+    }
+    return appAreaOptions + "and more to come...";
+  }
+
+  public ArrayList<String> getAppAreaOptions() {
+    return appAreaOptions;
+  }
+
   public ArrayList<String> getmajorElectives() {
     return majorElectives;
   }
