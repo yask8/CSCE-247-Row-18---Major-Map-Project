@@ -344,6 +344,14 @@ public class Facade {
     }
   }
 
+  public void setAppArea(String xappArea) {
+    if (user.getUserType().equals("STUDENT")) {
+      ((Student) user).setAppArea(xappArea);
+    } else {
+      System.out.println("Not a student user.");
+    }
+  }
+
   /**
    * Gets the changes made list by a logged in Admin.
    *

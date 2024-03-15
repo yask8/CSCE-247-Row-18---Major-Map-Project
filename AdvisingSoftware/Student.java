@@ -301,12 +301,10 @@ public class Student extends User {
     if (majorMap != null) {
       degreeProgress.saveCompleteCourses(completedCourses);
       degreeProgress.populateIncompleteCoursesFromMajorMap(majorMap);
+      degreeProgress.populateIncompleteCoursesFromAppArea(this.applicationArea);
     }
-    return degreeProgress;
-  }
 
-  public void setApplicationArea(String appArea) {
-    this.applicationArea = appArea;
+    return degreeProgress;
   }
 
   /**

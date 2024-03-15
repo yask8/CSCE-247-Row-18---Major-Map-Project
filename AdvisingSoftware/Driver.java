@@ -155,7 +155,16 @@ public class Driver {
     System.out.println(
       "Login Successful. \nCurrent User: " + facade.getUser().toString()
     );
+
+    // Choosing the Application Area
+    System.out.println("Brax West looks at the following application areas.");
     facade.showAppAreaOptions();
+    System.out.println(
+      "Brax decides to choose Digital Design as his application area."
+    );
+    facade.setAppArea("Digital Design");
+    facade.saveCourses();
+    System.out.println(facade.getStudentDegreeProgress());
   }
 
   public void addingSem1Courses() {
