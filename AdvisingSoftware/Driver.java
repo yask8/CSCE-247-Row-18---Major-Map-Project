@@ -1,6 +1,5 @@
 package AdvisingSoftware;
 
-
 /**
  * @author Lia Zhao (zhaolia9)
 
@@ -150,20 +149,14 @@ public class Driver {
     facade.setAppArea("Digital Design");
 
     // Choosing a GFL class to take
-    System.out.println(
-      "\nBrax searches for his Major Map by name."
-    );
+    System.out.println("\nBrax searches for his Major Map by name.");
     System.out.println(facade.getMajorMap("Computer Science"));
-    System.out.println(
-      "\nBrax notices he did not take a GFL elective yet."
-    );
+    System.out.println("\nBrax notices he did not take a GFL elective yet.");
     System.out.println(
       "\nBrax searches for the elective courses by their code."
     );
     facade.showCourseByCode("GFL");
-    System.out.println(
-      "Brax decides to pick SPAN 109 as his GFL elective."
-    );
+    System.out.println("Brax decides to pick SPAN 109 as his GFL elective.");
     //TODO: Figure out how to add his GFL in
     facade.saveCourses();
     System.out.println(facade.getStudentDegreeProgress());
