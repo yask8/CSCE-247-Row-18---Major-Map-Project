@@ -108,17 +108,13 @@ public class Student extends User {
    * @return String of newly updated year/class
    */
   public String updateYear(int creditHours) {
-    if (year == "Freshman") {
+    year = "Freshaman";
+    if (creditHours < 60 && creditHours >= 30) {
       year = "Sophomore";
-    }
-    if (year == "Sophomore") {
+    } else if (creditHours < 90 && creditHours >= 60) {
       year = "Junior";
-    }
-    if (year == "Junior") {
+    } else if (creditHours <= 90) {
       year = "Senior";
-    }
-    if (year == "Senior") {
-      year = "5th Year";
     }
     return year;
   }
@@ -223,6 +219,7 @@ public class Student extends User {
    * @return the student's year/class
    */
   public String getYear() {
+    updateYear(creditHours);
     return year;
   }
 
