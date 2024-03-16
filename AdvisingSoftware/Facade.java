@@ -167,8 +167,9 @@ public class Facade {
 
     if (course != null) {
       System.out.println(course.toString());
+    } else {
+      System.out.println("Course with code " + courseCode + " not found.");
     }
-    System.out.println("Course with code " + courseCode + " not found.");
   }
 
   // Getters

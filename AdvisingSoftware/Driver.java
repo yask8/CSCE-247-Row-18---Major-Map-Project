@@ -1,6 +1,5 @@
 package AdvisingSoftware;
 
-import java.util.ArrayList;
 
 /**
  * @author Lia Zhao (zhaolia9)
@@ -135,11 +134,11 @@ public class Driver {
   public void scenario1() {
     // Student: Brax West
     // Junior Computer Science major
+
     facade.login("bwest@email.sc.edu", "bwest060903");
     System.out.println(
       "Login Successful. \nCurrent User: " + facade.getUser().toString()
     );
-
     // Choosing the Application Area
     System.out.println(
       "\nBrax West looks at the following application areas.\n"
@@ -149,6 +148,23 @@ public class Driver {
       "Brax decides to choose Digital Design as his application area.\n"
     );
     facade.setAppArea("Digital Design");
+
+    // Choosing a GFL class to take
+    System.out.println(
+      "\nBrax searches for his Major Map by name."
+    );
+    System.out.println(facade.getMajorMap("Computer Science"));
+    System.out.println(
+      "\nBrax notices he did not take a GFL elective yet."
+    );
+    System.out.println(
+      "\nBrax searches for the elective courses by their code."
+    );
+    facade.showCourseByCode("GFL");
+    System.out.println(
+      "Brax decides to pick SPAN 109 as his GFL elective."
+    );
+    //TODO: Figure out how to add his GFL in
     facade.saveCourses();
     System.out.println(facade.getStudentDegreeProgress());
   }

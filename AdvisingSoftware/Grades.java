@@ -72,7 +72,7 @@ public class Grades {
      * @return The course and the grade
      */
     public String toString(){
-       return courseName + ": " + grade + " --> " + checkPass(grade);
+       return courseName + ": " + grade + "(" + checkPass(grade) + ")";
     }
 
     public static void main(String[] args) {
