@@ -1,7 +1,6 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 // TODO JAVA DOC AUTHOR GARRETT SPILLMAN
 public class DegreeProgress {
@@ -22,7 +21,7 @@ public class DegreeProgress {
 
   public String displayProgress(
     MajorMap majorMap,
-    HashMap<String, ArrayList<Course>> completedCourses
+    ArrayList<Grades> completedCourses
   ) {
     return "-----Degree Progress-----" + "Current Major: " + this.major;
   }
@@ -67,7 +66,7 @@ public class DegreeProgress {
     }
   }
 
-  public void upadateCourseCompletion(ArrayList<Grades> xcompleteCourses) {
+  public void updateCourseCompletion(ArrayList<Grades> xcompleteCourses) {
     saveCompleteCourses(xcompleteCourses);
     for (String course : incompleteCourses) {
       if (completeCourses.contains(course)) {
