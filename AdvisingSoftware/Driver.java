@@ -155,7 +155,7 @@ public class Driver {
     System.out.println(
       "\nBrax searches for the elective courses by their code."
     );
-    facade.showCourseByCode("GFL");
+    facade.showCoursesByCode("GFL");
     System.out.println("Brax decides to pick SPAN 109 as his GFL elective.");
     //TODO: Figure out how to add his GFL in
     facade.saveCourses();

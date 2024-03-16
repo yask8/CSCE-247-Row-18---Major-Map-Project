@@ -162,15 +162,20 @@ public class Facade {
    *
    * @param courseCode The code of the course to display.
    */
-  public void showCourseByCode(String courseCode) {
+  public void showCoursesByCode(String courseCode) {
     CourseList courseListInstance = CourseList.getInstance();
     Course course = courseListInstance.getCourse(courseCode);
-
-    if (course != null) {
+    System.out.println("***********" + courseCode + " Courses***********");
+    for (Course xCourse : courseListInstance.getCourses()) {
+      if (xCourse != null && xCourse.getCode().equalsIgnoreCase("GFL")) {
+        System.out.println(xCourse.toString());
+      }
+    }
+    /*if (course != null) {
       System.out.println(course.toString());
     } else {
       System.out.println("Course with code " + courseCode + " not found.");
-    }
+    }*/
   }
 
   // Getters
