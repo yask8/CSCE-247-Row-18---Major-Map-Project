@@ -108,7 +108,7 @@ public class Student extends User {
    * @return String of newly updated year/class
    */
   public String updateYear(int creditHours) {
-    year = "Freshaman";
+    year = "Freshman";
     if (creditHours < 60 && creditHours >= 30) {
       year = "Sophomore";
     } else if (creditHours < 90 && creditHours >= 60) {
