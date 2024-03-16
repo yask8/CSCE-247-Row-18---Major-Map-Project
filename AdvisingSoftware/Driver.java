@@ -159,7 +159,6 @@ public class Driver {
     facade.setAppArea("Digital Design");
     facade.saveCourses();
     System.out.println(facade.getStudentDegreeProgress());
-    System.out.println(facade.getStudentGPA());
   }
 
   public void addingSem1Courses() {
