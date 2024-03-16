@@ -219,7 +219,7 @@ public class Student extends User {
    * @return the student's year/class
    */
   public String getYear() {
-    updateYear(creditHours);
+    this.year = updateYear(creditHours);
     return year;
   }
 
@@ -238,6 +238,7 @@ public class Student extends User {
    * @return the number of credit hours the student has taken
    */
   public int getCreditHours() {
+    this.creditHours = degreeProgress.getTotalCreditHours();
     return creditHours;
   }
 

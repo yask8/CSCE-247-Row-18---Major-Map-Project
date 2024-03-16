@@ -36,6 +36,7 @@ public class Facade {
   public User login(String email, String password) {
     User loggedInUser = userList.getUserByLoginInfo(email, password);
     this.user = loggedInUser;
+    getStudentGPA();
     return loggedInUser;
   }
 

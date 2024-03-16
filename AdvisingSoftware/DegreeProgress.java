@@ -8,6 +8,7 @@ public class DegreeProgress {
   private String major;
   private ArrayList<String> completeCourses;
   private ArrayList<String> incompleteCourses;
+  private int totalCreditHours;
 
   public DegreeProgress(
     String major,
@@ -172,8 +173,7 @@ public class DegreeProgress {
   ) {
     double gpa = 0.0;
     double totalPoints = 0;
-    double totalCreditHours = 0;
-
+    totalCreditHours = 0;
     for (Grades completeCourse : completedCourses) {
       totalCreditHours += getCreditHours(completeCourse, courseList);
       totalPoints +=
@@ -183,6 +183,10 @@ public class DegreeProgress {
     gpa = totalPoints / totalCreditHours;
     gpa = Math.floor(gpa * 100) / 100;
     return gpa;
+  }
+
+  public int getTotalCreditHours() {
+    return totalCreditHours;
   }
 
   public int getCreditHours(
