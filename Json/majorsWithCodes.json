@@ -10,9 +10,9 @@
       "semester 2": ["ENGL102", "MATH142", "CHEM111", "CHEM111L", "CSCE146", "CSCE215"],
       "semester 3": ["CSCE211", "CSCE240", "MATH374", "CHEM112", "CHEM112L", "SPCH140"],
       "semester 4": ["CSCE212", "CSCE247", "MATH241", "GSS", "SCI","SCI-L","GFL"],
-      "semester 5": ["CSCE311", "CSCE330", "CSCE350", "CSCE390", "ENGL462", "CSCE518"],
-      "semester 6": ["CSCE416", "CSCE317", "STAT509", "CLAS220", "CSCE522"],
-      "semester 7": ["CSCE490", "CSCE355", "MATH344", "MATH344L", "CSCE548", "CSCE520"],
-      "semester 8": ["CSCE492", "CSCE513", "MUSC110", "POLI101", "SOST201"]
+      "semester 5": ["CSCE311", "CSCE330", "CSCE350", "CSCE390", "ENGL462", "AAE"],
+      "semester 6": ["CSCE416", "ME", "STAT509", "CLAS220", "AAE"],
+      "semester 7": ["CSCE490", "CSCE355", "MATH344", "MATH344L", "ME", "AAE"],
+      "semester 8": ["CSCE492", "ME", "MUSC110", "POLI101", "GHS"]
     }
   }
