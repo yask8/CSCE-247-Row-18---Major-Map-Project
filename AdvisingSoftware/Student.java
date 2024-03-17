@@ -1,5 +1,11 @@
 package AdvisingSoftware;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -197,6 +203,44 @@ public class Student extends User {
 
     return null;
   }
+
+  /**
+     * Writes the course planner of this student to a text file.
+     *
+     * @param studentName The name of the student.
+     */
+    public void writeCoursePlannerToFile(String studentName) {
+        String directoryName = "StudentCoursePlanners";
+        String fileName = studentName + "_CoursePlanner.txt";
+        Path directoryPath = Paths.get(directoryName);
+        Path filePath = directoryPath.resolve(fileName);
+
+        try {
+            if (!Files.exists(directoryPath)) {
+                Files.createDirectories(directoryPath);
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath.toFile()))) {
+                writer.write("Course Planner for Student: " + studentName);
+                writer.newLine();
+                writer.write("===============================================");
+                writer.newLine();
+
+                for (int semester = 1; semester <= coursePlanner.getNumberOfSemesters(); semester++) {
+                    writer.newLine();
+                    writer.write("Semester " + semester + ":");
+                    writer.newLine();
+                    for (String course : coursePlanner.getCoursesForSemester(semester)) {
+                        writer.write(course);
+                        writer.newLine();
+                    }
+                }
+                System.out.println("Student's course planner written to " + filePath);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
   /**
    * Allows student to update their GPA

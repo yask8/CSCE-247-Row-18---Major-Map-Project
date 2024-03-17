@@ -51,7 +51,7 @@ public class Driver {
    
     facade.getStudentCoursePlanner().addCourse(6,"SPAN109");
 
-    facade.writeStudentCoursePlanner(facade.getStudentCoursePlanner(), facade.getUser().getFirstName() + " "+ facade.getUser().getLastName());
+    facade.writeStudentCoursePlanner(facade.getUser().getFirstName() + " "+ facade.getUser().getLastName());
     facade.signOut();
 }
 

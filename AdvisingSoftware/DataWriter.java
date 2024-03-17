@@ -1,10 +1,8 @@
 package AdvisingSoftware;
 
-import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -329,45 +327,5 @@ public class DataWriter extends DataConstants {
             e.printStackTrace();
         }
         return existingData;
-    }
-    
-    /**
-     * Writes the course planner of a student to a text file.
-     *
-     * @param coursePlanner The course planner to be written.
-     * @param studentName   The name of the student.
-     */
-    public static void writeCoursePlannerToFile(CoursePlanner coursePlanner, String studentName) {
-        String directoryName = "StudentCoursePlanners";
-        String fileName = studentName + "_CoursePlanner.txt";
-        Path directoryPath = Paths.get(directoryName);
-        Path filePath = directoryPath.resolve(fileName);
-
-        try {
-
-            if (!Files.exists(directoryPath)) {
-                Files.createDirectories(directoryPath);
-            }
-
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath.toFile()))) {
-                writer.write("Course Planner for Student: " + studentName);
-                writer.newLine();
-                writer.write("===============================================");
-                writer.newLine();
-
-                for (int semester = 1; semester <= coursePlanner.getNumberOfSemesters(); semester++) {
-                    writer.newLine();
-                    writer.write("Semester " + semester + ":");
-                    writer.newLine();
-                    for (String course : coursePlanner.getCoursesForSemester(semester)) {
-                        writer.write(course);
-                        writer.newLine();
-                    }
-                }
-                System.out.println("Student's course planner written to " + filePath);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
