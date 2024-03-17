@@ -95,10 +95,11 @@ public class Facade {
    * @param password  The password of the student.
    */
   public void signUpStudent(
-      String firstName,
-      String lastName,
-      String email,
-      String password) {
+    String firstName,
+    String lastName,
+    String email,
+    String password
+  ) {
     userList.signUp(firstName, lastName, email, password, "STUDENT");
   }
 
@@ -111,10 +112,11 @@ public class Facade {
    * @param password  The password of the administrator.
    */
   public void signUpAdmin(
-      String firstName,
-      String lastName,
-      String email,
-      String password) {
+    String firstName,
+    String lastName,
+    String email,
+    String password
+  ) {
     userList.signUp(firstName, lastName, email, password, "ADMIN");
   }
 
@@ -127,10 +129,11 @@ public class Facade {
    * @param password  The password of the advisor.
    */
   public void signUpAdvisor(
-      String firstName,
-      String lastName,
-      String email,
-      String password) {
+    String firstName,
+    String lastName,
+    String email,
+    String password
+  ) {
     userList.signUp(firstName, lastName, email, password, "ADVISOR");
   }
 
@@ -159,6 +162,10 @@ public class Facade {
     }
   }
 
+  /**
+   * shows courses that fall under given code category
+   * @param courseCode String code
+   */
   public void showCoursesByCode(String courseCode) {
     CourseList courseListInstance = CourseList.getInstance();
     courseListInstance.showCoursesByCode(courseCode);
@@ -337,6 +344,10 @@ public class Facade {
     }
   }
 
+  /**
+   * sets up application area for student
+   * @param xappArea String application area name
+   */
   public void setAppArea(String xappArea) {
     if (user.getUserType().equals("STUDENT")) {
       ((Student) user).setAppArea(xappArea);
@@ -414,7 +425,17 @@ public class Facade {
     return null;
   }
 
-  public void addNoteToStudentAdvisor(UUID advisorId, UUID studentId, String noteContent) {
+  /**
+   * adds note to Student from Advisor
+   * @param advisorId UUID Advisor's uscID
+   * @param studentId UUID Student's uscID
+   * @param noteContent String contents of the note
+   */
+  public void addNoteToStudentAdvisor(
+    UUID advisorId,
+    UUID studentId,
+    String noteContent
+  ) {
     Advisor advisor = userList.getAdvisorById(advisorId);
     if (advisor != null) {
       advisor.addNoteToStudentAdvisor(studentId, noteContent, userList);
