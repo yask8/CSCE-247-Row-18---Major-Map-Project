@@ -101,6 +101,7 @@ public class Facade {
     String password
   ) {
     userList.signUp(firstName, lastName, email, password, "STUDENT");
+    login(email, password);
   }
 
   /**
@@ -118,6 +119,7 @@ public class Facade {
     String password
   ) {
     userList.signUp(firstName, lastName, email, password, "ADMIN");
+    login(email, password);
   }
 
   /**
@@ -135,6 +137,7 @@ public class Facade {
     String password
   ) {
     userList.signUp(firstName, lastName, email, password, "ADVISOR");
+    login(email, password);
   }
 
   /**
