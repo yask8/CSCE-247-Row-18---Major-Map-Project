@@ -1,7 +1,7 @@
 package AdvisingSoftware;
 /**
  * Enum class that holds the Subject constants
- * @author yask8(Yasmine Kennedy)
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
  */
 public enum Subject {
     ANTH, ASTR, BIOL, CHEM, ENVR,

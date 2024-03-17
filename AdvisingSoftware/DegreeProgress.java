@@ -1,15 +1,24 @@
 package AdvisingSoftware;
-
+/**
+ * Creates a DegreeProgress for student
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
+ */
 import java.util.ArrayList;
 
-// TODO JAVA DOC AUTHOR GARRETT SPILLMAN
 public class DegreeProgress {
-
+  /**
+   * Attributes
+   */
   private String major;
   private ArrayList<String> completeCourses;
   private ArrayList<String> incompleteCourses;
   private int totalCreditHours;
-
+  /**
+   * Constructor
+   * @param major the major of the student
+   * @param completeCourses the student's completed courses
+   * @param incompleteCourses the student's incompleted courses
+   */
   public DegreeProgress(
     String major,
     ArrayList<String> completeCourses,
@@ -20,13 +29,22 @@ public class DegreeProgress {
     this.incompleteCourses = incompleteCourses;
   }
 
+  /**
+   * Displys the degree progress
+   * @param majorMap the major map
+   * @param completedCourses the completed courses
+   * @return the string format of both the major map and completed courses
+   */
   public String displayProgress(
     MajorMap majorMap,
     ArrayList<Grades> completedCourses
   ) {
     return "-----Degree Progress-----" + "Current Major: " + this.major;
   }
-
+  /**
+   * The display completed courses and incompleted courses
+   * @return the string format of completed and incomplete courses
+   */
   public String toString() {
     String result = "\n";
     result += "Current Major: " + this.major + "\n";
@@ -47,15 +65,24 @@ public class DegreeProgress {
 
     return result;
   }
-
+  /**
+   * Gets the major
+   * @return the major
+   */
   public String getMajor() {
     return major;
   }
-
+  /**
+   * Gets list of completed courses
+   * @return the completed courses
+   */
   public ArrayList<String> getCompleteCourses() {
     return completeCourses;
   }
-
+  /**
+   * Saves the Completed courses along with their grade
+   * @param xcompleteCourses the completed courses from the list of courses and grades
+   */
   public void saveCompleteCourses(ArrayList<Grades> xcompleteCourses) {
     for (Grades course : xcompleteCourses) {
       boolean pass = course
@@ -66,7 +93,10 @@ public class DegreeProgress {
       }
     }
   }
-
+  /**
+   * Updates course completetion 
+   * @param xcompleteCourses the courses from the list of courses and grade
+   */
   public void updateCourseCompletion(ArrayList<Grades> xcompleteCourses) {
     saveCompleteCourses(xcompleteCourses);
     for (String course : incompleteCourses) {
@@ -83,6 +113,10 @@ public class DegreeProgress {
     incompleteCourses = temp;
   }
 
+  /**
+   * Populates incomplete courses from major map
+   * @param majorMap the major map
+   */
   public void populateIncompleteCoursesFromMajorMap(MajorMap majorMap) {
     ArrayList<String> majorCourses = majorMap.getCoursesForMajor(major);
     for (String course : majorCourses) {
@@ -93,7 +127,10 @@ public class DegreeProgress {
       }
     }
   }
-
+  /**
+   * Populates Incomplete Courses from AppArea
+   * @param xappArea the app area
+   */
   public void populateIncompleteCoursesFromAppArea(String xappArea) {
     AppArea appArea = new AppArea(xappArea);
     ArrayList<String> majorElectives = appArea.getmajorElectives();
@@ -115,7 +152,9 @@ public class DegreeProgress {
       }
     }
   }
-
+  /**
+   * Displays all of the application areas
+   */
   public void displayAllAppAreas() {
     AppArea appArea = new AppArea("Science");
     System.out.println(appArea.getAppAreaOptions());
@@ -124,11 +163,18 @@ public class DegreeProgress {
       System.out.println(appArea.toString());
     }
   }
-
+  /**
+   * Gets the list incomplete courses
+   * @return the list of incomplete courses
+   */
   public ArrayList<String> getIncompleteCourses() {
     return incompleteCourses;
   }
-
+  /**
+   * Calculates the Grade Point Average
+   * @param courseGrade the grade received
+   * @return the grade point
+   */
   public double getGradePoint(double courseGrade) {
     double gradePoint = 0;
     boolean gradeA = courseGrade <= 90;
@@ -166,7 +212,12 @@ public class DegreeProgress {
     }
     return gradePoint;
   }
-
+  /**
+   * Calculates the GPA
+   * @param courseList the list of courses
+   * @param completedCourses the list of completed courses
+   * @return the GPA
+   */
   public double calculateGPA(
     ArrayList<Course> courseList,
     ArrayList<Grades> completedCourses
@@ -184,11 +235,19 @@ public class DegreeProgress {
     gpa = Math.floor(gpa * 100) / 100;
     return gpa;
   }
-
+  /**
+   * Gets the total credit hours
+   * @return the total credit hours
+   */
   public int getTotalCreditHours() {
     return totalCreditHours;
   }
-
+  /**
+   * Gets the CreditHours
+   * @param completeCourse the list of completed courses
+   * @param courseList the list of courses
+   * @return credit hours
+   */
   public int getCreditHours(
     Grades completeCourse,
     ArrayList<Course> courseList

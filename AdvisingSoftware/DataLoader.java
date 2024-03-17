@@ -18,7 +18,7 @@ import org.json.simple.parser.JSONParser;
  * Add LoadCoursePlanner method and implememnt into LoadStudents
  * Add LoadNotes method and implement into loadStudents + LoadAdvisor
  * 
- * @author @Spillmag
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
  */
 public class DataLoader extends DataConstants {
     /**

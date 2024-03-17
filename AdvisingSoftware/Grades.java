@@ -1,7 +1,7 @@
 package AdvisingSoftware;
 /**
- * Holds the Grades
- * @author yask8(Yasmine Kennedy)
+ * Creates the Grades
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
  */
 public class Grades {
     /**
@@ -52,7 +52,6 @@ public class Grades {
     }
     /**
      * Checks if grade is passing or failing
-     * @author Lia Zhao(zhaolia9)
      * @param courseGrade the grade received
      * @return PASS or FAIL depending on grade
      */
@@ -75,6 +74,10 @@ public class Grades {
        return courseName + ": " + grade + "(" + checkPass(grade) + ")";
     }
 
+    /**
+     * Testing purposes
+     * @param args
+     */
     public static void main(String[] args) {
         String courseName = "CSCE 132";
         double grade = 92.8;

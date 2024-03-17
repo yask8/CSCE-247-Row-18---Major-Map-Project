@@ -1,14 +1,19 @@
 package AdvisingSoftware;
-
+/**
+ * Class that creates an Admin User
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
+ */
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class Admin extends User {
-
+  /**
+   * Attributes
+   */
   private ArrayList<String> changesMade;
 
   /**
-   * constructor
+   * Admin constructor
    */
   public Admin(
       String firstName,
@@ -28,7 +33,6 @@ public class Admin extends User {
    * @return the Course instance
    */
   public Course addCourse() {
-    // admin adds a course to courselist? courses.json
     return null;
   }
 
@@ -74,8 +78,7 @@ public class Admin extends User {
   }
   /**
    * To string to view user details
-   * 
-   * @author @Spillmag
+   * @return the string format of the ADMIN User Profile
    */
   public String toString() {
     String changesMadeString = "";

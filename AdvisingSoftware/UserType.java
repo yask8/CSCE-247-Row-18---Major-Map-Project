@@ -1,7 +1,7 @@
 package AdvisingSoftware;
 /**
  * Holds the different usertype constants
- * @author yask8(Yasmine Kennedy) and oshumate(Owen Shumate)
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
  */
 public enum UserType {
     STUDENT, 

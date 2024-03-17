@@ -1,7 +1,7 @@
 package AdvisingSoftware;
 /**
  * Enum class that holds all of the semester availability options
- * @author yask8(Yasmine Kennedy)
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
  */
 public enum Semester {
     FALL, 

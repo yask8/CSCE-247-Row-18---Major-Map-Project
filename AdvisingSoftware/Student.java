@@ -9,11 +9,14 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.UUID;
 
-/*
- * @author oshumate
+/**
+ * Creates a Student User
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
  */
 public class Student extends User {
-
+  /**
+   * Attributes
+   */
   private String year;
   private String major;
   private int creditHours;
@@ -355,7 +358,10 @@ public class Student extends User {
   public ArrayList<Note> getAdvisorNotes() {
     return advisorNotes;
   }
-
+  /**
+   * Displays student profile
+   * @return student's profile in string format
+   */
   public String toString() {
     return (
       "************** Student Profile **************\n" +

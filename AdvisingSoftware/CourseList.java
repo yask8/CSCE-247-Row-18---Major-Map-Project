@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Represents a list of courses in the system.
  * 
- * @author Stephon Johnson
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
  */
 public class CourseList {
 
@@ -88,7 +88,7 @@ public class CourseList {
   }
 
   /**
-   * Adds a new course to the course list.
+   * Adds a new course to the course list without year or semester
    *
    * @param name         The name of the course.
    * @param code         The code of the course.
@@ -129,7 +129,21 @@ public class CourseList {
 
     }
   }
-
+   /**
+   * Adds a new course to the course list without year or semester
+   *
+   * @param name         The name of the course.
+   * @param code         The code of the course.
+   * @param description  The description of the course.
+   * @param creditHours  The credit hours of the course.
+   * @param subject      The subject of the course.
+   * @param passGrade    The passing grade of the course.
+   * @param elective     Indicates if the course is elective.
+   * @param carolinaCore Indicates if the course is part of Carolina Core.
+   * @param prereqs      The prerequisites of the course.
+   * @param year         The year the course should be taken
+   * @param semester     The semester the course should be taken
+   */
   public void addCourse(
       String name,
       String code,
@@ -159,6 +173,11 @@ public class CourseList {
     }
   }
 
+  /**
+   * Checks if course exists
+   * @param name name of course
+   * @return true if course exists, false if course does not exist
+   */
   private boolean courseWithNameExists(String name) {
     for (Course course : courses) {
       if (course.getName().equals(name)) {
@@ -232,7 +251,10 @@ public class CourseList {
     }
     return null;
   }
-
+  /**
+   * Displays the course by course code
+   * @param courseCode the code of course
+   */
   public void showCoursesByCode(String courseCode) {
     System.out.println("***********" + courseCode + " Courses***********");
     for (Course course : getCourses()) {

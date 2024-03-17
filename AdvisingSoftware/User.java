@@ -3,7 +3,8 @@ package AdvisingSoftware;
 import java.util.UUID;
 
 /**
- * @author Owen Shumate Represents the User
+ * Creates a User
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
  */
 public class User {
 

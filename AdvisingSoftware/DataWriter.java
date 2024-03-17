@@ -18,7 +18,7 @@ import org.json.simple.JSONValue;
  * The DataWriter class provides methods to writevdata from the program in JSON
  * files.
  * 
- * @author @Spillmag
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
  */
 public class DataWriter extends DataConstants {
     /**

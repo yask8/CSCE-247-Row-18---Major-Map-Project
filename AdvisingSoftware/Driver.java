@@ -1,7 +1,8 @@
 package AdvisingSoftware;
 
 /**
- * @author Lia Zhao (zhaolia9)
+ * Any User can interact with the Advising Application
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
 
  */
 public class Driver {

@@ -1,6 +1,6 @@
 /**
  * MajorList class for managing majors
- * @author yask8 (Yasmine Kennedy)
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
  */
 package AdvisingSoftware;
 
@@ -8,19 +8,30 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class MajorList {
+    /**
+     * Attributes
+     */
     private static MajorList majorList;
     private ArrayList<MajorMap> majors;
     private boolean loaded;
-
+    /**
+     * MajorList constructor
+     */
     private MajorList() {
         majors = new ArrayList<>();
         loaded = false;
     }
-
+    /**
+     * Gets the list of majors
+     * @return the majors
+     */
     public ArrayList<MajorMap> getMajors() {
         return majors;
     }
-
+    /**
+     * Gets an static instance of the MajorList
+     * @return the majorlist
+     */
     public static MajorList getInstance() {
         if (majorList == null) {
             majorList = new MajorList();
@@ -47,7 +58,11 @@ public class MajorList {
         }
         return majorList;
     }
-
+    /**
+     * Gets the major by name
+     * @param major the major
+     * @return the major
+     */
     public MajorMap getMajorByName(String major) {
         for (MajorMap existingMajor : majors) {
             if (existingMajor.getMajor().equals(major)) {
@@ -56,6 +71,11 @@ public class MajorList {
         }
         return null;
     }
+    /**
+     * Gets the major by it's unique identifier
+     * @param id the id
+     * @return the major
+     */
     public MajorMap getMajorMapById(UUID id) {
         for (MajorMap existingMajor : majors) {
             if (existingMajor.getId().equals(id)) {
@@ -64,7 +84,22 @@ public class MajorList {
         }
         return null;
     }
-
+    /**
+     * Adds a major with their semester listings and graduation requirements
+     * @param majorName name of major
+     * @param semester1 first semester
+     * @param semester2 second semester
+     * @param semester3 third semester
+     * @param semester4 fourth semester
+     * @param semester5 fifth semester
+     * @param semester6 sixth semester
+     * @param semester7 seventh semester
+     * @param semester8 eigth semester
+     * @param minTotalHours minimum total credit hours
+     * @param minGradHours minimum grad hours
+     * @param caroCoreHours minimum carolina core hours
+     * @param minGPA minimum GPA
+     */
     public void addMajor(
             String majorName,
             ArrayList<String> semester1,
@@ -95,7 +130,10 @@ public class MajorList {
                 minGPA);
         majors.add(newMajorMap);
     }
-
+    /**
+     * Removes a Major
+     * @param major the major
+     */
     public void removeMajor(String major) {
         for (MajorMap existingMajor : majors) {
             if (existingMajor.getMajor().equals(major)) {
@@ -105,11 +143,17 @@ public class MajorList {
         }
         System.out.println(major + " does not exist.");
     }
-
+    /**
+     * Sets if the major is loaded or not
+     * @param loaded true or false
+     */
     public void setLoaded(boolean loaded) {
         this.loaded = loaded;
     }
-
+    /**
+     * Checks if the major is loaded or not
+     * @return true if major is loaded, false if major is not loaded
+     */
     public boolean isLoaded() {
         return loaded;
     }

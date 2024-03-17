@@ -1,17 +1,21 @@
 package AdvisingSoftware;
-
+/**
+ * Creates an Advisor User
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
+ */
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
 public class Advisor extends User {
-
+  /**
+   * Attributes
+   */
   private ArrayList<UUID> listOfAdvisees;
   private ArrayList<UUID> listOfFailingStudents;
 
   /**
    * Advisor Constructor
-   *
    * @param listOfAdvisees        List of advisors advisees
    * @param listOfFailingStudents List of advisors advisees at risk of failing
    */
@@ -64,7 +68,13 @@ public class Advisor extends User {
   public ArrayList<Student> removeStudent() {
     return null;
   }
-
+  /**
+   * Allows the Advisor User to get the Student User by their ID 
+   * and from a list of Users
+   * @param studentId the id of the Student
+   * @param userList the list of all Users
+   * @return the student
+   */
   public Student getStudentByAdvisor(UUID studentId, UserList userList) {
     if (this.getUserType().equals("ADVISOR")) {
       ArrayList<UUID> adviseeIds = this.getListOfAdvisees();
@@ -77,7 +87,12 @@ public class Advisor extends User {
     }
     return null;
   }
-
+  /**
+   * The Advisor can add a note to the Student
+   * @param studentId the id of the student
+   * @param noteContent the note
+   * @param userList the list of all users
+   */
   public void addNoteToStudentAdvisor(UUID studentId, String noteContent, UserList userList) {
     Student student = getStudentByAdvisor(studentId, userList);
     if (student != null) {
@@ -87,6 +102,13 @@ public class Advisor extends User {
       System.out.println("Student not found or not advisee of the advisor.");
     }
   }
+  /**
+   * Adds student to list of advisees by their student id
+   * @param studentId the id of the student
+   * @return true or false.
+   * False if the student is already in the list, true if
+   * the student has been added to the list
+   */
   public boolean addStudentToListOfAdvisees(UUID studentId) {
     if (!getListOfAdvisees().contains(studentId)) {
         getListOfAdvisees().add(studentId);
@@ -181,8 +203,7 @@ public class Advisor extends User {
 
   /**
    * To string to view user details
-   * 
-   * @author @Spillmag
+   * @return the String format of the user details
    */
   public String toString() {
     return "\n********* ADVISOR PROFILE *********\n" +

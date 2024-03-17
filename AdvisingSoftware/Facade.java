@@ -4,17 +4,23 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- * @author Lia Zhao (zhaolia9)
+ * The Facade
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
  *
  **/
 
 public class Facade {
 
+  /**
+   * Attriubtes
+   */
   private CourseList courseList;
   private UserList userList;
   private User user;
   private MajorList majorList;
-
+  /**
+   * Facade Constructor
+   */
   public Facade() {
     this.courseList = CourseList.getInstance();
     this.userList = UserList.getInstance();
@@ -25,8 +31,6 @@ public class Facade {
    * Logs in a user with the specified email and password.
    * If the user list is not already loaded, it loads the users using data loader
    * Loads Course and Majors as well
-   *
-   * @author @Spillmag
    *
    * @param email    The email of the user.
    * @param password The password of the user.
@@ -42,8 +46,6 @@ public class Facade {
   /**
    * Signs out the currently logged-in user and saves any changes made during the
    * session.
-   *
-   * @author @Spillmag
    */
   public void signOut() {
     user = null;
@@ -413,7 +415,9 @@ public void writeStudentCoursePlanner(String studentName) {
     }
     return null;
   }
-
+  /**
+   * Adds a Note to the Student from the Advisor
+   */
   public void addNoteToStudentAdvisor(UUID advisorId, UUID studentId, String noteContent) {
     Advisor advisor = userList.getAdvisorById(advisorId);
     if (advisor != null) {

@@ -1,10 +1,16 @@
 package AdvisingSoftware;
-
+/**
+ * Creates a Major Map
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
+ * 
+ */
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class MajorMap {
-
+  /**
+   * Attributes
+   */
   private UUID id;
   private String major;
   private ArrayList<String> semester1;
@@ -19,7 +25,23 @@ public class MajorMap {
   private int minGradHours;
   private int caroCoreHours;
   private Double minGPA;
-
+  /**
+   * Major Map Constructor
+   * @param id the unique identifier
+   * @param major the major
+   * @param semester1 semester one
+   * @param semester2 semester two
+   * @param semester3 semester three
+   * @param semester4 semester four
+   * @param semester5 semester five
+   * @param semester6 semester six
+   * @param semester7 semester seven
+   * @param semester8 semester eight (last semester)
+   * @param minTotalHours minimum total hours
+   * @param minGradHours minimum grad hours 
+   * @param caroCoreHours carolina core hours
+   * @param minGPA  minimmum GPA
+   */
   public MajorMap(
           UUID id,
           String major,
@@ -50,7 +72,23 @@ public class MajorMap {
       this.caroCoreHours = caroCoreHours;
       this.minGPA = minGPA;
   }
-
+  /**
+   * Major Map Constructor Overloaded
+   * @param id the unique identifier
+   * @param major the major
+   * @param semester1 semester one
+   * @param semester2 semester two
+   * @param semester3 semester three
+   * @param semester4 semester four
+   * @param semester5 semester five
+   * @param semester6 semester six
+   * @param semester7 semester seven
+   * @param semester8 semester eight (last semester)
+   * @param minTotalHours minimum total hours
+   * @param minGradHours minimum grad hours 
+   * @param caroCoreHours carolina core hours
+   * @param minGPA  minimmum GPA
+   */
   public MajorMap(
           String major,
           ArrayList<String> semester1,
@@ -80,7 +118,10 @@ public class MajorMap {
       this.caroCoreHours = caroCoreHours;
       this.minGPA = minGPA;
   }
-
+  /**
+   * Deletes a major map
+   * @param major the major being deleted
+   */
   public void deleteMajor(String major) {
     if (this.major.equals(major)) {
         this.major = null;
@@ -99,7 +140,11 @@ public class MajorMap {
         this.minGPA = 0.0;
     }
 }
-
+/**
+ * Gets the courses for the major
+ * @param major the major
+ * @return a new arraylist of courses for the majormap
+ */
 public ArrayList<String> getCoursesForMajor(String major) {
   if (this.major.equalsIgnoreCase(major)) {
       ArrayList<String> allCourses = new ArrayList<>();
@@ -116,7 +161,10 @@ public ArrayList<String> getCoursesForMajor(String major) {
       return new ArrayList<>(); 
   }
 }
-
+/**
+ * Displays the major map
+ * @param major the major
+ */
 public void displayMajorMap(String major) {
     if (this.major.equals(major)) {
         System.out.println("\n************ Major Map *************");
@@ -138,7 +186,10 @@ public void displayMajorMap(String major) {
         System.out.println("No matching major found.");
     }
 }
-
+/**
+ * The Major Map Displayed more indepth
+ * @return the string format of the Major Map
+ */
 public String toString() {
     return "\n********* MAJOR MAP *********\n" +
             "Major: " + this.major + "\n" +
@@ -162,88 +213,142 @@ public String toString() {
             "Semester 7: " + this.semester7 + "\n" +
             "Semester 8: " + this.semester8 + "\n";
 }
-
+  /**
+   * Gets the id
+   * @return the id
+   */
   public UUID getId() {
     return id;
   }
-
+  /**
+   * Gets the major
+   * @return the major
+   */
   public String getMajor() {
     return major;
   }
+  /**
+   * Gets the list of an ideal semester 1
+   * @return semester 1
+   */
   public ArrayList<String> getSemester1() {
     return semester1;
 }
-
+ /**
+   * Gets the list of an ideal semester 2
+   * @return semester 2
+   */
 public ArrayList<String> getSemester2() {
     return semester2;
 }
-
+ /**
+   * Gets the list of an ideal semester 3
+   * @return semester 3
+   */
 public ArrayList<String> getSemester3() {
     return semester3;
 }
-
+ /**
+   * Gets the list of an ideal semester 4
+   * @return semester 4
+   */
 public ArrayList<String> getSemester4() {
     return semester4;
 }
-
+ /**
+   * Gets the list of an ideal semester 5
+   * @return semester 5
+   */
 public ArrayList<String> getSemester5() {
     return semester5;
 }
-
+ /**
+   * Gets the list of an ideal semester 6
+   * @return semester 6
+   */
 public ArrayList<String> getSemester6() {
     return semester6;
 }
-
+ /**
+   * Gets the list of an ideal semester 7
+   * @return semester 7
+   */
 public ArrayList<String> getSemester7() {
     return semester7;
 }
-
+ /**
+   * Gets the list of an ideal semester 8
+   * @return semester 8
+   */
 public ArrayList<String> getSemester8() {
     return semester8;
 }
-
-
-  public int getMinTotalHours() {
+ /**
+   * Gets the minimum total hours
+   * @return total hours
+   */
+ public int getMinTotalHours() {
     return minTotalHours;
   }
-
-  public int getMinGradHours() {
+/**
+ * Gets the minimum grad hours
+ * @return grad hours
+ */
+public int getMinGradHours() {
     return minGradHours;
   }
-
-  public int getCaroCoreHours() {
+/**
+ * Gets the carolina core hours
+ * @return carolina core hours
+ */
+public int getCaroCoreHours() {
     return caroCoreHours;
   }
-
-  public Double getMinGPA() {
+ /**
+   * Gets the minimum gpa
+   * @return the minimum gpa
+   */
+public Double getMinGPA() {
     return minGPA;
   }
-
-  public void setMinTotalHours(int minTotalHr){
+ /**
+   * Sets the minimum total hours
+   */
+public void setMinTotalHours(int minTotalHr){
       if( minTotalHr > 0){
           this.minTotalHours = minTotalHr;
       }
   }
-
+ /**
+  * Sets the minimum grad hours
+  */
   public void setMinGradHours(int minGradHr){
       if(minGradHr > 0){
           this.minGradHours = minGradHr;
       }
   }
-
-  public void setCaroCoreHours(int minCaroCoreHr){
+/**
+  * Sets the carolina core hours
+  */
+public void setCaroCoreHours(int minCaroCoreHr){
     if(minCaroCoreHr > 0){
         this.caroCoreHours = minCaroCoreHr;
     }
   }
-
-  public void setMinGPA(Double minGPA){
+  /*
+   * Sets the minimum gpa
+   */
+public void setMinGPA(Double minGPA){
     if(minGPA > 0){
         this.minGPA = minGPA;
     }
   }
-
-  public boolean containsCourse(String courseName) {
+/**
+ * Checks if major map contains the course
+ * @param courseName name of course
+ * @return true if course is present, false if course is not
+ */
+public boolean containsCourse(String courseName) {
     return semester1.contains(courseName) || semester2.contains(courseName) || 
            semester3.contains(courseName) || semester4.contains(courseName) ||
            semester5.contains(courseName) || semester6.contains(courseName) ||

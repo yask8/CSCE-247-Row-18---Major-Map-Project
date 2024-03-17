@@ -1,5 +1,9 @@
 package AdvisingSoftware;
-
+/**
+ * The class that creates adds a Application areas
+ * to a list of application areas.
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
+ */
 import java.util.ArrayList;
 
 public class AppArea {
@@ -12,6 +16,10 @@ public class AppArea {
   private ArrayList<String> appAreaCourses = new ArrayList<String>();
   private ArrayList<String> appAreaOptions = new ArrayList<String>();
 
+  /**
+   * Application Area Constructor
+   * @param appAreaName the name of the application area wanting to be found
+   */
   public AppArea(String appAreaName) {
     appAreaOptions.add("Science");
     appAreaOptions.add("Math");
@@ -24,7 +32,10 @@ public class AppArea {
     setMajorElectives(appAreaName);
     setAppAreaCourses(appAreaName);
   }
-
+  /**
+   * Displays the application options
+   * @return the application area options
+   */
   public String showAppAreaOptions() {
     String appAreaOptions = "*******Application Areas*******\n";
     for (String appArea : this.appAreaOptions) {
@@ -32,19 +43,31 @@ public class AppArea {
     }
     return appAreaOptions + "and more to come...";
   }
-
+  /**
+   * Gets the application area options
+   * @return the list of application area options
+   */
   public ArrayList<String> getAppAreaOptions() {
     return appAreaOptions;
   }
-
+  /**
+   * Gets the major electives
+   * @return the list of major eletives
+   */
   public ArrayList<String> getmajorElectives() {
     return majorElectives;
   }
-
+  /**
+   * Get the application area courses
+   * @return the list of application area courses
+   */
   public ArrayList<String> getAppAreaCourses() {
     return appAreaCourses;
   }
-
+  /**
+   * Sets the major electives
+   * @param appAreaName the name of the application area
+   */
   public void setMajorElectives(String appAreaName) {
     if (appAreaName.equalsIgnoreCase("Science")) {
       majorElectives.add("CSCE520");
@@ -78,7 +101,10 @@ public class AppArea {
       majorElectives.add("CSCE580");
     }
   }
-
+  /**
+   * Sets the application area courses
+   * @param appAreaName the name of the application area
+   */
   public void setAppAreaCourses(String appAreaName) {
     if (appAreaName.equalsIgnoreCase("Science")) {
       appAreaCourses.add("STAT530");
@@ -115,7 +141,10 @@ public class AppArea {
       appAreaCourses.add("LING567");
     }
   }
-
+  /**
+   * The display of the application area: major electives and courses
+   * @return the string format of the string application area
+   */
   public String toString() {
     String appAreaText = "";
     appAreaText += "\n*******Application Area*******\n";
