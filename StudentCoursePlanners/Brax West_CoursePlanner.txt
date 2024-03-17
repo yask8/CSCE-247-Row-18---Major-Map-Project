@@ -1,0 +1,48 @@
+Course Planner for Student: Brax West
+===============================================
+
+Semester 1:
+ENGL101
+MATH141
+CSCE145
+CSCE190
+ARTE101
+
+Semester 2:
+ENGL102
+MATH142
+CHEM111
+CHEM111L
+CSCE146
+CSCE215
+
+Semester 3:
+CSCE211
+CSCE240
+CHEM112
+CHEM112L
+SPCH140
+
+Semester 4:
+CSCE212
+CSCE247
+MATH241
+SOCY101
+ANTH161
+
+Semester 5:
+CSCE311
+CSCE330
+CSCE350
+CSCE390
+ENGL462
+CSCE518
+
+Semester 6:
+SPAN109
+SPAN109
+SPAN109
+
+Semester 7:
+
+Semester 8:

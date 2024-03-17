@@ -1,7 +1,6 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -75,6 +74,13 @@ public class Facade {
   }
 
   /**
+   * Writes Student Course Planner to the
+   */
+  public void writeStudentCoursePlanner(CoursePlanner coursePlanner, String name) {
+    DataWriter.writeCoursePlannerToFile(coursePlanner, name);
+  }
+
+  /**
    * Signs up a new student.
    *
    * @param firstName The first name of the student.
@@ -130,7 +136,7 @@ public class Facade {
    */
   public MajorMap getMajorMap(String majorName) {
     return majorList.getMajorByName(majorName);
-}
+  }
 
   /**
    * Displays information about all the courses in the provided list.
@@ -140,17 +146,17 @@ public class Facade {
   public void displayAllCourses(ArrayList<Course> courseList) {
     System.out.println("Courses Available:");
     for (Course course : courseList) {
-        System.out.println(course.toString());
+      System.out.println(course.toString());
     }
     if (courseList == null || courseList.isEmpty()) {
-        System.out.println("No courses available.");
+      System.out.println("No courses available.");
     }
-}
+  }
 
   public void showCoursesByCode(String courseCode) {
     CourseList courseListInstance = CourseList.getInstance();
     courseListInstance.showCoursesByCode(courseCode);
-}
+  }
 
   // Getters
   public CourseList getCourseList() {
@@ -397,21 +403,19 @@ public class Facade {
   public Student getStudentByAdvisor(UUID advisorId, UUID studentId) {
     Advisor advisor = userList.getAdvisorById(advisorId);
     if (advisor != null) {
-        return advisor.getStudentByAdvisor(studentId, userList);
+      return advisor.getStudentByAdvisor(studentId, userList);
     }
     return null;
-}
-
-
-public void addNoteToStudentAdvisor(UUID advisorId, UUID studentId, String noteContent) {
-  Advisor advisor = userList.getAdvisorById(advisorId);
-  if (advisor != null) {
-      advisor.addNoteToStudentAdvisor(studentId, noteContent, userList);
-  } else {
-      System.out.println("Advisor not found.");
   }
-}
 
+  public void addNoteToStudentAdvisor(UUID advisorId, UUID studentId, String noteContent) {
+    Advisor advisor = userList.getAdvisorById(advisorId);
+    if (advisor != null) {
+      advisor.addNoteToStudentAdvisor(studentId, noteContent, userList);
+    } else {
+      System.out.println("Advisor not found.");
+    }
+  }
 
   /**
    * Adds a student to the list of advisees for the advisor.
@@ -425,10 +429,10 @@ public void addNoteToStudentAdvisor(UUID advisorId, UUID studentId, String noteC
   public boolean addStudentToListOfAdvisees(UUID advisorId, UUID studentId) {
     Advisor advisor = userList.getAdvisorById(advisorId);
     if (advisor != null) {
-        return advisor.addStudentToListOfAdvisees(studentId);
+      return advisor.addStudentToListOfAdvisees(studentId);
     }
     return false;
-}
+  }
 
   /**
    * Gets the ID of a user by their first name and last name.

@@ -155,6 +155,8 @@ public class Driver {
     System.out.println("Brax decides to pick SPAN 109 as his GFL elective.");
    
     facade.getStudentCoursePlanner().addCourse(6,"SPAN109");
+
+    facade.writeStudentCoursePlanner(facade.getStudentCoursePlanner(), facade.getUser().getFirstName() + " "+ facade.getUser().getLastName());
     facade.signOut();
   }
 

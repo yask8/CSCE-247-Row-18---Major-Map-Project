@@ -90,4 +90,28 @@ public class CoursePlanner {
   public ArrayList<ArrayList<String>> getSemesters() {
     return semesters;
   }
+
+ /**
+     * Gets the number of semesters in the course planner.
+     *
+     * @return The number of semesters.
+     */
+    public int getNumberOfSemesters() {
+      return semesters.size();
+  }
+
+  /**
+   * Gets the courses for the specified semester.
+   *
+   * @param semester The index of the semester (1-based).
+   * @return An array of course names for the specified semester.
+   */
+  public String[] getCoursesForSemester(int semester) {
+      if (semester < 1 || semester > semesters.size()) {
+          throw new IllegalArgumentException("Invalid semester index.");
+      }
+      
+      ArrayList<String> semesterCourses = semesters.get(semester - 1);
+      return semesterCourses.toArray(new String[0]);
+  }
 }
