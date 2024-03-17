@@ -15,7 +15,7 @@ public class Driver {
   public void run() {
 
     // scenario1();
-    // scenario2();
+     scenario2();
 
     // extra scenario to show off course planner generation
     // scenario3();
@@ -114,8 +114,10 @@ public class Driver {
     System.out.println(facade.getCourseList());
 
     facade.getStudentCoursePlanner().generateFromMajorMap(facade.getMajorMap(facade.getStudentMajor()));
+    facade.writeStudentCoursePlanner(facade.getUser().getFirstName() + " " + facade.getUser().getLastName());
 
     System.out.println(facade.getUser());
+    
     facade.signOut();
   }
 
