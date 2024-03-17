@@ -1,7 +1,7 @@
 package AdvisingSoftware;
 /**
  * Class that creates an Admin User
- * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8), Owen Shumate (@oshumate)
  */
 import java.util.ArrayList;
 import java.util.UUID;
