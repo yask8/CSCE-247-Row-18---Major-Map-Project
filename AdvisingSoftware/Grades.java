@@ -80,7 +80,7 @@ public class Grades {
     }
 
     /**
-     * Displays the course and the grade with a comma
+     * Displays the course and the grade and if the course is passing or failing
      * 
      * @return The course and the grade
      */
@@ -93,8 +93,8 @@ public class Grades {
      * @param args
      */
     public static void main(String[] args) {
-        String courseName = "CSCE 132";
-        double grade = 92.8;
+        String courseName = "MATH 142";
+        double grade = 45.2;
         Grades g = new Grades(courseName, grade);
 
         System.out.println(g.toString());
