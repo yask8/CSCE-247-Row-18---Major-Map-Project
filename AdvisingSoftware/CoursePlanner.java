@@ -114,4 +114,30 @@ public class CoursePlanner {
       ArrayList<String> semesterCourses = semesters.get(semester - 1);
       return semesterCourses.toArray(new String[0]);
   }
+   /**
+     * Generates the course planner from the given major map by adding all the courses
+     * from the major map into the course planner, provided they are not already present.
+     *
+     * @param majorMap The major map containing the courses to be added to the course planner.
+     */
+    public void generateFromMajorMap(MajorMap majorMap) {
+      ArrayList<ArrayList<String>> majorMapSemesters = new ArrayList<>();
+      majorMapSemesters.add(majorMap.getSemester1());
+      majorMapSemesters.add(majorMap.getSemester2());
+      majorMapSemesters.add(majorMap.getSemester3());
+      majorMapSemesters.add(majorMap.getSemester4());
+      majorMapSemesters.add(majorMap.getSemester5());
+      majorMapSemesters.add(majorMap.getSemester6());
+      majorMapSemesters.add(majorMap.getSemester7());
+      majorMapSemesters.add(majorMap.getSemester8());
+
+      for (int i = 0; i < 8; i++) {
+          ArrayList<String> semesterCourses = majorMapSemesters.get(i);
+          for (String course : semesterCourses) {
+              if (!this.semesters.get(i).contains(course)) {
+                  this.semesters.get(i).add(course);
+              }
+          }
+      }
+  }
 }

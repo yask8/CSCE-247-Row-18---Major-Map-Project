@@ -331,7 +331,7 @@ public class DataWriter extends DataConstants {
         return existingData;
     }
     
-      /**
+    /**
      * Writes the course planner of a student to a text file.
      *
      * @param coursePlanner The course planner to be written.
@@ -339,12 +339,12 @@ public class DataWriter extends DataConstants {
      */
     public static void writeCoursePlannerToFile(CoursePlanner coursePlanner, String studentName) {
         String directoryName = "StudentCoursePlanners";
-        String fileName = studentName + "_CoursePlanner.txt"; // Construct file name
+        String fileName = studentName + "_CoursePlanner.txt";
         Path directoryPath = Paths.get(directoryName);
         Path filePath = directoryPath.resolve(fileName);
 
         try {
-            // Create directory if it doesn't exist
+
             if (!Files.exists(directoryPath)) {
                 Files.createDirectories(directoryPath);
             }
@@ -355,7 +355,6 @@ public class DataWriter extends DataConstants {
                 writer.write("===============================================");
                 writer.newLine();
 
-                // Write each semester's courses to the file
                 for (int semester = 1; semester <= coursePlanner.getNumberOfSemesters(); semester++) {
                     writer.newLine();
                     writer.write("Semester " + semester + ":");
