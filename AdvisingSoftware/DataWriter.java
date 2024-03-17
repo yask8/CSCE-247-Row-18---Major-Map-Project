@@ -110,17 +110,14 @@ public class DataWriter extends DataConstants {
             userJSON.put(STUDENT_COMPLETED_COURSES, completedCoursesArray);
             userJSON.put(STUDENT_GPA, student.getGpa());
 
-
             JSONObject degreeProgressJSON = new JSONObject();
             degreeProgressJSON.put(DEGREE_PROGRESS_MAJOR, student.getDegreeProgress().getMajor());
-
 
             JSONArray completeCoursesArray = new JSONArray();
             for (String course : student.getDegreeProgress().getCompleteCourses()) {
                 completeCoursesArray.add(course);
             }
             degreeProgressJSON.put(DEGREE_PROGRESS_COMPLETE_COURSES, completeCoursesArray);
-
 
             JSONArray incompleteCoursesArray = new JSONArray();
             for (String course : student.getDegreeProgress().getIncompleteCourses()) {
@@ -130,11 +127,10 @@ public class DataWriter extends DataConstants {
 
             userJSON.put(STUDENT_DEGREE_PROGRESS, degreeProgressJSON);
 
-
             JSONArray advisorNotesArray = new JSONArray();
             for (Note note : student.getAdvisorNotes()) {
                 JSONObject advisorNoteJSON = new JSONObject();
-          
+
                 String formattedDate = formatDate(note.getDate());
                 advisorNoteJSON.put(NOTE_DATE, formattedDate);
                 advisorNoteJSON.put(NOTE_NOTE, note.getNote());
@@ -224,14 +220,13 @@ public class DataWriter extends DataConstants {
                 JSONObject existingCourseJSON = (JSONObject) coursesArray.get(i);
                 String existingCourseID = (String) existingCourseJSON.get(COURSE_ID);
                 if (existingCourseID.equals(course.getID())) {
-                   
+
                     coursesArray.set(i, courseJSON);
                     courseExists = true;
                     break;
                 }
             }
 
-    
             if (!courseExists) {
                 coursesArray.add(courseJSON);
             }
@@ -256,7 +251,6 @@ public class DataWriter extends DataConstants {
             majorMapsArray.add(obj);
         }
 
-        
         for (MajorMap majorMap : majorMaps) {
             JSONObject majorMapJSON = new JSONObject();
             majorMapJSON.put(MAJOR_NAME, majorMap.getMajor());
@@ -281,7 +275,7 @@ public class DataWriter extends DataConstants {
                 JSONObject existingMajorMapJSON = (JSONObject) majorMapsArray.get(i);
                 String existingMajorMapName = (String) existingMajorMapJSON.get(MAJOR_NAME);
                 if (existingMajorMapName.equals(majorMap.getMajor())) {
-                 
+
                     majorMapsArray.set(i, majorMapJSON);
                     majorMapExists = true;
                     break;
@@ -293,7 +287,6 @@ public class DataWriter extends DataConstants {
             }
         }
 
-   
         writeJSONToFile(majorMapsArray, MAJOR_FILE_NAME);
     }
 

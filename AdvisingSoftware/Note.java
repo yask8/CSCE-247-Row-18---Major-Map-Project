@@ -1,8 +1,10 @@
 package AdvisingSoftware;
 
 import java.util.Date;
+
 /**
  * Holds the notes from the advisor
+ * 
  * @author yask8(Yasmine Kennedy) and Spillmag(Garrett Spillman)
  */
 public class Note {
@@ -14,13 +16,15 @@ public class Note {
     this.note = note;
     this.date = date;
   }
+
   public String getNote() {
     return note;
-}
+  }
 
-public Date getDate() {
+  public Date getDate() {
     return date;
-}
+  }
+
   public String toString() {
     return "Note: " + note + "\tDate: " + date;
   }

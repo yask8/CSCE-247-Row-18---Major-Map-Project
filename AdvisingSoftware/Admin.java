@@ -64,6 +64,7 @@ public class Admin extends User {
   public ArrayList<Student> viewStudentProfile() {
     return null;
   }
+
   /**
    * Getter for changesMade
    *
@@ -72,6 +73,7 @@ public class Admin extends User {
   public ArrayList<String> getChangesMade() {
     return changesMade;
   }
+
   /**
    * To string to view user details
    * 

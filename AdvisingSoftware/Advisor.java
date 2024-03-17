@@ -87,13 +87,14 @@ public class Advisor extends User {
       System.out.println("Student not found or not advisee of the advisor.");
     }
   }
+
   public boolean addStudentToListOfAdvisees(UUID studentId) {
     if (!getListOfAdvisees().contains(studentId)) {
-        getListOfAdvisees().add(studentId);
-        return true;
+      getListOfAdvisees().add(studentId);
+      return true;
     }
     return false;
-}
+  }
 
   /**
    * Allows advisor to search for a student

@@ -37,22 +37,21 @@ public class Student extends User {
    * @param advisorNotes      Student's notes left by advisor
    */
   public Student(
-    String firstName,
-    String lastName,
-    String email,
-    UUID uscID,
-    String password,
-    String userType,
-    String year,
-    String major,
-    String applicationArea,
-    int creditHours,
-    ArrayList<Grades> completedCourses,
-    double gpa,
-    CoursePlanner coursePlanner,
-    DegreeProgress degreeProgress,
-    ArrayList<Note> advisorNotes
-  ) {
+      String firstName,
+      String lastName,
+      String email,
+      UUID uscID,
+      String password,
+      String userType,
+      String year,
+      String major,
+      String applicationArea,
+      int creditHours,
+      ArrayList<Grades> completedCourses,
+      double gpa,
+      CoursePlanner coursePlanner,
+      DegreeProgress degreeProgress,
+      ArrayList<Note> advisorNotes) {
     super(firstName, lastName, email, uscID, password, userType);
     this.year = year;
     this.major = major;
@@ -70,42 +69,42 @@ public class Student extends User {
    */
   public void viewProfile() {
     System.out.println(
-      "************** Student Profile **************\n" +
-      super.toString() +
-      "year: '" +
-      year +
-      "'\n" +
-      "major: '" +
-      major +
-      "'\n" +
-      "creditHours: " +
-      creditHours +
-      "\n" +
-      "completedCourses: " +
-      completedCourses +
-      "\n" +
-      "gpa: " +
-      gpa +
-      "\n" +
-      "applicationArea: " +
-      applicationArea +
-      "\n" +
-      "coursePlanner: " +
-      coursePlanner +
-      "\n" +
-      "degreeProgress: " +
-      degreeProgress +
-      "\n" +
-      "advisorNotes: " +
-      advisorNotes +
-      "\n"
-    );
+        "************** Student Profile **************\n" +
+            super.toString() +
+            "year: '" +
+            year +
+            "'\n" +
+            "major: '" +
+            major +
+            "'\n" +
+            "creditHours: " +
+            creditHours +
+            "\n" +
+            "completedCourses: " +
+            completedCourses +
+            "\n" +
+            "gpa: " +
+            gpa +
+            "\n" +
+            "applicationArea: " +
+            applicationArea +
+            "\n" +
+            "coursePlanner: " +
+            coursePlanner +
+            "\n" +
+            "degreeProgress: " +
+            degreeProgress +
+            "\n" +
+            "advisorNotes: " +
+            advisorNotes +
+            "\n");
   }
 
   /**
    * Allows student to edit their profile
    */
-  public void editProfile() {}
+  public void editProfile() {
+  }
 
   /**
    * Allows student to update their year/class
@@ -141,7 +140,8 @@ public class Student extends User {
    * @param completedCourses ArrayList of students completed courses with their
    *                         respective grade
    */
-  public void viewCompletedCourses(ArrayList<Grades> completedCourses) {}
+  public void viewCompletedCourses(ArrayList<Grades> completedCourses) {
+  }
 
   /**
    * Allows student to view their course planner
@@ -167,7 +167,8 @@ public class Student extends User {
    * @param code  Course-specific code
    * @param grade Course grade
    */
-  public void addCompleteCourse(String code, char grade) {}
+  public void addCompleteCourse(String code, char grade) {
+  }
 
   /**
    * Allows student to view advisor notes
@@ -187,7 +188,8 @@ public class Student extends User {
   /**
    * Get the MajorMap object corresponding to the student's major.
    *
-   * @return The MajorMap object of the student's major if found, or null if not found.
+   * @return The MajorMap object of the student's major if found, or null if not
+   *         found.
    */
   public MajorMap getStudentsMajorMap() {
     String studentMajor = getMajor();
@@ -197,50 +199,49 @@ public class Student extends User {
       return majorList.getMajorByName(studentMajor);
     } else {
       System.out.println(
-        "Please declare major before trying to view your major map"
-      );
+          "Please declare major before trying to view your major map");
     }
 
     return null;
   }
 
   /**
-     * Writes the course planner of this student to a text file.
-     *
-     * @param studentName The name of the student.
-     */
-    public void writeCoursePlannerToFile(String studentName) {
-        String directoryName = "StudentCoursePlanners";
-        String fileName = studentName + "_CoursePlanner.txt";
-        Path directoryPath = Paths.get(directoryName);
-        Path filePath = directoryPath.resolve(fileName);
+   * Writes the course planner of this student to a text file.
+   *
+   * @param studentName The name of the student.
+   */
+  public void writeCoursePlannerToFile(String studentName) {
+    String directoryName = "StudentCoursePlanners";
+    String fileName = studentName + "_CoursePlanner.txt";
+    Path directoryPath = Paths.get(directoryName);
+    Path filePath = directoryPath.resolve(fileName);
 
-        try {
-            if (!Files.exists(directoryPath)) {
-                Files.createDirectories(directoryPath);
-            }
+    try {
+      if (!Files.exists(directoryPath)) {
+        Files.createDirectories(directoryPath);
+      }
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath.toFile()))) {
-                writer.write("Course Planner for Student: " + studentName);
-                writer.newLine();
-                writer.write("===============================================");
-                writer.newLine();
+      try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath.toFile()))) {
+        writer.write("Course Planner for Student: " + studentName);
+        writer.newLine();
+        writer.write("===============================================");
+        writer.newLine();
 
-                for (int semester = 1; semester <= coursePlanner.getNumberOfSemesters(); semester++) {
-                    writer.newLine();
-                    writer.write("Semester " + semester + ":");
-                    writer.newLine();
-                    for (String course : coursePlanner.getCoursesForSemester(semester)) {
-                        writer.write(course);
-                        writer.newLine();
-                    }
-                }
-                System.out.println("Student's course planner written to " + filePath);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (int semester = 1; semester <= coursePlanner.getNumberOfSemesters(); semester++) {
+          writer.newLine();
+          writer.write("Semester " + semester + ":");
+          writer.newLine();
+          for (String course : coursePlanner.getCoursesForSemester(semester)) {
+            writer.write(course);
+            writer.newLine();
+          }
         }
+        System.out.println("Student's course planner written to " + filePath);
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
     }
+  }
 
   /**
    * Allows student to update their GPA
@@ -357,36 +358,34 @@ public class Student extends User {
   }
 
   public String toString() {
-    return (
-      "************** Student Profile **************\n" +
-      super.toString() +
-      "year: '" +
-      year +
-      "'\n" +
-      "major: '" +
-      major +
-      "'\n" +
-      "creditHours: " +
-      creditHours +
-      "\n" +
-      "completedCourses: " +
-      completedCourses +
-      "\n" +
-      "gpa: " +
-      gpa +
-      "\n" +
-      "applicationArea: " +
-      applicationArea +
-      "\n" +
-      "coursePlanner: " +
-      coursePlanner.toString() +
-      "\n" +
-      "degreeProgress: " +
-      degreeProgress.toString() +
-      "\n" +
-      "advisorNotes: " +
-      advisorNotes.toString() +
-      "\n"
-    );
+    return ("************** Student Profile **************\n" +
+        super.toString() +
+        "year: '" +
+        year +
+        "'\n" +
+        "major: '" +
+        major +
+        "'\n" +
+        "creditHours: " +
+        creditHours +
+        "\n" +
+        "completedCourses: " +
+        completedCourses +
+        "\n" +
+        "gpa: " +
+        gpa +
+        "\n" +
+        "applicationArea: " +
+        applicationArea +
+        "\n" +
+        "coursePlanner: " +
+        coursePlanner.toString() +
+        "\n" +
+        "degreeProgress: " +
+        degreeProgress.toString() +
+        "\n" +
+        "advisorNotes: " +
+        advisorNotes.toString() +
+        "\n");
   }
 }

@@ -73,18 +73,18 @@ public class Facade {
     DataWriter.saveMajorMaps(getMajors());
   }
 
-/**
- * Writes the course planner of the logged-in student to a text file.
- *
- * @param studentName The name of the student.
- */
-public void writeStudentCoursePlanner(String studentName) {
-  if (user != null && user instanceof Student) {
+  /**
+   * Writes the course planner of the logged-in student to a text file.
+   *
+   * @param studentName The name of the student.
+   */
+  public void writeStudentCoursePlanner(String studentName) {
+    if (user != null && user instanceof Student) {
       ((Student) user).writeCoursePlannerToFile(studentName);
-  } else {
+    } else {
       System.out.println("No student logged in.");
+    }
   }
-}
 
   /**
    * Signs up a new student.

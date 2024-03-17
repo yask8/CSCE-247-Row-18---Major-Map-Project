@@ -56,6 +56,7 @@ public class MajorList {
         }
         return null;
     }
+
     public MajorMap getMajorMapById(UUID id) {
         for (MajorMap existingMajor : majors) {
             if (existingMajor.getId().equals(id)) {
