@@ -16,12 +16,8 @@ public class Driver {
     //Testing Scenarios
     //scenarioTesting();
     // Portias Scenarios
-    scenario1();
-    //scenario2();
-
-    facade.login("bwest@email.sc.edu", "bwest060903");
-    System.out.println(facade.getStudentDegreeProgress());
-    facade.signOut();
+   //scenario1();
+    scenario2();
   }
 
   /*
@@ -101,7 +97,7 @@ public class Driver {
     );
     System.out.println(
       facade
-        .getStudentByAdvisor(facade.getUserIdByName("Tawnie", "Hill"))
+        .getStudentByAdvisor(facade.getUser().getID(),facade.getUserIdByName("Tawnie", "Hill"))
         .getDegreeProgress()
         .toString()
     );
@@ -111,18 +107,18 @@ public class Driver {
     );
     System.out.println(
       facade
-        .getStudentByAdvisor(facade.getUserIdByName("Tawnie", "Hill"))
+        .getStudentByAdvisor(facade.getUser().getID(),facade.getUserIdByName("Tawnie", "Hill"))
         .getAdvisorNotes()
     );
     System.out.println("\nNote added");
-    facade.addNoteToStudentAdvisor(
+    facade.addNoteToStudentAdvisor(facade.getUser().getID(),
       (facade.getUserIdByName("Tawnie", "Hill")),
       "Make Stats Your Application Area"
     );
     System.out.println("\nList of notes after note is made\n");
     System.out.println(
       facade
-        .getStudentByAdvisor(facade.getUserIdByName("Tawnie", "Hill"))
+        .getStudentByAdvisor(facade.getUser().getID(),facade.getUserIdByName("Tawnie", "Hill"))
         .getAdvisorNotes() +
       "\n"
     );
@@ -157,9 +153,9 @@ public class Driver {
     );
     facade.showCoursesByCode("GFL");
     System.out.println("Brax decides to pick SPAN 109 as his GFL elective.");
-    //TODO: Figure out how to add his GFL in
-    facade.saveCourses();
-    System.out.println(facade.getStudentDegreeProgress());
+   
+    facade.getStudentCoursePlanner().addCourse(6,"SPAN109");
+    facade.signOut();
   }
 
   public static void main(String[] args) {

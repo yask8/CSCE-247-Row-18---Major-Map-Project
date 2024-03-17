@@ -82,7 +82,7 @@ public class CourseList {
     }
     if (courseToRemove != null) {
       courses.remove(courseToRemove);
-      return true; 
+      return true;
     }
     return false;
   }
@@ -101,16 +101,16 @@ public class CourseList {
    * @param prereqs      The prerequisites of the course.
    */
   public void addCourseNoYearorSem(
-    String name,
-    String code,
-    String description,
-    int creditHours,
-    String subject,
-    char passGrade,
-    boolean elective,
-    boolean carolinaCore,
-    ArrayList<String> prereqs) {
-  if (!courseWithNameExists(name)) {
+      String name,
+      String code,
+      String description,
+      int creditHours,
+      String subject,
+      char passGrade,
+      boolean elective,
+      boolean carolinaCore,
+      ArrayList<String> prereqs) {
+    if (!courseWithNameExists(name)) {
       Course newCourse = new Course(
           name,
           code,
@@ -122,51 +122,51 @@ public class CourseList {
           carolinaCore,
           prereqs,
           null,
-          null 
-      );
+          null);
       courses.add(newCourse);
-  } else {
+    } else {
       System.out.println("A course with the same name already exists.");
 
+    }
   }
-}
-public void addCourse(
-  String name,
-  String code,
-  String description,
-  int creditHours,
-  String subject,
-  char passGrade,
-  boolean elective,
-  boolean carolinaCore,
-  ArrayList<String> prereqs,
-  String year,
-  String semester) {
-if (!courseWithNameExists(name)) {
-    Course newCourse = new Course(
-        name,
-        code,
-        description,
-        creditHours,
-        subject,
-        passGrade,
-        elective,
-        carolinaCore,
-        prereqs,
-        year,
-        semester 
-    );
-    courses.add(newCourse);
-} 
-}
-private boolean courseWithNameExists(String name) {
-  for (Course course : courses) {
+
+  public void addCourse(
+      String name,
+      String code,
+      String description,
+      int creditHours,
+      String subject,
+      char passGrade,
+      boolean elective,
+      boolean carolinaCore,
+      ArrayList<String> prereqs,
+      String year,
+      String semester) {
+    if (!courseWithNameExists(name)) {
+      Course newCourse = new Course(
+          name,
+          code,
+          description,
+          creditHours,
+          subject,
+          passGrade,
+          elective,
+          carolinaCore,
+          prereqs,
+          year,
+          semester);
+      courses.add(newCourse);
+    }
+  }
+
+  private boolean courseWithNameExists(String name) {
+    for (Course course : courses) {
       if (course.getName().equals(name)) {
-          return true;
+        return true;
       }
+    }
+    return false;
   }
-  return false;
-}
 
   /**
    * Sets the loaded status of the course list.
@@ -231,5 +231,14 @@ private boolean courseWithNameExists(String name) {
       }
     }
     return null;
+  }
+
+  public void showCoursesByCode(String courseCode) {
+    System.out.println("***********" + courseCode + " Courses***********");
+    for (Course course : getCourses()) {
+      if (course != null && course.getCode().equalsIgnoreCase(courseCode)) {
+        System.out.println(course.toString());
+      }
+    }
   }
 }

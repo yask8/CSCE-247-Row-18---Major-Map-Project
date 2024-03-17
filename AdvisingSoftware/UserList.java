@@ -255,8 +255,10 @@ public class UserList {
 
     User newUser = null;
     if (userType.equals("STUDENT")) {
-      newUser = new Student(firstName, lastName, email, uscID, password, userType, "Freshman", "Undeclared","Undeclared", 0, new ArrayList<Grades>(), 0.0, new CoursePlanner(), new DegreeProgress("Undeclared", new ArrayList<String>(), new ArrayList<String>()),
-      new ArrayList<Note>());
+      newUser = new Student(firstName, lastName, email, uscID, password, userType, "Freshman", "Undeclared",
+          "Undeclared", 0, new ArrayList<Grades>(), 0.0, new CoursePlanner(),
+          new DegreeProgress("Undeclared", new ArrayList<String>(), new ArrayList<String>()),
+          new ArrayList<Note>());
     } else if (userType.equals("ADMIN")) {
       newUser = new Admin(firstName, lastName, email, uscID, password, userType, new ArrayList<String>());
     } else if (userType.equals("ADVISOR")) {
@@ -271,19 +273,45 @@ public class UserList {
     System.out.println("Sign up successful! New profile:");
     System.out.println(newUser.toString());
   }
-/**
- * Gets the user's uscID by their first and last name
- * @author Yasmine Kennedy (yask8)
- * @param first user's first name
- * @param last user's last name
- * @return the user's uscID
- */
-public UUID getIDByName(String first, String last){
-  for (User user : users) {
-      if(user.getFirstName().equals(first) && user.getLastName().equals(last)){
+
+  /**
+   * Gets the user's uscID by their first and last name
+   * 
+   * @author Yasmine Kennedy (yask8)
+   * @param first user's first name
+   * @param last  user's last name
+   * @return the user's uscID
+   */
+  public UUID getIDByName(String first, String last) {
+    for (User user : users) {
+      if (user.getFirstName().equals(first) && user.getLastName().equals(last)) {
         return user.getID();
       }
+    }
+    return null;
   }
-  return null;
-}
+
+  public Advisor getAdvisorById(UUID advisorId) {
+    User user = getUserbyUSCID(advisorId);
+    if (user != null && user.getUserType().equals("ADVISOR")) {
+      return (Advisor) user;
+    }
+    return null;
+  }
+
+  public Student getStudentById(UUID studentId) {
+    User user = getUserbyUSCID(studentId);
+    if (user != null && user.getUserType().equals("STUDENT")) {
+      return (Student) user;
+    }
+    return null;
+  }
+
+  public Admin getAdminById(UUID adminId) {
+    User user = getUserbyUSCID(adminId);
+    if (user != null && user.getUserType().equals("ADMIN")) {
+      return (Admin) user;
+    }
+    return null;
+  }
 }

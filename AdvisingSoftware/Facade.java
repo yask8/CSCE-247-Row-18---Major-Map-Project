@@ -83,11 +83,10 @@ public class Facade {
    * @param password  The password of the student.
    */
   public void signUpStudent(
-    String firstName,
-    String lastName,
-    String email,
-    String password
-  ) {
+      String firstName,
+      String lastName,
+      String email,
+      String password) {
     userList.signUp(firstName, lastName, email, password, "STUDENT");
   }
 
@@ -100,11 +99,10 @@ public class Facade {
    * @param password  The password of the administrator.
    */
   public void signUpAdmin(
-    String firstName,
-    String lastName,
-    String email,
-    String password
-  ) {
+      String firstName,
+      String lastName,
+      String email,
+      String password) {
     userList.signUp(firstName, lastName, email, password, "ADMIN");
   }
 
@@ -117,11 +115,10 @@ public class Facade {
    * @param password  The password of the advisor.
    */
   public void signUpAdvisor(
-    String firstName,
-    String lastName,
-    String email,
-    String password
-  ) {
+      String firstName,
+      String lastName,
+      String email,
+      String password) {
     userList.signUp(firstName, lastName, email, password, "ADVISOR");
   }
 
@@ -132,14 +129,8 @@ public class Facade {
    * @return The MajorMap object if found, or null if not found.
    */
   public MajorMap getMajorMap(String majorName) {
-    MajorMap majorMap = majorList.getMajorByName(majorName);
-    if (majorMap != null) {
-      return majorMap;
-    } else {
-      System.out.println("Major map not found for " + majorName);
-      return null;
-    }
-  }
+    return majorList.getMajorByName(majorName);
+}
 
   /**
    * Displays information about all the courses in the provided list.
@@ -147,36 +138,19 @@ public class Facade {
    * @param courseList The list of courses to display.
    */
   public void displayAllCourses(ArrayList<Course> courseList) {
-    if (courseList != null && !courseList.isEmpty()) {
-      System.out.println("Courses Available:");
-      for (Course course : courseList) {
+    System.out.println("Courses Available:");
+    for (Course course : courseList) {
         System.out.println(course.toString());
-      }
-    } else {
-      System.out.println("No courses available.");
     }
-  }
+    if (courseList == null || courseList.isEmpty()) {
+        System.out.println("No courses available.");
+    }
+}
 
-  /**
-   * Displays information about the course with the specified course code.
-   *
-   * @param courseCode The code of the course to display.
-   */
   public void showCoursesByCode(String courseCode) {
     CourseList courseListInstance = CourseList.getInstance();
-    Course course = courseListInstance.getCourse(courseCode);
-    System.out.println("***********" + courseCode + " Courses***********");
-    for (Course xCourse : courseListInstance.getCourses()) {
-      if (xCourse != null && xCourse.getCode().equalsIgnoreCase("GFL")) {
-        System.out.println(xCourse.toString());
-      }
-    }
-    /*if (course != null) {
-      System.out.println(course.toString());
-    } else {
-      System.out.println("Course with code " + courseCode + " not found.");
-    }*/
-  }
+    courseListInstance.showCoursesByCode(courseCode);
+}
 
   // Getters
   public CourseList getCourseList() {
@@ -420,29 +394,24 @@ public class Facade {
    * @return The student user if found, or null if not found or if the logged-in
    *         user is not an advisor.
    */
-  public Student getStudentByAdvisor(UUID studentId) {
-    if (user.getUserType().equals("ADVISOR")) {
-      Advisor advisor = (Advisor) user;
-      ArrayList<UUID> adviseeIds = advisor.getListOfAdvisees();
-      if (adviseeIds.contains(studentId)) {
-        User studentUser = userList.getUserbyUSCID(studentId);
-        if (
-          studentUser != null && studentUser.getUserType().equals("STUDENT")
-        ) {
-          return (Student) studentUser;
-        }
-      }
+  public Student getStudentByAdvisor(UUID advisorId, UUID studentId) {
+    Advisor advisor = userList.getAdvisorById(advisorId);
+    if (advisor != null) {
+        return advisor.getStudentByAdvisor(studentId, userList);
     }
     return null;
-  }
+}
 
-  public void addNoteToStudentAdvisor(UUID studentId, String noteContent) {
-    Student student = getStudentByAdvisor(studentId);
-    if (student != null) {
-      Note newNote = new Note(noteContent, new Date());
-      student.getAdvisorNotes().add(newNote);
-    }
+
+public void addNoteToStudentAdvisor(UUID advisorId, UUID studentId, String noteContent) {
+  Advisor advisor = userList.getAdvisorById(advisorId);
+  if (advisor != null) {
+      advisor.addNoteToStudentAdvisor(studentId, noteContent, userList);
+  } else {
+      System.out.println("Advisor not found.");
   }
+}
+
 
   /**
    * Adds a student to the list of advisees for the advisor.
@@ -454,15 +423,12 @@ public class Facade {
    *         advisor.
    */
   public boolean addStudentToListOfAdvisees(UUID advisorId, UUID studentId) {
-    if (user.getUserType().equals("ADVISOR")) {
-      Advisor advisor = (Advisor) user;
-      if (!advisor.getListOfAdvisees().contains(studentId)) {
-        advisor.getListOfAdvisees().add(studentId);
-        return true;
-      }
+    Advisor advisor = userList.getAdvisorById(advisorId);
+    if (advisor != null) {
+        return advisor.addStudentToListOfAdvisees(studentId);
     }
     return false;
-  }
+}
 
   /**
    * Gets the ID of a user by their first name and last name.
@@ -478,7 +444,8 @@ public class Facade {
   /**
    * Gets the ID of the currently logged-in user.
    *
-   * @return The ID of the currently logged-in user if available, or null if no user is logged in.
+   * @return The ID of the currently logged-in user if available, or null if no
+   *         user is logged in.
    */
   public UUID getCurrentUserId() {
     if (user != null) {

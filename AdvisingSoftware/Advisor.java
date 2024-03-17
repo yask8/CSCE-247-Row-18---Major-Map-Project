@@ -1,13 +1,13 @@
 package AdvisingSoftware;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 public class Advisor extends User {
 
   private ArrayList<UUID> listOfAdvisees;
   private ArrayList<UUID> listOfFailingStudents;
-
 
   /**
    * Advisor Constructor
@@ -27,7 +27,7 @@ public class Advisor extends User {
     super(firstName, lastName, email, uscID, password, userType);
     this.listOfAdvisees = listOfAdvisees;
     this.listOfFailingStudents = listOfFailingStudents;
-      }
+  }
 
   /**
    * Students under the advisor at risk of failing
@@ -48,12 +48,14 @@ public class Advisor extends User {
   public String viewStudentProfile() {
     return "";
   }
+
   /**
    * Allows advisor to add a student to their list of advisees
    */
-  public void addStudent (UUID uuid) {
-     listOfAdvisees.add(uuid);
+  public void addStudent(UUID uuid) {
+    listOfAdvisees.add(uuid);
   }
+
   /**
    * Allows advisor to remove a student from their list of advisees
    *
@@ -62,6 +64,36 @@ public class Advisor extends User {
   public ArrayList<Student> removeStudent() {
     return null;
   }
+
+  public Student getStudentByAdvisor(UUID studentId, UserList userList) {
+    if (this.getUserType().equals("ADVISOR")) {
+      ArrayList<UUID> adviseeIds = this.getListOfAdvisees();
+      if (adviseeIds.contains(studentId)) {
+        User studentUser = userList.getUserbyUSCID(studentId);
+        if (studentUser != null && studentUser.getUserType().equals("STUDENT")) {
+          return (Student) studentUser;
+        }
+      }
+    }
+    return null;
+  }
+
+  public void addNoteToStudentAdvisor(UUID studentId, String noteContent, UserList userList) {
+    Student student = getStudentByAdvisor(studentId, userList);
+    if (student != null) {
+      Note newNote = new Note(noteContent, new Date());
+      student.getAdvisorNotes().add(newNote);
+    } else {
+      System.out.println("Student not found or not advisee of the advisor.");
+    }
+  }
+  public boolean addStudentToListOfAdvisees(UUID studentId) {
+    if (!getListOfAdvisees().contains(studentId)) {
+        getListOfAdvisees().add(studentId);
+        return true;
+    }
+    return false;
+}
 
   /**
    * Allows advisor to search for a student
@@ -111,11 +143,10 @@ public class Advisor extends User {
    * @return boolean of to recognize pass/fail
    */
   public boolean checkStudentFailStatus(double gpa, double minGPA) {
-    if(gpa<minGPA){
+    if (gpa < minGPA) {
       System.out.println("Failing");
-      
-    }
-    else{
+
+    } else {
       System.out.println("Passing");
     }
     return true;
@@ -129,7 +160,8 @@ public class Advisor extends User {
   public ArrayList<Student> addStudentRiskOfFailure() {
     return null;
   }
-   /**
+
+  /**
    * Getter for listOfAdvisees
    *
    * @return ArrayList of advisees under the advisor
@@ -146,7 +178,6 @@ public class Advisor extends User {
   public ArrayList<UUID> getListOfFailingStudents() {
     return listOfFailingStudents;
   }
-
 
   /**
    * To string to view user details
