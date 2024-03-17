@@ -13,11 +13,12 @@ public class DegreeProgress {
   private ArrayList<String> completeCourses;
   private ArrayList<String> incompleteCourses;
   private int totalCreditHours;
+
   /**
-   * Constructor
-   * @param major the major of the student
-   * @param completeCourses the student's completed courses
-   * @param incompleteCourses the student's incompleted courses
+   * DegreeProgress constructor
+   * @param major String Student's major
+   * @param completeCourses ArrayList<String> list of courses that the student has completed
+   * @param incompleteCourses ArrayList<String> list of courses that have yet to be completed
    */
   public DegreeProgress(
     String major,
@@ -30,10 +31,10 @@ public class DegreeProgress {
   }
 
   /**
-   * Displys the degree progress
-   * @param majorMap the major map
-   * @param completedCourses the completed courses
-   * @return the string format of both the major map and completed courses
+   * returns a String representation of degree progress
+   * @param majorMap MajorMap major map
+   * @param completedCourses ArrayList<Grades> completedCourses
+   * @return String
    */
   public String displayProgress(
     MajorMap majorMap,
@@ -79,9 +80,10 @@ public class DegreeProgress {
   public ArrayList<String> getCompleteCourses() {
     return completeCourses;
   }
+
   /**
-   * Saves the Completed courses along with their grade
-   * @param xcompleteCourses the completed courses from the list of courses and grades
+   * adds courses to completeCourses list if it has a passing grade
+   * @param xcompleteCourses ArrayList<Grades> list of courses and grades
    */
   public void saveCompleteCourses(ArrayList<Grades> xcompleteCourses) {
     for (Grades course : xcompleteCourses) {
@@ -93,9 +95,10 @@ public class DegreeProgress {
       }
     }
   }
+
   /**
-   * Updates course completetion 
-   * @param xcompleteCourses the courses from the list of courses and grade
+   * removes complete courses from incomplete courses list
+   * @param xcompleteCourses ArrayList<Grades> list of courses and grades
    */
   public void updateCourseCompletion(ArrayList<Grades> xcompleteCourses) {
     saveCompleteCourses(xcompleteCourses);
@@ -114,8 +117,8 @@ public class DegreeProgress {
   }
 
   /**
-   * Populates incomplete courses from major map
-   * @param majorMap the major map
+   * populate incomplete courses list with courses from the given major map
+   * @param majorMap
    */
   public void populateIncompleteCoursesFromMajorMap(MajorMap majorMap) {
     ArrayList<String> majorCourses = majorMap.getCoursesForMajor(major);
@@ -127,9 +130,10 @@ public class DegreeProgress {
       }
     }
   }
+
   /**
-   * Populates Incomplete Courses from AppArea
-   * @param xappArea the app area
+   * populate incomplete courses list with courses from the given application area
+   * @param xappArea String application area
    */
   public void populateIncompleteCoursesFromAppArea(String xappArea) {
     AppArea appArea = new AppArea(xappArea);
@@ -170,10 +174,12 @@ public class DegreeProgress {
   public ArrayList<String> getIncompleteCourses() {
     return incompleteCourses;
   }
+
   /**
-   * Calculates the Grade Point Average
-   * @param courseGrade the grade received
-   * @return the grade point
+   * depending on the grade of a course, the method
+   * returns the corresponding grade point
+   * @param courseGrade double grade of completed course
+   * @return double grade point
    */
   public double getGradePoint(double courseGrade) {
     double gradePoint = 0;
@@ -212,11 +218,11 @@ public class DegreeProgress {
     }
     return gradePoint;
   }
+
   /**
-   * Calculates the GPA
-   * @param courseList the list of courses
-   * @param completedCourses the list of completed courses
-   * @return the GPA
+   * @param courseList ArrayList<Course> list of all the courses
+   * @param completedCourses ArrayList<Grades> list of course names and grades
+   * @return double GPA of student
    */
   public double calculateGPA(
     ArrayList<Course> courseList,
@@ -239,9 +245,21 @@ public class DegreeProgress {
    * Gets the total credit hours
    * @return the total credit hours
    */
+
+  /**
+   *
+   * @return int total credit hours taken by student
+   */
   public int getTotalCreditHours() {
     return totalCreditHours;
   }
+
+  /**
+   * retrieves number of credit hours for a given course
+   * @param completeCourse Grades course name and grade
+   * @param courseList ArrayList<Course> list of all the courses
+   * @return int credit hours of a single course
+   */
   /**
    * Gets the CreditHours
    * @param completeCourse the list of completed courses

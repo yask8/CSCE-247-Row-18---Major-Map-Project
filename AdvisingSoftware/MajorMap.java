@@ -43,34 +43,34 @@ public class MajorMap {
    * @param minGPA  minimmum GPA
    */
   public MajorMap(
-          UUID id,
-          String major,
-          ArrayList<String> semester1,
-          ArrayList<String> semester2,
-          ArrayList<String> semester3,
-          ArrayList<String> semester4,
-          ArrayList<String> semester5,
-          ArrayList<String> semester6,
-          ArrayList<String> semester7,
-          ArrayList<String> semester8,
-          int minTotalHours,
-          int minGradHours,
-          int caroCoreHours,
-          Double minGPA) {
-      this.id = id;
-      this.major = major;
-      this.semester1 = semester1;
-      this.semester2 = semester2;
-      this.semester3 = semester3;
-      this.semester4 = semester4;
-      this.semester5 = semester5;
-      this.semester6 = semester6;
-      this.semester7 = semester7;
-      this.semester8 = semester8;
-      this.minTotalHours = minTotalHours;
-      this.minGradHours = minGradHours;
-      this.caroCoreHours = caroCoreHours;
-      this.minGPA = minGPA;
+      UUID id,
+      String major,
+      ArrayList<String> semester1,
+      ArrayList<String> semester2,
+      ArrayList<String> semester3,
+      ArrayList<String> semester4,
+      ArrayList<String> semester5,
+      ArrayList<String> semester6,
+      ArrayList<String> semester7,
+      ArrayList<String> semester8,
+      int minTotalHours,
+      int minGradHours,
+      int caroCoreHours,
+      Double minGPA) {
+    this.id = id;
+    this.major = major;
+    this.semester1 = semester1;
+    this.semester2 = semester2;
+    this.semester3 = semester3;
+    this.semester4 = semester4;
+    this.semester5 = semester5;
+    this.semester6 = semester6;
+    this.semester7 = semester7;
+    this.semester8 = semester8;
+    this.minTotalHours = minTotalHours;
+    this.minGradHours = minGradHours;
+    this.caroCoreHours = caroCoreHours;
+    this.minGPA = minGPA;
   }
   /**
    * Major Map Constructor Overloaded
@@ -90,33 +90,33 @@ public class MajorMap {
    * @param minGPA  minimmum GPA
    */
   public MajorMap(
-          String major,
-          ArrayList<String> semester1,
-          ArrayList<String> semester2,
-          ArrayList<String> semester3,
-          ArrayList<String> semester4,
-          ArrayList<String> semester5,
-          ArrayList<String> semester6,
-          ArrayList<String> semester7,
-          ArrayList<String> semester8,
-          int minTotalHours,
-          int minGradHours,
-          int caroCoreHours,
-          Double minGPA) {
-      this.id = UUID.randomUUID();
-      this.major = major;
-      this.semester1 = semester1;
-      this.semester2 = semester2;
-      this.semester3 = semester3;
-      this.semester4 = semester4;
-      this.semester5 = semester5;
-      this.semester6 = semester6;
-      this.semester7 = semester7;
-      this.semester8 = semester8;
-      this.minTotalHours = minTotalHours;
-      this.minGradHours = minGradHours;
-      this.caroCoreHours = caroCoreHours;
-      this.minGPA = minGPA;
+      String major,
+      ArrayList<String> semester1,
+      ArrayList<String> semester2,
+      ArrayList<String> semester3,
+      ArrayList<String> semester4,
+      ArrayList<String> semester5,
+      ArrayList<String> semester6,
+      ArrayList<String> semester7,
+      ArrayList<String> semester8,
+      int minTotalHours,
+      int minGradHours,
+      int caroCoreHours,
+      Double minGPA) {
+    this.id = UUID.randomUUID();
+    this.major = major;
+    this.semester1 = semester1;
+    this.semester2 = semester2;
+    this.semester3 = semester3;
+    this.semester4 = semester4;
+    this.semester5 = semester5;
+    this.semester6 = semester6;
+    this.semester7 = semester7;
+    this.semester8 = semester8;
+    this.minTotalHours = minTotalHours;
+    this.minGradHours = minGradHours;
+    this.caroCoreHours = caroCoreHours;
+    this.minGPA = minGPA;
   }
   /**
    * Deletes a major map
@@ -124,20 +124,20 @@ public class MajorMap {
    */
   public void deleteMajor(String major) {
     if (this.major.equals(major)) {
-        this.major = null;
-        this.semester1 = null;
-        this.semester2 = null;
-        this.semester3 = null;
-        this.semester4 = null;
-        this.semester5 = null;
-        this.semester6 = null;
-        this.semester7 = null;
-        this.semester8 = null;
-        this.id = null;
-        this.minTotalHours = 0;
-        this.minGradHours = 0;
-        this.caroCoreHours = 0;
-        this.minGPA = 0.0;
+      this.major = null;
+      this.semester1 = null;
+      this.semester2 = null;
+      this.semester3 = null;
+      this.semester4 = null;
+      this.semester5 = null;
+      this.semester6 = null;
+      this.semester7 = null;
+      this.semester8 = null;
+      this.id = null;
+      this.minTotalHours = 0;
+      this.minGradHours = 0;
+      this.caroCoreHours = 0;
+      this.minGPA = 0.0;
     }
 }
 /**
@@ -167,23 +167,23 @@ public ArrayList<String> getCoursesForMajor(String major) {
  */
 public void displayMajorMap(String major) {
     if (this.major.equals(major)) {
-        System.out.println("\n************ Major Map *************");
-        System.out.println("Major: " + this.major);
-        System.out.println("MajorMap ID: " + this.id);
-        System.out.println("Semester 1: " + this.semester1);
-        System.out.println("Semester 2: " + this.semester2);
-        System.out.println("Semester 3: " + this.semester3);
-        System.out.println("Semester 4: " + this.semester4);
-        System.out.println("Semester 5: " + this.semester5);
-        System.out.println("Semester 6: " + this.semester6);
-        System.out.println("Semester 7: " + this.semester7);
-        System.out.println("Semester 8: " + this.semester8);
-        System.out.println("Minimum Total Hours: " + this.minTotalHours);
-        System.out.println("Minimum Grad Hours: " + this.minGradHours);
-        System.out.println("Carolina Core Hours: " + this.caroCoreHours);
-        System.out.println("Minimum GPA: " + this.minGPA);
+      System.out.println("\n************ Major Map *************");
+      System.out.println("Major: " + this.major);
+      System.out.println("MajorMap ID: " + this.id);
+      System.out.println("Semester 1: " + this.semester1);
+      System.out.println("Semester 2: " + this.semester2);
+      System.out.println("Semester 3: " + this.semester3);
+      System.out.println("Semester 4: " + this.semester4);
+      System.out.println("Semester 5: " + this.semester5);
+      System.out.println("Semester 6: " + this.semester6);
+      System.out.println("Semester 7: " + this.semester7);
+      System.out.println("Semester 8: " + this.semester8);
+      System.out.println("Minimum Total Hours: " + this.minTotalHours);
+      System.out.println("Minimum Grad Hours: " + this.minGradHours);
+      System.out.println("Carolina Core Hours: " + this.caroCoreHours);
+      System.out.println("Minimum GPA: " + this.minGPA);
     } else {
-        System.out.println("No matching major found.");
+      System.out.println("No matching major found.");
     }
 }
 /**

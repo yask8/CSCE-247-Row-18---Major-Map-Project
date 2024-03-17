@@ -75,18 +75,18 @@ public class Facade {
     DataWriter.saveMajorMaps(getMajors());
   }
 
-/**
- * Writes the course planner of the logged-in student to a text file.
- *
- * @param studentName The name of the student.
- */
-public void writeStudentCoursePlanner(String studentName) {
-  if (user != null && user instanceof Student) {
+  /**
+   * Writes the course planner of the logged-in student to a text file.
+   *
+   * @param studentName The name of the student.
+   */
+  public void writeStudentCoursePlanner(String studentName) {
+    if (user != null && user instanceof Student) {
       ((Student) user).writeCoursePlannerToFile(studentName);
-  } else {
+    } else {
       System.out.println("No student logged in.");
+    }
   }
-}
 
   /**
    * Signs up a new student.
@@ -97,11 +97,13 @@ public void writeStudentCoursePlanner(String studentName) {
    * @param password  The password of the student.
    */
   public void signUpStudent(
-      String firstName,
-      String lastName,
-      String email,
-      String password) {
+    String firstName,
+    String lastName,
+    String email,
+    String password
+  ) {
     userList.signUp(firstName, lastName, email, password, "STUDENT");
+    login(email, password);
   }
 
   /**
@@ -113,11 +115,13 @@ public void writeStudentCoursePlanner(String studentName) {
    * @param password  The password of the administrator.
    */
   public void signUpAdmin(
-      String firstName,
-      String lastName,
-      String email,
-      String password) {
+    String firstName,
+    String lastName,
+    String email,
+    String password
+  ) {
     userList.signUp(firstName, lastName, email, password, "ADMIN");
+    login(email, password);
   }
 
   /**
@@ -129,11 +133,13 @@ public void writeStudentCoursePlanner(String studentName) {
    * @param password  The password of the advisor.
    */
   public void signUpAdvisor(
-      String firstName,
-      String lastName,
-      String email,
-      String password) {
+    String firstName,
+    String lastName,
+    String email,
+    String password
+  ) {
     userList.signUp(firstName, lastName, email, password, "ADVISOR");
+    login(email, password);
   }
 
   /**
@@ -161,6 +167,10 @@ public void writeStudentCoursePlanner(String studentName) {
     }
   }
 
+  /**
+   * shows courses that fall under given code category
+   * @param courseCode String code
+   */
   public void showCoursesByCode(String courseCode) {
     CourseList courseListInstance = CourseList.getInstance();
     courseListInstance.showCoursesByCode(courseCode);
@@ -339,6 +349,10 @@ public void writeStudentCoursePlanner(String studentName) {
     }
   }
 
+  /**
+   * sets up application area for student
+   * @param xappArea String application area name
+   */
   public void setAppArea(String xappArea) {
     if (user.getUserType().equals("STUDENT")) {
       ((Student) user).setAppArea(xappArea);
@@ -415,10 +429,18 @@ public void writeStudentCoursePlanner(String studentName) {
     }
     return null;
   }
+
   /**
-   * Adds a Note to the Student from the Advisor
+   * adds note to Student from Advisor
+   * @param advisorId UUID Advisor's uscID
+   * @param studentId UUID Student's uscID
+   * @param noteContent String contents of the note
    */
-  public void addNoteToStudentAdvisor(UUID advisorId, UUID studentId, String noteContent) {
+  public void addNoteToStudentAdvisor(
+    UUID advisorId,
+    UUID studentId,
+    String noteContent
+  ) {
     Advisor advisor = userList.getAdvisorById(advisorId);
     if (advisor != null) {
       advisor.addNoteToStudentAdvisor(studentId, noteContent, userList);

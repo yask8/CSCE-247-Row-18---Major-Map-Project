@@ -13,16 +13,25 @@ public class Admin extends User {
   private ArrayList<String> changesMade;
 
   /**
-   * Admin constructor
+   * constructor
+   *
+   * @param firstName String Admin's first name
+   * @param lastName String Admin's last name
+   * @param email String Admin's email
+   * @param uscID UUID Admin's uscID
+   * @param password String Admin's password
+   * @param userType String userType
+   * @param changesMade ArrayList<String> changes made by Admin
    */
   public Admin(
-      String firstName,
-      String lastName,
-      String email,
-      UUID uscID,
-      String password,
-      String userType,
-      ArrayList<String> changesMade) {
+    String firstName,
+    String lastName,
+    String email,
+    UUID uscID,
+    String password,
+    String userType,
+    ArrayList<String> changesMade
+  ) {
     super(firstName, lastName, email, uscID, password, userType);
     this.changesMade = changesMade;
   }
@@ -48,8 +57,7 @@ public class Admin extends User {
   /**
    * Allows admin to delete a course
    */
-  public void deleteCourse() {
-  }
+  public void deleteCourse() {}
 
   /**
    * Allows admin to search for a student
@@ -68,6 +76,7 @@ public class Admin extends User {
   public ArrayList<Student> viewStudentProfile() {
     return null;
   }
+
   /**
    * Getter for changesMade
    *
@@ -76,6 +85,7 @@ public class Admin extends User {
   public ArrayList<String> getChangesMade() {
     return changesMade;
   }
+
   /**
    * To string to view user details
    * @return the string format of the ADMIN User Profile
@@ -89,10 +99,12 @@ public class Admin extends User {
     } else {
       changesMadeString = "None";
     }
-    return ("\n********* ADMIN PROFILE *********\n" +
-        super.toString() +
-        "\n********* Change log *********\n" +
-        "Changes Made:" +
-        changesMadeString);
+    return (
+      "\n********* ADMIN PROFILE *********\n" +
+      super.toString() +
+      "\n********* Change log *********\n" +
+      "Changes Made:" +
+      changesMadeString
+    );
   }
 }

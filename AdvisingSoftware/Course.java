@@ -46,21 +46,32 @@ public class Course {
   private String year;
 
   /**
-   * Course Constructor
-   * @param id           UUID
-   * @param name         name of course
-   * @param code         the course code (CMS, PR, etc)
-   * @param description  the description of the course
-   * @param creditHours  course credit hours
-   * @param subject      course sibject (MATH, CSCE, etc)
-   * @param passGrade    course required passing grade
-   * @param elective     is the course an elective
-   * @param carolinaCore is the course a CarolinaCore
-   * @param preReqs      list of pre-required courses before taking the course
+   * Course constructor
+   * @param id           UUID course id
+   * @param name         String course name
+   * @param code         String course code
+   * @param description  String course description
+   * @param creditHours  int course credit hours
+   * @param subject      String course subject
+   * @param passGrade    char minimum grade needed to pass course
+   * @param elective     boolean shows whether course is an elective or not
+   * @param carolinaCore boolean shows whether course is a Carolina Core or not
+   * @param preReqs      ArrayList<Course> list of prerequisites for course
    */
-  public Course(String id, String name, String code, String description, int creditHours,
-      String subject, char passGrade, boolean elective, boolean carolinaCore,
-      ArrayList<String> preReqs, String year, String semester) {
+  public Course(
+    String id,
+    String name,
+    String code,
+    String description,
+    int creditHours,
+    String subject,
+    char passGrade,
+    boolean elective,
+    boolean carolinaCore,
+    ArrayList<String> preReqs,
+    String year,
+    String semester
+  ) {
     this.id = id;
     this.name = name;
     this.code = code;
@@ -76,21 +87,32 @@ public class Course {
   }
 
   /**
-   * Course overloaded constructor
-   * @param name         name of course
-   * @param code         the course code (CMS, PR, etc)
-   * @param description  the description of course
-   * @param creditHours  the course credit hours
-   * @param subject      the subject of the course (MATH, CSCE, etc)
-   * @param passGrade    the passing grade for the course
-   * @param elective     is the course an elective
-   * @param carolinaCore is the course an carolina core requirement
-   * @param preReqs      list of pre-required courses before taking the course
+   * Course constructor that generates UUID
+   * @param name         String course name
+   * @param code         String course code
+   * @param description  String course description
+   * @param creditHours  int course credit hours
+   * @param subject      String course subject
+   * @param passGrade    char minimum grade needed to pass course
+   * @param elective     boolean shows whether course is an elective or not
+   * @param carolinaCore boolean shows whether course is a Carolina Core or not
+   * @param preReqs      ArrayList<Course> list of prerequisites for course
    */
-  public Course(String name, String code, String description, int creditHours,
-      String subject, char passGrade, boolean elective, boolean carolinaCore,
-      ArrayList<String> preReqs, String year, String semester) {
-    this.id = name.split("\\s+")[0] + name.split("\\s+")[1].replaceAll("\\s+", "");
+  public Course(
+    String name,
+    String code,
+    String description,
+    int creditHours,
+    String subject,
+    char passGrade,
+    boolean elective,
+    boolean carolinaCore,
+    ArrayList<String> preReqs,
+    String year,
+    String semester
+  ) {
+    this.id =
+      name.split("\\s+")[0] + name.split("\\s+")[1].replaceAll("\\s+", "");
     this.name = name;
     this.code = code;
     this.description = description;
@@ -109,8 +131,20 @@ public class Course {
    * @return edited course
    */
   public Course editCourse(String id) {
-    return new Course(id, name, code, description, creditHours, subject, passGrade,
-        elective, carolinaCore, preReqs, year, semester);
+    return new Course(
+      id,
+      name,
+      code,
+      description,
+      creditHours,
+      subject,
+      passGrade,
+      elective,
+      carolinaCore,
+      preReqs,
+      year,
+      semester
+    );
   }
   /**
    * Deletes the course
@@ -123,43 +157,45 @@ public class Course {
    * @return the string format of course info
    */
   public String toString() {
-    return ("\n********* COURSE INFO *********\n" +
-        "id: " +
-        id +
-        '\n' +
-        "name: " +
-        name +
-        '\n' +
-        "code: " +
-        code +
-        '\n' +
-        "description: " +
-        description +
-        '\n' +
-        "creditHours: " +
-        creditHours +
-        '\n' +
-        "subject: " +
-        subject +
-        '\n' +
-        "passGrade: " +
-        passGrade +
-        '\n' +
-        "elective: " +
-        elective +
-        '\n' +
-        "carolinaCore: " +
-        carolinaCore +
-        '\n' +
-        "preReqs: " +
-        preReqs +
-        '\n' +
-        "semester: " +
-        semester +
-        '\n' +
-        "year: " +
-        year +
-        '\n');
+    return (
+      "\n********* COURSE INFO *********\n" +
+      "id: " +
+      id +
+      '\n' +
+      "name: " +
+      name +
+      '\n' +
+      "code: " +
+      code +
+      '\n' +
+      "description: " +
+      description +
+      '\n' +
+      "creditHours: " +
+      creditHours +
+      '\n' +
+      "subject: " +
+      subject +
+      '\n' +
+      "passGrade: " +
+      passGrade +
+      '\n' +
+      "elective: " +
+      elective +
+      '\n' +
+      "carolinaCore: " +
+      carolinaCore +
+      '\n' +
+      "preReqs: " +
+      preReqs +
+      '\n' +
+      "semester: " +
+      semester +
+      '\n' +
+      "year: " +
+      year +
+      '\n'
+    );
   }
   /**
    * Gets the id of the course

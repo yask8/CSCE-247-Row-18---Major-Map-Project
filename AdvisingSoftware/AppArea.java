@@ -101,9 +101,11 @@ public class AppArea {
       majorElectives.add("CSCE580");
     }
   }
+
   /**
-   * Sets the application area courses
-   * @param appAreaName the name of the application area
+   * depending on the application area name, the method would
+   * populate the given lists with the corresponding courses
+   * @param appAreaName String application area name
    */
   public void setAppAreaCourses(String appAreaName) {
     if (appAreaName.equalsIgnoreCase("Science")) {

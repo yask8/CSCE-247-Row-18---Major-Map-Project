@@ -16,18 +16,25 @@ public class Advisor extends User {
 
   /**
    * Advisor Constructor
-   * @param listOfAdvisees        List of advisors advisees
-   * @param listOfFailingStudents List of advisors advisees at risk of failing
+   * @param firstName String Advisor's first name
+   * @param lastName String Advisor's last name
+   * @param email String Advisor's email
+   * @param uscID UUID Advisor's uscID
+   * @param password String Advisor's password
+   * @param userType String userType
+   * @param listOfAdvisees ArrayList<UUID> List of advisor's advisees
+   * @param listOfFailingStudents ArrayList<UUID> List of advisor's advisees at risk of failinG
    */
   public Advisor(
-      String firstName,
-      String lastName,
-      String email,
-      UUID uscID,
-      String password,
-      String userType,
-      ArrayList<UUID> listOfAdvisees,
-      ArrayList<UUID> listOfFailingStudents) {
+    String firstName,
+    String lastName,
+    String email,
+    UUID uscID,
+    String password,
+    String userType,
+    ArrayList<UUID> listOfAdvisees,
+    ArrayList<UUID> listOfFailingStudents
+  ) {
     super(firstName, lastName, email, uscID, password, userType);
     this.listOfAdvisees = listOfAdvisees;
     this.listOfFailingStudents = listOfFailingStudents;
@@ -39,8 +46,7 @@ public class Advisor extends User {
    * @param listOfFailingStudents List of the students
    * @return ArrayList of the students at risk of failure
    */
-  public ArrayList<User> riskOfFailure(
-      ArrayList<User> listOfFailingStudents) {
+  public ArrayList<User> riskOfFailure(ArrayList<User> listOfFailingStudents) {
     return null;
   }
 
@@ -68,32 +74,39 @@ public class Advisor extends User {
   public ArrayList<Student> removeStudent() {
     return null;
   }
+
   /**
-   * Allows the Advisor User to get the Student User by their ID 
-   * and from a list of Users
-   * @param studentId the id of the Student
-   * @param userList the list of all Users
-   * @return the student
+   * used to search a Student by uscID
+   * @param studentId UUID Student's uscID
+   * @param userList UserList list of all users
+   * @return Student
    */
   public Student getStudentByAdvisor(UUID studentId, UserList userList) {
     if (this.getUserType().equals("ADVISOR")) {
       ArrayList<UUID> adviseeIds = this.getListOfAdvisees();
       if (adviseeIds.contains(studentId)) {
         User studentUser = userList.getUserbyUSCID(studentId);
-        if (studentUser != null && studentUser.getUserType().equals("STUDENT")) {
+        if (
+          studentUser != null && studentUser.getUserType().equals("STUDENT")
+        ) {
           return (Student) studentUser;
         }
       }
     }
     return null;
   }
+
   /**
-   * The Advisor can add a note to the Student
-   * @param studentId the id of the student
-   * @param noteContent the note
-   * @param userList the list of all users
+   * adds a Note to Student being advised
+   * @param studentId UUID Student's uscID
+   * @param noteContent String Advisor's note(s) to advisee
+   * @param userList UserList list of all users
    */
-  public void addNoteToStudentAdvisor(UUID studentId, String noteContent, UserList userList) {
+  public void addNoteToStudentAdvisor(
+    UUID studentId,
+    String noteContent,
+    UserList userList
+  ) {
     Student student = getStudentByAdvisor(studentId, userList);
     if (student != null) {
       Note newNote = new Note(noteContent, new Date());
@@ -102,20 +115,19 @@ public class Advisor extends User {
       System.out.println("Student not found or not advisee of the advisor.");
     }
   }
+
   /**
-   * Adds student to list of advisees by their student id
-   * @param studentId the id of the student
-   * @return true or false.
-   * False if the student is already in the list, true if
-   * the student has been added to the list
+   * adds a Student to ListOfAdvisees
+   * @param studentId UUID Student's uscID
+   * @return boolean to indicate of action was successful
    */
   public boolean addStudentToListOfAdvisees(UUID studentId) {
     if (!getListOfAdvisees().contains(studentId)) {
-        getListOfAdvisees().add(studentId);
-        return true;
+      getListOfAdvisees().add(studentId);
+      return true;
     }
     return false;
-}
+  }
 
   /**
    * Allows advisor to search for a student
@@ -133,8 +145,7 @@ public class Advisor extends User {
    * @param student specific student to add a note to
    * @param note    note given
    */
-  public void addNote(Student student, String note) {
-  }
+  public void addNote(Student student, String note) {}
 
   /**
    * Allows the advisor to view their list of advisees
@@ -153,7 +164,8 @@ public class Advisor extends User {
    * @return list of failing students
    */
   public String viewFailingStudentList(
-      ArrayList<Student> listOfFailingStudents) {
+    ArrayList<Student> listOfFailingStudents
+  ) {
     return "";
   }
 
@@ -167,7 +179,6 @@ public class Advisor extends User {
   public boolean checkStudentFailStatus(double gpa, double minGPA) {
     if (gpa < minGPA) {
       System.out.println("Failing");
-
     } else {
       System.out.println("Passing");
     }
@@ -204,11 +215,17 @@ public class Advisor extends User {
   /**
    * To string to view user details
    * @return the String format of the user details
+   *
+   * @author @Spillmag
    */
   public String toString() {
-    return "\n********* ADVISOR PROFILE *********\n" +
-        super.toString() +
-        "\nList of Advisees: " + listOfAdvisees +
-        "\nList of Failing Students: " + listOfFailingStudents;
+    return (
+      "\n********* ADVISOR PROFILE *********\n" +
+      super.toString() +
+      "\nList of Advisees: " +
+      listOfAdvisees +
+      "\nList of Failing Students: " +
+      listOfFailingStudents
+    );
   }
 }
