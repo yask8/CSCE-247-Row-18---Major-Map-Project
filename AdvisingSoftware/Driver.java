@@ -93,7 +93,7 @@ public class Driver {
   }
 
   public void scenario3() {
-    System.out.println("\nScenario 1: Login and Signout");
+    System.out.println("\nScenario 3: Not using course planner and generating one");
 
     // Hardcoded email and password
     String email = "rio.farrah2004@gmail.com";
@@ -110,9 +110,6 @@ public class Driver {
     }
     System.out.println("Student checks degree progress\n");
     System.out.println(facade.getStudentDegreeProgress());
-
-    System.out.println("Student look at all courses in data base\n");
-    System.out.println(facade.getCourseList());
 
     facade.getStudentCoursePlanner().generateFromMajorMap(facade.getMajorMap(facade.getStudentMajor()));
     facade.writeStudentCoursePlanner(facade.getUser().getFirstName() + " " + facade.getUser().getLastName());
