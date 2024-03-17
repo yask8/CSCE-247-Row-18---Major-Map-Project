@@ -13,50 +13,49 @@ public class Driver {
   }
 
   public void run() {
-    //Testing Scenarios
-    scenarioTesting();
-    // Portias Scenarios
+
+    
     //scenario1();
     //scenario2();
+
+    // extra scenario to show off course planner generation 
+    // scenario3();
   }
+  public void scenario1() {
+    // Student: Brax West
+    // Junior Computer Science major
 
-  /*
-   * @author @Spillmag
-   * Tests login method
-   */
-  public void scenarioTesting() {
-    System.out.println("\nScenario 1: Login and Signout");
+    facade.login("bwest@email.sc.edu", "bwest060903");
+    System.out.println(
+      "Login Successful. \nCurrent User: " + facade.getUser().toString()
+    );
+    // Choosing the Application Area
+    System.out.println(
+      "\nBrax West looks at the following application areas.\n"
+    );
+    facade.showAppAreaOptions();
+    System.out.println(
+      "Brax decides to choose Digital Design as his application area.\n"
+    );
+    facade.setAppArea("Digital Design");
 
-    // Hardcoded email and password
-    String email = "rio.farrah2004@gmail.com";
-    String password = "Real?dejaneir0";
+    // Choosing a GFL class to take
+    System.out.println("\nBrax searches for his Major Map by name.");
+    System.out.println(facade.getMajorMap("Computer Science"));
+    System.out.println("\nBrax notices he did not take a GFL elective yet.");
+    System.out.println(
+      "\nBrax searches for the elective courses by their code."
+    );
+    facade.showCoursesByCode("GFL");
+    System.out.println("Brax decides to pick SPAN 109 as his GFL elective.");
+   
+    facade.getStudentCoursePlanner().addCourse(6,"SPAN109");
 
-    facade.login(email, password);
-
-    if (facade.getUser() != null) {
-      System.out.println("Login successful!");
-      System.out.println("Current user:");
-      System.out.println(facade.getUser());
-    } else {
-      System.out.println("Login failed. Incorrect email or password.");
-    }
-    System.out.println("Student checks degree progress\n");
-    System.out.println(facade.getStudentDegreeProgress());
-
-    System.out.println("Student look at all courses in data base\n");
-    System.out.println(facade.getCourseList());
-
-    facade.getStudentCoursePlanner().generateFromMajorMap(facade.getMajorMap(facade.getStudentMajor()));
-
-    System.out.println(facade.getUser());
+    facade.writeStudentCoursePlanner(facade.getStudentCoursePlanner(), facade.getUser().getFirstName() + " "+ facade.getUser().getLastName());
     facade.signOut();
-  }
+}
 
-  /**
-   *
-   * @author Yasmine Kennedy (yask8) and Garrett Spillman (Spillmag)
-   */
-  public void scenario2() {
+public void scenario2() {
     facade.signUpAdvisor("Osbert","Odden","osberto@mailbox.sc.edu", "h3110m0m!2");
     System.out.println(
       "Sign Up Successful. \nCurrent User: " + facade.getUser().toString()
@@ -102,41 +101,35 @@ public class Driver {
     );
 
     facade.signOut();
-  }
+}
 
-  public void scenario1() {
-    // Student: Brax West
-    // Junior Computer Science major
+public void scenario3() {
+    System.out.println("\nScenario 1: Login and Signout");
 
-    facade.login("bwest@email.sc.edu", "bwest060903");
-    System.out.println(
-      "Login Successful. \nCurrent User: " + facade.getUser().toString()
-    );
-    // Choosing the Application Area
-    System.out.println(
-      "\nBrax West looks at the following application areas.\n"
-    );
-    facade.showAppAreaOptions();
-    System.out.println(
-      "Brax decides to choose Digital Design as his application area.\n"
-    );
-    facade.setAppArea("Digital Design");
+    // Hardcoded email and password
+    String email = "rio.farrah2004@gmail.com";
+    String password = "Real?dejaneir0";
 
-    // Choosing a GFL class to take
-    System.out.println("\nBrax searches for his Major Map by name.");
-    System.out.println(facade.getMajorMap("Computer Science"));
-    System.out.println("\nBrax notices he did not take a GFL elective yet.");
-    System.out.println(
-      "\nBrax searches for the elective courses by their code."
-    );
-    facade.showCoursesByCode("GFL");
-    System.out.println("Brax decides to pick SPAN 109 as his GFL elective.");
-   
-    facade.getStudentCoursePlanner().addCourse(6,"SPAN109");
+    facade.login(email, password);
 
-    facade.writeStudentCoursePlanner(facade.getStudentCoursePlanner(), facade.getUser().getFirstName() + " "+ facade.getUser().getLastName());
+    if (facade.getUser() != null) {
+      System.out.println("Login successful!");
+      System.out.println("Current user:");
+      System.out.println(facade.getUser());
+    } else {
+      System.out.println("Login failed. Incorrect email or password.");
+    }
+    System.out.println("Student checks degree progress\n");
+    System.out.println(facade.getStudentDegreeProgress());
+
+    System.out.println("Student look at all courses in data base\n");
+    System.out.println(facade.getCourseList());
+
+    facade.getStudentCoursePlanner().generateFromMajorMap(facade.getMajorMap(facade.getStudentMajor()));
+
+    System.out.println(facade.getUser());
     facade.signOut();
-  }
+}
 
   public static void main(String[] args) {
     Driver advisingInterface = new Driver();
