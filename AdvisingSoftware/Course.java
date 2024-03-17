@@ -4,30 +4,9 @@ import java.util.ArrayList;
 
 /**
  * @author Lia Zhao (zhaolia9)
- *         - id: UUID()
- *         - name: String
- *         - code: String
- *         - description: String
- *         - creditHours: int
- *         - subject: String
- *         - passGrade: Char
- *         - elective: boolean
- *         - carolinaCore: boolean
- *         - preReqs: ArrayList <String>
- *         - semester: String
- *         - year: String
- *         + Course(UUID id, String name, String code, String description, int
- *         creditHours, string subject, char passGrade, Boolean elective,
- *         Boolean carolinaCore, ArrayList <Course> prereqs)
- *         + Course(String name, String code, String description, int
- *         creditHours, string subject, char passGrade, Boolean elective,
- *         Boolean carolinaCore, ArrayList <Course> prereqs)
- *         + editCourse(String name, String code, String description, int
- *         creditHours, string subject, char passGrade, Boolean elective,
- *         Boolean carolinaCore, ArrayList <Course> prereqs): Course
- *         + deleteCourse(String code)
  */
 public class Course {
+
   private String id;
   private String name;
   private String code;
@@ -42,21 +21,32 @@ public class Course {
   private String year;
 
   /**
-   *
-   * @param id           UUID
-   * @param name         String
-   * @param code         String
-   * @param description  String
-   * @param creditHours  int
-   * @param subject      String
-   * @param passGrade    char
-   * @param elective     boolean
-   * @param carolinaCore boolean
-   * @param preReqs      ArrayList<Course>
+   * Course constructor
+   * @param id           UUID course id
+   * @param name         String course name
+   * @param code         String course code
+   * @param description  String course description
+   * @param creditHours  int course credit hours
+   * @param subject      String course subject
+   * @param passGrade    char minimum grade needed to pass course
+   * @param elective     boolean shows whether course is an elective or not
+   * @param carolinaCore boolean shows whether course is a Carolina Core or not
+   * @param preReqs      ArrayList<Course> list of prerequisites for course
    */
-  public Course(String id, String name, String code, String description, int creditHours,
-      String subject, char passGrade, boolean elective, boolean carolinaCore,
-      ArrayList<String> preReqs, String year, String semester) {
+  public Course(
+    String id,
+    String name,
+    String code,
+    String description,
+    int creditHours,
+    String subject,
+    char passGrade,
+    boolean elective,
+    boolean carolinaCore,
+    ArrayList<String> preReqs,
+    String year,
+    String semester
+  ) {
     this.id = id;
     this.name = name;
     this.code = code;
@@ -72,21 +62,32 @@ public class Course {
   }
 
   /**
-   *
-   * @param name         String
-   * @param code         String
-   * @param description  String
-   * @param creditHours  int
-   * @param subject      String
-   * @param passGrade    char
-   * @param elective     boolean
-   * @param carolinaCore boolean
-   * @param preReqs      ArrayList<Course>
+   * Course constructor that generates UUID
+   * @param name         String course name
+   * @param code         String course code
+   * @param description  String course description
+   * @param creditHours  int course credit hours
+   * @param subject      String course subject
+   * @param passGrade    char minimum grade needed to pass course
+   * @param elective     boolean shows whether course is an elective or not
+   * @param carolinaCore boolean shows whether course is a Carolina Core or not
+   * @param preReqs      ArrayList<Course> list of prerequisites for course
    */
-  public Course(String name, String code, String description, int creditHours,
-      String subject, char passGrade, boolean elective, boolean carolinaCore,
-      ArrayList<String> preReqs, String year, String semester) {
-    this.id = name.split("\\s+")[0] + name.split("\\s+")[1].replaceAll("\\s+", "");
+  public Course(
+    String name,
+    String code,
+    String description,
+    int creditHours,
+    String subject,
+    char passGrade,
+    boolean elective,
+    boolean carolinaCore,
+    ArrayList<String> preReqs,
+    String year,
+    String semester
+  ) {
+    this.id =
+      name.split("\\s+")[0] + name.split("\\s+")[1].replaceAll("\\s+", "");
     this.name = name;
     this.code = code;
     this.description = description;
@@ -101,59 +102,72 @@ public class Course {
   }
 
   /**
-   *
+   * edits a course
    * @return Course
    */
   public Course editCourse(String id) {
-    return new Course(id, name, code, description, creditHours, subject, passGrade,
-        elective, carolinaCore, preReqs, year, semester);
+    return new Course(
+      id,
+      name,
+      code,
+      description,
+      creditHours,
+      subject,
+      passGrade,
+      elective,
+      carolinaCore,
+      preReqs,
+      year,
+      semester
+    );
   }
 
-  public void deleteCourse() {
-  }
+  public void deleteCourse() {}
 
   /**
    * To string to view user details
    * Added by @Spillmag for tesing purposes
    */
   public String toString() {
-    return ("\n********* COURSE INFO *********\n" +
-        "id: " +
-        id +
-        '\n' +
-        "name: " +
-        name +
-        '\n' +
-        "code: " +
-        code +
-        '\n' +
-        "description: " +
-        description +
-        '\n' +
-        "creditHours: " +
-        creditHours +
-        '\n' +
-        "subject: " +
-        subject +
-        '\n' +
-        "passGrade: " +
-        passGrade +
-        '\n' +
-        "elective: " +
-        elective +
-        '\n' +
-        "carolinaCore: " +
-        carolinaCore +
-        '\n' +
-        "preReqs: " +
-        preReqs +
-        '\n' +
-        "semester: " +
-        semester +
-        '\n' +
-        "year: " +
-        year +
-        '\n');
+    return (
+      "\n********* COURSE INFO *********\n" +
+      "id: " +
+      id +
+      '\n' +
+      "name: " +
+      name +
+      '\n' +
+      "code: " +
+      code +
+      '\n' +
+      "description: " +
+      description +
+      '\n' +
+      "creditHours: " +
+      creditHours +
+      '\n' +
+      "subject: " +
+      subject +
+      '\n' +
+      "passGrade: " +
+      passGrade +
+      '\n' +
+      "elective: " +
+      elective +
+      '\n' +
+      "carolinaCore: " +
+      carolinaCore +
+      '\n' +
+      "preReqs: " +
+      preReqs +
+      '\n' +
+      "semester: " +
+      semester +
+      '\n' +
+      "year: " +
+      year +
+      '\n'
+    );
   }
 
   public String getID() {

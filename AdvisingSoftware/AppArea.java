@@ -12,6 +12,10 @@ public class AppArea {
   private ArrayList<String> appAreaCourses = new ArrayList<String>();
   private ArrayList<String> appAreaOptions = new ArrayList<String>();
 
+  /**
+   *
+   * @param appAreaName String application area name
+   */
   public AppArea(String appAreaName) {
     appAreaOptions.add("Science");
     appAreaOptions.add("Math");
@@ -25,6 +29,10 @@ public class AppArea {
     setAppAreaCourses(appAreaName);
   }
 
+  /**
+   *
+   * @return String string representation of application area options
+   */
   public String showAppAreaOptions() {
     String appAreaOptions = "*******Application Areas*******\n";
     for (String appArea : this.appAreaOptions) {
@@ -33,18 +41,35 @@ public class AppArea {
     return appAreaOptions + "and more to come...";
   }
 
+  /**
+   *
+   * @return ArrayList<String> list of application area options
+   */
   public ArrayList<String> getAppAreaOptions() {
     return appAreaOptions;
   }
 
+  /**
+   *
+   * @return ArrayList<String> list of major electives
+   */
   public ArrayList<String> getmajorElectives() {
     return majorElectives;
   }
 
+  /**
+   *
+   * @return ArrayList<String> list of application area courses
+   */
   public ArrayList<String> getAppAreaCourses() {
     return appAreaCourses;
   }
 
+  /**
+   * depending on the application area name, the method would
+   * populate the given lists with the corresponding courses
+   * @param appAreaName String name of the application area
+   */
   public void setMajorElectives(String appAreaName) {
     if (appAreaName.equalsIgnoreCase("Science")) {
       majorElectives.add("CSCE520");
@@ -79,6 +104,11 @@ public class AppArea {
     }
   }
 
+  /**
+   * depending on the application area name, the method would
+   * populate the given lists with the corresponding courses
+   * @param appAreaName String application area name
+   */
   public void setAppAreaCourses(String appAreaName) {
     if (appAreaName.equalsIgnoreCase("Science")) {
       appAreaCourses.add("STAT530");
@@ -116,6 +146,9 @@ public class AppArea {
     }
   }
 
+  /**
+   * @return String string representation of the chosen application area
+   */
   public String toString() {
     String appAreaText = "";
     appAreaText += "\n*******Application Area*******\n";
