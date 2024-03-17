@@ -16,8 +16,8 @@ public class Driver {
     //Testing Scenarios
     //scenarioTesting();
     // Portias Scenarios
-   //scenario1();
-    scenario2();
+    scenario1();
+    //scenario2();
   }
 
   /*
@@ -79,9 +79,9 @@ public class Driver {
    * @author Yasmine Kennedy (yask8) and Garrett Spillman (Spillmag)
    */
   public void scenario2() {
-    facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    facade.signUpAdvisor("Osbert","Odden","osberto@mailbox.sc.edu", "h3110m0m!2");
     System.out.println(
-      "Login Successful. \nCurrent User: " + facade.getUser().toString()
+      "Sign Up Successful. \nCurrent User: " + facade.getUser().toString()
     );
 
     System.out.println("\nSearching for Student and adding to list");
