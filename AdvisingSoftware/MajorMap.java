@@ -284,6 +284,33 @@ public ArrayList<String> getSemester8() {
     return semester8;
 }
  /**
+   * Gets the list of an ideal semester i
+   * @param i the semester number out of 8
+   * @return semester i
+   */
+  public ArrayList<String> getSemester(int i) {
+    switch (i) {
+        case 1:
+            return this.getSemester1();
+        case 2:
+            return this.getSemester2();
+        case 3:
+            return this.getSemester3();
+        case 4:
+            return this.getSemester4();
+        case 5:
+            return this.getSemester5();
+        case 6:
+            return this.getSemester6();
+        case 7:
+            return this.getSemester7();
+        case 8:
+            return this.getSemester8();
+        default:
+            return null; 
+    }
+  }
+ /**
    * Gets the minimum total hours
    * @return total hours
    */
