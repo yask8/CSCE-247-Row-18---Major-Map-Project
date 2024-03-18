@@ -226,7 +226,7 @@ public class Student extends User {
   public MajorMap getStudentsMajorMap() {
     String studentMajor = getMajor();
 
-    if (studentMajor != null || studentMajor == "Undelared") {
+    if (studentMajor != null || studentMajor == "Undeclared") {
       MajorList majorList = MajorList.getInstance();
       return majorList.getMajorByName(studentMajor);
     } else {
