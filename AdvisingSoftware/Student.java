@@ -183,7 +183,7 @@ public class Student extends User {
    * @return degree progress
    */
   public String viewDegreeProgress() {
-    return displayProgressStudent(completedCourses) + degreeProgress.toString();
+    return degreeProgress.toString();
   }
 
   /**
@@ -192,10 +192,14 @@ public class Student extends User {
    * @param xcompleteCourses ArrayList<Grades> Student's completed courses list
    * @return String degree progress percentage of student
    */
-  public String displayProgressStudent(ArrayList<Grades> xcompleteCourses) {
+  public String displayProgressStudent(
+    ArrayList<Grades> xcompleteCourses,
+    ArrayList<Course> courseList
+  ) {
     return degreeProgress.displayProgress(
       getStudentsMajorMap(),
-      xcompleteCourses
+      xcompleteCourses,
+      courseList
     );
   }
 

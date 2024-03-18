@@ -146,7 +146,10 @@ public class Facade {
   public void displayProgressStudent() {
     if (user.getUserType().equals("STUDENT")) {
       System.out.println(
-        ((Student) user).displayProgressStudent(getStudentCompletedCourses())
+        ((Student) user).displayProgressStudent(
+            getStudentCompletedCourses(),
+            getCourses()
+          )
       );
     }
   }
