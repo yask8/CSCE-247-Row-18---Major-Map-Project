@@ -187,6 +187,19 @@ public class Student extends User {
   }
 
   /**
+   * Shows student degree progress percentage
+   * @param major MajorMap Student's major
+   * @param xcompleteCourses ArrayList<Grades> Student's completed courses list
+   * @return String degree progress percentage of student
+   */
+  public String displayProgressStudent(
+    MajorMap major,
+    ArrayList<Grades> xcompleteCourses
+  ) {
+    return degreeProgress.displayProgress(major, xcompleteCourses);
+  }
+
+  /**
    * Allows student to add a completed course
    *
    * @param code  Course-specific code
