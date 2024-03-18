@@ -126,9 +126,14 @@ public class CoursePlanner {
    */
   public void generateFromMajorMap(MajorMap majorMap) {
     ArrayList<ArrayList<String>> majorMapSemesters = new ArrayList<>();
-    for (int i = 1; i <= 8; i++) {
-        majorMapSemesters.add(majorMap.getSemester(i));
-    }
+    majorMapSemesters.add(majorMap.getSemester1());
+    majorMapSemesters.add(majorMap.getSemester2());
+    majorMapSemesters.add(majorMap.getSemester3());
+    majorMapSemesters.add(majorMap.getSemester4());
+    majorMapSemesters.add(majorMap.getSemester5());
+    majorMapSemesters.add(majorMap.getSemester6());
+    majorMapSemesters.add(majorMap.getSemester7());
+    majorMapSemesters.add(majorMap.getSemester8());
 
     for (int i = 0; i < 8; i++) {
       ArrayList<String> semesterCourses = majorMapSemesters.get(i);

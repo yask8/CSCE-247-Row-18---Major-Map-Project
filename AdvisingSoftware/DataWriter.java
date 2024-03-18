@@ -262,6 +262,7 @@ public class DataWriter extends DataConstants {
             }
             majorMapJSON.put("semesters", semestersArray);
 
+
             majorMapJSON.put(MAJOR_MIN_HOURS, majorMap.getMinTotalHours());
             majorMapJSON.put(MAJOR_MIN_GRAD_HOURS, majorMap.getMinGradHours());
             majorMapJSON.put(MAJOR_CC_HOURS, majorMap.getCaroCoreHours());
