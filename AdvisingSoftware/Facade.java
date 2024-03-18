@@ -5,7 +5,7 @@ import java.util.UUID;
 
 /**
  * The Facade
- * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8), Owen Shumate (@oshumate)
  *
  **/
 
@@ -18,6 +18,7 @@ public class Facade {
   private UserList userList;
   private User user;
   private MajorList majorList;
+
   /**
    * Facade Constructor
    */
@@ -140,6 +141,14 @@ public class Facade {
   ) {
     userList.signUp(firstName, lastName, email, password, "ADVISOR");
     login(email, password);
+  }
+
+  public void displayProgressStudent() {
+    if (user.getUserType().equals("STUDENT")) {
+      System.out.println(
+        ((Student) user).displayProgressStudent(getStudentCompletedCourses())
+      );
+    }
   }
 
   /**

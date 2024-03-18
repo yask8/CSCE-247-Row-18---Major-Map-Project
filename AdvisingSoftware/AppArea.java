@@ -2,7 +2,7 @@ package AdvisingSoftware;
 /**
  * The class that creates adds a Application areas
  * to a list of application areas.
- * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8)
+ * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8), Owen Shumate (@oshumate)
  */
 import java.util.ArrayList;
 
