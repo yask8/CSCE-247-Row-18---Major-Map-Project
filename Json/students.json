@@ -93,14 +93,14 @@
     "email": "rio.farrah2004@gmail.com",
     "coursePlanner": {
       "semesters": [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
+        ["ENGL101", "MATH141", "CSCE145", "CSCE190", "ARTE101"],
+        ["ENGL102", "MATH142", "CHEM111", "CHEM111L", "CSCE146", "CSCE215"],
+        ["CSCE211", "CSCE240", "MATH374", "CHEM112", "CHEM112L", "SPCH140"],
+        ["CSCE212", "CSCE247", "MATH241", "SOCY101", "ANTH161", "SPAN109"],
+        ["CSCE311", "CSCE330", "CSCE350", "CSCE390", "ENGL462", "CSCE518"],
+        ["CSCE416", "CSCE317", "STAT509", "CLAS220", "CSCE522"],
+        ["CSCE490", "CSCE355", "MATH344", "MATH344L", "CSCE548", "CSCE520"],
+        ["CSCE492", "CSCE513", "MUSC110", "POLI101", "SOST201"]
       ]
     }
   },
@@ -111,7 +111,9 @@
     "creditHours": 0,
     "firstName": "Tawnie",
     "password": "bi117",
-    "advisorNotes": [],
+    "advisorNotes": [
+      {}
+    ],
     "major": "Undeclared",
     "degreeProgress": {
       "major": "Undeclared",
@@ -224,7 +226,7 @@
     },
     "gpa": 3.78,
     "userType": "STUDENT",
-    "class": "Junior",
+    "class": "Senior",
     "applicationArea": "Digital Design",
     "email": "bwest@email.sc.edu",
     "coursePlanner": {
