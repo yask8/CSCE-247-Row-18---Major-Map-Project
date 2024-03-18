@@ -1,4 +1,5 @@
 package AdvisingSoftware;
+
 /**
  * Class that creates an Admin User
  * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8), Owen Shumate (@oshumate)
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Admin extends User {
+
   /**
    * Attributes
    */
@@ -42,6 +44,7 @@ public class Admin extends User {
    * @return the Course instance
    */
   public Course addCourse() {
+    changesMade.add("added course");
     return null;
   }
 
@@ -51,13 +54,16 @@ public class Admin extends User {
    * @return the Course instance
    */
   public Course editCourse() {
+    changesMade.add("edited course");
     return null;
   }
 
   /**
    * Allows admin to delete a course
    */
-  public void deleteCourse() {}
+  public void deleteCourse() {
+    changesMade.add("deleted course");
+  }
 
   /**
    * Allows admin to search for a student
