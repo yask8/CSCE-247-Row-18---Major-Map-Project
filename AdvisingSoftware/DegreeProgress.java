@@ -42,7 +42,16 @@ public class DegreeProgress {
     MajorMap majorMap,
     ArrayList<Grades> completedCourses
   ) {
-    return "-----Degree Progress-----" + "Current Major: " + this.major;
+    int progressPercentage =
+      (getTotalCreditHours() / majorMap.getMinTotalHours()) * 100;
+    return (
+      "-----Degree Progress-----" +
+      "Current Major: " +
+      this.major +
+      "\nProgress Made: " +
+      progressPercentage +
+      "%"
+    );
   }
 
   /**
