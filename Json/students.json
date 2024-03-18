@@ -20,7 +20,7 @@
       { "courseName": "SPCH140", "grade": 85.0 }
     ],
     "uscID": "faa91c60-3201-4870-84c8-9473df2b6a1e",
-    "creditHours": 0,
+    "creditHours": 44,
     "firstName": "Farrah",
     "password": "Real?dejaneir0",
     "advisorNotes": [
@@ -88,10 +88,21 @@
     },
     "gpa": 3.63,
     "userType": "STUDENT",
-    "class": "Sophomore",
+    "class": "Senior",
     "applicationArea": "Undeclared",
     "email": "rio.farrah2004@gmail.com",
-    "coursePlanner": { "semesters": [[], [], [], [], [], [], [], []] }
+    "coursePlanner": {
+      "semesters": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    }
   },
   {
     "lastName": "Hill",
@@ -100,9 +111,7 @@
     "creditHours": 0,
     "firstName": "Tawnie",
     "password": "bi117",
-    "advisorNotes": [
-      {}
-    ],
+    "advisorNotes": [],
     "major": "Undeclared",
     "degreeProgress": {
       "major": "Undeclared",
@@ -215,7 +224,7 @@
     },
     "gpa": 3.78,
     "userType": "STUDENT",
-    "class": "Senior",
+    "class": "Junior",
     "applicationArea": "Digital Design",
     "email": "bwest@email.sc.edu",
     "coursePlanner": {

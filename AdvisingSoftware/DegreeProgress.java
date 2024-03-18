@@ -40,10 +40,8 @@ public class DegreeProgress {
    */
   public String displayProgress(
     MajorMap majorMap,
-    ArrayList<Grades> completedCourses,
-    ArrayList<Course> courseList
+    ArrayList<Grades> completedCourses
   ) {
-    calculateGPA(courseList, completedCourses);
     int progressPercentage =
       (getTotalCreditHours() / majorMap.getMinTotalHours()) * 100;
     return (
