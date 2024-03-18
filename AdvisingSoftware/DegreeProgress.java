@@ -1,4 +1,5 @@
 package AdvisingSoftware;
+
 /**
  * Creates a DegreeProgress for student
  * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8), Owen Shumate (@oshumate)
@@ -6,6 +7,7 @@ package AdvisingSoftware;
 import java.util.ArrayList;
 
 public class DegreeProgress {
+
   /**
    * Attributes
    */
@@ -42,6 +44,7 @@ public class DegreeProgress {
   ) {
     return "-----Degree Progress-----" + "Current Major: " + this.major;
   }
+
   /**
    * The display completed courses and incompleted courses
    * @return the string format of completed and incomplete courses
@@ -66,6 +69,7 @@ public class DegreeProgress {
 
     return result;
   }
+
   /**
    * Gets the major
    * @return the major
@@ -73,6 +77,7 @@ public class DegreeProgress {
   public String getMajor() {
     return major;
   }
+
   /**
    * Gets list of completed courses
    * @return the completed courses
@@ -156,6 +161,7 @@ public class DegreeProgress {
       }
     }
   }
+
   /**
    * Displays all of the application areas
    */
@@ -167,6 +173,7 @@ public class DegreeProgress {
       System.out.println(appArea.toString());
     }
   }
+
   /**
    * Gets the list incomplete courses
    * @return the list of incomplete courses
@@ -241,13 +248,9 @@ public class DegreeProgress {
     gpa = Math.floor(gpa * 100) / 100;
     return gpa;
   }
-  /**
-   * Gets the total credit hours
-   * @return the total credit hours
-   */
 
   /**
-   *
+   * Gets the total credit hours
    * @return int total credit hours taken by student
    */
   public int getTotalCreditHours() {
@@ -259,12 +262,6 @@ public class DegreeProgress {
    * @param completeCourse Grades course name and grade
    * @param courseList ArrayList<Course> list of all the courses
    * @return int credit hours of a single course
-   */
-  /**
-   * Gets the CreditHours
-   * @param completeCourse the list of completed courses
-   * @param courseList the list of courses
-   * @return credit hours
    */
   public int getCreditHours(
     Grades completeCourse,
