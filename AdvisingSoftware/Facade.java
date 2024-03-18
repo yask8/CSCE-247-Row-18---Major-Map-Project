@@ -18,6 +18,7 @@ public class Facade {
   private UserList userList;
   private User user;
   private MajorList majorList;
+
   /**
    * Facade Constructor
    */
@@ -140,6 +141,14 @@ public class Facade {
   ) {
     userList.signUp(firstName, lastName, email, password, "ADVISOR");
     login(email, password);
+  }
+
+  public void displayProgressStudent() {
+    if (user.getUserType().equals("STUDENT")) {
+      System.out.println(
+        ((Student) user).displayProgressStudent(getStudentCompletedCourses())
+      );
+    }
   }
 
   /**
