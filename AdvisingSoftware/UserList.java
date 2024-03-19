@@ -239,51 +239,51 @@ public class UserList {
    * @param password  The password of the user.
    * @param userType  The type of user ('STUDENT', 'ADMIN', or 'ADVISOR').
    */
-/**
- * Signs up a new user.
- *
- * @param firstName The first name of the user.
- * @param lastName  The last name of the user.
- * @param email     The email of the user.
- * @param password  The password of the user.
- * @param userType  The type of user ('STUDENT', 'ADMIN', or 'ADVISOR').
- * @return true if the sign-up process is successful, false otherwise.
- */
-public boolean signUp(
-    String firstName,
-    String lastName,
-    String email,
-    String password,
-    String userType) {
+  /**
+   * Signs up a new user.
+   *
+   * @param firstName The first name of the user.
+   * @param lastName  The last name of the user.
+   * @param email     The email of the user.
+   * @param password  The password of the user.
+   * @param userType  The type of user ('STUDENT', 'ADMIN', or 'ADVISOR').
+   * @return true if the sign-up process is successful, false otherwise.
+   */
+  public boolean signUp(
+      String firstName,
+      String lastName,
+      String email,
+      String password,
+      String userType) {
 
     if (emailExists(email)) {
-        System.out.println("Sign up failed. Email already exists. Please choose a different email.");
-        return false;
+      System.out.println("Sign up failed. Email already exists. Please choose a different email.");
+      return false;
     }
 
     UUID uscID = UUID.randomUUID();
 
     User newUser = null;
     if (userType.equals("STUDENT")) {
-        newUser = new Student(firstName, lastName, email, uscID, password, userType, "Freshman", "Undeclared",
-            "Undeclared", 0, new ArrayList<Grades>(), 0.0, new CoursePlanner(),
-            new DegreeProgress("Undeclared", new ArrayList<String>(), new ArrayList<String>()),
-            new ArrayList<Note>());
+      newUser = new Student(firstName, lastName, email, uscID, password, userType, "Freshman", "Undeclared",
+          "Undeclared", 0, new ArrayList<Grades>(), 0.0, new CoursePlanner(),
+          new DegreeProgress("Undeclared", new ArrayList<String>(), new ArrayList<String>()),
+          new ArrayList<Note>());
     } else if (userType.equals("ADMIN")) {
-        newUser = new Admin(firstName, lastName, email, uscID, password, userType, new ArrayList<String>());
+      newUser = new Admin(firstName, lastName, email, uscID, password, userType, new ArrayList<String>());
     } else if (userType.equals("ADVISOR")) {
-        newUser = new Advisor(firstName, lastName, email, uscID, password, userType, new ArrayList<UUID>(),
-            new ArrayList<UUID>());
+      newUser = new Advisor(firstName, lastName, email, uscID, password, userType, new ArrayList<UUID>(),
+          new ArrayList<UUID>());
     } else {
-        System.out.println("Sign up failed. Invalid user type. Please specify either 'STUDENT', 'ADMIN', or 'ADVISOR'.");
-        return false;
+      System.out.println("Sign up failed. Invalid user type. Please specify either 'STUDENT', 'ADMIN', or 'ADVISOR'.");
+      return false;
     }
 
     addUser(newUser);
     System.out.println("Sign up successful! New profile:");
     System.out.println(newUser.toString());
-    return true; 
-}
+    return true;
+  }
 
   /**
    * Gets the user's uscID by their first and last name
@@ -325,4 +325,12 @@ public boolean signUp(
     }
     return null;
   }
+
+  /**
+   * Clears all courses from the course list.
+   */
+  public void clear() {
+    users.clear();
+  }
+
 }

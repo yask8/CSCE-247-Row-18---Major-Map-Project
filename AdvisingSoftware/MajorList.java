@@ -14,6 +14,7 @@ public class MajorList {
     private static MajorList majorList;
     private ArrayList<MajorMap> majors;
     private boolean loaded;
+
     /**
      * MajorList constructor
      */
@@ -21,15 +22,19 @@ public class MajorList {
         majors = new ArrayList<>();
         loaded = false;
     }
+
     /**
      * Gets the list of majors
+     * 
      * @return the majors
      */
     public ArrayList<MajorMap> getMajors() {
         return majors;
     }
+
     /**
      * Gets an static instance of the MajorList
+     * 
      * @return the majorlist
      */
     public static MajorList getInstance() {
@@ -58,8 +63,10 @@ public class MajorList {
         }
         return majorList;
     }
+
     /**
      * Gets the major by name
+     * 
      * @param major the major
      * @return the major
      */
@@ -71,8 +78,10 @@ public class MajorList {
         }
         return null;
     }
+
     /**
      * Gets the major by it's unique identifier
+     * 
      * @param id the id
      * @return the major
      */
@@ -84,21 +93,23 @@ public class MajorList {
         }
         return null;
     }
+
     /**
      * Adds a major with their semester listings and graduation requirements
-     * @param majorName name of major
-     * @param semester1 first semester
-     * @param semester2 second semester
-     * @param semester3 third semester
-     * @param semester4 fourth semester
-     * @param semester5 fifth semester
-     * @param semester6 sixth semester
-     * @param semester7 seventh semester
-     * @param semester8 eigth semester
+     * 
+     * @param majorName     name of major
+     * @param semester1     first semester
+     * @param semester2     second semester
+     * @param semester3     third semester
+     * @param semester4     fourth semester
+     * @param semester5     fifth semester
+     * @param semester6     sixth semester
+     * @param semester7     seventh semester
+     * @param semester8     eigth semester
      * @param minTotalHours minimum total credit hours
-     * @param minGradHours minimum grad hours
+     * @param minGradHours  minimum grad hours
      * @param caroCoreHours minimum carolina core hours
-     * @param minGPA minimum GPA
+     * @param minGPA        minimum GPA
      */
     public void addMajor(
             String majorName,
@@ -130,8 +141,10 @@ public class MajorList {
                 minGPA);
         majors.add(newMajorMap);
     }
+
     /**
      * Removes a Major
+     * 
      * @param major the major
      */
     public void removeMajor(String major) {
@@ -143,18 +156,30 @@ public class MajorList {
         }
         System.out.println(major + " does not exist.");
     }
+
     /**
      * Sets if the major is loaded or not
+     * 
      * @param loaded true or false
      */
     public void setLoaded(boolean loaded) {
         this.loaded = loaded;
     }
+
     /**
      * Checks if the major is loaded or not
+     * 
      * @return true if major is loaded, false if major is not loaded
      */
     public boolean isLoaded() {
         return loaded;
     }
+
+    /**
+     * Clears all courses from the course list.
+     */
+    public void clear() {
+        majors.clear();
+    }
+
 }
