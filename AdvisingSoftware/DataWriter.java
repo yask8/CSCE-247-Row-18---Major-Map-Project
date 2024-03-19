@@ -256,14 +256,10 @@ public class DataWriter extends DataConstants {
             majorMapJSON.put(MAJOR_NAME, majorMap.getMajor());
             majorMapJSON.put(MAJOR_UUID, majorMap.getId().toString());
 
-            majorMapJSON.put(MAJOR_SEMESTER_1, majorMap.getSemester1());
-            majorMapJSON.put(MAJOR_SEMESTER_2, majorMap.getSemester2());
-            majorMapJSON.put(MAJOR_SEMESTER_3, majorMap.getSemester3());
-            majorMapJSON.put(MAJOR_SEMESTER_4, majorMap.getSemester4());
-            majorMapJSON.put(MAJOR_SEMESTER_5, majorMap.getSemester5());
-            majorMapJSON.put(MAJOR_SEMESTER_6, majorMap.getSemester6());
-            majorMapJSON.put(MAJOR_SEMESTER_7, majorMap.getSemester7());
-            majorMapJSON.put(MAJOR_SEMESTER_8, majorMap.getSemester8());
+            for (int i = 1; i <= 8; i++) {
+                String semesterKey = "Semester" + i;
+                majorMapJSON.put(semesterKey, majorMap.getSemester(i));
+            }
 
             majorMapJSON.put(MAJOR_MIN_HOURS, majorMap.getMinTotalHours());
             majorMapJSON.put(MAJOR_MIN_GRAD_HOURS, majorMap.getMinGradHours());

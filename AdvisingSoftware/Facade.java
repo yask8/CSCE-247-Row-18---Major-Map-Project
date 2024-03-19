@@ -102,11 +102,13 @@ public class Facade {
     String lastName,
     String email,
     String password
-  ) {
-    userList.signUp(firstName, lastName, email, password, "STUDENT");
-    login(email, password);
-  }
-
+) {
+    if (userList.signUp(firstName, lastName, email, password, "STUDENT")) {
+        login(email, password);
+    } else {
+        System.out.println("Student sign-up failed.");
+    }
+}
   /**
    * Signs up a new administrator.
    *
@@ -120,10 +122,13 @@ public class Facade {
     String lastName,
     String email,
     String password
-  ) {
-    userList.signUp(firstName, lastName, email, password, "ADMIN");
-    login(email, password);
-  }
+) {
+    if (userList.signUp(firstName, lastName, email, password, "ADMIN")) {
+        login(email, password);
+    }else{
+      System.out.println("Admin sign-up failed.");
+    }
+}
 
   /**
    * Signs up a new advisor.
@@ -138,10 +143,13 @@ public class Facade {
     String lastName,
     String email,
     String password
-  ) {
-    userList.signUp(firstName, lastName, email, password, "ADVISOR");
-    login(email, password);
-  }
+) {
+    if (userList.signUp(firstName, lastName, email, password, "ADVISOR")) {
+        login(email, password);
+    } else {
+        System.out.println("Advisor sign-up failed.");
+    }
+}
 
   public void displayProgressStudent() {
     if (user.getUserType().equals("STUDENT")) {

@@ -284,6 +284,40 @@ public ArrayList<String> getSemester8() {
     return semester8;
 }
  /**
+     * Get the courses for the specified semester.
+     *
+     * @param semesterNumber The number of the semester (1-8).
+     * @return The courses for the specified semester.
+     * @throws IllegalArgumentException if semester number is out of range.
+     */
+    public ArrayList<String> getSemester(int semesterNumber) {
+      if (semesterNumber < 1 || semesterNumber > 8) {
+          throw new IllegalArgumentException("Semester number must be between 1 and 8");
+      }
+
+      switch (semesterNumber) {
+          case 1:
+              return semester1;
+          case 2:
+              return semester2;
+          case 3:
+              return semester3;
+          case 4:
+              return semester4;
+          case 5:
+              return semester5;
+          case 6:
+              return semester6;
+          case 7:
+              return semester7;
+          case 8:
+              return semester8;
+          default:
+              throw new IllegalArgumentException("Invalid semester number: " + semesterNumber);
+      }
+  }
+
+ /**
    * Gets the minimum total hours
    * @return total hours
    */
