@@ -176,7 +176,13 @@ public class CourseList {
       courses.add(newCourse);
     }
   }
-
+  public void addCourseObject(Course newCourse) {
+    if (!courseWithNameExists(newCourse.getName())) {
+        courses.add(newCourse);
+    } else {
+        System.out.println("A course with the same name already exists.");
+    }
+}
   /**
    * checks if course exists in the list of all courses
    * @param name String name of Course
