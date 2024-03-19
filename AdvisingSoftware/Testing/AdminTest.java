@@ -21,6 +21,7 @@ public class AdminTest {
     @BeforeEach
     public void setUp() {
         admin = new Admin("John", "Doe", "john@example.com", uuid, "password", "Admin", new ArrayList<>());
+        CourseList.getInstance().getCourses().clear();
     }
 
     @AfterEach
@@ -32,8 +33,25 @@ public class AdminTest {
     }
 
     @Test
-    public void testAddCourseCorrect() {
-        admin.addCourse("Math", "MATH101", "Introduction to Math", 3, "Mathematics", 'A', true, false, new ArrayList<String>(), "2024", "Spring");
+    public void testAddValidCourse() {
+        admin.addCourse("Math 101", "MATH101", "Introduction to Math", 3, "MATH", 'A', true, false, new ArrayList<>(),
+                "2024", "Spring");
+        assertEquals(1, CourseList.getInstance().getAllCourses().size());
+    }
+
+    @Test
+    public void testAddCourseEmptyName() {
+        admin.addCourse("", "MATH101", "Introduction to Math", 3, "Mathematics", 'A', true, false, new ArrayList<>(),
+                "2024", "Spring");
+        assertEquals(0, CourseList.getInstance().getAllCourses().size());
+    }
+
+    @Test
+    public void testAddCourseDuplicateName() {
+        admin.addCourse("Math 101", "MATH101", "Introduction to Math", 3, "Mathematics", 'A', true, false,
+                new ArrayList<>(), "2024", "Spring");
+        admin.addCourse("Math 101", "MATH102", "Introduction to Advanced Math", 3, "Mathematics", 'A', true, false,
+                new ArrayList<>(), "2024", "Spring");
         assertEquals(1, CourseList.getInstance().getAllCourses().size());
     }
 }

@@ -102,18 +102,17 @@ public class Course {
    * @param preReqs      ArrayList<Course> list of prerequisites for course
    */
   public Course(
-      String name,
-      String code,
-      String description,
-      int creditHours,
-      String subject,
-      char passGrade,
-      boolean elective,
-      boolean carolinaCore,
-      ArrayList<String> preReqs,
-      String year,
-      String semester) {
-    this.id = name.split("\\s+")[0] + name.split("\\s+")[1].replaceAll("\\s+", "");
+    String name,
+    String code,
+    String description,
+    int creditHours,
+    String subject,
+    char passGrade,
+    boolean elective,
+    boolean carolinaCore,
+    ArrayList<String> preReqs,
+    String year,
+    String semester) {
     this.name = name;
     this.code = code;
     this.description = description;
@@ -125,7 +124,18 @@ public class Course {
     this.preReqs = preReqs;
     this.semester = semester;
     this.year = year;
-  }
+    
+    if (name != null && !name.isEmpty()) {
+        String[] nameParts = name.split("\\s+");
+        if (nameParts.length >= 2) {
+            this.id = nameParts[0] + nameParts[1].replaceAll("\\s+", "");
+        } else {
+            this.id = java.util.UUID.randomUUID().toString();
+        }
+    } else {
+        this.id = java.util.UUID.randomUUID().toString();
+    }
+}
 
   /**
    * Allows course to be edited
