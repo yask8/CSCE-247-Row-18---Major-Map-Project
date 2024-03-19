@@ -157,6 +157,10 @@ public class CourseList {
       ArrayList<String> prereqs,
       String year,
       String semester) {
+    if (prereqs == null) {
+      prereqs = new ArrayList<>();
+    }
+
     if (!courseWithNameExists(name)) {
       Course newCourse = new Course(
           name,

@@ -37,19 +37,19 @@ public class Admin extends User {
     this.changesMade = changesMade;
   }
 
-  /**
-   * Allows admin to add a course
-   *
-   * @return the Course instance
-   */
-  public boolean addCourse(String name, String code, String description, int creditHours, String subject,
-      char passGrade, boolean elective, boolean carolinaCore, ArrayList<String> prereqs, String year, String semester) {
-    CourseList courseList = CourseList.getInstance();
-    courseList.addCourse(name, code, description, creditHours, subject, passGrade, elective, carolinaCore, prereqs,
-        year, semester);
-    changesMade.add("added course: " + code);
-    return true;
-  }
+/**
+ * Allows admin to add a course
+ *
+ * @return the Course instance
+ */
+public boolean addCourse(String name, String code, String description, int creditHours, String subject,
+    char passGrade, boolean elective, boolean carolinaCore, ArrayList<String> prereqs, String year, String semester) {
+  CourseList courseList = CourseList.getInstance();
+  courseList.addCourse(name, code, description, creditHours, subject, passGrade, elective, carolinaCore, prereqs,
+      year, semester);
+  changesMade.add("added course: " + code);
+  return true;
+}
 
   /**
    * Edits the details of a course identified by its code.
