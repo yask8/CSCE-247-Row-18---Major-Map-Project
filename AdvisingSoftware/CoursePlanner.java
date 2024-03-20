@@ -147,10 +147,15 @@ public class CoursePlanner {
     }
   }
 
+  /**
+   * returns whether the given course exists in courseplanner or not
+   * @param course String course id
+   * @return boolean true if course exists in coursePlanner
+   */
   public boolean searchPlanner(String course) {
     boolean exists = false;
     for (ArrayList<String> xSemester : semesters) {
-      if (xSemester.contains(course)) {
+      if (!xSemester.isEmpty() && xSemester.contains(course)) {
         exists = true;
       }
     }
