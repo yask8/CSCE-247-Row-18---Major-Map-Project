@@ -100,7 +100,9 @@
     "creditHours": 0,
     "firstName": "Tawnie",
     "password": "bi117",
-    "advisorNotes": [],
+    "advisorNotes": [
+      {}
+    ],
     "major": "Undeclared",
     "degreeProgress": {
       "major": "Undeclared",

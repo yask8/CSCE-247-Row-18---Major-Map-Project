@@ -81,11 +81,10 @@ public class AdminTest {
 
     @Test
     public void testEditCourseValid() {
-        // Add a course first
         admin.addCourse("Math 101", "MATH101", "Introduction to Math", 3, "Mathematics", 'A', true, false,
                 new ArrayList<>(), "2024", "Spring");
 
-        // Now edit the course
+
         boolean result = admin.editCourse("MATH101", "Calculus 101", "Introduction to Calculus", 4, "Mathematics", 'B',
                 false, true, new ArrayList<>(), "2024", "Fall");
 
