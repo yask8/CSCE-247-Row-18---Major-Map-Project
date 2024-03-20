@@ -5,6 +5,7 @@ package AdvisingSoftware.Testing;
  */
 import static org.junit.jupiter.api.Assertions.*;
 
+import AdvisingSoftware.CourseList;
 import AdvisingSoftware.Grades;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -14,27 +15,46 @@ import org.junit.jupiter.api.Test;
 
 public class GradesTest {
 
+  private Grades testCourse;
+
   /**
    * Methods to Test
    * + checkPass(double courseGrade): String
    */
 
+  @BeforeEach
+  public void setUp(double courseGrade) {
+    testCourse = new Grades("CSCE145", courseGrade);
+  }
+
+  @AfterEach
+  public void tearDown() {}
+
   // Testing checkPass method
   @Test
-  public void testCheckPassValidNum() {}
+  public void testCheckPassValidNum() {
+    double courseGrade = 94.3;
+    setUp(courseGrade);
+    assertEquals("PASS", testCourse.checkPass(courseGrade));
+  }
 
   @Test
-  public void testCheckPassZero() {}
+  public void testCheckPassZero() {
+    double courseGrade = 0;
+    setUp(courseGrade);
+    assertEquals("FAIL", testCourse.checkPass(courseGrade));
+  }
 
   @Test
-  public void testCheckPassNegativeNum() {}
+  public void testCheckPassNegativeNum() {
+    double courseGrade = -94.3;
+    setUp(courseGrade);
+    assertEquals("FAIL", testCourse.checkPass(courseGrade));
+  }
 
   @Test
-  public void testCheckPassNonDoubleInput() {}
-
-  @Test
-  public void testCheckPassEmpty() {}
-
-  @Test
-  public void testCheckPassNull() {}
+  public void testCheckPassNullNum() {
+    setUp(null);
+    assertEquals("ADD NUMERICAL GRADE", testCourse.checkPass(null));
+  }
 }
