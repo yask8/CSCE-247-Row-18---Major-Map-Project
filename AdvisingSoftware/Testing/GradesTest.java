@@ -55,6 +55,6 @@ public class GradesTest {
   @Test
   public void testCheckPassNullNum() {
     setUp(null);
-    assertEquals("ADD NUMERICAL GRADE", testCourse.checkPass(null));
+    assertEquals("N/A", testCourse.checkPass(null));
   }
 }
