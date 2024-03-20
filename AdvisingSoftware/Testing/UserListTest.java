@@ -21,12 +21,12 @@ class UserListTest {
     @BeforeEach
     public void setUp() {
         userList = UserList.getInstance();
-        userList.setLoaded(true);  // Set loaded to true for testing
+        userList.setLoaded(true);  
     }
 
     @AfterEach
     public void tearDown() {
-        userList.getUsers().clear(); // Clear the users list after each test
+        userList.getUsers().clear(); 
     }
 
     @Test
