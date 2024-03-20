@@ -125,16 +125,16 @@ public class Course {
     this.semester = semester;
     this.year = year;
     
-    if (name != null && !name.isEmpty()) {
-        String[] nameParts = name.split("\\s+");
-        if (nameParts.length >= 2) {
-            this.id = nameParts[0] + nameParts[1].replaceAll("\\s+", "");
-        } else {
-            this.id = java.util.UUID.randomUUID().toString();
-        }
-    } else {
-        this.id = java.util.UUID.randomUUID().toString();
-    }
+    if (name == null || name.isEmpty()) {
+      throw new IllegalArgumentException("Course name cannot be null or empty");
+  }
+
+  String[] nameParts = name.split("\\s+");
+  if (nameParts.length >= 2) {
+      this.id = nameParts[0] + nameParts[1].replaceAll("\\s+", "");
+  } else {
+      this.id = nameParts[0];
+  }
 }
 
   /**

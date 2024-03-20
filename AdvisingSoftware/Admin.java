@@ -98,9 +98,9 @@ public class Admin extends User {
   }
 
   /**
-   * Deletes a course identified by its code.
+   * Deletes a course identified by its id.
    * 
-   * @param code The code of the course to be deleted.
+   * @param id The id of the course to be deleted.
    * @return true if the course is successfully deleted, false otherwise.
    */
   public boolean deleteCourse(String id) {

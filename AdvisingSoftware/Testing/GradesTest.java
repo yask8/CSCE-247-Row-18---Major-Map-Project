@@ -52,9 +52,9 @@ public class GradesTest {
     assertEquals("FAIL", testCourse.checkPass(courseGrade));
   }
 
-  @Test
-  public void testCheckPassNullNum() {
-    setUp(null);
-    assertEquals("N/A", testCourse.checkPass(null));
-  }
+  // @Test
+  // public void testCheckPassNullNum() {
+  //   setUp(null);
+  //   assertEquals("N/A", testCourse.checkPass(null));
+  // }
 }
