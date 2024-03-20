@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import AdvisingSoftware.Course;
 import AdvisingSoftware.CourseList;
+import AdvisingSoftware.Grades;
 import AdvisingSoftware.MajorList;
 import AdvisingSoftware.UserList;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CoursePlannerTest {
+
   /**
    * Methods to Test
    * + removeCourse(int semesterIndex, String courseName): void
@@ -24,6 +26,11 @@ public class CoursePlannerTest {
    * + searchPlanner(String course): boolean
    */
 
+  @BeforeEach
+  public void setUp() {}
+
+  @AfterEach
+  public void tearDown() {}
   // Testing removeCourse method
   // Testing addCourse method
   // Testing generateFromMajorMap method

@@ -17,6 +17,7 @@ public class FacadeTest {
   private UserList userList = UserList.getInstance();
   private CourseList courseList = CourseList.getInstance();
   private MajorList majorList = MajorList.getInstance();
+
   /**
    * + login(String email, String password): User
    * + signOut(): void
@@ -35,5 +36,24 @@ public class FacadeTest {
    * + addNoteToStudentAdvisor(UUID advisorID, UUID studentID, String noteContent): void
    * + addStudentToListOfAdvisees(UUID advisorID, UUID studentID): boolean
    */
+  @BeforeEach
+  public void setUp() {}
+
+  @AfterEach
+  public void tearDown() {}
+  // Testing login method
+  // Testing signOut method
+  // Testing saveUsers method
+  // Testing saveCourses method
+  // Testing saveMajorMaps method
+  // Testing writeStudentCoursePlanner method
+  // Testing signUpStudent method
+  // Testing signUpAdmin method
+  // Testing getMajorMap method
+  // Testing displayAllCourses method
+  // Testing showCoursesByCode method
+  // Testing showAppAreaOptions method
+  // Testing addNoteToStudentAdvisor method
+  // Testing addStudentToListOfAdvisees method
 
 }
