@@ -88,7 +88,7 @@
     },
     "gpa": 3.63,
     "userType": "STUDENT",
-    "class": "Senior",
+    "class": "Sophomore",
     "applicationArea": "Undeclared",
     "email": "rio.farrah2004@gmail.com",
     "coursePlanner": { "semesters": [[], [], [], [], [], [], [], []] }
@@ -101,7 +101,7 @@
     "firstName": "Tawnie",
     "password": "bi117",
     "advisorNotes": [
-      {}
+      { "date": "2024-03-18", "note": "Make Stats Your Application Area" }
     ],
     "major": "Undeclared",
     "degreeProgress": {
