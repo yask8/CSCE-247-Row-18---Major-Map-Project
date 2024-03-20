@@ -37,24 +37,24 @@ public class Admin extends User {
     this.changesMade = changesMade;
   }
 
-/**
- * Allows admin to add a course
- *
- * @return the Course instance
- */
-public boolean addCourse(String name, String code, String description, int creditHours, String subject,
-    char passGrade, boolean elective, boolean carolinaCore, ArrayList<String> prereqs, String year, String semester) {
-  CourseList courseList = CourseList.getInstance();
-  courseList.addCourse(name, code, description, creditHours, subject, passGrade, elective, carolinaCore, prereqs,
-      year, semester);
-  changesMade.add("added course: " + code);
-  return true;
-}
+  /**
+   * Allows admin to add a course
+   *
+   * @return the Course instance
+   */
+  public boolean addCourse(String name, String code, String description, int creditHours, String subject,
+      char passGrade, boolean elective, boolean carolinaCore, ArrayList<String> prereqs, String year, String semester) {
+    CourseList courseList = CourseList.getInstance();
+    courseList.addCourse(name, code, description, creditHours, subject, passGrade, elective, carolinaCore, prereqs,
+        year, semester);
+    changesMade.add("added course: " + name);
+    return true;
+  }
 
   /**
-   * Edits the details of a course identified by its code.
+   * Edits the details of a course identified by its ID.
    * 
-   * @param code            The code of the course to be edited.
+   * @param courseIdToEdit  The ID of the course to be edited.
    * @param newName         The new name for the course.
    * @param newDescription  The new description for the course.
    * @param newCreditHours  The new credit hours for the course.
@@ -67,13 +67,14 @@ public boolean addCourse(String name, String code, String description, int credi
    * @param newSemester     The new default semester for the course.
    * @return true if the course is successfully edited, false otherwise.
    */
-  public boolean editCourse(String code, String newName, String newDescription, int newCreditHours, String newSubject,
+  public boolean editCourse(String courseIdToEdit, String newName, String newDescription, int newCreditHours,
+      String newSubject,
       char newPassGrade, boolean newElective, boolean newCarolinaCore, ArrayList<String> newPrereqs, String newYear,
       String newSemester) {
     CourseList courseList = CourseList.getInstance();
-    Course courseToEdit = courseList.getCourse(code);
+    Course courseToEdit = courseList.getCourse(courseIdToEdit); 
     if (courseToEdit != null) {
-      courseList.removeCourse(code);
+      courseList.removeCourse(courseIdToEdit);
 
       courseToEdit.setName(newName);
       courseToEdit.setDescription(newDescription);
@@ -88,10 +89,10 @@ public boolean addCourse(String name, String code, String description, int credi
 
       courseList.addCourseObject(courseToEdit);
 
-      changesMade.add("edited course: " + code);
+      changesMade.add("edited course: " + newName);
       return true;
     } else {
-      System.out.println("Course with code " + code + " not found.");
+      System.out.println("Course with ID " + courseIdToEdit + " not found.");
       return false;
     }
   }
@@ -102,14 +103,14 @@ public boolean addCourse(String name, String code, String description, int credi
    * @param code The code of the course to be deleted.
    * @return true if the course is successfully deleted, false otherwise.
    */
-  public boolean deleteCourse(String code) {
+  public boolean deleteCourse(String id) {
     CourseList courseList = CourseList.getInstance();
-    boolean isDeleted = courseList.removeCourse(code);
+    boolean isDeleted = courseList.removeCourse(id);
     if (isDeleted) {
-      changesMade.add("deleted course: " + code);
+      changesMade.add("deleted course: " + id);
       return true;
     } else {
-      System.out.println("Course with code " + code + " not found.");
+      System.out.println("Course with code " + id + " not found.");
       return false;
     }
   }
