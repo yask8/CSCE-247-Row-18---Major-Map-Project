@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Helps the student stay organize by allowing to create their own ideal
  * 8-semester plan
- * 
+ *
  * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson (@stephonj), Yasmine Kennedy (@yask8), Owen Shumate (@oshumate)
  */
 public class CoursePlanner {
@@ -29,7 +29,7 @@ public class CoursePlanner {
 
   /**
    * Adds a course to the specified semester
-   * 
+   *
    * @param semesterIndex the index of the semester (1-based)
    * @param courseName    the name of the course to add
    */
@@ -43,7 +43,7 @@ public class CoursePlanner {
 
   /**
    * Removes a course from the specified semester by its name
-   * 
+   *
    * @param semesterIndex the index of the semester (1-based)
    * @param courseName    the name of the course to remove
    */
@@ -53,7 +53,9 @@ public class CoursePlanner {
       if (semesterCourses.contains(courseName)) {
         semesterCourses.remove(courseName);
       } else {
-        System.out.println("Course '" + courseName + "' not found in semester " + semesterIndex);
+        System.out.println(
+          "Course '" + courseName + "' not found in semester " + semesterIndex
+        );
       }
     } else {
       System.out.println("Invalid semester index.");
@@ -62,7 +64,7 @@ public class CoursePlanner {
 
   /**
    * Displays the planner for all semesters
-   * 
+   *
    * @return the displayPlanner
    */
   public String toString() {
@@ -84,7 +86,7 @@ public class CoursePlanner {
 
   /**
    * Getter for the semesters attribute
-   * 
+   *
    * @return the semesters
    */
   public ArrayList<ArrayList<String>> getSemesters() {
@@ -143,5 +145,15 @@ public class CoursePlanner {
         }
       }
     }
+  }
+
+  public boolean searchPlanner(String course) {
+    boolean exists = false;
+    for (ArrayList<String> xSemester : semesters) {
+      if (xSemester.contains(course)) {
+        exists = true;
+      }
+    }
+    return exists;
   }
 }
