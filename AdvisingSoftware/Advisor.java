@@ -67,13 +67,14 @@ public class Advisor extends User {
   }
 
   /**
-   * Allows advisor to remove a student from their list of advisees
-   *
-   * @return Updated ArrayList of the advisors advisees
-   */
-  public ArrayList<Student> removeStudent() {
-    return null;
-  }
+ * Allows advisor to remove a student from their list of advisees
+ *
+ * @param studentId UUID of the student to remove
+ */
+public void removeStudent(UUID studentId) {
+  listOfAdvisees.remove(studentId);
+}
+
 
   /**
    * used to search a Student by uscID

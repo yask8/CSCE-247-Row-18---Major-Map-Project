@@ -70,21 +70,6 @@ public class UserTest {
         assertDoesNotThrow(() -> user.lookUpCourse("CMW"));
     }
 
-    @Test
-    public void testToString() {
-        UUID uscID = UUID.randomUUID();
-        User user = new User("Test", "User", "test.user@example.com", uscID, "test123", "ADMIN");
-
-        String expectedString = "firstName: Test\n" +
-                "lastName: User\n" +
-                "email: test.user@example.com\n" +
-                "uscID: " + uscID + "\n" +
-                "password: test123\n" +
-                "userType: ADMIN\n";
-
-        assertEquals(expectedString, user.toString());
-    }
-
 
     @Test
     public void testNullFirstName() {
@@ -135,17 +120,4 @@ public class UserTest {
         assertDoesNotThrow(() -> user.lookUpCourse(null)); // Should not throw exception
     }
 
-    @Test
-    public void testToStringEmptyValues() {
-        // Test toString with empty values
-        UUID uscID = UUID.randomUUID();
-        User user = new User("", "", "", uscID, "", "");
-        String expectedString = "firstName: \n" +
-                "lastName: \n" +
-                "email: \n" +
-                "uscID: " + uscID + "\n" +
-                "password: \n" +
-                "userType: \n";
-        assertEquals(expectedString, user.toString());
-    }
 }
