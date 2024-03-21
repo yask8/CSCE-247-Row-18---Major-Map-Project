@@ -123,6 +123,16 @@ class UserListTest {
     }
 
     @Test
+    public void testSignUpWithEmptyFirstName() {
+        int initialSize = userList.getUsers().size();
+
+        assertTrue(userList.signUp("", "User", "newuser@example.com", "password", "STUDENT"));
+
+        int newSize = userList.getUsers().size();
+        assertEquals(initialSize + 1, newSize);
+    }
+
+    @Test
     public void testSignUpExistingEmail() {
         int initialSize = userList.getUsers().size();
 
