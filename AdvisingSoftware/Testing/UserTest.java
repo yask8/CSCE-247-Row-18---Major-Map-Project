@@ -40,11 +40,35 @@ public class UserTest {
     }
 
     @Test
+    public void testEditFirstNameToBlank() {
+        User user = new User("Alice", "Johnson", "alice.johnson@example.com", "password789", "Staff");
+
+        user.editFirstName("");
+        assertEquals("", user.getFirstName());
+    }
+
+    @Test
     public void testEditLastName() {
         User user = new User("Bob", "Brown", "bob.brown@example.com", "passwordabc", "ADMIN");
 
         user.editLastName("Barker");
         assertEquals("Barker", user.getLastName());
+    }
+
+    @Test
+    public void testEditLastNameToSameName() {
+        User user = new User("Bob", "Brown", "bob.brown@example.com", "passwordabc", "ADMIN");
+
+        user.editLastName("Brown");
+        assertEquals("Brown", user.getLastName());
+    }
+
+    @Test
+    public void testEditLastNameToBlank() {
+        User user = new User("Bob", "Brown", "bob.brown@example.com", "passwordabc", "ADMIN");
+
+        user.editLastName("");
+        assertEquals("", user.getLastName());
     }
 
     @Test
@@ -56,6 +80,22 @@ public class UserTest {
     }
 
     @Test
+    public void testEditEmailToTheSameEmail() {
+        User user = new User("Eva", "Green", "eva.green@example.com", "pass123", "STUDENT");
+
+        user.editEmail("eva.green@example.com");
+        assertEquals("eva.green@example.com", user.getEmail());
+    }
+
+    @Test
+    public void testEditEmailToBlank() {
+        User user = new User("Eva", "Green", "eva.green@example.com", "pass123", "STUDENT");
+
+        user.editEmail("");
+        assertEquals("", user.getEmail());
+    }
+
+    @Test
     public void testEditPassword() {
         User user = new User("Chris", "Lee", "chris.lee@example.com", "oldpass", "STUDENT");
 
@@ -64,58 +104,67 @@ public class UserTest {
     }
 
     @Test
+    public void testEditPasswordToTheSamePassword() {
+        User user = new User("Chris", "Lee", "chris.lee@example.com", "oldpass", "STUDENT");
+
+        user.editPassword("oldpass");
+        assertEquals("oldpass", user.getPassword());
+    }
+
+    @Test
+    public void testEditPasswordToBlank() {
+        User user = new User("Chris", "Lee", "chris.lee@example.com", "oldpass", "STUDENT");
+
+        user.editPassword("");
+        assertEquals("", user.getPassword());
+    }
+
+    @Test
     public void testLookUpCourse() {
-        // This test is just to cover the method, since it has no return value or state change
+        // This test is just to cover the method, since it has no return value
         User user = new User("Sam", "Wilson", "sam.wilson@example.com", "passwordxyz", "STUDENT");
         assertDoesNotThrow(() -> user.lookUpCourse("CMW"));
     }
 
 
     @Test
-    public void testNullFirstName() {
-        // Test editing with null first name
+    public void testNullEditFirstName() {
         User user = new User("John", "Doe", "johndoe@example.com", "password123", "STUDENT");
         assertThrows(IllegalArgumentException.class, () -> user.editFirstName(null));
     }
 
     @Test
-    public void testNullLastName() {
-        // Test editing with null last name
+    public void testNullEditLastName() {
         User user = new User("Jane", "Smith", "janesmith@example.com", "password456", "ADMIN");
         assertThrows(IllegalArgumentException.class, () -> user.editLastName(null));
     }
 
     @Test
-    public void testNullEmail() {
-        // Test editing with null email
+    public void testNullEditEmail() {
         User user = new User("Sarah", "Adams", "sarahadams@example.com", "password789", "STUDENT");
         assertThrows(IllegalArgumentException.class, () -> user.editEmail(null));
     }
 
     @Test
     public void testInvalidEmailFormat() {
-        // Test editing with invalid email format
         User user = new User("Alex", "Johnson", "alexjohnson@example.com", "password321", "ADMIN");
         assertThrows(IllegalArgumentException.class, () -> user.editEmail("invalid-email-format"));
     }
 
     @Test
-    public void testNullPassword() {
-        // Test editing with null password
+    public void testNullEditPassword() {
         User user = new User("Max", "Wilson", "maxwilson@example.com", "oldpassword", "STUDENT");
         assertThrows(IllegalArgumentException.class, () -> user.editPassword(null));
     }
 
     @Test
     public void testEmptyUserType() {
-        // Test constructor with empty user type
         User user = new User("Empty", "UserType", "emptyusertype@example.com", "password123", "");
-        assertEquals("", user.getUserType()); // UserType should be empty string
+        assertEquals("", user.getUserType()); 
     }
 
     @Test
     public void testLookUpCourseNullCode() {
-        // Test lookUpCourse with null course code
         User user = new User("Look", "Up", "look.up@example.com", "passwordxyz", "Student");
         assertDoesNotThrow(() -> user.lookUpCourse(null)); // Should not throw exception
     }

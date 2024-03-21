@@ -5,7 +5,6 @@ package AdvisingSoftware.Testing;
  */
 import static org.junit.jupiter.api.Assertions.*;
 
-import AdvisingSoftware.CourseList;
 import AdvisingSoftware.Grades;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -23,9 +22,7 @@ public class GradesTest {
    */
 
   @BeforeEach
-  public void setUp(double courseGrade) {
-    testCourse = new Grades("CSCE145", courseGrade);
-  }
+  public void setUp() {}
 
   @AfterEach
   public void tearDown() {}
@@ -34,24 +31,23 @@ public class GradesTest {
   @Test
   public void testCheckPassValidNum() {
     double courseGrade = 94.3;
-    setUp(courseGrade);
+    testCourse = new Grades("CSCE145", courseGrade);
     assertEquals("PASS", testCourse.checkPass(courseGrade));
   }
 
   @Test
   public void testCheckPassZero() {
     double courseGrade = 0;
-    setUp(courseGrade);
+    testCourse = new Grades("CSCE145", courseGrade);
     assertEquals("FAIL", testCourse.checkPass(courseGrade));
   }
 
   @Test
   public void testCheckPassNegativeNum() {
     double courseGrade = -94.3;
-    setUp(courseGrade);
+    testCourse = new Grades("CSCE145", courseGrade);
     assertEquals("FAIL", testCourse.checkPass(courseGrade));
   }
-
   // @Test
   // public void testCheckPassNullNum() {
   //   setUp(null);

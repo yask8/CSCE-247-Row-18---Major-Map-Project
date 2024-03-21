@@ -39,6 +39,17 @@ class UserListTest {
     }
 
     @Test
+    public void testAddStudentAllEmpty() {
+        int initialSize = userList.getUsers().size();
+
+        userList.addStudent("", "", "", UUID.randomUUID(), "",
+                "STUDENT", "", "", "");
+
+        int newSize = userList.getUsers().size();
+        assertEquals(initialSize + 1, newSize);
+    }
+
+    @Test
     public void testAddAdmin() {
         int initialSize = userList.getUsers().size();
 
@@ -49,10 +60,30 @@ class UserListTest {
     }
 
     @Test
+    public void testAddAdminAllEmpty() {
+        int initialSize = userList.getUsers().size();
+
+        userList.addAdmin("", "", "", UUID.randomUUID(), "", "ADMIN");
+
+        int newSize = userList.getUsers().size();
+        assertEquals(initialSize + 1, newSize);
+    }
+
+    @Test
     public void testAddAdvisor() {
         int initialSize = userList.getUsers().size();
 
         userList.addAdvisor("Advisor", "One", "advisor@example.com", UUID.randomUUID(), "password", "ADVISOR");
+
+        int newSize = userList.getUsers().size();
+        assertEquals(initialSize + 1, newSize);
+    }
+
+    @Test
+    public void testAddAdvisorAllEmpty() {
+        int initialSize = userList.getUsers().size();
+
+        userList.addAdvisor("", "", "", UUID.randomUUID(), "", "ADVISOR");
 
         int newSize = userList.getUsers().size();
         assertEquals(initialSize + 1, newSize);
@@ -86,6 +117,16 @@ class UserListTest {
         int initialSize = userList.getUsers().size();
 
         assertTrue(userList.signUp("New", "User", "newuser@example.com", "password", "STUDENT"));
+
+        int newSize = userList.getUsers().size();
+        assertEquals(initialSize + 1, newSize);
+    }
+
+    @Test
+    public void testSignUpWithEmptyFirstName() {
+        int initialSize = userList.getUsers().size();
+
+        assertTrue(userList.signUp("", "User", "newuser@example.com", "password", "STUDENT"));
 
         int newSize = userList.getUsers().size();
         assertEquals(initialSize + 1, newSize);

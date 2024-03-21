@@ -7,8 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import AdvisingSoftware.Course;
 import AdvisingSoftware.CourseList;
+import AdvisingSoftware.CoursePlanner;
 import AdvisingSoftware.Grades;
 import AdvisingSoftware.MajorList;
+import AdvisingSoftware.MajorMap;
 import AdvisingSoftware.Student;
 import AdvisingSoftware.UserList;
 import java.util.ArrayList;
@@ -19,7 +21,12 @@ import org.junit.jupiter.api.Test;
 
 public class CoursePlannerTest {
 
-  private Student student;
+  private MajorList majorList;
+  private MajorMap major;
+  private CourseList courseList;
+  private CoursePlanner coursePlanner;
+  private Course course;
+  private Grades grades;
 
   /**
    * Methods to Test
@@ -30,7 +37,9 @@ public class CoursePlannerTest {
    */
 
   @BeforeEach
-  public void setUp() {}
+  public void setUp() {
+    coursePlanner = new CoursePlanner();
+  }
 
   @AfterEach
   public void tearDown() {}
@@ -66,14 +75,35 @@ public class CoursePlannerTest {
 
   // Testing generateFromMajorMap method
   @Test
-  public void testGenerateFromMajorMapValidMajor() {}
+  public void testGenerateFromMajorMapValidMajor() {
+    major = MajorList.getInstance().getMajorByName("Computer Science");
+    coursePlanner.generateFromMajorMap(major);
+  }
 
   @Test
-  public void testGenerateFromMajorMapNull() {}
+  public void testGenerateFromMajorMapInvalidMajor() {
+    major = MajorList.getInstance().getMajorByName("Forensic Science");
+    coursePlanner.generateFromMajorMap(major);
+  }
+
+  @Test
+  public void testGenerateFromMajorMapNull() {
+    major = MajorList.getInstance().getMajorByName(null);
+    coursePlanner.generateFromMajorMap(major);
+  }
 
   // Testing searchPlanner method
   @Test
   public void testSearchPlannerValidCourse() {}
+
+  @Test
+  public void testSearchPlannerALLCAPSValidCourse() {}
+
+  @Test
+  public void testSearchPlannerLowerCaseValidCourse() {}
+
+  @Test
+  public void testSearchPlannerMixedCaseValidCourse() {}
 
   @Test
   public void testSearchPlannerCourseNotExist() {}
