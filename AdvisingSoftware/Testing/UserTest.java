@@ -72,6 +72,14 @@ public class UserTest {
     }
 
     @Test
+    public void testEditEmailToTheSameEmail() {
+        User user = new User("Eva", "Green", "eva.green@example.com", "pass123", "STUDENT");
+
+        user.editEmail("eva.green@example.com");
+        assertEquals("eva.green@example.com", user.getEmail());
+    }
+
+    @Test
     public void testEditEmailToBlank() {
         User user = new User("Eva", "Green", "eva.green@example.com", "pass123", "STUDENT");
 
@@ -88,6 +96,14 @@ public class UserTest {
     }
 
     @Test
+    public void testEditPasswordToTheSamePassword() {
+        User user = new User("Chris", "Lee", "chris.lee@example.com", "oldpass", "STUDENT");
+
+        user.editPassword("oldpass");
+        assertEquals("oldpass", user.getPassword());
+    }
+
+    @Test
     public void testEditPasswordToBlank() {
         User user = new User("Chris", "Lee", "chris.lee@example.com", "oldpass", "STUDENT");
 
@@ -97,7 +113,7 @@ public class UserTest {
 
     @Test
     public void testLookUpCourse() {
-        // This test is just to cover the method, since it has no return value or state change
+        // This test is just to cover the method, since it has no return value
         User user = new User("Sam", "Wilson", "sam.wilson@example.com", "passwordxyz", "STUDENT");
         assertDoesNotThrow(() -> user.lookUpCourse("CMW"));
     }

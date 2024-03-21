@@ -35,6 +35,11 @@ public class AdvisorTest {
     @Test
     public void testAddStudentToListOfAdvisees() {
         UUID studentId = UUID.randomUUID();
+        Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
+                "Sophomore", "Computer Science", "Application Area", 60,
+                new ArrayList<>(), 3.8, null, null, new ArrayList<>());
+        userList.addUser(student);
+        advisor.addStudent(studentId);
         assertTrue(advisor.addStudentToListOfAdvisees(studentId));
         assertEquals(1, advisor.getListOfAdvisees().size());
     }
@@ -42,7 +47,16 @@ public class AdvisorTest {
     @Test
     public void testAddDuplicateStudentToListOfAdvisees() {
         UUID studentId = UUID.randomUUID();
+        Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
+                "Sophomore", "Computer Science", "Application Area", 60,
+                new ArrayList<>(), 3.8, null, null, new ArrayList<>());
+        userList.addUser(student);
         advisor.addStudentToListOfAdvisees(studentId);
+        UUID studentId2 = UUID.randomUUID();
+        Student student2 = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
+        "Sophomore", "Computer Science", "Application Area", 60,
+        new ArrayList<>(), 3.8, null, null, new ArrayList<>());
+        userList.addUser(student2);
         assertFalse(advisor.addStudentToListOfAdvisees(studentId));
         assertEquals(1, advisor.getListOfAdvisees().size());
     }
