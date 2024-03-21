@@ -65,6 +65,12 @@ public class CoursePlannerTest {
   public void testAddCourseCourseExist() {}
 
   // Testing generateFromMajorMap method
+  @Test
+  public void testGenerateFromMajorMapValidMajor() {}
+
+  @Test
+  public void testGenerateFromMajorMapNull() {}
+
   // Testing searchPlanner method
   @Test
   public void testSearchPlannerValidCourse() {}
