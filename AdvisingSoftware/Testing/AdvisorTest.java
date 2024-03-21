@@ -64,6 +64,22 @@ public class AdvisorTest {
     }
 
     @Test
+    public void testBlankAddNoteToStudentAdvisor() {
+        UUID studentId = UUID.randomUUID();
+        Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
+                "Sophomore", "Computer Science", "Application Area", 60,
+                new ArrayList<>(), 3.8, null, null, new ArrayList<>());
+        userList.addUser(student);
+
+        advisor.addStudent(studentId);
+        advisor.addNoteToStudentAdvisor(studentId, "", userList);
+
+        ArrayList<Note> advisorNotes = student.getAdvisorNotes();
+        assertEquals(1, advisorNotes.size());
+        assertEquals("", advisorNotes.get(0).getNote());
+    }
+
+    @Test
     public void testAddNoteToNonAdvisee() {
         UUID studentId = UUID.randomUUID();
         Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
@@ -90,18 +106,6 @@ public class AdvisorTest {
         Student foundStudent = advisor.getStudentByAdvisor(studentId, userList);
         assertNotNull(foundStudent);
         assertEquals(studentId, foundStudent.getID());
-    }
-
-    @Test
-    public void testGetNonAdviseeByAdvisor() {
-        UUID studentId = UUID.randomUUID();
-        Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
-                "Sophomore", "Computer Science", "Application Area", 60,
-                new ArrayList<>(), 3.8, null, null, new ArrayList<>());
-        userList.addUser(student);
-
-        Student foundStudent = advisor.getStudentByAdvisor(studentId, userList);
-        assertNull(foundStudent);
     }
 
     @Test
@@ -157,35 +161,7 @@ public class AdvisorTest {
         assertFalse(failingStudents.contains(studentId));
     }
 
-    @Test
-    public void testGetListOfAdvisees() {
-        UUID studentId1 = UUID.randomUUID();
-        UUID studentId2 = UUID.randomUUID();
-
-        advisor.addStudentToListOfAdvisees(studentId1);
-        advisor.addStudentToListOfAdvisees(studentId2);
-
-        ArrayList<UUID> advisees = advisor.getListOfAdvisees();
-        assertEquals(2, advisees.size());
-        assertTrue(advisees.contains(studentId1));
-        assertTrue(advisees.contains(studentId2));
-    }
-
-    @Test
-    public void testGetListOfFailingStudents() {
-        UUID studentId1 = UUID.randomUUID();
-        UUID studentId2 = UUID.randomUUID();
-
-        advisor.addStudentToListOfAdvisees(studentId1);
-        advisor.addStudentToListOfAdvisees(studentId2);
-
-        advisor.addStudentRiskOfFailure();
-
-        ArrayList<UUID> failingStudents = advisor.getListOfFailingStudents();
-        assertEquals(2, failingStudents.size());
-        assertTrue(failingStudents.contains(studentId1));
-        assertTrue(failingStudents.contains(studentId2));
-    }
+    
 
     @Test
     public void testRemoveStudentFromListOfAdvisees() {

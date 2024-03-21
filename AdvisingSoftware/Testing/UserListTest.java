@@ -39,6 +39,17 @@ class UserListTest {
     }
 
     @Test
+    public void testAddStudentAllBlanks() {
+        int initialSize = userList.getUsers().size();
+
+        userList.addStudent("", "", "", UUID.randomUUID(), "",
+                "STUDENT", "", "", "");
+
+        int newSize = userList.getUsers().size();
+        assertEquals(initialSize + 1, newSize);
+    }
+
+    @Test
     public void testAddAdmin() {
         int initialSize = userList.getUsers().size();
 
