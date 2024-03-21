@@ -56,6 +56,14 @@ public class UserTest {
     }
 
     @Test
+    public void testEditLastNameToSameName() {
+        User user = new User("Bob", "Brown", "bob.brown@example.com", "passwordabc", "ADMIN");
+
+        user.editLastName("Brown");
+        assertEquals("Brown", user.getLastName());
+    }
+
+    @Test
     public void testEditLastNameToBlank() {
         User user = new User("Bob", "Brown", "bob.brown@example.com", "passwordabc", "ADMIN");
 
