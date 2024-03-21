@@ -104,20 +104,19 @@ public class UserTest {
 
 
     @Test
-    public void testNullFirstName() {
-        // Test editing with null first name
+    public void testNullEditFirstName() {
         User user = new User("John", "Doe", "johndoe@example.com", "password123", "STUDENT");
         assertThrows(IllegalArgumentException.class, () -> user.editFirstName(null));
     }
 
     @Test
-    public void testNullLastName() {
+    public void testNullEditLastName() {
         User user = new User("Jane", "Smith", "janesmith@example.com", "password456", "ADMIN");
         assertThrows(IllegalArgumentException.class, () -> user.editLastName(null));
     }
 
     @Test
-    public void testNullEmail() {
+    public void testNullEditEmail() {
         User user = new User("Sarah", "Adams", "sarahadams@example.com", "password789", "STUDENT");
         assertThrows(IllegalArgumentException.class, () -> user.editEmail(null));
     }
@@ -129,7 +128,7 @@ public class UserTest {
     }
 
     @Test
-    public void testNullPassword() {
+    public void testNullEditPassword() {
         User user = new User("Max", "Wilson", "maxwilson@example.com", "oldpassword", "STUDENT");
         assertThrows(IllegalArgumentException.class, () -> user.editPassword(null));
     }
@@ -137,7 +136,7 @@ public class UserTest {
     @Test
     public void testEmptyUserType() {
         User user = new User("Empty", "UserType", "emptyusertype@example.com", "password123", "");
-        assertEquals("", user.getUserType()); // UserType should be empty string
+        assertEquals("", user.getUserType()); 
     }
 
     @Test

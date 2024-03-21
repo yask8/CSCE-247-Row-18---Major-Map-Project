@@ -39,7 +39,7 @@ class UserListTest {
     }
 
     @Test
-    public void testAddStudentAllBlanks() {
+    public void testAddStudentAllEmpty() {
         int initialSize = userList.getUsers().size();
 
         userList.addStudent("", "", "", UUID.randomUUID(), "",
@@ -60,10 +60,30 @@ class UserListTest {
     }
 
     @Test
+    public void testAddAdminAllEmpty() {
+        int initialSize = userList.getUsers().size();
+
+        userList.addAdmin("", "", "", UUID.randomUUID(), "", "ADMIN");
+
+        int newSize = userList.getUsers().size();
+        assertEquals(initialSize + 1, newSize);
+    }
+
+    @Test
     public void testAddAdvisor() {
         int initialSize = userList.getUsers().size();
 
         userList.addAdvisor("Advisor", "One", "advisor@example.com", UUID.randomUUID(), "password", "ADVISOR");
+
+        int newSize = userList.getUsers().size();
+        assertEquals(initialSize + 1, newSize);
+    }
+
+    @Test
+    public void testAddAdvisorAllEmpty() {
+        int initialSize = userList.getUsers().size();
+
+        userList.addAdvisor("", "", "", UUID.randomUUID(), "", "ADVISOR");
 
         int newSize = userList.getUsers().size();
         assertEquals(initialSize + 1, newSize);

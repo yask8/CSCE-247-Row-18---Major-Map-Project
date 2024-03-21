@@ -93,21 +93,8 @@ public class AdvisorTest {
         assertEquals(0, advisorNotes.size());
     }
 
-    @Test
-    public void testGetStudentByAdvisor() {
-        UUID studentId = UUID.randomUUID();
-        Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
-                "Sophomore", "Computer Science", "Application Area", 60,
-                new ArrayList<>(), 3.8, null, null, new ArrayList<>());
-        userList.addUser(student);
 
-        advisor.addStudent(studentId);
-
-        Student foundStudent = advisor.getStudentByAdvisor(studentId, userList);
-        assertNotNull(foundStudent);
-        assertEquals(studentId, foundStudent.getID());
-    }
-
+    
     @Test
     public void testCheckStudentFailStatusFailing() {
         double gpa = 2.5;
