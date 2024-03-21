@@ -1,7 +1,9 @@
 package AdvisingSoftware.Testing;
 
-import  static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,26 +28,31 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 public class DataWriterTest {
-   private static UserList user = UserList.getInstance();
-   private ArrayList<User> userList = user.getUsers();
+     private UserList userList;
+     private ArrayList<User> users;
 
-   @BeforeEach
-   public void setUp() {
-        UserList.getInstance().getUsers().clear();
-        DataWriter.saveUsers(userList);
-   }
+     @BeforeEach
+     public void setUp() {
+          userList = UserList.getInstance();
+          users = userList.getUsers();
 
-   @AfterEach
-   public void tearDown() {
-        UserList.getInstance().getUsers().clear();
-        DataWriter.saveUsers(userList);
-   }
-   
-   @Test
-   void testWritingZeroUsers() {
-        userList = DataLoader.loadUsers();
-        assertEquals(0, userList.size());
-   }
-    
-    
+          users.clear();
+
+          DataWriter.saveUsers(users);
+     }
+
+     @AfterEach
+     public void tearDown() {
+
+          users.clear();
+
+          DataWriter.saveUsers(users);
+     }
+
+     @Test
+     void testWritingZeroUsers() {
+
+          users = DataLoader.loadUsers();
+          assertEquals(0, users.size());
+     }
 }

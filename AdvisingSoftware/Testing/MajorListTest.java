@@ -15,8 +15,6 @@ import AdvisingSoftware.MajorMap;
 public class MajorListTest {
 
     private MajorList majorList;
-    private ArrayList<MajorMap> majors;
-    private boolean loaded;
 
     @BeforeEach
     public void setUp() {
