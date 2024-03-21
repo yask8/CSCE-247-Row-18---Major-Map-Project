@@ -42,7 +42,22 @@ public class FacadeTest {
   @AfterEach
   public void tearDown() {}
   // Testing login method
+  /* 2. **Test `login` method with valid credentials:**
+   - Create a user with valid credentials in the user list.
+   - Call the `login` method with the valid email and password.
+   - Verify that the method returns the logged-in user.
+
+3. **Test `login` method with invalid credentials:**
+   - Create a user with invalid credentials in the user list.
+   - Call the `login` method with invalid email and password.
+   - Verify that the method returns null. */
+
   // Testing signOut method
+  /*4. **Test `signOut` method:**
+   - Log in a user.
+   - Call the `signOut` method.
+   - Verify that the currently logged-in user is set to null.*/
+
   // Testing saveUsers method
   // Testing saveCourses method
   // Testing saveMajorMaps method
