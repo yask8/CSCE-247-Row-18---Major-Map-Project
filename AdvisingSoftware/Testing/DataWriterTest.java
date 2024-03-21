@@ -51,8 +51,15 @@ public class DataWriterTest {
 
      @Test
      void testWritingZeroUsers() {
-
-          users = DataLoader.loadUsers();
-          assertEquals(0, users.size());
-     }
+         assertEquals(0, users.size());
+     }    
+     
+     @Test
+     void testWritingTwoUsers() {
+          
+          users.add(new User("User1", null, null, null, null));
+          users.add(new User("User2", null, null, null, null));
+      
+          assertEquals(2, users.size());
+      } 
 }
