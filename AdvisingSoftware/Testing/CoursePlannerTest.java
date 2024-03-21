@@ -37,32 +37,38 @@ public class CoursePlannerTest {
 
   // Testing removeCourse method
   @Test
-  public void testRemoveCourseMethodValid() {}
+  public void testRemoveCourseValid() {}
 
   @Test
-  public void testRemoveCourseMethodSemester0() {}
+  public void testRemoveCourseFromSemester0() {}
 
   @Test
-  public void testRemoveCourseMethodSemester9() {}
+  public void testRemoveCourseFromSemester9() {}
 
   @Test
-  public void testRemoveCourseMethodCourseNotExist() {}
+  public void testRemoveCourseCourseNotExist() {}
 
   // Testing addCourse method
   @Test
-  public void testAddCourseMethodValid() {}
+  public void testAddCourseValid() {}
 
   @Test
-  public void testAddCourseMethodSemester0() {}
+  public void testAddCourseToSemester0() {}
 
   @Test
-  public void testAddCourseMethodSemester9() {}
+  public void testAddCourseToSemester9() {}
 
   @Test
-  public void testAddCourseMethodCourseNotExist() {}
+  public void testAddCourseCourseNotExist() {}
 
   @Test
-  public void testAddCourseMethodCourseExist() {}
+  public void testAddCourseCourseExist() {}
+
   // Testing generateFromMajorMap method
   // Testing searchPlanner method
+  @Test
+  public void testSearchPlannerValidCourse() {}
+
+  @Test
+  public void testSearchPlannerCourseNotExist() {}
 }
