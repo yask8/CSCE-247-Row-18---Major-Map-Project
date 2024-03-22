@@ -33,6 +33,7 @@ public class DegreeProgressTest {
 
   @AfterEach
   public void tearDown() {}
+
   // Testing displayProgress method
   /**
    * Test displayProgress method:
@@ -41,6 +42,9 @@ public class DegreeProgressTest {
    * Call the displayProgress method with the MajorMap, completed courses, and a list of Course objects.
    * Verify that the output string contains the correct major, progress percentage, and other relevant information.
    */
+  public void testDisplayProgressValid() {
+    //DegreeProgress.displayProgress();
+  }
   // Testing saveCompleteCourses method
   /**
    * Test saveCompleteCourses method:
