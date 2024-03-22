@@ -9,6 +9,8 @@ import AdvisingSoftware.Course;
 import AdvisingSoftware.CourseList;
 import AdvisingSoftware.DegreeProgress;
 import AdvisingSoftware.MajorMap;
+import AdvisingSoftware.Student;
+import AdvisingSoftware.User;
 import AdvisingSoftware.UserList;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -17,6 +19,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class DegreeProgressTest {
+
+  private Student student;
 
   /**
    * Methods to Test
@@ -34,6 +38,14 @@ public class DegreeProgressTest {
   @AfterEach
   public void tearDown() {}
 
+  public void settingUpStudent() {
+    User user = UserList
+      .getInstance()
+      .getUserByLoginInfo("bwest@email.sc.edu", "bwest060903");
+
+    student = UserList.getInstance().getStudentById(user.getID());
+  }
+
   // Testing displayProgress method
   /**
    * Test displayProgress method:
@@ -43,7 +55,7 @@ public class DegreeProgressTest {
    * Verify that the output string contains the correct major, progress percentage, and other relevant information.
    */
   public void testDisplayProgressValid() {
-    //DegreeProgress.displayProgress();
+    settingUpStudent();
   }
   // Testing saveCompleteCourses method
   /**
@@ -77,6 +89,7 @@ public class DegreeProgressTest {
    * Call the populateIncompleteCoursesFromAppArea method.
    * Verify that the incomplete courses list is populated with the courses from the application area that are not already completed.
    */
+
   // Testing calculateGPA method
   /**
    * Test calculateGPA method:
