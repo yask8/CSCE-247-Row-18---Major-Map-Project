@@ -5,17 +5,12 @@ package AdvisingSoftware.Testing;
  */
 import static org.junit.jupiter.api.Assertions.*;
 
-import AdvisingSoftware.Course;
-import AdvisingSoftware.CourseList;
 import AdvisingSoftware.CoursePlanner;
-import AdvisingSoftware.Grades;
 import AdvisingSoftware.MajorList;
 import AdvisingSoftware.MajorMap;
 import AdvisingSoftware.Student;
 import AdvisingSoftware.User;
 import AdvisingSoftware.UserList;
-import java.util.ArrayList;
-import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
