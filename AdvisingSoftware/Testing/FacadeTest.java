@@ -47,15 +47,6 @@ public class FacadeTest {
    - Call the `login` method with invalid email and password.
    - Verify that the method returns null. */
 
-  // Testing signOut method
-  /*4. **Test `signOut` method:**
-   - Log in a user.
-   - Call the `signOut` method.
-   - Verify that the currently logged-in user is set to null.*/
-
-  // Testing saveUsers method
-  // Testing saveCourses method
-  // Testing saveMajorMaps method
   // Testing writeStudentCoursePlanner method
   // Testing signUpStudent method
   // Testing signUpAdmin method
