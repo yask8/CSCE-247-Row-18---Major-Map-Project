@@ -117,7 +117,7 @@ public class CoursePlannerTest {
       // TODO: handle exception
       generated = false;
     }
-    assertFalse(generated);
+    assertTrue(generated);
   }
 
   @Test
@@ -130,7 +130,7 @@ public class CoursePlannerTest {
       // TODO: handle exception
       generated = false;
     }
-    assertFalse(generated);
+    assertTrue(generated);
   }
 
   // Testing searchPlanner method

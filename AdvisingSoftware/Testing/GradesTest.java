@@ -46,9 +46,4 @@ public class GradesTest {
     testCourse = new Grades("CSCE145", courseGrade);
     assertEquals("FAIL", testCourse.checkPass(courseGrade));
   }
-  // @Test
-  // public void testCheckPassNullNum() {
-  //   setUp(null);
-  //   assertEquals("N/A", testCourse.checkPass(null));
-  // }
 }

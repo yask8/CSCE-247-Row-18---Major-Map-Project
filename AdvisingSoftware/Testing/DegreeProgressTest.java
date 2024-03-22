@@ -6,11 +6,13 @@ package AdvisingSoftware.Testing;
 import static org.junit.jupiter.api.Assertions.*;
 
 import AdvisingSoftware.CourseList;
+import AdvisingSoftware.Grades;
 import AdvisingSoftware.MajorList;
 import AdvisingSoftware.MajorMap;
 import AdvisingSoftware.Student;
 import AdvisingSoftware.User;
 import AdvisingSoftware.UserList;
+import java.util.ArrayList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,12 +28,7 @@ public class DegreeProgressTest {
    */
 
   @BeforeEach
-  public void setUp() {}
-
-  @AfterEach
-  public void tearDown() {}
-
-  public void settingUpStudent() {
+  public void setUp() {
     User user = UserList
       .getInstance()
       .getUserByLoginInfo("bwest@email.sc.edu", "bwest060903");
@@ -39,10 +36,12 @@ public class DegreeProgressTest {
     student = UserList.getInstance().getStudentById(user.getID());
   }
 
+  @AfterEach
+  public void tearDown() {}
+
   // Testing displayProgress method
   @Test
   public void testDisplayProgressValid() {
-    settingUpStudent();
     MajorMap major = MajorList.getInstance().getMajorByName(student.getMajor());
     String progress = student
       .getDegreeProgress()
@@ -51,34 +50,42 @@ public class DegreeProgressTest {
         student.getCompletedCourses(),
         CourseList.getInstance().getAllCourses()
       );
-    System.out.println(progress);
   }
 
   @Test
   public void testDisplayProgressNullCompletedCourses() {
-    settingUpStudent();
     MajorMap major = MajorList.getInstance().getMajorByName(student.getMajor());
     String progress = student
       .getDegreeProgress()
       .displayProgress(major, null, CourseList.getInstance().getAllCourses());
-    System.out.println(progress);
   }
 
   // Testing calculateGPA method
   @Test
   public void testCalculateGPAValid() {
-    settingUpStudent();
-    student
+    double GPA = student
       .getDegreeProgress()
       .calculateGPA(
         CourseList.getInstance().getAllCourses(),
         student.getCompletedCourses()
       );
+    assertEquals(3.78, GPA);
   }
 
   @Test
   public void testCalculateGPANull() {
-    settingUpStudent();
-    student.getDegreeProgress().calculateGPA(null, null);
+    double GPA = student
+      .getDegreeProgress()
+      .calculateGPA(CourseList.getInstance().getAllCourses(), null);
+    assertEquals(0, GPA);
+  }
+
+  @Test
+  public void testCalculateGPANoneComplete() {
+    ArrayList<Grades> empty = new ArrayList<Grades>();
+    double GPA = student
+      .getDegreeProgress()
+      .calculateGPA(CourseList.getInstance().getAllCourses(), empty);
+    assertEquals(0, GPA);
   }
 }
