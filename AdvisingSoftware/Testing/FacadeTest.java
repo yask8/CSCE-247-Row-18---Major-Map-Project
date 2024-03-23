@@ -24,7 +24,6 @@ public class FacadeTest {
    * + signUpStudent(String firstName, String lastName, String email, String password): void
    * + signUpAdmin(String firstName, String lastName, String email, String password): void
    * + signUpAdvisor(String firstName, String lastName, String email, String password): void
-   * + getMajorMap(String string): void
    * + displayAllCourses(ArrayList<Course> courseList): void
    * + showCoursesByCode(String courseCode): void
    * + showAppAreaOptions(): void
