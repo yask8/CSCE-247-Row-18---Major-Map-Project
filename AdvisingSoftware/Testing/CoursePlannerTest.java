@@ -5,28 +5,21 @@ package AdvisingSoftware.Testing;
  */
 import static org.junit.jupiter.api.Assertions.*;
 
-import AdvisingSoftware.Course;
-import AdvisingSoftware.CourseList;
 import AdvisingSoftware.CoursePlanner;
-import AdvisingSoftware.Grades;
 import AdvisingSoftware.MajorList;
 import AdvisingSoftware.MajorMap;
 import AdvisingSoftware.Student;
+import AdvisingSoftware.User;
 import AdvisingSoftware.UserList;
-import java.util.ArrayList;
-import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CoursePlannerTest {
 
-  private MajorList majorList;
   private MajorMap major;
-  private CourseList courseList;
-  private CoursePlanner coursePlanner;
-  private Course course;
-  private Grades grades;
+  private CoursePlanner coursePlanner = new CoursePlanner();
+  private Student student;
 
   /**
    * Methods to Test
@@ -38,73 +31,126 @@ public class CoursePlannerTest {
 
   @BeforeEach
   public void setUp() {
-    coursePlanner = new CoursePlanner();
+    User user = UserList
+      .getInstance()
+      .getUserByLoginInfo("bwest@email.sc.edu", "bwest060903");
+
+    student = UserList.getInstance().getStudentById(user.getID());
+    //settingUpStudent();
   }
 
   @AfterEach
   public void tearDown() {}
 
+  public void settingUpStudent() {}
+
   // Testing removeCourse method
   @Test
-  public void testRemoveCourseValid() {}
+  public void testRemoveCourseValid() {
+    int index = 7;
+    student.getCoursePlanner().addCourse(index, "CSCE580");
+    student.getCoursePlanner().addCourse(index, "CSCE355");
+    student.getCoursePlanner().removeCourse(index, "CSCE580");
+    String[] courses = student.getCoursePlanner().getCoursesForSemester(index);
+    boolean exists = false;
+    if (courses != null) {
+      for (String course : courses) {
+        if (course.equalsIgnoreCase("CSCE580")) {
+          exists = true;
+          break;
+        }
+      }
+    }
+
+    assertEquals(false, exists);
+  }
 
   @Test
-  public void testRemoveCourseFromSemester0() {}
+  public void testAddCourseToSemester0() {
+    int index = 0;
+    student.getCoursePlanner().addCourse(index, "CSCE580");
+    boolean exists = true;
+    try {
+      student.getCoursePlanner().getCoursesForSemester(index);
+    } catch (Exception e) {
+      // TODO: handle exception
+      exists = false;
+    }
+    assertFalse(exists);
+  }
 
   @Test
-  public void testRemoveCourseFromSemester9() {}
-
-  @Test
-  public void testRemoveCourseCourseNotExist() {}
-
-  // Testing addCourse method
-  @Test
-  public void testAddCourseValid() {}
-
-  @Test
-  public void testAddCourseToSemester0() {}
-
-  @Test
-  public void testAddCourseToSemester9() {}
-
-  @Test
-  public void testAddCourseCourseNotExist() {}
-
-  @Test
-  public void testAddCourseCourseExist() {}
+  public void testAddCourseToSemester9() {
+    int index = 9;
+    student.getCoursePlanner().addCourse(index, "CSCE580");
+    boolean exists = true;
+    try {
+      student.getCoursePlanner().getCoursesForSemester(index);
+    } catch (Exception e) {
+      // TODO: handle exception
+      exists = false;
+    }
+    assertFalse(exists);
+  }
 
   // Testing generateFromMajorMap method
   @Test
   public void testGenerateFromMajorMapValidMajor() {
     major = MajorList.getInstance().getMajorByName("Computer Science");
-    coursePlanner.generateFromMajorMap(major);
+    boolean generated = true;
+    try {
+      coursePlanner.generateFromMajorMap(major);
+    } catch (Exception e) {
+      // TODO: handle exception
+      generated = false;
+    }
+    assertTrue(generated);
   }
 
   @Test
   public void testGenerateFromMajorMapInvalidMajor() {
     major = MajorList.getInstance().getMajorByName("Forensic Science");
-    coursePlanner.generateFromMajorMap(major);
+    boolean generated = true;
+    try {
+      coursePlanner.generateFromMajorMap(major);
+    } catch (Exception e) {
+      // TODO: handle exception
+      generated = false;
+    }
+    assertTrue(generated);
   }
 
   @Test
   public void testGenerateFromMajorMapNull() {
     major = MajorList.getInstance().getMajorByName(null);
-    coursePlanner.generateFromMajorMap(major);
+    boolean generated = true;
+    try {
+      coursePlanner.generateFromMajorMap(major);
+    } catch (Exception e) {
+      // TODO: handle exception
+      generated = false;
+    }
+    assertTrue(generated);
   }
 
   // Testing searchPlanner method
   @Test
-  public void testSearchPlannerValidCourse() {}
+  public void testSearchPlannerValidCourse() {
+    assertTrue(student.getCoursePlanner().searchPlanner("CSCE145"));
+  }
 
   @Test
-  public void testSearchPlannerALLCAPSValidCourse() {}
+  public void testSearchPlannerLowerCaseValidCourse() {
+    assertTrue(student.getCoursePlanner().searchPlanner("csce145"));
+  }
 
   @Test
-  public void testSearchPlannerLowerCaseValidCourse() {}
+  public void testSearchPlannerMixedCaseValidCourse() {
+    assertTrue(student.getCoursePlanner().searchPlanner("cScE145"));
+  }
 
   @Test
-  public void testSearchPlannerMixedCaseValidCourse() {}
-
-  @Test
-  public void testSearchPlannerCourseNotExist() {}
+  public void testSearchPlannerCourseNotExist() {
+    assertFalse(student.getCoursePlanner().searchPlanner("CSCE111"));
+  }
 }

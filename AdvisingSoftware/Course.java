@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Class that creates a course
- * 
+ *
  * @author Garrett Spillman (@Spillmag), Lia Zhao (@zhaolia9), Stephon Johnson
  *         (@stephonj), Yasmine Kennedy (@yask8), Owen Shumate (@oshumate)
  *         - id: UUID()
@@ -31,6 +31,7 @@ import java.util.ArrayList;
  *         + deleteCourse(String code)
  */
 public class Course {
+
   /**
    * Attributes
    */
@@ -49,7 +50,7 @@ public class Course {
 
   /**
    * Course constructor
-   * 
+   *
    * @param id           UUID course id
    * @param name         String course name
    * @param code         String course code
@@ -62,18 +63,19 @@ public class Course {
    * @param preReqs      ArrayList<Course> list of prerequisites for course
    */
   public Course(
-      String id,
-      String name,
-      String code,
-      String description,
-      int creditHours,
-      String subject,
-      char passGrade,
-      boolean elective,
-      boolean carolinaCore,
-      ArrayList<String> preReqs,
-      String year,
-      String semester) {
+    String id,
+    String name,
+    String code,
+    String description,
+    int creditHours,
+    String subject,
+    char passGrade,
+    boolean elective,
+    boolean carolinaCore,
+    ArrayList<String> preReqs,
+    String year,
+    String semester
+  ) {
     this.id = id;
     this.name = name;
     this.code = code;
@@ -90,7 +92,7 @@ public class Course {
 
   /**
    * Course constructor that generates UUID
-   * 
+   *
    * @param name         String course name
    * @param code         String course code
    * @param description  String course description
@@ -112,7 +114,8 @@ public class Course {
     boolean carolinaCore,
     ArrayList<String> preReqs,
     String year,
-    String semester) {
+    String semester
+  ) {
     this.name = name;
     this.code = code;
     this.description = description;
@@ -124,94 +127,91 @@ public class Course {
     this.preReqs = preReqs;
     this.semester = semester;
     this.year = year;
-    
+
     if (name == null || name.isEmpty()) {
       throw new IllegalArgumentException("Course name cannot be null or empty");
-  }
+    }
 
-  String[] nameParts = name.split("\\s+");
-  if (nameParts.length >= 2) {
+    String[] nameParts = name.split("\\s+");
+    if (nameParts.length >= 2) {
       this.id = nameParts[0] + nameParts[1].replaceAll("\\s+", "");
-  } else {
+    } else {
       this.id = nameParts[0];
+    }
   }
-}
 
   /**
    * Allows course to be edited
-   * 
+   *
    * @return edited course
    */
   public Course editCourse(String id) {
     return new Course(
-        id,
-        name,
-        code,
-        description,
-        creditHours,
-        subject,
-        passGrade,
-        elective,
-        carolinaCore,
-        preReqs,
-        year,
-        semester);
-  }
-
-  /**
-   * Deletes the course
-   */
-  public void deleteCourse() {
+      id,
+      name,
+      code,
+      description,
+      creditHours,
+      subject,
+      passGrade,
+      elective,
+      carolinaCore,
+      preReqs,
+      year,
+      semester
+    );
   }
 
   /**
    * To string to view user details
-   * 
+   *
    * @return the string format of course info
    */
   public String toString() {
-    return ("\n********* COURSE INFO *********\n" +
-        "id: " +
-        id +
-        '\n' +
-        "name: " +
-        name +
-        '\n' +
-        "code: " +
-        code +
-        '\n' +
-        "description: " +
-        description +
-        '\n' +
-        "creditHours: " +
-        creditHours +
-        '\n' +
-        "subject: " +
-        subject +
-        '\n' +
-        "passGrade: " +
-        passGrade +
-        '\n' +
-        "elective: " +
-        elective +
-        '\n' +
-        "carolinaCore: " +
-        carolinaCore +
-        '\n' +
-        "preReqs: " +
-        preReqs +
-        '\n' +
-        "semester: " +
-        semester +
-        '\n' +
-        "year: " +
-        year +
-        '\n');
+    return (
+      "\n********* COURSE INFO *********\n" +
+      "id: " +
+      id +
+      '\n' +
+      "name: " +
+      name +
+      '\n' +
+      "code: " +
+      code +
+      '\n' +
+      "description: " +
+      description +
+      '\n' +
+      "creditHours: " +
+      creditHours +
+      '\n' +
+      "subject: " +
+      subject +
+      '\n' +
+      "passGrade: " +
+      passGrade +
+      '\n' +
+      "elective: " +
+      elective +
+      '\n' +
+      "carolinaCore: " +
+      carolinaCore +
+      '\n' +
+      "preReqs: " +
+      preReqs +
+      '\n' +
+      "semester: " +
+      semester +
+      '\n' +
+      "year: " +
+      year +
+      '\n'
+    );
   }
 
   /**
    * Gets the id of the course
-   * 
+   *
    * @return the id
    */
   public String getID() {
@@ -220,7 +220,7 @@ public class Course {
 
   /**
    * Gets the name of the course
-   * 
+   *
    * @return the name
    */
   public String getName() {
@@ -229,7 +229,7 @@ public class Course {
 
   /**
    * Gets the code of the course
-   * 
+   *
    * @return the code
    */
   public String getCode() {
@@ -238,7 +238,7 @@ public class Course {
 
   /**
    * Gets the description of the course
-   * 
+   *
    * @return the description
    */
   public String getDescription() {
@@ -247,7 +247,7 @@ public class Course {
 
   /**
    * Gets the course credit hours
-   * 
+   *
    * @return the credit hours
    */
   public int getCreditHours() {
@@ -256,7 +256,7 @@ public class Course {
 
   /**
    * Gets the course subject
-   * 
+   *
    * @return the subject
    */
   public String getSubject() {
@@ -265,7 +265,7 @@ public class Course {
 
   /**
    * Gets the passing grade for course
-   * 
+   *
    * @return the passing grade
    */
   public char getPassGrade() {
@@ -274,7 +274,7 @@ public class Course {
 
   /**
    * Checks if course is elective
-   * 
+   *
    * @return return true or false
    */
   public boolean isElective() {
@@ -283,7 +283,7 @@ public class Course {
 
   /**
    * Checks if course is carolina core
-   * 
+   *
    * @return true or false
    */
   public boolean isCarolinaCore() {
@@ -292,7 +292,7 @@ public class Course {
 
   /**
    * Gets the list of prerequired course
-   * 
+   *
    * @return the prerequired courses
    */
   public ArrayList<String> getPreReqs() {
@@ -301,7 +301,7 @@ public class Course {
 
   /**
    * Gets the semester
-   * 
+   *
    * @return the semester
    */
   public String getSemester() {
@@ -310,7 +310,7 @@ public class Course {
 
   /**
    * Gets the year
-   * 
+   *
    * @return the year
    */
   public String getYear() {

@@ -20,19 +20,13 @@ public class FacadeTest {
 
   /**
    * + login(String email, String password): User
-   * + signOut(): void
-   * + saveUsers(): void
-   * + saveCourses(): void
-   * + saveMajorMaps(): void
    * + writeStudentCoursePlanner(CoursePlanner coursePlanner, String name): void
    * + signUpStudent(String firstName, String lastName, String email, String password): void
    * + signUpAdmin(String firstName, String lastName, String email, String password): void
    * + signUpAdvisor(String firstName, String lastName, String email, String password): void
-   * + getMajorMap(String string): void
    * + displayAllCourses(ArrayList<Course> courseList): void
    * + showCoursesByCode(String courseCode): void
    * + showAppAreaOptions(): void
-   * + setAppArea(String xappArea): void
    * + addNoteToStudentAdvisor(UUID advisorID, UUID studentID, String noteContent): void
    * + addStudentToListOfAdvisees(UUID advisorID, UUID studentID): boolean
    */
@@ -52,15 +46,6 @@ public class FacadeTest {
    - Call the `login` method with invalid email and password.
    - Verify that the method returns null. */
 
-  // Testing signOut method
-  /*4. **Test `signOut` method:**
-   - Log in a user.
-   - Call the `signOut` method.
-   - Verify that the currently logged-in user is set to null.*/
-
-  // Testing saveUsers method
-  // Testing saveCourses method
-  // Testing saveMajorMaps method
   // Testing writeStudentCoursePlanner method
   // Testing signUpStudent method
   // Testing signUpAdmin method
