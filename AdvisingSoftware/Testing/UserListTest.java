@@ -50,6 +50,31 @@ class UserListTest {
     }
 
     @Test
+    public void testAddStudentBoundaryCase() {
+        int initialSize = userList.getUsers().size();
+
+        // Adding maximum number of users
+        for (int i = 0; i < 1000; i++) {
+            userList.addStudent("John", "Doe" + i, "johndoe" + i + "@example.com", UUID.randomUUID(), "password",
+                    "STUDENT", "Sophomore", "Computer Science", "Undeclared");
+        }
+
+        int newSize = userList.getUsers().size();
+        assertEquals(initialSize + 1000, newSize);
+    }
+
+    @Test
+    public void testAddStudentWithNullData() {
+        int initialSize = userList.getUsers().size();
+
+        userList.addStudent(null, null, null, null, null,
+                "STUDENT", null, null, null);
+
+        int newSize = userList.getUsers().size();
+        assertEquals(initialSize + 1, newSize);
+    }
+
+    @Test
     public void testAddAdmin() {
         int initialSize = userList.getUsers().size();
 
@@ -103,8 +128,6 @@ class UserListTest {
         int newSize = userList.getUsers().size();
         assertEquals(initialSize - 1, newSize);
     }
-
-
 
     @Test
     public void testEmailExists() {
@@ -187,4 +210,20 @@ class UserListTest {
         User lastUser = userList.getUsers().get(userList.getUsers().size() - 1);
         assertNull(lastUser.getPassword());
     }
+
+    
+
+    @Test
+    public void testRemoveNonExistentUser() {
+    int initialSize = userList.getUsers().size();
+
+    // Trying to remove a non-existent user
+    UUID nonExistentUserId = UUID.randomUUID();
+    userList.removeUser(nonExistentUserId);
+
+    int newSize = userList.getUsers().size();
+    assertEquals(initialSize, newSize);
+    }
+
+
 }
