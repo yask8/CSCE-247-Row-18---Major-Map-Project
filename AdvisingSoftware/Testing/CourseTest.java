@@ -9,6 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import AdvisingSoftware.Course;
 
+/*
+ * Tested by @oshumate Owen Shumate
+ */
+
 public class CourseTest {
 
     private Course testCourse;

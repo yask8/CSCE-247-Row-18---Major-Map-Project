@@ -11,6 +11,10 @@ import org.junit.jupiter.api.Test;
 import AdvisingSoftware.Course;
 import AdvisingSoftware.CourseList;
 
+/*
+ * Tested by @oshumate Owen Shumate
+ */
+
 class CourseListTest {
 
     private CourseList courseList;
