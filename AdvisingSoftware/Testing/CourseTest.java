@@ -15,17 +15,17 @@ public class CourseTest {
 
     @BeforeEach
     public void setUp() {
-        testCourse = new Course("CS101", "Introduction to Computer Science", "CS101", "Introduction to CS", 3,
+        testCourse = new Course("CSCE145", "Algorithmic Design 1", "CSCE145", "CSCE145 description", 3,
                 "Computer Science", 'A', true, true, new ArrayList<String>(), "2024", "Spring");
     }
 
     @Test
     public void editCourse_CourseDetails() {
-        Course editedTestCourse = testCourse.editCourse("CS102");
+        Course editedTestCourse = testCourse.editCourse("CSCE146");
 
-        assertEquals("CS102", editedTestCourse.getCode());
-        assertEquals("Introduction to Computer Science", editedTestCourse.getName());
-        assertEquals("CS101", editedTestCourse.getID());
+        assertEquals("CSCE146", editedTestCourse.getCode());
+        assertEquals("Algorithmic Design 1", editedTestCourse.getName());
+        assertEquals("CSCE145", editedTestCourse.getID());
         assertEquals(3, editedTestCourse.getCreditHours());
         assertEquals("Computer Science", editedTestCourse.getSubject());
         assertEquals('A', editedTestCourse.getPassGrade());
@@ -35,11 +35,11 @@ public class CourseTest {
 
     @Test
     public void editCourse_CourseCode() {
-        Course editedTestCourse = testCourse.editCourse("CS102");
+        Course editedTestCourse = testCourse.editCourse("CSCE146");
 
-        assertEquals("CS102", editedTestCourse.getCode());
-        assertEquals("Introduction to Computer Science", editedTestCourse.getName());
-        assertEquals("CS101", editedTestCourse.getID());
+        assertEquals("CSCE146", editedTestCourse.getCode());
+        assertEquals("Algorithmic Design 1", editedTestCourse.getName());
+        assertEquals("CSCE145", editedTestCourse.getID());
         assertEquals(3, editedTestCourse.getCreditHours());
         assertEquals("Computer Science", editedTestCourse.getSubject());
         assertEquals('A', editedTestCourse.getPassGrade());
@@ -49,12 +49,12 @@ public class CourseTest {
 
     @Test
     public void editCourse_CourseNameAndSubject() {
-        Course editedTestCourse = testCourse.editCourse("CS101");
+        Course editedTestCourse = testCourse.editCourse("CSCE145");
 
-        assertEquals("CS101", editedTestCourse.getCode());
-        assertEquals("Introduction to Advanced Computer Science", editedTestCourse.getName());
-        assertEquals("Advanced Computer Science", editedTestCourse.getSubject());
-        assertEquals("CS101", editedTestCourse.getID());
+        assertEquals("CSCE145", editedTestCourse.getCode());
+        assertEquals("Introduction to Advanced Algorithmic Design 1", editedTestCourse.getName());
+        assertEquals("Advanced Algorithmic Design 1", editedTestCourse.getSubject());
+        assertEquals("CSCE145", editedTestCourse.getID());
         assertEquals(3, editedTestCourse.getCreditHours());
         assertEquals('A', editedTestCourse.getPassGrade());
         assertTrue(editedTestCourse.isElective());
@@ -68,7 +68,7 @@ public class CourseTest {
 
     @Test
     public void isElectiveReturnFalse() {
-        Course nonElectiveCourse = new Course("MATH101", "Introduction to Mathematics", "MATH101", "Introduction to Math", 3,
+        Course nonElectiveCourse = new Course("MATH141", "Calculus 1", "MATH141", "MATH141 description", 3,
                 "Mathematics", 'A', false, true, new ArrayList<String>(), "2024", "Spring");
 
         assertFalse(nonElectiveCourse.isElective());
@@ -81,7 +81,7 @@ public class CourseTest {
 
     @Test
     public void isCarolinaCoreReturnFalse() {
-        Course nonCarolinaCoreCourse = new Course("CS101", "Introduction to Computer Science", "CS101", "Introduction to CS", 3,
+        Course nonCarolinaCoreCourse = new Course("CSCE145", "Algorithmic Design 1", "CSCE145", "CSCE145 description", 3,
                 "Computer Science", 'A', true, false, new ArrayList<String>(), "2024", "Spring");
 
         assertFalse(nonCarolinaCoreCourse.isCarolinaCore());

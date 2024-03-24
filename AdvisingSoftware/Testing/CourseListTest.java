@@ -30,7 +30,7 @@ class CourseListTest {
     void testAddCourse() {
         int initialSize = courseList.getCourses().size();
 
-        courseList.addCourseNoYearorSem("Introduction to Programming", "CS101", "Introduction to programming concepts",
+        courseList.addCourseNoYearorSem("Algorithmic Design 1", "CSCE145", "Introduction to algorithmic design",
                 3, "Computer Science", 'C', true, false, new ArrayList<>());
 
         int newSize = courseList.getCourses().size();
@@ -40,11 +40,11 @@ class CourseListTest {
 
     @Test
     void testRemoveCourse() {
-        courseList.addCourseNoYearorSem("Introduction to Programming", "CS101", "Introduction to programming concepts",
+        courseList.addCourseNoYearorSem("Algorithmic Design 1", "CSCE145", "Introduction to algorithmic design",
                 3, "Computer Science", 'C', true, false, new ArrayList<>());
         int initialSize = courseList.getCourses().size();
 
-        assertTrue(courseList.removeCourse("CS101"));
+        assertTrue(courseList.removeCourse("CSCE145"));
 
         int newSize = courseList.getCourses().size();
 
@@ -55,7 +55,7 @@ class CourseListTest {
     void testAddCourseNoYearorSem() {
         int initialSize = courseList.getCourses().size();
 
-        courseList.addCourseNoYearorSem("Introduction to Programming", "CS101", "Introduction to programming concepts",
+        courseList.addCourseNoYearorSem("Algorithmic Design 1", "CSCE145", "Introduction to algorithmic design",
                 3, "Computer Science", 'C', true, false, new ArrayList<>());
 
         int newSize = courseList.getCourses().size();
@@ -101,7 +101,7 @@ class CourseListTest {
 
     @Test
     void testCourseExistsById() {
-        Course course = new Course("Introduction to Programming", "CS101", "Introduction to programming concepts",
+        Course course = new Course("Algorithmic Design 1", "CSCE145", "Introduction to algorithmic design",
                 3, "Computer Science", 'C', true, false, new ArrayList<>(), null, null);
         courseList.addCourseObject(course);
 
@@ -121,21 +121,21 @@ class CourseListTest {
     @Test
     void testShowCoursesByCode() {
         
-        courseList.addCourseNoYearorSem("Introduction to Programming", "CS101", "Introduction to programming concepts",
+        courseList.addCourseNoYearorSem("Algorithmic Design 1", "CSCE", "Introduction to algorithmic design",
                 3, "Computer Science", 'C', true, false, new ArrayList<>());
-        courseList.addCourseNoYearorSem("Database Systems", "CS202", "Database systems concepts",
+        courseList.addCourseNoYearorSem("Algorithmic Design 2", "CSCE", "Advanced topics in algorithmic design",
                 3, "Computer Science", 'C', true, false, new ArrayList<>());
 
         
-        courseList.showCoursesByCode("CS101");
+        courseList.showCoursesByCode("CSCE");
 
         
         String output = courseList.toString();
 
-        assertTrue(output.contains("***********CS101 Courses***********"));
-        assertTrue(output.contains("Introduction to Programming"));
-        assertTrue(output.contains("CS101"));
-        assertFalse(output.contains("Database Systems"));
-        assertFalse(output.contains("CS202"));
+        assertTrue(output.contains("***********CSCE145 Courses***********"));
+        assertTrue(output.contains("Algorithmic Design 1"));
+        assertTrue(output.contains("CSCE"));
+        assertFalse(output.contains("Algorithmic Design 2"));
+        assertFalse(output.contains("CSCE"));
     }
 }
