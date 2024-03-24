@@ -207,7 +207,7 @@ public void testAddStudentRiskOfFailureMaximumGPA() {
     advisor.addStudentRiskOfFailure();
 
     ArrayList<UUID> failingStudents = advisor.getListOfFailingStudents();
-    assertTrue(failingStudents.contains(studentId));
+    assertFalse(failingStudents.contains(studentId));
 }
 
 @Test
