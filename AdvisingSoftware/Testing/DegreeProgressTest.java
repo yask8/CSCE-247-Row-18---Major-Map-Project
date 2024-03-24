@@ -69,6 +69,17 @@ public class DegreeProgressTest {
     String progress = student
       .getDegreeProgress()
       .displayProgress(major, null, CourseList.getInstance().getAllCourses());
+    assertEquals(
+      (
+        "-----Degree Progress-----" +
+        "\nCurrent Major: " +
+        student.getMajor() +
+        "\nProgress Made: " +
+        student.getDegreeProgress().getProgressPercentage() +
+        "%"
+      ),
+      progress
+    );
   }
 
   // Testing calculateGPA method

@@ -107,7 +107,7 @@ public class CoursePlannerTest {
   }
 
   @Test
-  public void testGenerateFromMajorMapInvalidMajor() {
+  public void testGenerateFromMajorMapNonexistentMajor() {
     major = MajorList.getInstance().getMajorByName("Forensic Science");
     boolean generated = true;
     try {
@@ -116,7 +116,7 @@ public class CoursePlannerTest {
       // TODO: handle exception
       generated = false;
     }
-    assertTrue(generated);
+    assertFalse(generated);
   }
 
   @Test
@@ -129,7 +129,7 @@ public class CoursePlannerTest {
       // TODO: handle exception
       generated = false;
     }
-    assertTrue(generated);
+    assertFalse(generated);
   }
 
   // Testing searchPlanner method

@@ -8,6 +8,7 @@ import AdvisingSoftware.MajorList;
 import AdvisingSoftware.MajorMap;
 import AdvisingSoftware.User;
 import AdvisingSoftware.UserList;
+import java.io.File;
 import java.util.ArrayList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -75,31 +76,31 @@ public class FacadeTest {
   @Test
   public void testWriteStudentCoursePlannerValid() {
     user = facade.login("rio.farrah2004@gmail.com", "Real?dejaneir0");
-    boolean logged = false;
-    if (user != null) {
-      logged = true;
-    }
     facade.writeStudentCoursePlanner("Farrah Rio");
+    File f = new File("StudentCoursePlanners\\Farrah Rio_CoursePlanner.txt");
+    boolean exists = f.exists();
+    f.delete();
+    assertTrue(exists);
   }
 
   @Test
   public void testWriteStudentCoursePlannerNullStudentName() {
     user = facade.login("rio.farrah2004@gmail.com", "Real?dejaneir0");
-    boolean logged = false;
-    if (user != null) {
-      logged = true;
-    }
     facade.writeStudentCoursePlanner(null);
+    File f = new File("StudentCoursePlanners\\null_CoursePlanner.txt");
+    boolean exists = f.exists();
+    f.delete();
+    assertTrue(exists);
   }
 
   @Test
   public void testWriteStudentCoursePlannerEmptyName() {
     user = facade.login("rio.farrah2004@gmail.com", "Real?dejaneir0");
-    boolean logged = false;
-    if (user != null) {
-      logged = true;
-    }
     facade.writeStudentCoursePlanner("");
+    File f = new File("StudentCoursePlanners\\_CoursePlanner.txt");
+    boolean exists = f.exists();
+    f.delete();
+    assertTrue(exists);
   }
   // Testing signUpStudent method
   // Testing signUpAdmin method
