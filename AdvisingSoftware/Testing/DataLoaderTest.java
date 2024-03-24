@@ -11,9 +11,10 @@ import AdvisingSoftware.User;
 import AdvisingSoftware.UserList;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
- * @author Yasmine Kennedy
+ * @author Yasmine Kennedy (yask8)
  */
 public class DataLoaderTest {
 
@@ -21,7 +22,7 @@ public class DataLoaderTest {
     private ArrayList<User> users;
 
     /**
-     * @author Yasmine Kennedy
+     * @author Yasmine Kennedy (yask8)
      */
     @BeforeEach
     public void setUp() {
@@ -34,7 +35,7 @@ public class DataLoaderTest {
     }
 
     /**
-     * @author Yasmine Kennedy
+     * @author Yasmine Kennedy (yask8)
      */
     @AfterEach
     public void tearDown(){
@@ -44,7 +45,7 @@ public class DataLoaderTest {
     }
 
     /**
-     * @author Yasmine Kennedy
+     * @author Yasmine Kennedy (yask8)
      */
     @Test
     void testUsersSize() {
@@ -55,7 +56,7 @@ public class DataLoaderTest {
     }
 
     /**
-     * @author Yasmine Kennedy
+     * @author Yasmine Kennedy (yask8)
      */
     @Test
     void testUsersSizeZero() {
@@ -63,7 +64,7 @@ public class DataLoaderTest {
     }
 
     /**
-     * @author Yasmine Kennedy
+     * @author Yasmine Kennedy(yask8)
      */
     @Test
     void testUserFirstUserName() {
@@ -74,7 +75,7 @@ public class DataLoaderTest {
     }
 
     /**
-     * @author Yasmine Kennedy
+     * @author Yasmine Kennedy (yask8)
      */
     @Test
     void testDuplicateUsers() {
@@ -85,6 +86,40 @@ public class DataLoaderTest {
         assertEquals("oshumate@email.sc.edu", users.get(0).getEmail());
         assertEquals("User already exists", users.get(3).getEmail());
     }
+    
+    /**
+     * @author Yasmine Kennedy (yask8)
+     */
+    @Test
+    void testUsersWithUSCIDs() {
+        UUID uscID = UUID.randomUUID();
+        users.add(new User("Marshall", "Nick", "mnick@email.sc.edu", uscID, "pawpatrol@3", "Student"));
+        users.add(new User("Chase", "Eloden", "celoden@email.sc.edu", uscID, "doubletrouble4", "Student"));
+        users.add(new User("Sky", "Puppy", "spuppy@email.sc.edu", uscID, "thispuppygottafly@4", "Student"));
+        assertEquals(3, users.size());
+    }
 
-  
+    /**
+     * @author Yasmine Kennedy (yask8)
+     */
+    @Test
+    void testUserUSCID() {
+        UUID uscID = UUID.randomUUID();
+        users.add(new User("Marshall", "Nick", "mnick@email.sc.edu", uscID, "pawpatrol@3", "Student"));
+        users.add(new User("Chase", "Eloden", "celoden@email.sc.edu", uscID, "doubletrouble4", "Student"));
+        users.add(new User("Sky", "Puppy", "spuppy@email.sc.edu", uscID, "thispuppygottafly@4", "Student"));
+        assertEquals(uscID, users.get(1).getID());
+    }
+
+    /**
+     * @author Yasmine Kennedy (yask8)
+     */
+    @Test
+    void nullUser(){
+        users.add(new User(null, null, null, null, null, null));
+        assertEquals(null,users.get(0).getFirstName());
+        assertEquals(1, users.size());
+        users.remove(0);
+        assertEquals(0, users.size());
+    }
 }

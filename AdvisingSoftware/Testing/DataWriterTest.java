@@ -11,10 +11,11 @@ import AdvisingSoftware.User;
 import AdvisingSoftware.UserList;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Tester class for DataWriter
- * @author Yasmine Kennedy (yas8) and Garrett Spillman (Spillmag)
+ * @author Yasmine Kennedy (yas8)
  */
 public class DataWriterTest {
      
@@ -22,7 +23,7 @@ public class DataWriterTest {
      private ArrayList<User> users;
      
      /**
-      * @author Yasmine Kennedy
+      * @author Yasmine Kennedy (yask8)
       */
      @BeforeEach
      public void setUp() {
@@ -35,7 +36,7 @@ public class DataWriterTest {
      }
 
      /**
-      * @author Yasmine Kennedy
+      * @author Yasmine Kennedy (yask8)
       */
      @AfterEach
      public void tearDown() {
@@ -46,7 +47,7 @@ public class DataWriterTest {
      }
 
      /**
-      * @author Yasmine Kennedy
+      * @author Yasmine Kennedy (yask8)
       */
      @Test
      void testWritingZeroUsers() {
@@ -54,7 +55,7 @@ public class DataWriterTest {
      }    
      
       /**
-      * @author Yasmine Kennedy
+      * @author Yasmine Kennedy (yask8)
       */
      @Test
      void testWritingOneUser() {
@@ -63,7 +64,7 @@ public class DataWriterTest {
      }
 
       /**
-      * @author Garrett Spillman
+      * @author Garrett Spillman (Spillmag)
       */
      @Test
      void testWritingTwoUsers() {
@@ -75,7 +76,7 @@ public class DataWriterTest {
       } 
 
      /**
-      * @author Yasmine Kennedy
+      * @author Yasmine Kennedy (yask8)
       */
       @Test
       void testWritingNullUser(){
@@ -84,7 +85,7 @@ public class DataWriterTest {
       }
 
      /**
-      * @author Yasmine Kennedy
+      * @author Yasmine Kennedy (yask8)
       */
       @Test
       void testWritingNoDuplicateUsers() {
@@ -95,7 +96,7 @@ public class DataWriterTest {
       }
       
      /**
-      * @author Yasmine Kennedy
+      * @author Yasmine Kennedy (yask8)
       */
       @Test
       void testWritingNoDuplicateEmailWithDifferentUserTypes() {
@@ -106,7 +107,7 @@ public class DataWriterTest {
       }
 
      /**
-      * @author Yasmine Kennedy
+      * @author Yasmine Kennedy (yask8)
       */
       @Test
       void testWritingEmptyUser() {
@@ -115,7 +116,7 @@ public class DataWriterTest {
       }
 
      /**
-      * @author Yasmine Kennedy
+      * @author Yasmine Kennedy (yask8)
       */
       @Test
       void testWritingDuplicateLastNamesUsers() {
@@ -126,4 +127,82 @@ public class DataWriterTest {
           assertEquals("James", users.get(1).getFirstName());
           assertEquals("Holland", users.get(1).getLastName());
       }
+
+      /**
+       * @author Yasmine Kennedy (yask8)
+       */
+      @Test
+      void testNoGivenUserType() {
+        users.add(new User("Jack", "Spark", "jspark@gmail.com", "JohnWins", null));
+        assertEquals(null, users.get(0).getUserType());
+      }
+
+      /**
+       * @author Yasmine Kennedy (yask8)
+       */
+      @Test
+      void testAddingUserWithUSCID() {
+        UUID uscID = UUID.randomUUID();
+        users.add(new User("John", "Stamos", "js@email.sc.edu", uscID, "fullhou3213", "Advisor"));
+        assertEquals(1, users.size());
+      }
+
+      /**
+       * @author Yasmine Kennedy (yask8)
+       */
+      @Test 
+      void testRetrievingUserUSCID() {
+        UUID uscID = UUID.randomUUID();
+        users.add(new User("Felix", "Sponge", "fs@email.sc.edu", uscID, "123455", "Advisor"));
+        if(uscID != null){
+            assertEquals(uscID, users.get(0).getID());
+        }
+      }
+
+      /**
+       * @author Yasmine Kennedy (yask8)
+       */
+      @Test
+      void testRetrievingUserNullUSCID() {
+        users.add(new User("Felix", "Sponge", "fs@email.sc.edu", null, "123455", "Advisor"));
+        assertEquals(null, users.get(0).getID());
+      }
+
+      /**
+       * @author Yasmine Kennedy (yask8)
+       */
+      @Test
+      void testEditingUserEmail() {
+        UUID uscID = UUID.randomUUID();
+        users.add(new User("Felix", "Sponge", "fs@email.sc.edu", uscID, "123455", "Advisor"));
+        users.get(0).editEmail("felixsponge@email.sc.edu");
+        DataWriter.saveUsers(users);
+        assertEquals("felixsponge@email.sc.edu", users.get(0).getEmail());
+        assertEquals(1, users.size());
+      }
+
+      /**
+       * @author Yasmine Kennedy (yask8)
+       */
+      @Test
+      void testCreatingPersonalizedUUID() {
+        UUID uscId = UUID.fromString("abd9e938-df99-44cf-a924-a631f1482ef7");
+        users.add(new User("Felix", "Sponge", "fs@email.sc.edu", uscId, "123455", "Advisor"));
+        assertEquals(uscId, users.get(0).getID());
+      }
+
+      /**
+       * @author Yasmine Kennedy (yask8)
+       */
+      @Test
+      void testRemovingUser(){
+        UUID sc = UUID.randomUUID();
+        users.add(new User("Felix", "Sponge", "fs@email.sc.edu", sc, "123455", "Advisor"));
+        users.add(new User("Bobby", "Flay", "beatBobbyFlay@email.sc.edu", sc, "noWAYHOME######", "Admin"));
+        users.add(new User("Kenneth", "Kenny", "kjk@email.sc.edu", sc, "justvibe@45", "Student"));
+        assertEquals(3, users.size());
+        users.remove(1);
+        assertEquals(2, users.size());
+      }
+
 }
