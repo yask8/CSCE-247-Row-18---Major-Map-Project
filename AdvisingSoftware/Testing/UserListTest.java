@@ -1,3 +1,7 @@
+/**
+ * UserList Test class
+ * @author Stephon Johnson
+ */
 package AdvisingSoftware.Testing;
 
 import static org.junit.jupiter.api.Assertions.*;
