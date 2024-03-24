@@ -14,6 +14,9 @@ import AdvisingSoftware.Course;
 import AdvisingSoftware.CourseList;
 import AdvisingSoftware.UserList;
 
+/*
+ * Tested by @Spillmag Garrett Spillman
+ */
 public class AdminTest {
 
         private Admin admin;

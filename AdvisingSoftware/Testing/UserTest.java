@@ -1,3 +1,7 @@
+/**
+ * User Test class
+ * @author Stephon Johnson
+ */
 package AdvisingSoftware.Testing;
 
 import org.junit.jupiter.api.Test;

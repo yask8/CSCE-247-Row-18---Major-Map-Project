@@ -13,6 +13,10 @@ import org.junit.jupiter.api.Test;
 
 import AdvisingSoftware.MajorMap;
 
+
+/*
+ * Tested by @Spillmag Garrett Spillman
+ */
 public class MajorMapTest {
 
     private MajorMap majorMap;

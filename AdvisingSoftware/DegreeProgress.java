@@ -1,3 +1,6 @@
+/**
+ * @author Lia Zhao
+ */
 package AdvisingSoftware;
 
 /**
