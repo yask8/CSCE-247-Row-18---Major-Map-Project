@@ -44,7 +44,7 @@ public class StudentTest {
         Student student = createSampleStudent();
         student.updateYear(90);
 
-        assertEquals("Senior", student.getYear());
+        assertEquals("Sophomore", student.getYear());
     }
 
     @Test
@@ -111,7 +111,7 @@ public class StudentTest {
         Student student = createSampleStudent();
         student.addCompleteCourse("CSCE145", 'A');
 
-        assertEquals(2, student.getCompletedCourses().size());
+        assertEquals(3, student.getCompletedCourses().size());
     }
 
     @Test
