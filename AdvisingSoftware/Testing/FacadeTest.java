@@ -389,6 +389,7 @@ public class FacadeTest {
     user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
     //User user1 = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
     boolean error = false;
+    boolean achieved = false;
     try {
       facade.signUpStudent(
         "Olivia",
@@ -398,12 +399,12 @@ public class FacadeTest {
       );
       User temp = facade.login("doubleOlivia@gmail.com", "OOlliivviiaa!");
       facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
-      facade.addStudentToListOfAdvisees(user.getID(), temp.getID());
+      achieved = facade.addStudentToListOfAdvisees(user.getID(), temp.getID());
     } catch (Exception e) {
       // TODO: handle exception
       error = true;
     }
-
+    assertTrue(achieved);
     assertTrue(facade.getListOfAdvisees().size() > 1);
     assertFalse(error);
   }
@@ -412,6 +413,7 @@ public class FacadeTest {
   public void testAddStudentToListOfAdviseesAddAdmin() {
     user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
     boolean error = false;
+    boolean achieved = true;
     try {
       facade.signUpAdmin(
         "Olivia",
@@ -421,11 +423,12 @@ public class FacadeTest {
       );
       User temp = facade.login("doubleOlivia@gmail.com", "OOlliivviiaa!");
       facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
-      facade.addStudentToListOfAdvisees(user.getID(), temp.getID());
+      achieved = facade.addStudentToListOfAdvisees(user.getID(), temp.getID());
     } catch (Exception e) {
       // TODO: handle exception
       error = true;
     }
+    assertFalse(achieved);
     assertFalse(facade.getListOfAdvisees().size() > 1);
     assertFalse(facade.getListOfAdvisees().get(1) != null);
     assertFalse(error);
@@ -435,6 +438,7 @@ public class FacadeTest {
   public void testAddStudentToListOfAdviseesAddAdvisor() {
     user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
     boolean error = false;
+    boolean achieved = true;
     try {
       facade.signUpAdvisor(
         "Olivia",
@@ -444,12 +448,12 @@ public class FacadeTest {
       );
       User temp = facade.login("doubleOlivia@gmail.com", "OOlliivviiaa!");
       facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
-      facade.addStudentToListOfAdvisees(user.getID(), temp.getID());
+      achieved = facade.addStudentToListOfAdvisees(user.getID(), temp.getID());
     } catch (Exception e) {
       // TODO: handle exception
       error = true;
     }
-
+    assertFalse(achieved);
     assertFalse(facade.getListOfAdvisees().size() > 1);
     assertFalse(facade.getListOfAdvisees().get(1) != null);
     assertFalse(error);
@@ -459,15 +463,18 @@ public class FacadeTest {
   public void testAddStudentToListOfAdviseesExistingStudent() {
     user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
     boolean error = false;
+    boolean achieved = true;
     try {
-      facade.addStudentToListOfAdvisees(
-        user.getID(),
-        userList.getAdvisorById(user.getID()).getListOfAdvisees().get(0)
-      );
+      achieved =
+        facade.addStudentToListOfAdvisees(
+          user.getID(),
+          userList.getAdvisorById(user.getID()).getListOfAdvisees().get(0)
+        );
     } catch (Exception e) {
       // TODO: handle exception
       error = true;
     }
+    assertFalse(achieved);
     assertFalse(facade.getListOfAdvisees().size() > 1);
     assertFalse(error);
   }
@@ -476,12 +483,14 @@ public class FacadeTest {
   public void testAddStudentToListOfAdviseesNull() {
     User user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
     boolean error = false;
+    boolean achieved = true;
     try {
-      facade.addStudentToListOfAdvisees(null, null);
+      achieved = facade.addStudentToListOfAdvisees(null, null);
     } catch (Exception e) {
       // TODO: handle exception
       error = true;
     }
+    assertFalse(achieved);
     assertFalse(facade.getListOfAdvisees().size() > 1);
     assertFalse(error);
   }
