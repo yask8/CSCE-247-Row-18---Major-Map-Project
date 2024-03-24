@@ -149,7 +149,7 @@ class UserListTest {
                 null, "Sophomore", "Computer Science", "Undeclared");
 
         User lastUser = userList.getUsers().get(userList.getUsers().size() - 1);
-        assertEquals("UNKNOWN", lastUser.getUserType());
+        assertEquals(null, lastUser.getUserType());
     }
 
     @Test
