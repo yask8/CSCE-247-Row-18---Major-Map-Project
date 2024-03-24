@@ -70,17 +70,37 @@ public class FacadeTest {
     }
     assertFalse(logged);
   }
-  /* 2. **Test `login` method with valid credentials:**
-   - Create a user with valid credentials in the user list.
-   - Call the `login` method with the valid email and password.
-   - Verify that the method returns the logged-in user.
-
-3. **Test `login` method with invalid credentials:**
-   - Create a user with invalid credentials in the user list.
-   - Call the `login` method with invalid email and password.
-   - Verify that the method returns null. */
 
   // Testing writeStudentCoursePlanner method
+  @Test
+  public void testWriteStudentCoursePlannerValid() {
+    user = facade.login("rio.farrah2004@gmail.com", "Real?dejaneir0");
+    boolean logged = false;
+    if (user != null) {
+      logged = true;
+    }
+    facade.writeStudentCoursePlanner("Farrah Rio");
+  }
+
+  @Test
+  public void testWriteStudentCoursePlannerNullStudentName() {
+    user = facade.login("rio.farrah2004@gmail.com", "Real?dejaneir0");
+    boolean logged = false;
+    if (user != null) {
+      logged = true;
+    }
+    facade.writeStudentCoursePlanner(null);
+  }
+
+  @Test
+  public void testWriteStudentCoursePlannerEmptyName() {
+    user = facade.login("rio.farrah2004@gmail.com", "Real?dejaneir0");
+    boolean logged = false;
+    if (user != null) {
+      logged = true;
+    }
+    facade.writeStudentCoursePlanner("");
+  }
   // Testing signUpStudent method
   // Testing signUpAdmin method
   // Testing getMajorMap method

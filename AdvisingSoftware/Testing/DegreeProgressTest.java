@@ -50,6 +50,17 @@ public class DegreeProgressTest {
         student.getCompletedCourses(),
         CourseList.getInstance().getAllCourses()
       );
+    assertEquals(
+      (
+        "-----Degree Progress-----" +
+        "\nCurrent Major: " +
+        student.getMajor() +
+        "\nProgress Made: " +
+        student.getDegreeProgress().getProgressPercentage() +
+        "%"
+      ),
+      progress
+    );
   }
 
   @Test

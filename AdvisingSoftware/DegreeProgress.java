@@ -15,6 +15,7 @@ public class DegreeProgress {
   private ArrayList<String> completeCourses;
   private ArrayList<String> incompleteCourses;
   private int totalCreditHours;
+  private double progressPercentage;
 
   /**
    * DegreeProgress constructor
@@ -46,7 +47,7 @@ public class DegreeProgress {
     calculateGPA(courseList, completedCourses);
     double totalCH = getTotalCreditHours();
     double minTotalHrs = majorMap.getMinTotalHours();
-    double progressPercentage = ((totalCH / minTotalHrs) * 100);
+    progressPercentage = ((totalCH / minTotalHrs) * 100);
     return (
       "-----Degree Progress-----" +
       "\nCurrent Major: " +
@@ -55,6 +56,10 @@ public class DegreeProgress {
       progressPercentage +
       "%"
     );
+  }
+
+  public double getProgressPercentage() {
+    return this.progressPercentage;
   }
 
   /**

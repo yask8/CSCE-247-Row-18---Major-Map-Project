@@ -36,7 +36,6 @@ public class CoursePlannerTest {
       .getUserByLoginInfo("bwest@email.sc.edu", "bwest060903");
 
     student = UserList.getInstance().getStudentById(user.getID());
-    //settingUpStudent();
   }
 
   @AfterEach
