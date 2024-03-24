@@ -124,6 +124,8 @@ public class FacadeTest {
       userList.getUserByLoginInfo("stuartneuman@email.sc.edu", "Password123?");
     assertTrue(user != null);
     assertTrue(user.getUserType().equalsIgnoreCase("STUDENT"));
+    assertTrue(user.getFirstName().equals("Stuart"));
+    assertTrue(user.getLastName().equals("Neuman"));
   }
 
   @Test
@@ -134,10 +136,38 @@ public class FacadeTest {
       "stuartneuman@email.sc.edu",
       "Password123?"
     );
-    user =
-      userList.getUserByLoginInfo("stuartneuman@email.sc.edu", "Password123?");
+    user = facade.login("stuartneuman@email.sc.edu", "Password123?");
     assertTrue(user != null);
     assertTrue(user.getUserType().equalsIgnoreCase("STUDENT"));
+    assertTrue(user.getFirstName().equals("Farrah"));
+    assertTrue(user.getLastName().equals("Rio"));
+  }
+
+  @Test
+  public void testSignUpStudentExistingEmail() {
+    facade.signUpStudent(
+      "Farrah",
+      "Rio",
+      "stuartneuman@email.sc.edu",
+      "Password123?"
+    );
+    User userOg = facade.login("stuartneuman@email.sc.edu", "Password123?");
+    facade.signUpStudent(
+      "Mary",
+      "Lambert",
+      "stuartneuman@email.sc.edu",
+      "AnotherPassword!"
+    );
+    try {
+      user = facade.login("stuartneuman@email.sc.edu", "AnotherPassword!");
+    } catch (Exception e) {
+      // TODO: handle exception
+      user = null;
+    }
+
+    assertTrue(userOg != null);
+    assertTrue(user == null);
+    assertTrue(userOg.getUserType().equalsIgnoreCase("STUDENT"));
   }
 
   // Testing signUpAdmin method
@@ -169,7 +199,6 @@ public class FacadeTest {
     assertTrue(user != null);
     assertTrue(user.getUserType().equalsIgnoreCase("ADVISOR"));
   }
-  // Testing getMajorMap method
   // Testing displayAllCourses method
   // Testing showCoursesByCode method
   // Testing showAppAreaOptions method
