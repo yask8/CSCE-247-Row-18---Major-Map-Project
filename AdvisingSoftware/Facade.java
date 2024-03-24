@@ -102,13 +102,14 @@ public class Facade {
     String lastName,
     String email,
     String password
-) {
+  ) {
     if (userList.signUp(firstName, lastName, email, password, "STUDENT")) {
-        login(email, password);
+      login(email, password);
     } else {
-        System.out.println("Student sign-up failed.");
+      System.out.println("Student sign-up failed.");
     }
-}
+  }
+
   /**
    * Signs up a new administrator.
    *
@@ -122,13 +123,13 @@ public class Facade {
     String lastName,
     String email,
     String password
-) {
+  ) {
     if (userList.signUp(firstName, lastName, email, password, "ADMIN")) {
-        login(email, password);
-    }else{
+      login(email, password);
+    } else {
       System.out.println("Admin sign-up failed.");
     }
-}
+  }
 
   /**
    * Signs up a new advisor.
@@ -143,13 +144,13 @@ public class Facade {
     String lastName,
     String email,
     String password
-) {
+  ) {
     if (userList.signUp(firstName, lastName, email, password, "ADVISOR")) {
-        login(email, password);
+      login(email, password);
     } else {
-        System.out.println("Advisor sign-up failed.");
+      System.out.println("Advisor sign-up failed.");
     }
-}
+  }
 
   public void displayProgressStudent() {
     if (user.getUserType().equals("STUDENT")) {
@@ -179,11 +180,11 @@ public class Facade {
    */
   public void displayAllCourses(ArrayList<Course> courseList) {
     System.out.println("Courses Available:");
-    for (Course course : courseList) {
-      System.out.println(course.toString());
-    }
     if (courseList == null || courseList.isEmpty()) {
       System.out.println("No courses available.");
+    }
+    for (Course course : courseList) {
+      System.out.println(course.toString());
     }
   }
 
