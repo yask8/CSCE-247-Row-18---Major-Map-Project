@@ -1,3 +1,6 @@
+/**
+ * @author Lia Zhao
+ */
 package AdvisingSoftware.Testing;
 
 import static org.junit.jupiter.api.Assertions.*;
