@@ -107,6 +107,24 @@ public class AdvisorTest {
         assertEquals(0, advisorNotes.size());
     }
 
+    @Test
+    public void testAddNoteSpecialCharacters() {
+    UUID studentId = UUID.randomUUID();
+    Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
+            "Sophomore", "Computer Science", "Application Area", 60,
+            new ArrayList<>(), 3.8, null, null, new ArrayList<>());
+    userList.addUser(student);
+
+    advisor.addStudent(studentId);
+    String specialNote = "!@#$%^&*()_+-=[]{};':\"\\|,.<>/?"; // Special characters note
+    advisor.addNoteToStudentAdvisor(studentId, specialNote, userList);
+
+    ArrayList<Note> advisorNotes = student.getAdvisorNotes();
+    assertEquals(1, advisorNotes.size());
+    assertEquals(specialNote, advisorNotes.get(0).getNote());
+    }
+
+
 
     
     @Test
@@ -162,6 +180,71 @@ public class AdvisorTest {
         assertFalse(failingStudents.contains(studentId));
     }
 
+    @Test
+public void testAddStudentRiskOfFailureMinimumGPA() {
+    UUID studentId = UUID.randomUUID();
+    Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
+            "Sophomore", "Computer Science", "Application Area", 60,
+            new ArrayList<>(), 1.0, null, null, new ArrayList<>()); // Minimum GPA
+    userList.addUser(student);
+
+    advisor.addStudentToListOfAdvisees(studentId);
+    advisor.addStudentRiskOfFailure();
+
+    ArrayList<UUID> failingStudents = advisor.getListOfFailingStudents();
+    assertTrue(failingStudents.contains(studentId));
+}
+
+@Test
+public void testAddStudentRiskOfFailureMaximumGPA() {
+    UUID studentId = UUID.randomUUID();
+    Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
+            "Sophomore", "Computer Science", "Application Area", 60,
+            new ArrayList<>(), 4.0, null, null, new ArrayList<>()); // Maximum GPA
+    userList.addUser(student);
+
+    advisor.addStudentToListOfAdvisees(studentId);
+    advisor.addStudentRiskOfFailure();
+
+    ArrayList<UUID> failingStudents = advisor.getListOfFailingStudents();
+    assertTrue(failingStudents.contains(studentId));
+}
+
+@Test
+public void testRemoveStudentRiskOfFailureAfterGPAImprovement() {
+    // Create a student with an initial GPA of 2.5
+    UUID studentId = UUID.randomUUID();
+    Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
+            "Sophomore", "Computer Science", "Application Area", 60,
+            new ArrayList<>(), 2.5, null, null, new ArrayList<>());
+    userList.addUser(student);
+
+    // Add the student to the list of advisees
+    advisor.addStudentToListOfAdvisees(studentId);
+
+    // Add the student to the risk of failure list
+    advisor.addStudentRiskOfFailure();
+
+    // Simulate improvement in GPA by creating a new student object with improved GPA
+    Student improvedStudent = new Student(
+            student.getFirstName(), student.getLastName(), student.getEmail(), student.getStudentsID(),
+            student.getPassword(), student.getUserType(), student.getYear(), student.getMajor(),
+            student.getApplicationArea(), student.getCreditHours(), student.getCompletedCourses(),
+            3.5, null, null, null); // Create new Student object with improved GPA
+
+    // Remove the old student from the risk of failure list and add the improved student
+    advisor.removeStudent(studentId);
+    advisor.addStudentToListOfAdvisees(improvedStudent.getStudentsID());
+    advisor.addStudentRiskOfFailure(); // Student with improved GPA is added to risk of failure list
+
+    ArrayList<UUID> failingStudents = advisor.getListOfFailingStudents();
+
+    // The student with improved GPA should not be in the failing students list
+    assertFalse(failingStudents.contains(improvedStudent.getStudentsID()));
+}
+
+
+
     
 
     @Test
@@ -185,6 +268,17 @@ public class AdvisorTest {
         ArrayList<UUID> advisees = advisor.getListOfAdvisees();
         assertEquals(0, advisees.size());
         assertFalse(advisees.contains(studentId));
+    }
+
+    @Test
+    public void testRemoveFromEmptyListOfAdvisees() {
+    // Removing from an empty list of advisees
+    UUID studentId = UUID.randomUUID();
+    advisor.removeStudent(studentId);
+
+    ArrayList<UUID> advisees = advisor.getListOfAdvisees();
+    assertEquals(0, advisees.size());
+    assertFalse(advisees.contains(studentId));
     }
 
     @Test
