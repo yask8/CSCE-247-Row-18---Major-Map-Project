@@ -8,6 +8,7 @@ import AdvisingSoftware.CourseList;
 import AdvisingSoftware.Facade;
 import AdvisingSoftware.MajorList;
 import AdvisingSoftware.MajorMap;
+import AdvisingSoftware.Student;
 import AdvisingSoftware.User;
 import AdvisingSoftware.UserList;
 import java.io.File;
@@ -320,7 +321,168 @@ public class FacadeTest {
     assertTrue(user.getUserType().equalsIgnoreCase("ADVISOR"));
     assertTrue(printed);
   }
-  // Testing addNoteToStudentAdvisor method
-  // Testing addStudentToListOfAdvisees method
 
+  // Testing addNoteToStudentAdvisor method
+  @Test
+  public void testAddNoteToStudentAdvisorValid() {
+    user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    boolean error = false;
+    try {
+      facade.addNoteToStudentAdvisor(
+        user.getID(),
+        userList.getAdvisorById(user.getID()).getListOfAdvisees().get(0),
+        "Note: on track"
+      );
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(error);
+  }
+
+  @Test
+  public void testAddNoteToStudentAdvisorEmptyNote() {
+    user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    boolean error = false;
+    try {
+      facade.addNoteToStudentAdvisor(
+        user.getID(),
+        userList.getAdvisorById(user.getID()).getListOfAdvisees().get(0),
+        ""
+      );
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(error);
+  }
+
+  @Test
+  public void testAddNoteToStudentAdvisorNull() {
+    user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    boolean error = false;
+    try {
+      facade.addNoteToStudentAdvisor(null, null, null);
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(error);
+  }
+
+  @Test
+  public void testAddNoteToStudentAdvisorNullStudent() {
+    user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    boolean error = false;
+    try {
+      facade.addNoteToStudentAdvisor(user.getID(), null, null);
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(error);
+  }
+
+  // Testing addStudentToListOfAdvisees method
+  @Test
+  public void testAddStudentToListOfAdviseesValidStudent() {
+    user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    //User user1 = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    boolean error = false;
+    try {
+      facade.signUpStudent(
+        "Olivia",
+        "Olivia",
+        "doubleOlivia@gmail.com",
+        "OOlliivviiaa!"
+      );
+      User temp = facade.login("doubleOlivia@gmail.com", "OOlliivviiaa!");
+      facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+      facade.addStudentToListOfAdvisees(user.getID(), temp.getID());
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+
+    assertTrue(facade.getListOfAdvisees().size() > 1);
+    assertFalse(error);
+  }
+
+  @Test
+  public void testAddStudentToListOfAdviseesAddAdmin() {
+    user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    boolean error = false;
+    try {
+      facade.signUpAdmin(
+        "Olivia",
+        "Olivia",
+        "doubleOlivia@gmail.com",
+        "OOlliivviiaa!"
+      );
+      User temp = facade.login("doubleOlivia@gmail.com", "OOlliivviiaa!");
+      facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+      facade.addStudentToListOfAdvisees(user.getID(), temp.getID());
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(facade.getListOfAdvisees().size() > 1);
+    assertFalse(facade.getListOfAdvisees().get(1) != null);
+    assertFalse(error);
+  }
+
+  @Test
+  public void testAddStudentToListOfAdviseesAddAdvisor() {
+    user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    boolean error = false;
+    try {
+      facade.signUpAdvisor(
+        "Olivia",
+        "Olivia",
+        "doubleOlivia@gmail.com",
+        "OOlliivviiaa!"
+      );
+      User temp = facade.login("doubleOlivia@gmail.com", "OOlliivviiaa!");
+      facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+      facade.addStudentToListOfAdvisees(user.getID(), temp.getID());
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+
+    assertFalse(facade.getListOfAdvisees().size() > 1);
+    assertFalse(facade.getListOfAdvisees().get(1) != null);
+    assertFalse(error);
+  }
+
+  @Test
+  public void testAddStudentToListOfAdviseesExistingStudent() {
+    user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    boolean error = false;
+    try {
+      facade.addStudentToListOfAdvisees(
+        user.getID(),
+        userList.getAdvisorById(user.getID()).getListOfAdvisees().get(0)
+      );
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(facade.getListOfAdvisees().size() > 1);
+    assertFalse(error);
+  }
+
+  @Test
+  public void testAddStudentToListOfAdviseesNull() {
+    User user = facade.login("osberto@mailbox.sc.edu", "h3110m0m!2");
+    boolean error = false;
+    try {
+      facade.addStudentToListOfAdvisees(null, null);
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(facade.getListOfAdvisees().size() > 1);
+    assertFalse(error);
+  }
 }

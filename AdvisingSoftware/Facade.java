@@ -438,8 +438,8 @@ public class Facade {
 
   /**
    * Gets a student user by ID if the logged-in user is an advisor.
-   *
-   * @param studentId The ID of the student to retrieve.
+   * @param UUID advisorID
+   * @param UUID studentId The ID of the student to retrieve.
    * @return The student user if found, or null if not found or if the logged-in
    *         user is not an advisor.
    */
