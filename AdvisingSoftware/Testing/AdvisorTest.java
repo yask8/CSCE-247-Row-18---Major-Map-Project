@@ -1,3 +1,7 @@
+/**
+ * Advisor Test class
+ * @author Stephon Johnson
+ */
 package AdvisingSoftware.Testing;
 
 import AdvisingSoftware.Advisor;
