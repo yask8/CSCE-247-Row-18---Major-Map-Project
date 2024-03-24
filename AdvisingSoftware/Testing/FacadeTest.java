@@ -3,6 +3,7 @@ package AdvisingSoftware.Testing;
 import static org.junit.jupiter.api.Assertions.*;
 
 import AdvisingSoftware.Admin;
+import AdvisingSoftware.Course;
 import AdvisingSoftware.CourseList;
 import AdvisingSoftware.Facade;
 import AdvisingSoftware.MajorList;
@@ -23,6 +24,7 @@ public class FacadeTest {
   private UUID uuid = UUID.randomUUID();
   private UserList userList;
   private MajorList majorList;
+  private CourseList courseList;
 
   /**
    * + login(String email, String password): User
@@ -40,6 +42,7 @@ public class FacadeTest {
   public void setUp() {
     userList = userList.getInstance();
     majorList = majorList.getInstance();
+    courseList = courseList.getInstance();
   }
 
   @AfterEach
@@ -199,9 +202,124 @@ public class FacadeTest {
     assertTrue(user != null);
     assertTrue(user.getUserType().equalsIgnoreCase("ADVISOR"));
   }
+
   // Testing displayAllCourses method
+  @Test
+  public void testDisplayAllCoursesValid() {
+    boolean error = false;
+    try {
+      facade.displayAllCourses(courseList.getAllCourses());
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(error);
+  }
+
+  @Test
+  public void testDisplayAllCoursesEmpty() {
+    ArrayList<Course> empty = new ArrayList<Course>();
+    boolean error = false;
+    try {
+      facade.displayAllCourses(empty);
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(error);
+  }
+
+  @Test
+  public void testDisplayAllCoursesNull() {
+    boolean error = false;
+    try {
+      facade.displayAllCourses(null);
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(error);
+  }
+
   // Testing showCoursesByCode method
+  @Test
+  public void testShowCoursesByCodeValid() {
+    boolean error = false;
+    try {
+      facade.showCoursesByCode("GFL");
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(error);
+  }
+
+  @Test
+  public void testShowCoursesByCodeInvalid() {
+    boolean error = false;
+    try {
+      facade.showCoursesByCode("APPLE");
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(error);
+  }
+
+  @Test
+  public void testShowCoursesByCodeEmpty() {
+    boolean error = false;
+    try {
+      facade.showCoursesByCode("");
+    } catch (Exception e) {
+      // TODO: handle exception
+      error = true;
+    }
+    assertFalse(error);
+  }
+
   // Testing showAppAreaOptions method
+  @Test
+  public void testShowAppAreaOptionsValid() {
+    user = facade.login("rio.farrah2004@gmail.com", "Real?dejaneir0");
+    boolean printed = true;
+    try {
+      facade.showAppAreaOptions();
+    } catch (Exception e) {
+      // TODO: handle exception
+      printed = false;
+    }
+    assertTrue(user.getUserType().equalsIgnoreCase("STUDENT"));
+    assertTrue(printed);
+  }
+
+  @Test
+  public void testShowAppAreaOptionsAdmin() {
+    user = facade.login("thebillybob@gmail.com", "Guiy#ghawe");
+    boolean printed = true;
+    try {
+      facade.showAppAreaOptions();
+    } catch (Exception e) {
+      // TODO: handle exception
+      printed = false;
+    }
+    assertTrue(user.getUserType().equalsIgnoreCase("ADMIN"));
+    assertTrue(printed);
+  }
+
+  @Test
+  public void testShowAppAreaOptionsAdvisor() {
+    user = facade.login("FlanaganMichael@gmail.com", "philly$Gr33n");
+    boolean printed = true;
+    try {
+      facade.showAppAreaOptions();
+    } catch (Exception e) {
+      // TODO: handle exception
+      printed = false;
+    }
+    assertTrue(user.getUserType().equalsIgnoreCase("ADVISOR"));
+    assertTrue(printed);
+  }
   // Testing addNoteToStudentAdvisor method
   // Testing addStudentToListOfAdvisees method
 
