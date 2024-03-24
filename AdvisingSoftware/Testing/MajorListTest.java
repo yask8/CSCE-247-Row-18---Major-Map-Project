@@ -12,6 +12,10 @@ import org.junit.jupiter.api.Test;
 import AdvisingSoftware.MajorList;
 import AdvisingSoftware.MajorMap;
 
+
+/*
+ * Tested by @Spillmag Garrett Spillman
+ */
 public class MajorListTest {
 
     private MajorList majorList;
