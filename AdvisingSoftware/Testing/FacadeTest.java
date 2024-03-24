@@ -2,6 +2,7 @@ package AdvisingSoftware.Testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import AdvisingSoftware.Admin;
 import AdvisingSoftware.CourseList;
 import AdvisingSoftware.Facade;
 import AdvisingSoftware.MajorList;
@@ -10,6 +11,7 @@ import AdvisingSoftware.User;
 import AdvisingSoftware.UserList;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,9 +20,9 @@ public class FacadeTest {
 
   private Facade facade = new Facade();
   private User user = null;
-  private UserList userList = UserList.getInstance();
-  private CourseList courseList = CourseList.getInstance();
-  private MajorList majorList = MajorList.getInstance();
+  private UUID uuid = UUID.randomUUID();
+  private UserList userList;
+  private MajorList majorList;
 
   /**
    * + login(String email, String password): User
@@ -35,10 +37,16 @@ public class FacadeTest {
    * + addStudentToListOfAdvisees(UUID advisorID, UUID studentID): boolean
    */
   @BeforeEach
-  public void setUp() {}
+  public void setUp() {
+    userList = userList.getInstance();
+    majorList = majorList.getInstance();
+  }
 
   @AfterEach
-  public void tearDown() {}
+  public void tearDown() {
+    user = null;
+    UserList.getInstance().removeUser(uuid);
+  }
 
   // Testing login method
   @Test
@@ -102,8 +110,65 @@ public class FacadeTest {
     f.delete();
     assertTrue(exists);
   }
+
   // Testing signUpStudent method
+  @Test
+  public void testSignUpStudentValid() {
+    facade.signUpStudent(
+      "Stuart",
+      "Neuman",
+      "stuartneuman@email.sc.edu",
+      "Password123?"
+    );
+    user =
+      userList.getUserByLoginInfo("stuartneuman@email.sc.edu", "Password123?");
+    assertTrue(user != null);
+    assertTrue(user.getUserType().equalsIgnoreCase("STUDENT"));
+  }
+
+  @Test
+  public void testSignUpStudentExistingName() {
+    facade.signUpStudent(
+      "Farrah",
+      "Rio",
+      "stuartneuman@email.sc.edu",
+      "Password123?"
+    );
+    user =
+      userList.getUserByLoginInfo("stuartneuman@email.sc.edu", "Password123?");
+    assertTrue(user != null);
+    assertTrue(user.getUserType().equalsIgnoreCase("STUDENT"));
+  }
+
   // Testing signUpAdmin method
+  @Test
+  public void testSignUpAdminValid() {
+    facade.signUpAdmin(
+      "Stuart",
+      "Neuman",
+      "stuartneuman@email.sc.edu",
+      "Password123?"
+    );
+    user =
+      userList.getUserByLoginInfo("stuartneuman@email.sc.edu", "Password123?");
+    assertTrue(user != null);
+    assertTrue(user.getUserType().equalsIgnoreCase("ADMIN"));
+  }
+
+  // Testing signUpAdvisor method
+  @Test
+  public void testSignUpAdvisorValid() {
+    facade.signUpAdvisor(
+      "Stuart",
+      "Neuman",
+      "stuartneuman@email.sc.edu",
+      "Password123?"
+    );
+    user =
+      userList.getUserByLoginInfo("stuartneuman@email.sc.edu", "Password123?");
+    assertTrue(user != null);
+    assertTrue(user.getUserType().equalsIgnoreCase("ADVISOR"));
+  }
   // Testing getMajorMap method
   // Testing displayAllCourses method
   // Testing showCoursesByCode method
