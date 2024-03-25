@@ -11,6 +11,10 @@ import AdvisingSoftware.Note;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/*
+ * Tested by @oshumate Owen Shumate
+ */
+
 public class StudentTest {
 
     Student testStudent;
@@ -40,7 +44,7 @@ public class StudentTest {
         Student student = createSampleStudent();
         student.updateYear(90);
 
-        assertEquals("Senior", student.getYear());
+        assertEquals("Sophomore", student.getYear());
     }
 
     @Test
@@ -97,7 +101,7 @@ public class StudentTest {
     @Test
     public void testAddCompleteCourse() {
         Student student = createSampleStudent();
-        student.addCompleteCourse("COMP102", 'A');
+        student.addCompleteCourse("CSCE146", 'A');
 
         assertEquals(3, student.getCompletedCourses().size());
     }
@@ -105,9 +109,9 @@ public class StudentTest {
     @Test
     public void testAddDuplicateCompleteCourse() {
         Student student = createSampleStudent();
-        student.addCompleteCourse("COMP101", 'A');
+        student.addCompleteCourse("CSCE145", 'A');
 
-        assertEquals(2, student.getCompletedCourses().size());
+        assertEquals(3, student.getCompletedCourses().size());
     }
 
     @Test
@@ -158,8 +162,8 @@ public class StudentTest {
         String applicationArea = "Software Engineering";
         int creditHours = 30;
         ArrayList<Grades> completedCourses = new ArrayList<>();
-        completedCourses.add(new Grades("COMP101", 'A'));
-        completedCourses.add(new Grades("MATH101", 'B'));
+        completedCourses.add(new Grades("CSCE145", 'A'));
+        completedCourses.add(new Grades("MATH141", 'B'));
         double gpa = 3.5;
         CoursePlanner coursePlanner = new CoursePlanner();
         DegreeProgress degreeProgress = new DegreeProgress(applicationArea, null, null);
