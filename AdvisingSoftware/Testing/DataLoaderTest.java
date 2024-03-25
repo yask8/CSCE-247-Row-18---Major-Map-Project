@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
+ * Tester class for DataLoader
  * @author Yasmine Kennedy (yask8)
  */
 public class DataLoaderTest {
