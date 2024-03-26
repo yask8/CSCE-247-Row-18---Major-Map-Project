@@ -388,4 +388,16 @@ public boolean containsCourse(String courseName) {
            semester5.contains(courseName) || semester6.contains(courseName) ||
            semester7.contains(courseName) || semester8.contains(courseName);
 }
+// Method to add a course to a specific semester
+public void addCourseToSemester(String courseName, int semesterNumber) {
+  ArrayList<String> semester = getSemester(semesterNumber);
+  
+  // Check if the course already exists in any semester
+  if (!containsCourse(courseName)) {
+      semester.add(courseName);
+  } else {
+      System.out.println("Course " + courseName + " already exists in the major map.");
+  }
 }
+}
+
