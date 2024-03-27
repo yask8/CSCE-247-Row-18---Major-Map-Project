@@ -223,22 +223,14 @@ public class UserList {
    */
   public boolean emailExists(String email) {
     for (User user : users) {
-      if (user.getEmail().equals(email)) {
+      if (user.getEmail().equalsIgnoreCase(email)) {
         return true;
       }
     }
     return false;
   }
 
-  /**
-   * Signs up a new user.
-   *
-   * @param firstName The first name of the user.
-   * @param lastName  The last name of the user.
-   * @param email     The email of the user.
-   * @param password  The password of the user.
-   * @param userType  The type of user ('STUDENT', 'ADMIN', or 'ADVISOR').
-   */
+ 
   /**
    * Signs up a new user.
    *

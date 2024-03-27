@@ -5,13 +5,10 @@ package AdvisingSoftware.Testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import AdvisingSoftware.Admin;
 import AdvisingSoftware.Course;
 import AdvisingSoftware.CourseList;
 import AdvisingSoftware.Facade;
 import AdvisingSoftware.MajorList;
-import AdvisingSoftware.MajorMap;
-import AdvisingSoftware.Student;
 import AdvisingSoftware.User;
 import AdvisingSoftware.UserList;
 import java.io.File;
@@ -121,6 +118,7 @@ public class FacadeTest {
   // Testing signUpStudent method
   @Test
   public void testSignUpStudentValid() {
+    userList.clear();
     facade.signUpStudent(
       "Stuart",
       "Neuman",
@@ -180,6 +178,7 @@ public class FacadeTest {
   // Testing signUpAdmin method
   @Test
   public void testSignUpAdminValid() {
+    userList.clear();
     facade.signUpAdmin(
       "Stuart",
       "Neuman",
@@ -195,6 +194,7 @@ public class FacadeTest {
   // Testing signUpAdvisor method
   @Test
   public void testSignUpAdvisorValid() {
+    userList.clear();
     facade.signUpAdvisor(
       "Stuart",
       "Neuman",

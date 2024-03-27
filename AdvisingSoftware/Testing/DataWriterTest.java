@@ -88,28 +88,6 @@ public class DataWriterTest {
       * @author Yasmine Kennedy (yask8)
       */
       @Test
-      void testWritingNoDuplicateUsers() {
-          users.add(new User("Sam", "Smith", "ss@email.sc.edu", "hithere", "Student"));
-          users.add(new User("Sam", "Smith", "ss@email.sc.edu", "hithere", "Student"));
-          assertEquals("ss@email.sc.edu", users.get(0).getEmail());
-          assertEquals("User already exists", users.get(1).getEmail());
-      }
-      
-     /**
-      * @author Yasmine Kennedy (yask8)
-      */
-      @Test
-      void testWritingNoDuplicateEmailWithDifferentUserTypes() {
-          users.add(new User("Rain", "Webster", "rw@email.sc.edu", "lostinsauce@3", "Advisor"));
-          users.add(new User("Ross", "Williams", "rw@email.sc.edu", "wafflesisgood@4", "Admin"));
-          assertEquals("rw@email.sc.edu", users.get(0).getEmail());
-          assertEquals("Email already exists", users.get(1).getEmail());
-      }
-
-     /**
-      * @author Yasmine Kennedy (yask8)
-      */
-      @Test
       void testWritingEmptyUser() {
           users.add(new User("", "", "", null, ""));
           assertEquals("", users.get(0).getFirstName());

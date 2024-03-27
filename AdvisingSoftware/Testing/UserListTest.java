@@ -135,6 +135,7 @@ class UserListTest {
 
     @Test
     public void testEmailExists() {
+        // This when run seperate passes but together fails?
         assertTrue(userList.emailExists("rio.farrah2004@gmail.com"));
         assertFalse(userList.emailExists("nonexistent@example.com"));
     }
@@ -163,10 +164,12 @@ class UserListTest {
     public void testSignUpExistingEmail() {
         int initialSize = userList.getUsers().size();
 
+        userList.signUp("Jane", "Smith", "janesmith@example.com", "password", "STUDENT");
+
         assertFalse(userList.signUp("Jane", "Smith", "janesmith@example.com", "password", "STUDENT"));
 
         int newSize = userList.getUsers().size();
-        assertEquals(initialSize, newSize);
+        assertEquals(initialSize + 1, newSize);
     }
 
 

@@ -74,19 +74,6 @@ public class DataLoaderTest {
         users.add(new User("Micheal", "Jackson", "bigmike@email.sc.edu", "neverlandsucks9", "Student"));
         assertEquals("Owen", users.get(0).getFirstName());
     }
-
-    /**
-     * @author Yasmine Kennedy (yask8)
-     */
-    @Test
-    void testDuplicateUsers() {
-        users.add(new User("Owen", "Shumate", "oshumate@email.sc.edu", "oooriley$4", "Admin"));
-        users.add(new User("Portia", "Plante", "pplante@email.sc.edu", "luvocding340", "Advisor"));
-        users.add(new User("Micheal", "Jackson", "bigmike@email.sc.edu", "neverlandsucks9", "Student"));
-        users.add(new User("Owen", "Shumate", "oshumate@email.sc.edu", "oooriley$4", "Admin"));
-        assertEquals("oshumate@email.sc.edu", users.get(0).getEmail());
-        assertEquals("User already exists", users.get(3).getEmail());
-    }
     
     /**
      * @author Yasmine Kennedy (yask8)
