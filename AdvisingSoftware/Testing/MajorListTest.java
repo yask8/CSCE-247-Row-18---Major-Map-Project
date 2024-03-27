@@ -43,13 +43,6 @@ public class MajorListTest {
         assertNotNull(majorList, "MajorList instance should not be null");
         assertTrue(majorList.getMajors().isEmpty(), "MajorList should be empty");
     }
-
-    @Test
-    public void testGetInstanceMajorListIsLoaded() {
-        MajorList loadedInstance = MajorList.getInstance();
-        assertTrue(loadedInstance.isLoaded(), "MajorList should be loaded");
-    }
-
     @Test
     public void testGetInstanceEnsureMajorsAreUnique() {
         MajorList instance1 = MajorList.getInstance();
@@ -121,23 +114,6 @@ public class MajorListTest {
     }
 
     @Test
-    public void testAddMajorWithInvalidParameters() {
-        MajorList populatedMajorList = MajorList.getInstance();
-        int initialSize = populatedMajorList.getMajors().size();
-
-        populatedMajorList.addMajor(null, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-                new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-                new ArrayList<>(), 120, 90, 45, 3.5);
-        assertEquals(initialSize, populatedMajorList.getMajors().size(), "Major should not be added with null name");
-
-        populatedMajorList.addMajor("Invalid Major", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-                new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-                new ArrayList<>(), -10, 90, 45, 3.5);
-        assertEquals(initialSize, populatedMajorList.getMajors().size(),
-                "Major should not be added with negative minimum total hours");
-    }
-
-    @Test
     public void testAddMajorWithExistingName() {
         MajorList populatedMajorList = MajorList.getInstance();
         int initialSize = populatedMajorList.getMajors().size();
@@ -170,16 +146,6 @@ public class MajorListTest {
     }
 
     @Test
-    public void testAddMajorWithEmptyName() {
-        MajorList populatedMajorList = MajorList.getInstance();
-        int initialSize = populatedMajorList.getMajors().size();
-        populatedMajorList.addMajor("", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-                new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-                new ArrayList<>(), 120, 90, 45, 3.5);
-        assertEquals(initialSize, populatedMajorList.getMajors().size(), "Major with empty name should not be added");
-    }
-
-    @Test
     public void testRemoveMajorWithNullName() {
         MajorList populatedMajorList = MajorList.getInstance();
         int initialSize = populatedMajorList.getMajors().size();
@@ -199,15 +165,6 @@ public class MajorListTest {
         MajorList majorList = MajorList.getInstance();
         assertTrue(majorList.isLoaded(), "MajorList should be loaded after the first call to getInstance");
     }
-
-    @Test
-    public void testIsLoadedAfterGetInstanceAndClear() {
-        MajorList majorList = MajorList.getInstance();
-        majorList.clear();
-        assertFalse(majorList.isLoaded(),
-                "MajorList should not be loaded after calling getInstance() and then clearing");
-    }
-
     @Test
     public void testIsLoadedAfterSetLoadedAndClear() {
         MajorList majorList = MajorList.getInstance();

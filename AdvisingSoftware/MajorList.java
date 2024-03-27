@@ -64,20 +64,20 @@ public class MajorList {
         return majorList;
     }
 
-    /**
-     * Gets the major by name
-     * 
-     * @param major the major
-     * @return the major
-     */
-    public MajorMap getMajorByName(String major) {
-        for (MajorMap existingMajor : majors) {
-            if (existingMajor.getMajor().equals(major)) {
-                return existingMajor;
-            }
+/**
+ * Gets the major by name (case insensitive and trim whitespace)
+ * 
+ * @param major the major
+ * @return the major
+ */
+public MajorMap getMajorByName(String major) {
+    for (MajorMap existingMajor : majors) {
+        if (existingMajor.getMajor().trim().equalsIgnoreCase(major.trim())) {
+            return existingMajor;
         }
-        return null;
     }
+    return null;
+}
 
     /**
      * Gets the major by it's unique identifier
@@ -94,53 +94,62 @@ public class MajorList {
         return null;
     }
 
-    /**
-     * Adds a major with their semester listings and graduation requirements
-     * 
-     * @param majorName     name of major
-     * @param semester1     first semester
-     * @param semester2     second semester
-     * @param semester3     third semester
-     * @param semester4     fourth semester
-     * @param semester5     fifth semester
-     * @param semester6     sixth semester
-     * @param semester7     seventh semester
-     * @param semester8     eigth semester
-     * @param minTotalHours minimum total credit hours
-     * @param minGradHours  minimum grad hours
-     * @param caroCoreHours minimum carolina core hours
-     * @param minGPA        minimum GPA
-     */
-    public void addMajor(
-            String majorName,
-            ArrayList<String> semester1,
-            ArrayList<String> semester2,
-            ArrayList<String> semester3,
-            ArrayList<String> semester4,
-            ArrayList<String> semester5,
-            ArrayList<String> semester6,
-            ArrayList<String> semester7,
-            ArrayList<String> semester8,
-            int minTotalHours,
-            int minGradHours,
-            int caroCoreHours,
-            double minGPA) {
-        MajorMap newMajorMap = new MajorMap(
-                majorName,
-                semester1,
-                semester2,
-                semester3,
-                semester4,
-                semester5,
-                semester6,
-                semester7,
-                semester8,
-                minTotalHours,
-                minGradHours,
-                caroCoreHours,
-                minGPA);
-        majors.add(newMajorMap);
+/**
+ * Adds a major with their semester listings and graduation requirements
+ * 
+ * @param majorName     name of major
+ * @param semester1     first semester
+ * @param semester2     second semester
+ * @param semester3     third semester
+ * @param semester4     fourth semester
+ * @param semester5     fifth semester
+ * @param semester6     sixth semester
+ * @param semester7     seventh semester
+ * @param semester8     eighth semester
+ * @param minTotalHours minimum total credit hours
+ * @param minGradHours  minimum grad hours
+ * @param caroCoreHours minimum carolina core hours
+ * @param minGPA        minimum GPA
+ */
+public void addMajor(
+        String majorName,
+        ArrayList<String> semester1,
+        ArrayList<String> semester2,
+        ArrayList<String> semester3,
+        ArrayList<String> semester4,
+        ArrayList<String> semester5,
+        ArrayList<String> semester6,
+        ArrayList<String> semester7,
+        ArrayList<String> semester8,
+        int minTotalHours,
+        int minGradHours,
+        int caroCoreHours,
+        double minGPA) {
+
+    String lowercaseMajorName = majorName.toLowerCase();
+
+    for (MajorMap existingMajor : majors) {
+        if (existingMajor.getMajor().toLowerCase().equals(lowercaseMajorName)) {
+            System.out.println("A major with the same name already exists.");
+            return;
+        }
     }
+    MajorMap newMajorMap = new MajorMap(
+            majorName,
+            semester1,
+            semester2,
+            semester3,
+            semester4,
+            semester5,
+            semester6,
+            semester7,
+            semester8,
+            minTotalHours,
+            minGradHours,
+            caroCoreHours,
+            minGPA);
+    majors.add(newMajorMap);
+}
 
     /**
      * Removes a Major
