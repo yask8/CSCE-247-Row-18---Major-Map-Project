@@ -25,45 +25,82 @@ public class CourseTest {
 
     @Test
     public void editCourse_CourseDetails() {
-        Course editedTestCourse = testCourse.editCourse("CSCE146");
-
-        assertEquals("CSCE146", editedTestCourse.getCode());
-        assertEquals("Algorithmic Design 1", editedTestCourse.getName());
-        assertEquals("CSCE145", editedTestCourse.getID());
+        Course editedTestCourse = testCourse.editCourse(
+            "CSCE 146 Algorithmic Design II", // Provide full course name including code
+            "PR",
+            "Continuation of CSCE 145. Rigorous development of algorithms and computer programs; elementary data structures.",
+            3,
+            "CSCE",
+            'C',
+            false,
+            false,
+            null,
+            "1",
+            "2"
+        );
+    
+        assertEquals("PR", editedTestCourse.getCode());
+        assertEquals("CSCE 146 Algorithmic Design II", editedTestCourse.getName());
+        assertEquals("CSCE146", editedTestCourse.getID());
         assertEquals(3, editedTestCourse.getCreditHours());
-        assertEquals("Computer Science", editedTestCourse.getSubject());
-        assertEquals('A', editedTestCourse.getPassGrade());
-        assertTrue(editedTestCourse.isElective());
-        assertTrue(editedTestCourse.isCarolinaCore());
+        assertEquals("CSCE", editedTestCourse.getSubject());
+        assertEquals('C', editedTestCourse.getPassGrade());
+        assertFalse(editedTestCourse.isElective());
+        assertFalse(editedTestCourse.isCarolinaCore());
     }
-
+    
     @Test
     public void editCourse_CourseCode() {
-        Course editedTestCourse = testCourse.editCourse("CSCE146");
-
-        assertEquals("CSCE146", editedTestCourse.getCode());
-        assertEquals("Algorithmic Design 1", editedTestCourse.getName());
-        assertEquals("CSCE145", editedTestCourse.getID());
+        Course editedTestCourse = testCourse.editCourse(
+            "CSCE 146 Algorithmic Design II", // Provide full course name including code
+            "CSCE215",
+            "Continuation of CSCE 145. Rigorous development of algorithms and computer programs; elementary data structures.",
+            3,
+            "CSCE",
+            'C',
+            false,
+            false,
+            null,
+            "1",
+            "2"
+        );
+    
+        assertEquals("CSCE215", editedTestCourse.getCode());
+        assertEquals("CSCE 146 Algorithmic Design II", editedTestCourse.getName());
+        assertEquals("CSCE146", editedTestCourse.getID());
         assertEquals(3, editedTestCourse.getCreditHours());
-        assertEquals("Computer Science", editedTestCourse.getSubject());
-        assertEquals('A', editedTestCourse.getPassGrade());
-        assertTrue(editedTestCourse.isElective());
-        assertTrue(editedTestCourse.isCarolinaCore());
+        assertEquals("CSCE", editedTestCourse.getSubject());
+        assertEquals('C', editedTestCourse.getPassGrade());
+        assertFalse(editedTestCourse.isElective());
+        assertFalse(editedTestCourse.isCarolinaCore());
     }
-
+    
     @Test
-    public void editCourse_CourseNameAndSubject() {
-        Course editedTestCourse = testCourse.editCourse("CSCE145");
+public void editCourse_CourseNameAndSubject() {
+    Course editedTestCourse = testCourse.editCourse(
+        "CSCE146", // Provide the new course code
+        "CSCE146",
+        "Continuation of CSCE 145. Rigorous development of algorithms and computer programs; elementary data structures.",
+        3,
+        "CSCE",
+        'C',
+        false,
+        false,
+        null,
+        "1",
+        "2"
+    );
 
-        assertEquals("CSCE145", editedTestCourse.getCode());
-        assertEquals("Algorithmic Design 1", editedTestCourse.getName());
-        assertEquals("Computer Science", editedTestCourse.getSubject());
-        assertEquals("CSCE145", editedTestCourse.getID());
-        assertEquals(3, editedTestCourse.getCreditHours());
-        assertEquals('A', editedTestCourse.getPassGrade());
-        assertTrue(editedTestCourse.isElective());
-        assertTrue(editedTestCourse.isCarolinaCore());
-    }
+    assertEquals("CSCE146", editedTestCourse.getCode());
+    assertEquals("CSCE146", editedTestCourse.getName()); // Corrected to match the expected edited course name
+    assertEquals("CSCE", editedTestCourse.getSubject());
+    assertEquals("CSCE146", editedTestCourse.getID());
+    assertEquals(3, editedTestCourse.getCreditHours());
+    assertEquals('C', editedTestCourse.getPassGrade());
+    assertFalse(editedTestCourse.isElective());
+    assertFalse(editedTestCourse.isCarolinaCore());
+}
+
 
     @Test
     public void isElectiveReturnTrue() {

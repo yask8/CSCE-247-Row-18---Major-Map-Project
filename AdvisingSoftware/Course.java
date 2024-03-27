@@ -141,26 +141,60 @@ public class Course {
   }
 
   /**
-   * Allows course to be edited
-   *
-   * @return edited course
-   */
-  public Course editCourse(String id) {
-    return new Course(
-      id,
-      name,
-      code,
-      description,
-      creditHours,
-      subject,
-      passGrade,
-      elective,
-      carolinaCore,
-      preReqs,
-      year,
-      semester
-    );
+ * Edits the attributes of the course and returns the modified course.
+ *
+ * @param name         The new name of the course.
+ * @param code         The new code of the course.
+ * @param description  The new description of the course.
+ * @param creditHours  The new credit hours of the course.
+ * @param subject      The new subject of the course.
+ * @param passGrade    The new pass grade of the course.
+ * @param elective     The new status of the course being elective or not.
+ * @param carolinaCore The new status of the course being a Carolina Core or not.
+ * @param preReqs      The new list of prerequisites for the course.
+ * @param year         The new year of the course.
+ * @param semester     The new semester of the course.
+ * @return The modified course.
+ */
+public Course editCourse(
+  String name,
+  String code,
+  String description,
+  int creditHours,
+  String subject,
+  char passGrade,
+  boolean elective,
+  boolean carolinaCore,
+  ArrayList<String> preReqs,
+  String year,
+  String semester
+) {
+  if (name == null || name.isEmpty()) {
+      throw new IllegalArgumentException("Course name cannot be null or empty");
   }
+
+  this.name = name;
+  this.code = code;
+  this.description = description;
+  this.creditHours = creditHours;
+  this.subject = subject;
+  this.passGrade = passGrade;
+  this.elective = elective;
+  this.carolinaCore = carolinaCore;
+  this.preReqs = preReqs;
+  this.year = year;
+  this.semester = semester;
+
+  // Generate or update the course ID based on the course name
+  String[] nameParts = name.split("\\s+");
+  if (nameParts.length >= 2) {
+      this.id = nameParts[0] + nameParts[1].replaceAll("\\s+", "");
+  } else {
+      this.id = nameParts[0];
+  }
+
+  return this; // Return the modified course
+}
 
   /**
    * To string to view user details
