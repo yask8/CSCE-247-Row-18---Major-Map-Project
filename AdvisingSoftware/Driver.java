@@ -15,7 +15,7 @@ public class Driver {
 
   public void run() {
     //scenario1();
-    scenario2();
+    //scenario2();
     // extra scenario to show off course planner generation
     // scenario3();
   }

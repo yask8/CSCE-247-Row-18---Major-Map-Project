@@ -58,7 +58,12 @@ public class User {
    * @param firstName edited first name
    */
   public void editFirstName(String firstName) {
+    if(firstName==null){
+      throw new IllegalArgumentException("First name cannot be null");
+    }
+    else{
     this.firstName = firstName;
+    }
   }
 
   /**
@@ -67,8 +72,12 @@ public class User {
    * @param lastName edited last name
    */
   public void editLastName(String lastName) {
-    this.lastName = lastName;
-  }
+    if (lastName == null) {
+        throw new IllegalArgumentException("Last name cannot be null.");
+    } else {
+        this.lastName = lastName;
+    }
+}
 
   /**
    * Allows user to edit given email
@@ -76,7 +85,12 @@ public class User {
    * @param email edited email
    */
   public void editEmail(String email) {
+    if(email==null){
+      throw new IllegalArgumentException("Email cannot be null.");
+    }
+    else{
     this.email = email;
+    }
   }
 
   /**
@@ -85,7 +99,12 @@ public class User {
    * @param password edited password
    */
   public void editPassword(String password) {
+    if(password==null){
+      throw new IllegalArgumentException("Password cannot be null.");
+    }
+    else{
     this.password = password;
+    }
   }
 
   /**

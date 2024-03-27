@@ -56,8 +56,8 @@ public class CourseTest {
         Course editedTestCourse = testCourse.editCourse("CSCE145");
 
         assertEquals("CSCE145", editedTestCourse.getCode());
-        assertEquals("Introduction to Advanced Algorithmic Design 1", editedTestCourse.getName());
-        assertEquals("Advanced Algorithmic Design 1", editedTestCourse.getSubject());
+        assertEquals("Algorithmic Design 1", editedTestCourse.getName());
+        assertEquals("Computer Science", editedTestCourse.getSubject());
         assertEquals("CSCE145", editedTestCourse.getID());
         assertEquals(3, editedTestCourse.getCreditHours());
         assertEquals('A', editedTestCourse.getPassGrade());
