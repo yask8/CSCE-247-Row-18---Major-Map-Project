@@ -174,19 +174,26 @@ public class Facade {
   }
 
   /**
-   * Displays information about all the courses in the provided list.
-   *
-   * @param courseList The list of courses to display.
-   */
-  public void displayAllCourses(ArrayList<Course> courseList) {
-    System.out.println("Courses Available:");
-    if (courseList == null || courseList.isEmpty()) {
-      System.out.println("No courses available.");
-    }
-    for (Course course : courseList) {
-      System.out.println(course.toString());
-    }
+ * Displays information about all the courses in the provided list.
+ *
+ * @param courseList The list of courses to display.
+ */
+public void displayAllCourses(ArrayList<Course> courseList) {
+  if (courseList == null) {
+      System.out.println("Invalid input: course list is null.");
+      return;
   }
+
+  System.out.println("Courses Available:");
+  if (courseList.isEmpty()) {
+      System.out.println("No courses available.");
+  } else {
+      for (Course course : courseList) {
+          System.out.println(course.toString());
+      }
+  }
+}
+
 
   /**
    * shows courses that fall under given code category
