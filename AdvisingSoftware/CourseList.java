@@ -267,18 +267,24 @@ public class CourseList {
   }
 
   /**
-   * displays courses that have a certain code
-   * 
-   * @param courseCode String code (ex. GFL)
-   */
-  public void showCoursesByCode(String courseCode) {
-    System.out.println("***********" + courseCode + " Courses***********");
-    for (Course course : getCourses()) {
-      if (course != null && course.getCode().equalsIgnoreCase(courseCode)) {
-        System.out.println(course.toString());
+ * Displays courses that have a certain code.
+ * 
+ * @param courseCode The course code to search for.
+ */
+public void showCoursesByCode(String courseCode) {
+  boolean found = false; // Flag to check if any courses were found
+  System.out.println("***********" + courseCode + " Courses***********");
+  for (Course course : getCourses()) {
+      if (course.getCode().equalsIgnoreCase(courseCode)) {
+          System.out.println(course.toString());
+          found = true;
       }
-    }
   }
+  if (!found) {
+      System.out.println("No courses found with code: " + courseCode);
+  }
+}
+
 
   /**
    * Clears all courses from the course list.
