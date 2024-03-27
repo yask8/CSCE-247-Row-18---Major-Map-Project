@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 import AdvisingSoftware.MajorMap;
 
-
 /*
  * Tested by @Spillmag Garrett Spillman
  */
@@ -38,20 +37,26 @@ public class MajorMapTest {
 
     @Test
     public void testEmptyMajorName() {
-        MajorMap emptyMajorMap = new MajorMap(UUID.randomUUID(), "",
-                new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-                new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-                new ArrayList<>(), new ArrayList<>(), 0, 0, 0, 0.0);
-        assertEquals("", emptyMajorMap.getMajor());
+        try {
+            new MajorMap(UUID.randomUUID(), "",
+                    new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
+                    new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
+                    new ArrayList<>(), new ArrayList<>(), 0, 0, 0, 0.0);
+        } catch (IllegalArgumentException e) {
+            assertEquals("Major name cannot be null or empty", e.getMessage());
+        }
     }
 
     @Test
     public void testNullMajorName() {
-        MajorMap nullMajorMap = new MajorMap(UUID.randomUUID(), null,
-                new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-                new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-                new ArrayList<>(), new ArrayList<>(), 0, 0, 0, 0.0);
-        assertNull(nullMajorMap.getMajor());
+        try {
+            new MajorMap(UUID.randomUUID(), null,
+                    new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
+                    new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
+                    new ArrayList<>(), new ArrayList<>(), 0, 0, 0, 0.0);
+        } catch (IllegalArgumentException e) {
+            assertEquals("Major name cannot be null or empty", e.getMessage());
+        }
     }
 
     @Test
@@ -148,62 +153,71 @@ public class MajorMapTest {
     @Test
     public void testAddCourseWithWhitespaceToSemester() {
 
-        majorMap.getSemester1().add("   CSCI101  ");
+        majorMap.addCourseToSemester("    CSCI101   ", 1);
         assertTrue(majorMap.getSemester1().contains("CSCI101"));
     }
 
     @Test
     public void testRemoveCourseWithWhitespaceFromSemester() {
 
-        majorMap.getSemester2().add("   CSCI102  ");
+        majorMap.addCourseToSemester("   CSCI102  ", 2);
         assertTrue(majorMap.getSemester2().contains("CSCI102"));
-        majorMap.getSemester2().remove("   CSCI102  ");
+        majorMap.removeCourseFromSemester("   CSCI102  ", 2);
         assertFalse(majorMap.getSemester2().contains("CSCI102"));
     }
 
     @Test
+    public void testRemoveCourseWrongSemester() {
+
+        majorMap.addCourseToSemester("CSCI102", 2);
+        assertTrue(majorMap.getSemester2().contains("CSCI102"));
+        majorMap.removeCourseFromSemester("CSCI102", 1);
+        assertTrue(majorMap.getSemester2().contains("CSCI102"));
+    }
+
+    @Test
     public void testAddNullCourseToSemester() {
-        majorMap.getSemester1().add(null);
+        majorMap.addCourseToSemester(null, 1);
+        ;
         assertFalse(majorMap.getSemester1().contains(null));
     }
 
     @Test
     public void testAddDuplicateCourseToSemester() {
-        majorMap.getSemester3().add("CSCI104");
+        majorMap.addCourseToSemester("CSCI104", 3);
         assertTrue(majorMap.getSemester3().contains("CSCI104"));
 
-        majorMap.getSemester3().add("CSCI104");
+        majorMap.addCourseToSemester("CSCI104", 3);
 
         assertEquals(1, Collections.frequency(majorMap.getSemester3(), "CSCI104"));
     }
 
     @Test
     public void testGetCoursesForValidMajor() {
+        majorMap.addCourseToSemester("CSCI101", 1);
+        majorMap.addCourseToSemester("CSCI102", 2);
+        majorMap.addCourseToSemester("CSCI201", 3);
 
-        majorMap.getSemester1().add("CSCI101");
-        majorMap.getSemester2().add("CSCI102");
-        majorMap.getSemester3().add("CSCI201");
         assertEquals(List.of("CSCI101", "CSCI102", "CSCI201"), majorMap.getCoursesForMajor("Computer Science"));
     }
 
     @Test
     public void testGetCoursesForMajorCaseInsensitivity() {
+        majorMap.addCourseToSemester("CSCI101", 1);
+        majorMap.addCourseToSemester("CSCI102", 2);
+        majorMap.addCourseToSemester("CSCI201", 3);
 
-        majorMap.getSemester1().add("CSCI101");
-        majorMap.getSemester2().add("CSCI102");
-        majorMap.getSemester3().add("CSCI201");
         assertEquals(List.of("CSCI101", "CSCI102", "CSCI201"), majorMap.getCoursesForMajor("computer Science"));
     }
 
     @Test
     public void testGetCoursesForMatchingMajor() {
- 
-        majorMap.getSemester1().add("CSCI101");
-        majorMap.getSemester2().add("CSCI102");
-        majorMap.getSemester3().add("CSCI201");
-        majorMap.getSemester4().add("CSCI202");
+        majorMap.addCourseToSemester("CSCI101", 1);
+        majorMap.addCourseToSemester("CSCI102", 2);
+        majorMap.addCourseToSemester("CSCI201", 3);
+        majorMap.addCourseToSemester("CSCI202", 4);
 
-        ArrayList<String> courses = majorMap.getCoursesForMajor("Computer Science");
+        List<String> courses = majorMap.getCoursesForMajor("Computer Science");
 
         assertTrue(courses.contains("CSCI101"));
         assertTrue(courses.contains("CSCI102"));
@@ -213,13 +227,12 @@ public class MajorMapTest {
 
     @Test
     public void testGetCoursesForNonMatchingMajor() {
+        majorMap.addCourseToSemester("CSCI101", 1);
+        majorMap.addCourseToSemester("CSCI102", 2);
+        majorMap.addCourseToSemester("CSCI201", 3);
+        majorMap.addCourseToSemester("CSCI202", 4);
 
-        majorMap.getSemester1().add("CSCI101");
-        majorMap.getSemester2().add("CSCI102");
-        majorMap.getSemester3().add("CSCI201");
-        majorMap.getSemester4().add("CSCI202");
-
-        ArrayList<String> courses = majorMap.getCoursesForMajor("Biology");
+        List<String> courses = majorMap.getCoursesForMajor("Biology");
 
         assertTrue(courses.isEmpty());
     }
