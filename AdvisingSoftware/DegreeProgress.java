@@ -36,30 +36,33 @@ public class DegreeProgress {
     this.incompleteCourses = incompleteCourses;
   }
 
-  /**
-   * returns a String representation of degree progress
-   * @param majorMap MajorMap major map
-   * @param completedCourses ArrayList<Grades> completedCourses
-   * @return String
-   */
   public String displayProgress(
     MajorMap majorMap,
     ArrayList<Grades> completedCourses,
     ArrayList<Course> courseList
-  ) {
+) {
+    if (completedCourses == null) {
+        return (
+            "-----Degree Progress-----" +
+            "\nCurrent Major: " +
+            this.major +
+            "\nProgress Made: 0.0%"
+        );
+    }
+
     calculateGPA(courseList, completedCourses);
     double totalCH = getTotalCreditHours();
     double minTotalHrs = majorMap.getMinTotalHours();
     progressPercentage = ((totalCH / minTotalHrs) * 100);
     return (
-      "-----Degree Progress-----" +
-      "\nCurrent Major: " +
-      this.major +
-      "\nProgress Made: " +
-      progressPercentage +
-      "%"
+        "-----Degree Progress-----" +
+        "\nCurrent Major: " +
+        this.major +
+        "\nProgress Made: " +
+        progressPercentage +
+        "%"
     );
-  }
+}
 
   public double getProgressPercentage() {
     return this.progressPercentage;
@@ -247,27 +250,34 @@ public class DegreeProgress {
   }
 
   /**
-   * @param courseList ArrayList<Course> list of all the courses
-   * @param completedCourses ArrayList<Grades> list of course names and grades
-   * @return double GPA of student
-   */
-  public double calculateGPA(
-    ArrayList<Course> courseList,
-    ArrayList<Grades> completedCourses
-  ) {
-    double gpa = 0.0;
-    double totalPoints = 0;
-    totalCreditHours = 0;
-    for (Grades completeCourse : completedCourses) {
+ * @param courseList ArrayList<Course> list of all the courses
+ * @param completedCourses ArrayList<Grades> list of course names and grades
+ * @return double GPA of student
+ */
+public double calculateGPA(ArrayList<Course> courseList, ArrayList<Grades> completedCourses) {
+  if (completedCourses == null || completedCourses.isEmpty()) {
+      return 0.0; // Return 0 GPA if completedCourses is null or empty
+  }
+
+  double gpa = 0.0;
+  double totalPoints = 0;
+  totalCreditHours = 0;
+
+  for (Grades completeCourse : completedCourses) {
       totalCreditHours += getCreditHours(completeCourse, courseList);
       totalPoints +=
-        getCreditHours(completeCourse, courseList) *
-        getGradePoint(completeCourse.getGrade());
-    }
-    gpa = totalPoints / totalCreditHours;
-    gpa = Math.floor(gpa * 100) / 100;
-    return gpa;
+              getCreditHours(completeCourse, courseList) *
+                      getGradePoint(completeCourse.getGrade());
   }
+
+  if (totalCreditHours != 0) {
+      gpa = totalPoints / totalCreditHours;
+      gpa = Math.floor(gpa * 100) / 100;
+  }
+
+  return gpa;
+}
+
 
   /**
    * Gets the total credit hours
