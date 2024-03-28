@@ -63,21 +63,29 @@ public class Grades {
     }
 
     /**
-     * Checks if grade is passing or failing
-     * @param courseGrade the grade received
-     * @return PASS or FAIL depending on grade
-     */
-    public String checkPass(double courseGrade) {
-        boolean gradeDPlus = (courseGrade <= 65 && courseGrade >= 69.99);
-        boolean gradeD = (courseGrade <= 60 && courseGrade >= 64.99);
-        boolean gradeF = courseGrade < 59.99;
-
-        if ((gradeDPlus) || (gradeD) || (gradeF)) {
-            return "FAIL";
-        } else {
-            return "PASS";
-        }
+ * Checks if grade is passing or failing
+ * @param courseGrade the grade received
+ * @return "PASS" if grade is passing, "FAIL" if grade is failing, "INVALID" if grade is null
+ */
+public String checkPass(Double courseGrade) {
+    if (courseGrade == null) {
+        return "INVALID"; // Handle null input as invalid
     }
+
+    if (courseGrade < 0) {
+        return "INVALID"; // Handle negative input as invalid
+    }
+
+    boolean gradeDPlus = (courseGrade <= 65 && courseGrade >= 69.99);
+    boolean gradeD = (courseGrade <= 60 && courseGrade >= 64.99);
+    boolean gradeF = courseGrade < 59.99;
+
+    if (gradeDPlus || gradeD || gradeF) {
+        return "FAIL";
+    } else {
+        return "PASS";
+    }
+}
 
     /**
      * Displays the course and the grade and if the course is passing or failing
