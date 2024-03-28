@@ -88,6 +88,16 @@ public class Course {
     this.preReqs = preReqs;
     this.semester = semester;
     this.year = year;
+
+    name = name.trim();
+    
+    // Generate or update the course ID based on the trimmed course name
+    String[] nameParts = name.split("\\s+");
+    if (nameParts.length >= 2) {
+        this.id = nameParts[0] + nameParts[1].replaceAll("\\s+", "");
+    } else {
+        this.id = nameParts[0];
+    }
   }
 
   /**
