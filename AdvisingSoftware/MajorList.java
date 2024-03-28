@@ -66,11 +66,15 @@ public class MajorList {
 
 /**
  * Gets the major by name (case insensitive and trim whitespace)
- * 
+ *
  * @param major the major
  * @return the major
  */
 public MajorMap getMajorByName(String major) {
+    if (major == null) {
+        return null;
+    }
+    
     for (MajorMap existingMajor : majors) {
         if (existingMajor.getMajor().trim().equalsIgnoreCase(major.trim())) {
             return existingMajor;
@@ -78,6 +82,7 @@ public MajorMap getMajorByName(String major) {
     }
     return null;
 }
+
 
     /**
      * Gets the major by it's unique identifier

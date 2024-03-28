@@ -118,47 +118,58 @@ public class CoursePlanner {
   }
 
   /**
-   * Generates the course planner from the given major map by adding all the
-   * courses
-   * from the major map into the course planner, provided they are not already
-   * present.
-   *
-   * @param majorMap The major map containing the courses to be added to the
-   *                 course planner.
-   */
-  public void generateFromMajorMap(MajorMap majorMap) {
-    ArrayList<ArrayList<String>> majorMapSemesters = new ArrayList<>();
-    majorMapSemesters.add(majorMap.getSemester1());
-    majorMapSemesters.add(majorMap.getSemester2());
-    majorMapSemesters.add(majorMap.getSemester3());
-    majorMapSemesters.add(majorMap.getSemester4());
-    majorMapSemesters.add(majorMap.getSemester5());
-    majorMapSemesters.add(majorMap.getSemester6());
-    majorMapSemesters.add(majorMap.getSemester7());
-    majorMapSemesters.add(majorMap.getSemester8());
+ * Generates the course planner from the given major map by adding all the
+ * courses from the major map into the course planner, provided they are not already
+ * present.
+ *
+ * @param majorMap The major map containing the courses to be added to the
+ *                 course planner.
+ */
+public void generateFromMajorMap(MajorMap majorMap) {
+  if (majorMap == null) {
+      throw new IllegalArgumentException("Major map cannot be null.");
+  }
 
-    for (int i = 0; i < 8; i++) {
+  ArrayList<ArrayList<String>> majorMapSemesters = new ArrayList<>();
+  majorMapSemesters.add(majorMap.getSemester1());
+  majorMapSemesters.add(majorMap.getSemester2());
+  majorMapSemesters.add(majorMap.getSemester3());
+  majorMapSemesters.add(majorMap.getSemester4());
+  majorMapSemesters.add(majorMap.getSemester5());
+  majorMapSemesters.add(majorMap.getSemester6());
+  majorMapSemesters.add(majorMap.getSemester7());
+  majorMapSemesters.add(majorMap.getSemester8());
+
+  for (int i = 0; i < 8; i++) {
       ArrayList<String> semesterCourses = majorMapSemesters.get(i);
       for (String course : semesterCourses) {
-        if (!this.semesters.get(i).contains(course)) {
-          this.semesters.get(i).add(course);
-        }
+          if (!this.semesters.get(i).contains(course)) {
+              this.semesters.get(i).add(course);
+          }
       }
-    }
   }
+}
 
   /**
-   * returns whether the given course exists in courseplanner or not
-   * @param course String course id
-   * @return boolean true if course exists in coursePlanner
-   */
-  public boolean searchPlanner(String course) {
-    boolean exists = false;
-    for (ArrayList<String> xSemester : semesters) {
-      if (!xSemester.isEmpty() && xSemester.contains(course)) {
-        exists = true;
+ * Returns whether the given course exists in the course planner or not.
+ *
+ * @param course String course id
+ * @return boolean true if course exists in course planner
+ */
+public boolean searchPlanner(String course) {
+  boolean exists = false;
+  String courseLowerCase = course.toLowerCase(); // Convert course to lowercase
+  for (ArrayList<String> xSemester : semesters) {
+      for (String courseInSemester : xSemester) {
+          if (courseInSemester.equalsIgnoreCase(courseLowerCase)) { // Perform case-insensitive comparison
+              exists = true;
+              break;
+          }
       }
-    }
-    return exists;
+      if (exists) {
+          break; // Once found, no need to continue searching
+      }
   }
+  return exists;
+}
 }
