@@ -156,60 +156,53 @@ public class AdvisorTest {
     }
 
     @Test
-    public void testAddStudentRiskOfFailure() {
-        UUID studentId = UUID.randomUUID();
-        Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
-                "Sophomore", "Computer Science", "Application Area", 60,
-                new ArrayList<>(), 2.5, null, null, new ArrayList<>());
-        userList.addUser(student);
-
-        advisor.addStudentToListOfAdvisees(studentId);
-        advisor.addStudentRiskOfFailure();
-
-        ArrayList<UUID> failingStudents = advisor.getListOfFailingStudents();
-        assertTrue(failingStudents.contains(studentId));
-    }
-
-    @Test
-    public void testAddStudentRiskOfFailureNonAdvisee() {
-        UUID studentId = UUID.randomUUID();
-        Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
-                "Sophomore", "Computer Science", "Application Area", 60,
-                new ArrayList<>(), 2.5, null, null, new ArrayList<>());
-        userList.addUser(student);
-
-        advisor.addStudentRiskOfFailure();
-
-        ArrayList<UUID> failingStudents = advisor.getListOfFailingStudents();
-        assertFalse(failingStudents.contains(studentId));
-    }
-
-    @Test
-public void testAddStudentRiskOfFailureMinimumGPA() {
+public void testAddStudentRiskOfFailure() {
     UUID studentId = UUID.randomUUID();
     Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
             "Sophomore", "Computer Science", "Application Area", 60,
-            new ArrayList<>(), 1.0, null, null, new ArrayList<>()); // Minimum GPA
+            new ArrayList<>(), 2.5, null, null, new ArrayList<>());
     userList.addUser(student);
 
     advisor.addStudentToListOfAdvisees(studentId);
-    advisor.addStudentRiskOfFailure();
+    ArrayList<Student> failingStudents = advisor.addStudentRiskOfFailure(userList, 2.0); // Assuming 2.0 is the minimum GPA for failure
 
+    assertTrue(failingStudents.contains(student));
+}
+
+
+@Test
+public void testAddStudentRiskOfFailureNonAdvisee() {
+    // Create a student who is not an advisee
+    UUID studentId = UUID.randomUUID();
+    Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
+            "Sophomore", "Computer Science", "Application Area", 60,
+            new ArrayList<>(), 2.5, null, null, new ArrayList<>());
+    userList.addUser(student);
+
+    // Try to add student at risk of failure (should not be added because not an advisee)
+    advisor.addStudentRiskOfFailure(userList, 2.0); // Adjust the GPA threshold as needed
+
+    // Ensure the student is not in the list of failing students
     ArrayList<UUID> failingStudents = advisor.getListOfFailingStudents();
-    assertTrue(failingStudents.contains(studentId));
+    assertFalse(failingStudents.contains(studentId));
 }
 
 @Test
 public void testAddStudentRiskOfFailureMaximumGPA() {
+    // Create a student with maximum GPA
     UUID studentId = UUID.randomUUID();
     Student student = new Student("Jane", "Doe", "jane.doe@example.com", studentId, "password", "STUDENT",
             "Sophomore", "Computer Science", "Application Area", 60,
-            new ArrayList<>(), 4.0, null, null, new ArrayList<>()); // Maximum GPA
+            new ArrayList<>(), 4.0, null, null, new ArrayList<>());
     userList.addUser(student);
 
+    // Add the student to the list of advisees
     advisor.addStudentToListOfAdvisees(studentId);
-    advisor.addStudentRiskOfFailure();
 
+    // Add student at risk of failure (should not be added because GPA is maximum)
+    advisor.addStudentRiskOfFailure(userList, 2.0); // Adjust the GPA threshold as needed
+
+    // Ensure the student is not in the list of failing students
     ArrayList<UUID> failingStudents = advisor.getListOfFailingStudents();
     assertFalse(failingStudents.contains(studentId));
 }
@@ -226,8 +219,8 @@ public void testRemoveStudentRiskOfFailureAfterGPAImprovement() {
     // Add the student to the list of advisees
     advisor.addStudentToListOfAdvisees(studentId);
 
-    // Add the student to the risk of failure list
-    advisor.addStudentRiskOfFailure();
+    // Add the student at risk of failure
+    advisor.addStudentRiskOfFailure(userList, 2.0); // Adjust the GPA threshold as needed
 
     // Simulate improvement in GPA by creating a new student object with improved GPA
     Student improvedStudent = new Student(
@@ -239,11 +232,10 @@ public void testRemoveStudentRiskOfFailureAfterGPAImprovement() {
     // Remove the old student from the risk of failure list and add the improved student
     advisor.removeStudent(studentId);
     advisor.addStudentToListOfAdvisees(improvedStudent.getStudentsID());
-    advisor.addStudentRiskOfFailure(); // Student with improved GPA is added to risk of failure list
+    advisor.addStudentRiskOfFailure(userList, 2.0); // Adjust the GPA threshold as needed
 
+    // Ensure the student with improved GPA is not in the list of failing students
     ArrayList<UUID> failingStudents = advisor.getListOfFailingStudents();
-
-    // The student with improved GPA should not be in the failing students list
     assertFalse(failingStudents.contains(improvedStudent.getStudentsID()));
 }
 
@@ -286,24 +278,30 @@ public void testRemoveStudentRiskOfFailureAfterGPAImprovement() {
     }
 
     @Test
-    public void testRemoveStudentFromListOfAdviseesAfterRiskOfFailure() {
-        UUID studentId1 = UUID.randomUUID();
-        UUID studentId2 = UUID.randomUUID();
+public void testRemoveStudentFromListOfAdviseesAfterRiskOfFailure() {
+    // Generate random UUIDs for students
+    UUID studentId1 = UUID.randomUUID();
+    UUID studentId2 = UUID.randomUUID();
 
-        advisor.addStudentToListOfAdvisees(studentId1);
-        advisor.addStudentToListOfAdvisees(studentId2);
+    // Add students to the list of advisees
+    advisor.addStudentToListOfAdvisees(studentId1);
+    advisor.addStudentToListOfAdvisees(studentId2);
 
-        advisor.addStudentRiskOfFailure();
+    // Add students at risk of failure
+    advisor.addStudentRiskOfFailure(userList, 2.0); // Adjust the GPA threshold as needed
 
-        advisor.removeStudent(studentId1);
+    // Remove one student from the list of advisees
+    advisor.removeStudent(studentId1);
 
-        ArrayList<UUID> advisees = advisor.getListOfAdvisees();
-        ArrayList<UUID> failingStudents = advisor.getListOfFailingStudents();
+    // Get the updated lists of advisees and failing students
+    ArrayList<UUID> advisees = advisor.getListOfAdvisees();
+    ArrayList<UUID> failingStudents = advisor.getListOfFailingStudents();
 
-        assertEquals(1, advisees.size());
-        assertEquals(1, failingStudents.size());
-        assertFalse(advisees.contains(studentId1));
-        assertTrue(advisees.contains(studentId2));
-        assertTrue(failingStudents.contains(studentId2));
-    }
+    // Assertions
+    assertEquals(1, advisees.size()); // There should be only one advisee left
+    assertEquals(1, failingStudents.size()); // There should be only one failing student left
+    assertFalse(advisees.contains(studentId1)); // Removed student should not be in the list of advisees
+    assertTrue(advisees.contains(studentId2)); // Other student should still be in the list of advisees
+    assertTrue(failingStudents.contains(studentId2)); // Other student should still be in the list of failing students
+}
 }

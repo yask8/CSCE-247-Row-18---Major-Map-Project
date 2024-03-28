@@ -187,13 +187,25 @@ public void removeStudent(UUID studentId) {
   }
 
   /**
-   * Allows advisor to add a student to their list of advisees at risk of failure
-   *
-   * @return Updated arraylist of advisees at risk of failure
-   */
-  public ArrayList<Student> addStudentRiskOfFailure() {
-    return null;
+     * Adds students at risk of failure to the list and returns them.
+     *
+     * @param userList The UserList instance containing all users.
+     * @param minimumGPA The minimum GPA considered failing.
+     * @return The list of students at risk of failure.
+     */
+    public ArrayList<Student> addStudentRiskOfFailure(UserList userList, double minimumGPA) {
+      ArrayList<Student> adviseesAtRisk = new ArrayList<>();
+
+      for (UUID studentId : listOfAdvisees) {
+          Student student = userList.getStudentById(studentId);
+          if (student != null && student.getGpa() < minimumGPA) {
+              adviseesAtRisk.add(student);
+          }
+      }
+
+      return adviseesAtRisk;
   }
+
 
   /**
    * Getter for listOfAdvisees
