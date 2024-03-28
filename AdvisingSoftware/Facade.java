@@ -28,21 +28,20 @@ public class Facade {
     this.majorList = MajorList.getInstance();
   }
 
-  /**
-   * Logs in a user with the specified email and password.
-   * If the user list is not already loaded, it loads the users using data loader
-   * Loads Course and Majors as well
-   *
-   * @param email    The email of the user.
-   * @param password The password of the user.
-   * @return The logged-in user if successful.
-   */
   public User login(String email, String password) {
     User loggedInUser = userList.getUserByLoginInfo(email, password);
-    this.user = loggedInUser;
-    getStudentGPA();
-    return loggedInUser;
-  }
+
+    if (loggedInUser != null && loggedInUser.getPassword().equals(password)) {
+        this.user = loggedInUser;
+        getStudentGPA();
+    } else {
+        // If user is null or passwords don't match, set user to null
+        this.user = null;
+    }
+
+    return this.user;
+}
+
 
   /**
    * Signs out the currently logged-in user and saves any changes made during the
