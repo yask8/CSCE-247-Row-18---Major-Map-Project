@@ -41,7 +41,7 @@ public class DegreeProgress {
     ArrayList<Grades> completedCourses,
     ArrayList<Course> courseList
 ) {
-    if (completedCourses == null) {
+    if (completedCourses == null || completedCourses.isEmpty()) {
         return (
             "-----Degree Progress-----" +
             "\nCurrent Major: " +
@@ -63,6 +63,7 @@ public class DegreeProgress {
         "%"
     );
 }
+
 
   public double getProgressPercentage() {
     return this.progressPercentage;
