@@ -168,7 +168,6 @@ public class AdminTest {
                 assertFalse(result);
         }
 
-
         public void testDeleteExistingCourse() {
                 admin.addCourse("Math 101", "MATH", "Introduction to Math", 3, "Mathematics", 'A', true, false,
                                 new ArrayList<>(), "2024", "Spring");

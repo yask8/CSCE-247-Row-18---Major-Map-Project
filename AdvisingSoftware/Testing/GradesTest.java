@@ -44,6 +44,6 @@ public class GradesTest {
   public void testCheckPassNegativeNum() {
     double courseGrade = -94.3;
     testCourse = new Grades("CSCE145", courseGrade);
-    assertEquals("FAIL", testCourse.checkPass(courseGrade));
+    assertEquals("INVALID", testCourse.checkPass(courseGrade));
   }
 }
