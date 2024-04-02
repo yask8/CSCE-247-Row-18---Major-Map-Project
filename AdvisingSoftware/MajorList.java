@@ -76,6 +76,9 @@ public MajorMap getMajorByName(String major) {
     }
     
     for (MajorMap existingMajor : majors) {
+        /*
+         * Triming whitespace
+         */
         if (existingMajor.getMajor().trim().equalsIgnoreCase(major.trim())) {
             return existingMajor;
         }
